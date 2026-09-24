@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.pointer.PointerIcon
@@ -36,79 +37,93 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-val darkPurple = Color(0xFF6200EE)
-val lightPurple = Color(0xff8063C5)
-val gradientBrush = androidx.compose.ui.graphics.Brush.horizontalGradient(listOf(darkPurple, lightPurple))
+// --- Glassmorphism Tokens ---
+val GlassWhite = Color(0x33FFFFFF)
+val GlassBorder = Color(0x4DFFFFFF)
+val GlassShadow = Color(0x1A000000)
 
-// Animated border gradient colors
-val gradientPurple = Color(0xFF9C27B0)
-val gradientViolet = Color(0xFF7C4DFF)
-val gradientMagenta = Color(0xFFE040FB)
+// Gemini-style Accent Gradients
+val ElectricIndigo = Color(0xFF6366F1)
+val DeepViolet = Color(0xFF8B5CF6)
+val CyanAccent = Color(0xFF06B6D4)
+val AI_Gradient = Brush.linearGradient(listOf(ElectricIndigo, DeepViolet, CyanAccent))
 
 fun Modifier.handCursor() = pointerHoverIcon(PointerIcon.Hand, overrideDescendants = true)
 
+// --- Color Schemes ---
 val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFFBB86FC),
-    onPrimary = Color(0xFF000000),
-    surface = Color(0xFF1E1E1E),
-    background = Color(0xFF121212),
-    onBackground = Color(0xFFFFFFFF),
-    onSurface = Color(0xFFFFFFFF),
+    primary = ElectricIndigo,
+    onPrimary = Color.White,
+    surface = Color(0xFF121212),
+    background = Color(0xFF0B0B0B),
+    onBackground = Color.White,
+    onSurface = Color.White,
+    surfaceVariant = Color(0xFF1E1E1E),
+    outlineVariant = Color(0xFF333333),
 )
 
 fun ColorScheme.withBlackBackground(): ColorScheme = copy(
     background = Color.Black,
     surface = Color.Black,
-    surfaceContainerLowest = Color.Black,
+    surfaceVariant = Color.Black,
 )
 
 val ColorScheme.isOledFlavor: Boolean get() = background == Color.Black
 
-@Composable
-fun kaiAdaptiveCardColors(): CardColors = CardDefaults.cardColors(
-    containerColor = if (MaterialTheme.colorScheme.isOledFlavor) {
-        Color.Transparent
-    } else {
-        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-    },
-)
+// --- Glassmorphism Modifiers ---
 
 @Composable
-fun kaiAdaptiveCardBorder(): BorderStroke? = if (MaterialTheme.colorScheme.isOledFlavor) {
-    BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
-} else {
-    null
+fun Modifier.glassSurface(
+    shape: Shape = RoundedCornerShape(16.dp),
+    alpha: Float = 0.15f,
+    borderAlpha: Float = 0.2f
+): Modifier {
+    val isOled = MaterialTheme.colorScheme.isOledFlavor
+    
+    return this
+        .clip(shape)
+        .background(
+            if (isOled) Color.Black.copy(alpha = 0.5f) else Color.White.copy(alpha = alpha)
+        )
+        .border(
+            width = 1.dp,
+            brush = Brush.verticalGradient(
+                colors = listOf(
+                    Color.White.copy(alpha = borderAlpha),
+                    Color.White.copy(alpha = 0.05f)
+                )
+            ),
+            shape = shape
+        )
 }
 
 @Composable
-fun Modifier.kaiAdaptiveCardSurface(shape: Shape = CardDefaults.shape): Modifier = this
-    .clip(shape)
-    .background(
-        if (MaterialTheme.colorScheme.isOledFlavor) {
-            Color.Transparent
-        } else {
-            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-        },
-    )
-    .then(
-        if (MaterialTheme.colorScheme.isOledFlavor) {
-            Modifier.border(1.dp, MaterialTheme.colorScheme.outlineVariant, shape)
-        } else {
-            Modifier
-        },
+fun Modifier.aiAccentBorder(shape: Shape = RoundedCornerShape(16.dp)): Modifier = this
+    .border(
+        width = 2.dp,
+        brush = AI_Gradient,
+        shape = shape
     )
 
-val LightColorScheme = lightColorScheme(
-    primary = darkPurple,
-    onPrimary = Color(0xFFFFFFFF),
-    surface = Color(0xFFF2F2F2),
-    background = Color(0xFFFFFFFF),
-    onBackground = Color(0xFF000000),
-    onSurface = Color(0xFF000000),
+// --- Component Extensions ---
+
+@Composable
+fun kaiAdaptiveCardColors(): CardColors = CardDefaults.cardColors(
+    containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f),
 )
 
 @Composable
-fun outlineTextFieldColors() = OutlinedTextFieldDefaults.colors()
+fun Modifier.kaiAdaptiveCardSurface(shape: Shape = RoundedCornerShape(16.dp)): Modifier = this
+    .glassSurface(shape = shape)
+
+// --- Form Components ---
+
+@Composable
+fun outlineTextFieldColors() = OutlinedTextFieldDefaults.colors(
+    focusedBorderColor = ElectricIndigo,
+    unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+    focusedLabelColor = ElectricIndigo,
+)
 
 @Composable
 fun KaiOutlinedTextField(
@@ -138,7 +153,7 @@ fun KaiOutlinedTextField(
         singleLine = singleLine,
         minLines = minLines,
         maxLines = maxLines,
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(16.dp),
         colors = outlineTextFieldColors(),
     )
 }

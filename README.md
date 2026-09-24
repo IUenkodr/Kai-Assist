@@ -77,17 +77,25 @@ Kai 9000's Interactive UI lets the AI generate full interactive screens — quiz
 - **Settings export/import** — Backup and restore all settings as a JSON file
 - **Encrypted storage** — Conversations stored locally with encryption
 - **Text to speech** — Listen to AI responses
-- **Linux Sandbox** — On Android, the AI can run shell commands, scripts, and tools in a secure sandboxed Linux environment
+- **The Kai-OS Sandbox** — A professional-grade Linux environment on Android for autonomous execution
 - **Image attachments** — Attach images to any conversation
 
-## Linux Sandbox (Android)
+## The Kai-OS Sandbox (Android)
 
-On Android, Kai includes a built-in Linux environment that the AI can use to execute shell commands, run scripts, and operate tools on your behalf. This turns Kai from a chat-only assistant into one that can take real action — installing packages, processing data, running Python scripts, and more.
+On Android, Kai transforms into a full autonomous agent through a built-in Linux environment. Unlike simple shell wrappers, Kai-OS is a managed control plane that allows the AI to execute complex workflows, run long-lived background tasks, and manage a full Linux userland.
 
-- **Powered by Alpine Linux** — A lightweight ~3 MB download sets up a full Linux userland via [proot](https://proot-me.github.io/), no root required
-- **Optional packages** — One tap installs bash, curl, wget, git, jq, python3, pip, and Node.js
-- **Interactive terminal** — A built-in terminal lets you run commands manually alongside the AI
-- **Secure** — Everything runs sandboxed inside the app with no access to the host system
+### 🛠️ Professional Control Plane
+- **Command Center**: A dedicated monitoring tab to track background tasks in real-time.
+- **Resource Telemetry**: Live tracking of CPU and Memory usage for every agent task.
+- **Managed Lifecycle**: Start, monitor, and kill background processes without hanging the app.
+- **Interactive PTY Engine**: A custom pseudo-terminal implementation enabling full TTY support. Run `vim`, `htop`, `less`, and other interactive tools seamlessly.
+
+### 🐧 Multi-Distro Support
+Choose the environment that fits your needs. All distros run via [proot](https://proot-me.github.io/), requiring no root access:
+- **Debian 12**: The stable, glibc-standard environment (Default).
+- **Alpine Linux**: Ultra-lightweight, musl-based minimalism.
+- **WolfiOS (glibc)**: The best of both worlds — Alpine's lightness with glibc compatibility.
+- **Arch Linux**: A rolling-release powerhouse for power users.
 
 Enable it in **Settings > Linux Sandbox**.
 
@@ -105,7 +113,7 @@ Enable it in **Settings > Linux Sandbox**.
 
 ### Mobile
 
-<img src="screenshots/mobile-1.png" alt="Mobile Screenshot 1" height="300"> <img src="screenshots/mobile-2.png" alt="Mobile Screenshot 2" height="300"> <img src="screenshots/mobile-3.png" alt="Mobile Screenshot 3" height="300"> <img src="screenshots/mobile-4.png" alt="Mobile Screenshot 4" height="300"> <img src="screenshots/mobile-5.png" alt="Mobile Screenshot 5" height="300"> <img src="screenshots/mobile-6.png" alt="Mobile Screenshot 6" height="300">
+<img src="screenshots/mobile-1.png" alt="Mobile Screenshot 1" height="300"> <img src="screenshots/mobile-2.png" alt="Mobile Screenshot 2" height="300"> <img src="screenshots/mobile-3.png" alt, "Mobile Screenshot 3" height="300"> <img src="screenshots/mobile-4.png" alt="Mobile Screenshot 4" height="300"> <img src="screenshots/mobile-5.png" alt="Mobile Screenshot 5" height="300"> <img src="screenshots/mobile-6.png" alt="Mobile Screenshot 6" height="300">
 
 ## How It Works
 
@@ -140,8 +148,9 @@ Enable it in **Settings > Linux Sandbox**.
                │  facts, prefs,  │                   ▼
                │  learnings      │          ┌────────────────┐
                │                 │◀─delete──│ Promote into   │
-               └─────────────────┘          │ System Prompt  │
-                        ▲                   └────────────────┘
+               │                               System Prompt  │
+               └─────────────────┘          └────────────────┘
+                        ▲
                         │ reviews
                         │
                ┌─────────────────┐
@@ -193,7 +202,7 @@ All popular servers are free. Most require no API key (one-tap add); Jina AI can
 
 ### Splinterlands Auto-Battle (Android & Desktop)
 
-Kai can automatically play [Splinterlands](https://splinterlands.com) Wild Ranked battles. Configure one or more LLM services in priority order, add your Hive account, and hit Start -- Kai will continuously find matches, pick teams using LLM-powered strategy, and submit them on-chain. Falls back to a simple greedy picker if all LLM services fail. Available in **Settings > Integrations**.
+Kai can automatically play [Splinterlands](https://splinterlands.com) Wild Ranked battles. Configure one or LLM services in priority order, add your Hive account, and hit Start -- Kai will continuously find matches, pick teams using LLM-powered strategy, and submit them on-onchain. Falls back to a simple greedy picker if all LLM services fail. Available in **Settings > Integrations**.
 
 ## Supported Languages
 
@@ -218,7 +227,7 @@ Two separate screenshot pipelines exist, both using Compose screenshot tests:
 bundle exec fastlane android upload_screenshots
 ```
 
-**Kai UI component screenshots** — Records golden images for `KaiUiScreenshotTest` only. Faster than recording the full suite when iterating on Kai UI components.
+**Kai UI component screenshots** — Records golden images for `KaiUiScreenshotTets` only. Faster than recording the full suite when iterating on Kai UI components.
 
 ```bash
 ./gradlew :screenshotTests:recordKaiUiScreenshots
