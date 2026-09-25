@@ -1,5 +1,173 @@
-package com.inspiredandroid.kai
 
+                KoinJavaComponent.get(PermissionController::class.java, permissionQualifier(AppPermission.CALENDAR))
+                KoinJavaComponent.get(PermissionController::class.java, permissionQualifier(AppPermission.POST_NOTIFICATIONS))
+                add(ProcessManagerTool)
+                add(ShellCommandTool)
+                add(SshConfigureHostTool)
+                addAll(NotificationTools.getNotificationTools(notificationStore, notificationReader))
+                addAll(SmsTools.getSmsSendTools(smsDraftStore, smsReaderForTools, smsSender))
+                val notificationStore: NotificationStore by inject(NotificationStore::class.java)
+                val smsDraftStore: SmsDraftStore by inject(SmsDraftStore::class.java)
+            "${context.packageName}.fileprovider",
+            .getMimeTypeFromExtension(file.extension) ?: "*/*"
+            add(CreateCalendarEventTool.create(CalendarRepository(context, calendarPermissionController)))
+            add(OpenFileTool)
+            add(SendNotificationTool.create(NotificationHelper(context, notificationPermissionController)))
+            add(SetAlarmTool.create(context))
+            addAll(SmsTools.getSmsReadTools(smsStore, smsReaderForTools))
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            bitmap
+            bitmap.scale(newWidth, newHeight)
+            context,
+            file,
+            if (notificationReader.hasAccess()) {
+            if (sandboxManager.state.value is SandboxState.Ready) {
+            if (smsSender.hasPermission()) {
+            null
+            setDataAndType(contentUri, mimeType)
+            smsReader
+            val calendarPermissionController: PermissionController =
+            val newHeight = (bitmap.height * scale).toInt()
+            val newWidth = (bitmap.width * scale).toInt()
+            val notificationPermissionController: PermissionController =
+            val notificationReader: NotificationReader by inject(NotificationReader::class.java)
+            val sandboxManager: LinuxSandboxManager by inject(LinuxSandboxManager::class.java)
+            val scale = maxDim.toFloat() / maxOf(bitmap.width, bitmap.height)
+            val smsReader: SmsReader by inject(SmsReader::class.java)
+            val smsSender: SmsSender by inject(SmsSender::class.java)
+            val smsStore: SmsStore by inject(SmsStore::class.java)
+            }
+        "kai_secure_prefs",
+        )
+        .build()
+        .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+        // (READ_SMS declared in merged manifest). `isSmsEnabled()` is the user toggle.
+        // (listener service declared in merged manifest). `isNotificationsEnabled()`
+        // AEADBadTagException occurs when Android Auto Backup restores the encrypted
+        // Delete the corrupted file and recreate fresh encrypted prefs.
+        // Notification tools: triple-gated. `isNotificationsSupported` is FOSS-only
+        // SMS read tools: triple-gated. `isSmsSupported` is only true on FOSS builds
+        // SMS send tools: independently gated on the Send toggle + SEND_SMS permission.
+        // These only *stage* drafts — actual sending is user-triggered via the review banner.
+        // `hasPermission()` catches runtime revocation.
+        // is the user toggle. `hasAccess()` catches system-level revocation.
+        // prefs file but the Keystore key is hardware-bound and doesn't transfer.
+        CreateCalendarEventTool.toolInfo,
+        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
+        Intent(Intent.ACTION_VIEW, contentUri).apply {
+        Intent(Intent.ACTION_VIEW, parsedUri).apply {
+        OpenFileTool.toolInfo,
+        ProcessManagerTool.toolInfo,
+        SendNotificationTool.toolInfo,
+        SetAlarmTool.toolInfo,
+        SharedPreferencesSettings(createEncryptedPrefs(context))
+        ShellCommandTool.toolInfo,
+        SshConfigureHostTool.toolInfo,
+        appSettings = appSettings,
+        bitmap.recycle()
+        bytes
+        context,
+        context.declaresNotificationListener()
+        context.declaresReadSms()
+        context.deleteSharedPreferences("kai_secure_prefs")
+        emailStore = emailStore,
+        false
+        if (appSettings.isSandboxEnabled()) {
+        if (appSettings.isToolEnabled(CreateCalendarEventTool.ID)) {
+        if (appSettings.isToolEnabled(OpenFileTool.schema.name)) {
+        if (appSettings.isToolEnabled(SendNotificationTool.ID)) {
+        if (appSettings.isToolEnabled(SetAlarmTool.ID)) {
+        if (isNotificationsSupported && appSettings.isNotificationsEnabled()) {
+        if (scaled !== bitmap) scaled.recycle()
+        if (smsReaderForTools != null && appSettings.isSmsEnabled() && smsReaderForTools.hasPermission()) {
+        if (smsReaderForTools != null && appSettings.isSmsSendEnabled()) {
+        masterKey,
+        mcpServerManager = mcpServerManager,
+        memoryStore = memoryStore,
+        outputStream.toByteArray()
+        scaled.compress(android.graphics.Bitmap.CompressFormat.JPEG, 80, outputStream)
+        taskStore = taskStore,
+        val bitmap = android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size) ?: return bytes
+        val contentUri = androidx.core.content.FileProvider.getUriForFile(
+        val context: Context by inject(Context::class.java)
+        val file = java.io.File(parsedUri.path!!)
+        val maxDim = 1024
+        val mimeType = android.webkit.MimeTypeMap.getSingleton()
+        val outputStream = java.io.ByteArrayOutputStream()
+        val scaled = if (bitmap.width > maxDim || bitmap.height > maxDim) {
+        val smsReaderForTools: SmsReader? = if (isSmsSupported) {
+        }
+        } else {
+    )
+    ) {
+    android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size)?.asImageBitmap()
+    androidx.activity.compose.BackHandler(enabled = enabled, onBack = onBack)
+    config(this)
+    context.startActivity(intent)
+    false
+    file?.write(bytes)
+    if (!mimeType.startsWith("image/")) return bytes
+    listOf(
+    null
+    return EncryptedSharedPreferences.create(
+    return SharedPreferencesSettings(prefs)
+    return buildAgentToolSet(
+    return context.filesDir.absolutePath
+    return try {
+    true
+    try {
+    val appSettings: AppSettings by inject(AppSettings::class.java)
+    val context: Context by inject(Context::class.java)
+    val emailStore: EmailStore by inject(EmailStore::class.java)
+    val file = FileKit.openFileSaver(suggestedName = baseName, defaultExtension = extension)
+    val intent = if (parsedUri.scheme == "file") {
+    val masterKey = MasterKey.Builder(context)
+    val mcpServerManager: McpServerManager by inject(McpServerManager::class.java)
+    val memoryStore: MemoryStore by inject(MemoryStore::class.java)
+    val parsedUri = url.toUri()
+    val prefs = context.getSharedPreferences("com.inspiredandroid.kai_preferences", Context.MODE_PRIVATE)
+    val taskStore: TaskStore by inject(TaskStore::class.java)
+    }
+    } catch (_: Exception) {
+    } catch (_: Throwable) {
+    } else {
+// Evaluated lazily because we need the Koin-injected Context. Whether READ_SMS
+// Same lazy pattern as `isSmsSupported`: probe the merged manifest for the listener
+// Tool definitions for Android platform. Every tool Android can execute is listed, including the
+// Uses dev.spght:encryptedprefs-ktx — a maintained community fork of the deprecated
+// androidx.security:security-crypto. We keep application-level encryption because
+// call `getPlatformToolDefinitions()` before Koin has been started.
+// is declared in the merged manifest is a build-time property (foss flavor adds
+// is what keeps them out of the Tools tab.
+// it, playStore does not), so caching the first result is safe for the process
+// lifetime. The try/catch guards screenshot / unit-test environments that may
+// ones no per-tool switch controls — chat resolves display names from here, and an omission shows
+// secure settings store API keys, email passwords, and conversation encryption keys.
+// service. Foss flavor declares it, playStore does not.
+// the raw tool id instead. Tools driven by a master toggle carry `userToggleable = false`, which
+@androidx.compose.runtime.Composable
+actual fun PlatformBackHandler(enabled: Boolean, onBack: () -> Unit) {
+actual fun createLegacySettings(): Settings? {
+actual fun createSecureSettings(): Settings {
+actual fun decodeToImageBitmap(bytes: ByteArray): ImageBitmap? = try {
+actual fun getAppFilesDirectory(): String {
+actual fun getAvailableTools(): List<Tool> {
+actual fun getBackgroundDispatcher(): CoroutineContext = Dispatchers.IO
+actual fun getPlatformToolDefinitions(): List<ToolInfo> = CommonTools.commonToolDefinitions +
+actual fun httpClient(config: HttpClientConfig<*>.() -> Unit): HttpClient = HttpClient(OkHttp) {
+actual fun onDragAndDropEventDropped(event: DragAndDropEvent): PlatformFile? = null
+actual fun openUrl(url: String): Boolean = try {
+actual suspend fun compressImageBytes(bytes: ByteArray, mimeType: String): ByteArray {
+actual suspend fun saveFileToDevice(bytes: ByteArray, baseName: String, extension: String) {
+actual val BackIcon: ImageVector = Icons.AutoMirrored.Filled.ArrowBack
+actual val currentPlatform: Platform = Platform.Mobile.Android
+actual val defaultUiScale: Float = 1.0f
+actual val isEmailSupported: Boolean = true
+actual val isNotificationsSupported: Boolean by lazy {
+actual val isSmsSupported: Boolean by lazy {
+actual val isSplinterlandsSupported: Boolean = true
 import android.content.Context
 import android.content.Intent
 import androidx.compose.material.icons.Icons
@@ -53,252 +221,11 @@ import io.github.vinceglb.filekit.write
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.okhttp.OkHttp
+import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.Dispatchers
 import org.koin.java.KoinJavaComponent
 import org.koin.java.KoinJavaComponent.inject
-import kotlin.coroutines.CoroutineContext
-
-actual fun httpClient(config: HttpClientConfig<*>.() -> Unit): HttpClient = HttpClient(OkHttp) {
-    config(this)
-}
-
-actual fun getBackgroundDispatcher(): CoroutineContext = Dispatchers.IO
-
-actual fun onDragAndDropEventDropped(event: DragAndDropEvent): PlatformFile? = null
-
-actual val BackIcon: ImageVector = Icons.AutoMirrored.Filled.ArrowBack
-
-actual val currentPlatform: Platform = Platform.Mobile.Android
-
-actual val defaultUiScale: Float = 1.0f
-
-actual val isEmailSupported: Boolean = true
-
-// Evaluated lazily because we need the Koin-injected Context. Whether READ_SMS
-// is declared in the merged manifest is a build-time property (foss flavor adds
-// it, playStore does not), so caching the first result is safe for the process
-// lifetime. The try/catch guards screenshot / unit-test environments that may
-// call `getPlatformToolDefinitions()` before Koin has been started.
-actual val isSmsSupported: Boolean by lazy {
-    try {
-        val context: Context by inject(Context::class.java)
-        context.declaresReadSms()
-    } catch (_: Throwable) {
-        false
-    }
-}
-
-// Same lazy pattern as `isSmsSupported`: probe the merged manifest for the listener
-// service. Foss flavor declares it, playStore does not.
-actual val isNotificationsSupported: Boolean by lazy {
-    try {
-        val context: Context by inject(Context::class.java)
-        context.declaresNotificationListener()
-    } catch (_: Throwable) {
-        false
-    }
-}
-
-actual val isSplinterlandsSupported: Boolean = true
-
-actual suspend fun compressImageBytes(bytes: ByteArray, mimeType: String): ByteArray {
-    if (!mimeType.startsWith("image/")) return bytes
-    return try {
-        val bitmap = android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size) ?: return bytes
-        val maxDim = 1024
-        val scaled = if (bitmap.width > maxDim || bitmap.height > maxDim) {
-            val scale = maxDim.toFloat() / maxOf(bitmap.width, bitmap.height)
-            val newWidth = (bitmap.width * scale).toInt()
-            val newHeight = (bitmap.height * scale).toInt()
-            bitmap.scale(newWidth, newHeight)
-        } else {
-            bitmap
-        }
-        val outputStream = java.io.ByteArrayOutputStream()
-        scaled.compress(android.graphics.Bitmap.CompressFormat.JPEG, 80, outputStream)
-        if (scaled !== bitmap) scaled.recycle()
-        bitmap.recycle()
-        outputStream.toByteArray()
-    } catch (_: Exception) {
-        bytes
-    }
-}
-
-actual fun getAppFilesDirectory(): String {
-    val context: Context by inject(Context::class.java)
-    return context.filesDir.absolutePath
-}
-
-// Uses dev.spght:encryptedprefs-ktx — a maintained community fork of the deprecated
-// androidx.security:security-crypto. We keep application-level encryption because
-// secure settings store API keys, email passwords, and conversation encryption keys.
-actual fun createSecureSettings(): Settings {
-    val context: Context by inject(Context::class.java)
-    return try {
-        SharedPreferencesSettings(createEncryptedPrefs(context))
-    } catch (_: Exception) {
-        // AEADBadTagException occurs when Android Auto Backup restores the encrypted
-        // prefs file but the Keystore key is hardware-bound and doesn't transfer.
-        // Delete the corrupted file and recreate fresh encrypted prefs.
-        context.deleteSharedPreferences("kai_secure_prefs")
-        SharedPreferencesSettings(createEncryptedPrefs(context))
-    }
-}
-
+package com.inspiredandroid.kai
 private fun createEncryptedPrefs(context: Context): android.content.SharedPreferences {
-    val masterKey = MasterKey.Builder(context)
-        .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-        .build()
-    return EncryptedSharedPreferences.create(
-        context,
-        "kai_secure_prefs",
-        masterKey,
-        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
-    )
 }
-
-actual fun createLegacySettings(): Settings? {
-    val context: Context by inject(Context::class.java)
-    val prefs = context.getSharedPreferences("com.inspiredandroid.kai_preferences", Context.MODE_PRIVATE)
-    return SharedPreferencesSettings(prefs)
-}
-
-// Tool definitions for Android platform. Every tool Android can execute is listed, including the
-// ones no per-tool switch controls — chat resolves display names from here, and an omission shows
-// the raw tool id instead. Tools driven by a master toggle carry `userToggleable = false`, which
-// is what keeps them out of the Tools tab.
-actual fun getPlatformToolDefinitions(): List<ToolInfo> = CommonTools.commonToolDefinitions +
-    listOf(
-        SendNotificationTool.toolInfo,
-        CreateCalendarEventTool.toolInfo,
-        SetAlarmTool.toolInfo,
-        OpenFileTool.toolInfo,
-        ShellCommandTool.toolInfo,
-        ProcessManagerTool.toolInfo,
-        SshConfigureHostTool.toolInfo,
-    )
-
-actual fun getAvailableTools(): List<Tool> {
-    val context: Context by inject(Context::class.java)
-    val appSettings: AppSettings by inject(AppSettings::class.java)
-    val memoryStore: MemoryStore by inject(MemoryStore::class.java)
-    val taskStore: TaskStore by inject(TaskStore::class.java)
-    val emailStore: EmailStore by inject(EmailStore::class.java)
-    val mcpServerManager: McpServerManager by inject(McpServerManager::class.java)
-
-    return buildAgentToolSet(
-        appSettings = appSettings,
-        memoryStore = memoryStore,
-        taskStore = taskStore,
-        mcpServerManager = mcpServerManager,
-        emailStore = emailStore,
-    ) {
-        if (appSettings.isToolEnabled(SendNotificationTool.ID)) {
-            val notificationPermissionController: PermissionController =
-                KoinJavaComponent.get(PermissionController::class.java, permissionQualifier(AppPermission.POST_NOTIFICATIONS))
-            add(SendNotificationTool.create(NotificationHelper(context, notificationPermissionController)))
-        }
-
-        if (appSettings.isToolEnabled(CreateCalendarEventTool.ID)) {
-            val calendarPermissionController: PermissionController =
-                KoinJavaComponent.get(PermissionController::class.java, permissionQualifier(AppPermission.CALENDAR))
-            add(CreateCalendarEventTool.create(CalendarRepository(context, calendarPermissionController)))
-        }
-
-        if (appSettings.isToolEnabled(SetAlarmTool.ID)) {
-            add(SetAlarmTool.create(context))
-        }
-
-        if (appSettings.isToolEnabled(OpenFileTool.schema.name)) {
-            add(OpenFileTool)
-        }
-
-        if (appSettings.isSandboxEnabled()) {
-            val sandboxManager: LinuxSandboxManager by inject(LinuxSandboxManager::class.java)
-            if (sandboxManager.state.value is SandboxState.Ready) {
-                add(ShellCommandTool)
-                add(ProcessManagerTool)
-                add(SshConfigureHostTool)
-            }
-        }
-
-        // SMS read tools: triple-gated. `isSmsSupported` is only true on FOSS builds
-        // (READ_SMS declared in merged manifest). `isSmsEnabled()` is the user toggle.
-        // `hasPermission()` catches runtime revocation.
-        val smsReaderForTools: SmsReader? = if (isSmsSupported) {
-            val smsReader: SmsReader by inject(SmsReader::class.java)
-            smsReader
-        } else {
-            null
-        }
-        if (smsReaderForTools != null && appSettings.isSmsEnabled() && smsReaderForTools.hasPermission()) {
-            val smsStore: SmsStore by inject(SmsStore::class.java)
-            addAll(SmsTools.getSmsReadTools(smsStore, smsReaderForTools))
-        }
-
-        // SMS send tools: independently gated on the Send toggle + SEND_SMS permission.
-        // These only *stage* drafts — actual sending is user-triggered via the review banner.
-        if (smsReaderForTools != null && appSettings.isSmsSendEnabled()) {
-            val smsSender: SmsSender by inject(SmsSender::class.java)
-            if (smsSender.hasPermission()) {
-                val smsDraftStore: SmsDraftStore by inject(SmsDraftStore::class.java)
-                addAll(SmsTools.getSmsSendTools(smsDraftStore, smsReaderForTools, smsSender))
-            }
-        }
-
-        // Notification tools: triple-gated. `isNotificationsSupported` is FOSS-only
-        // (listener service declared in merged manifest). `isNotificationsEnabled()`
-        // is the user toggle. `hasAccess()` catches system-level revocation.
-        if (isNotificationsSupported && appSettings.isNotificationsEnabled()) {
-            val notificationReader: NotificationReader by inject(NotificationReader::class.java)
-            if (notificationReader.hasAccess()) {
-                val notificationStore: NotificationStore by inject(NotificationStore::class.java)
-                addAll(NotificationTools.getNotificationTools(notificationStore, notificationReader))
-            }
-        }
-    }
-}
-
-actual fun openUrl(url: String): Boolean = try {
-    val context: Context by inject(Context::class.java)
-    val parsedUri = url.toUri()
-    val intent = if (parsedUri.scheme == "file") {
-        val file = java.io.File(parsedUri.path!!)
-        val contentUri = androidx.core.content.FileProvider.getUriForFile(
-            context,
-            "${context.packageName}.fileprovider",
-            file,
-        )
-        val mimeType = android.webkit.MimeTypeMap.getSingleton()
-            .getMimeTypeFromExtension(file.extension) ?: "*/*"
-        Intent(Intent.ACTION_VIEW, contentUri).apply {
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            setDataAndType(contentUri, mimeType)
-        }
-    } else {
-        Intent(Intent.ACTION_VIEW, parsedUri).apply {
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-    }
-    context.startActivity(intent)
-    true
 } catch (_: Exception) {
-    false
-}
-
-actual fun decodeToImageBitmap(bytes: ByteArray): ImageBitmap? = try {
-    android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size)?.asImageBitmap()
-} catch (_: Exception) {
-    null
-}
-
-@androidx.compose.runtime.Composable
-actual fun PlatformBackHandler(enabled: Boolean, onBack: () -> Unit) {
-    androidx.activity.compose.BackHandler(enabled = enabled, onBack = onBack)
-}
-
-actual suspend fun saveFileToDevice(bytes: ByteArray, baseName: String, extension: String) {
-    val file = FileKit.openFileSaver(suggestedName = baseName, defaultExtension = extension)
-    file?.write(bytes)
-}

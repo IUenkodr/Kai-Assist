@@ -1,8 +1,37 @@
-@file:Suppress("ktlint:standard:filename")
+
+                navController = navController,
+                null
+                rememberTextToSpeechOrNull(TextToSpeechEngine.Google)
+                textToSpeech = textToSpeech,
+            )
+            // Defer TTS initialization until after the first frame
+            App(
+            LaunchedEffect(Unit) { ttsReady = true }
+            icon = painterResource(Res.drawable.logo),
+            onCloseRequest = ::exitApplication,
+            state = windowState,
+            title = "Kai 9000",
+            val navController = rememberNavController()
+            val textToSpeech: TextToSpeechInstance? = if (ttsReady) {
+            var ttsReady by remember { mutableStateOf(false) }
+            }
+            } else {
+        ) {
+        System.setProperty("sun.java2d.uiScale", "auto")
+        System.setProperty("sun.java2d.uiScale.enabled", "true")
+        Window(
+        val windowState = rememberWindowState(size = DpSize(1280.dp, 800.dp))
+        }
+    // Help AWT/Skiko pick up HiDPI on Linux/Wayland (Sway, GNOME fractional scaling).
+    // Without this, the JVM ignores GDK_SCALE and renders at 1× on a hi-res monitor.
+    System.setProperty("apple.awt.application.appearance", "system")
+    application {
+    if (System.getProperty("sun.java2d.uiScale") == null) {
+    if (System.getProperty("sun.java2d.uiScale.enabled") == null) {
+    }
 @file:OptIn(ExperimentalDesktopTarget::class)
-
-package com.inspiredandroid.kai
-
+@file:Suppress("ktlint:standard:filename")
+fun main() {
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,39 +50,5 @@ import nl.marc_apps.tts.TextToSpeechInstance
 import nl.marc_apps.tts.experimental.ExperimentalDesktopTarget
 import nl.marc_apps.tts.rememberTextToSpeechOrNull
 import org.jetbrains.compose.resources.painterResource
-
-fun main() {
-    System.setProperty("apple.awt.application.appearance", "system")
-    // Help AWT/Skiko pick up HiDPI on Linux/Wayland (Sway, GNOME fractional scaling).
-    // Without this, the JVM ignores GDK_SCALE and renders at 1× on a hi-res monitor.
-    if (System.getProperty("sun.java2d.uiScale.enabled") == null) {
-        System.setProperty("sun.java2d.uiScale.enabled", "true")
-    }
-    if (System.getProperty("sun.java2d.uiScale") == null) {
-        System.setProperty("sun.java2d.uiScale", "auto")
-    }
-    application {
-        val windowState = rememberWindowState(size = DpSize(1280.dp, 800.dp))
-        Window(
-            onCloseRequest = ::exitApplication,
-            state = windowState,
-            title = "Kai 9000",
-            icon = painterResource(Res.drawable.logo),
-        ) {
-            // Defer TTS initialization until after the first frame
-            var ttsReady by remember { mutableStateOf(false) }
-            LaunchedEffect(Unit) { ttsReady = true }
-            val textToSpeech: TextToSpeechInstance? = if (ttsReady) {
-                rememberTextToSpeechOrNull(TextToSpeechEngine.Google)
-            } else {
-                null
-            }
-
-            val navController = rememberNavController()
-            App(
-                navController = navController,
-                textToSpeech = textToSpeech,
-            )
-        }
-    }
+package com.inspiredandroid.kai
 }

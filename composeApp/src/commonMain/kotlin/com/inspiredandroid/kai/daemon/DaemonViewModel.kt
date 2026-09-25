@@ -1,61 +1,40 @@
-package com.inspiredandroid.kai.daemon
 
+                _skills.value = resp.manifest
+                _tasks.value = resp.tasks ?: emptyMap()
+                command = "kill_task", 
+                delay(2000) // Sync every 2 seconds
+                params = mapOf("task_id" to taskId)
+                syncSkills()
+                syncTasks()
+            ))
+            // Log error
+            client.sendRequest(DaemonRequest(
+            if (resp.status == "ok") {
+            syncTasks()
+            val resp = client.sendRequest(DaemonRequest(command = "get_skills"))
+            val resp = client.sendRequest(DaemonRequest(command = "list_tasks"))
+            while (true) {
+            }
+        startSyncLoop()
+        try {
+        viewModelScope.launch {
+        }
+        } catch (e: Exception) {
+    fun killTask(taskId: String) {
+    init {
+    private fun startSyncLoop() {
+    private fun syncSkills() {
+    private fun syncTasks() {
+    private val _skills = MutableStateFlow<SkillManifest?>(null)
+    private val _tasks = MutableStateFlow<Map<String, KaiTask>>(emptyMap())
+    val skills: StateFlow<SkillManifest?> = _skills.asStateFlow()
+    val tasks: StateFlow<Map<String, KaiTask>> = _tasks.asStateFlow()
+    }
+class DaemonViewModel(private val client: DaemonClient) : ViewModel() {
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.delay
-
-class DaemonViewModel(private val client: DaemonClient) : ViewModel() {
-    private val _tasks = MutableStateFlow<Map<String, KaiTask>>(emptyMap())
-    val tasks: StateFlow<Map<String, KaiTask>> = _tasks.asStateFlow()
-
-    private val _skills = MutableStateFlow<SkillManifest?>(null)
-    val skills: StateFlow<SkillManifest?> = _skills.asStateFlow()
-
-    init {
-        startSyncLoop()
-    }
-
-    private fun startSyncLoop() {
-        viewModelScope.launch {
-            while (true) {
-                syncTasks()
-                syncSkills()
-                delay(2000) // Sync every 2 seconds
-            }
-        }
-    }
-
-    private fun syncTasks() {
-        try {
-            val resp = client.sendRequest(DaemonRequest(command = "list_tasks"))
-            if (resp.status == "ok") {
-                _tasks.value = resp.tasks ?: emptyMap()
-            }
-        } catch (e: Exception) {
-            // Log error
-        }
-    }
-
-    private fun syncSkills() {
-        try {
-            val resp = client.sendRequest(DaemonRequest(command = "get_skills"))
-            if (resp.status == "ok") {
-                _skills.value = resp.manifest
-            }
-        } catch (e: Exception) {
-            // Log error
-        }
-    }
-
-    fun killTask(taskId: String) {
-        viewModelScope.launch {
-            client.sendRequest(DaemonRequest(
-                command = "kill_task", 
-                params = mapOf("task_id" to taskId)
-            ))
-            syncTasks()
-        }
-    }
+package com.inspiredandroid.kai.daemon
 }

@@ -1,7 +1,4 @@
-package com.inspiredandroid.kai.screenshots
 
-object StoreLocales {
-    val all = listOf(
         arrayOf("af", "af"),
         arrayOf("am", "am"),
         arrayOf("ar", "ar"),
@@ -13,8 +10,8 @@ object StoreLocales {
         arrayOf("de", "de-DE"),
         arrayOf("el", "el-GR"),
         arrayOf("en", "en-US"),
-        arrayOf("es", "es-ES"),
         arrayOf("es", "es-419"),
+        arrayOf("es", "es-ES"),
         arrayOf("et", "et"),
         arrayOf("fa", "fa"),
         arrayOf("fi", "fi-FI"),
@@ -57,4 +54,7 @@ object StoreLocales {
         arrayOf("zh-TW", "zh-TW"),
         arrayOf("zu", "zu"),
     )
+    val all = listOf(
+object StoreLocales {
+package com.inspiredandroid.kai.screenshots
 }

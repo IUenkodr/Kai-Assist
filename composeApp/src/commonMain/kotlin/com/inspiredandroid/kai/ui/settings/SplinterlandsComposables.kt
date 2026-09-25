@@ -1,5 +1,549 @@
-package com.inspiredandroid.kai.ui.settings
 
+                                    Text(service.modelId, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    text = entry.modelId,
+                                )
+                                Text(
+                                Text(service.serviceName, style = MaterialTheme.typography.bodyMedium)
+                                color = MaterialTheme.colorScheme.onBackground,
+                                color = MaterialTheme.colorScheme.primary,
+                                contentDescription = "Remove",
+                                contentDescription = "Reorder",
+                                contentDescription = entry.serviceName,
+                                contentDescription = service.serviceName,
+                                if (service.modelId.isNotBlank()) {
+                                imageVector = Icons.Default.Delete,
+                                imageVector = Icons.Rounded.DragIndicator,
+                                imageVector = org.jetbrains.compose.resources.vectorResource(entry.icon),
+                                imageVector = org.jetbrains.compose.resources.vectorResource(service.icon),
+                                maxLines = 1,
+                                modifier = Modifier.draggableHandle().handCursor(),
+                                modifier = Modifier.size(12.dp),
+                                modifier = Modifier.size(20.dp),
+                                onRemove()
+                                overflow = TextOverflow.Ellipsis,
+                                showConfirm = false
+                                strokeWidth = 1.5.dp,
+                                style = MaterialTheme.typography.bodySmall,
+                                text = entry?.serviceName ?: id,
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                }
+                            )
+                            Column {
+                            Icon(
+                            LlmServiceStatus.Failed -> Text("\u2718", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
+                            LlmServiceStatus.InvalidResponse -> Text("\u2718", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
+                            LlmServiceStatus.Querying -> CircularProgressIndicator(
+                            LlmServiceStatus.Selected -> Text("\u2605", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.tertiary)
+                            LlmServiceStatus.ValidResponse -> Text("\u2714", style = MaterialTheme.typography.labelSmall, color = Color(0xFF4CAF50))
+                            Text(
+                            Text("Remove", color = MaterialTheme.colorScheme.error)
+                            color = MaterialTheme.colorScheme.onBackground,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = if (entry.llmPicked) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            if (entry != null && entry.modelId.isNotBlank()) {
+                            maxLines = 1,
+                            modifier = Modifier.handCursor(),
+                            modifier = Modifier.padding(vertical = 1.dp),
+                            modifier = Modifier.weight(1f),
+                            modifier = Modifier.width(20.dp),
+                            onAddService(service.instanceId)
+                            onClick = {
+                            onClick = { onRemoveService(id) },
+                            onClick = { showConfirm = false },
+                            overflow = TextOverflow.Ellipsis,
+                            showDropdown = false
+                            style = MaterialTheme.typography.bodySmall,
+                            style = MaterialTheme.typography.labelMedium,
+                            style = MaterialTheme.typography.labelSmall,
+                            text = "${bs.currentMana} mana",
+                            text = "${index + 1}.",
+                            text = "vs ${bs.currentOpponent}",
+                            text = bs.currentRulesets,
+                            text = infoItems.joinToString(" · "),
+                            text = label,
+                            text = line,
+                            text = serviceId,
+                            }
+                            },
+                        )
+                        ) {
+                        ) { Text("Cancel") }
+                        .background(MaterialTheme.colorScheme.primaryContainer),
+                        .clip(CircleShape)
+                        .clip(CircleShape),
+                        .size(32.dp)
+                        // Drag handle
+                        // Name + model
+                        // Priority number
+                        // Remove button
+                        // Service icon
+                        // Status indicator
+                        Column(modifier = Modifier.weight(1f)) {
+                        IconButton(
+                        Spacer(Modifier.weight(1f))
+                        Text(
+                        Text("Clear", style = MaterialTheme.typography.labelSmall)
+                        Text("Show more (${battleLog.size - 5})")
+                        TextButton(
+                        account = account,
+                        addAll(details)
+                        color = MaterialTheme.colorScheme.onBackground,
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = MaterialTheme.colorScheme.primary,
+                        color = if (bs.llmPickedTeam == true) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurfaceVariant,
+                        contentDescription = if (showKey) "Hide" else "Show",
+                        formatRelativeTime(entry.timestampMs, nowMs)
+                        hasServices = instanceIds.isNotEmpty(),
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        if (entry != null) {
+                        if (entry.account.isNotBlank()) add(entry.account)
+                        if (instanceIds.size >= 2) {
+                        imageVector = if (showKey) Icons.Default.VisibilityOff else Icons.Default.Visibility,
+                        leadingIcon = {
+                        maxLines = 1,
+                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.handCursor(),
+                        modifier = Modifier.padding(start = 48.dp, top = 1.dp),
+                        modifier = Modifier.size(16.dp),
+                        modifier = Modifier.weight(1f),
+                        onClick = onClearBattleLog,
+                        onClick = {
+                        onClick = { showAll = true },
+                        onRemove = { onRemoveAccount(account.accountId) },
+                        onStartBattle = { onStartBattle(account.accountId) },
+                        onStopBattle = { onStopBattle(account.accountId) },
+                        overflow = TextOverflow.Ellipsis,
+                        strokeWidth = 2.dp,
+                        style = MaterialTheme.typography.bodySmall,
+                        style = MaterialTheme.typography.labelMedium,
+                        style = MaterialTheme.typography.labelSmall,
+                        text = "Recent Battles",
+                        text = "\u26A1 ${account.energy}",
+                        text = account.username.take(1).uppercase(),
+                        text = label,
+                        text = phaseText,
+                        text = relTime,
+                        text = {
+                        uriHandler.openUri("https://splinterlands.com/battle/${entry.battleId}")
+                        val label = if (entry.llmPicked) entry.modelName.ifBlank { "LLM" } else "none"
+                        val nowMs = kotlin.time.Clock.System.now().toEpochMilliseconds()
+                        verticalAlignment = Alignment.CenterVertically,
+                        when (status) {
+                        }
+                        },
+                    )
+                    ) {
+                    BattlePhase.FetchingCollection,
+                    BattlePhase.PickingTeam,
+                    BattlePhase.SubmittingTeam,
+                    BattlePhase.WaitingForResult,
+                    CircularProgressIndicator(
+                    Icon(
+                    Modifier
+                    Modifier.clickable { showActivity = true }.handCursor()
+                    Row(
+                    Spacer(Modifier.width(8.dp))
+                    SplinterlandsAccountRow(
+                    SplinterlandsBattleLogRow(entry)
+                    SplinterlandsCountdown(bs.teamDeadlineMs)
+                    Text(
+                    Text("Start", style = MaterialTheme.typography.bodySmall)
+                    Text("Test & Add")
+                    Text("Testing...")
+                    Text(if (bs.isStopping) "Stopping..." else "Stop", style = MaterialTheme.typography.bodySmall)
+                    TextButton(
+                    androidx.compose.material3.DropdownMenuItem(
+                    color = MaterialTheme.colorScheme.error,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = if (entry.won) Color(0xFF4CAF50) else MaterialTheme.colorScheme.error,
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
+                    confirmButton = {
+                    contentAlignment = Alignment.Center,
+                    contentDescription = "Remove",
+                    contentDescription = account.username,
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
+                    contentScale = ContentScale.Crop,
+                    dismissButton = {
+                    enabled = !bs.isStopping,
+                    enabled = hasServices,
+                    expanded = false
+                    for (line in entry.activity) {
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    if (bs.currentMana > 0) {
+                    if (bs.currentOpponent.isNotBlank()) {
+                    if (bs.currentRulesets.isNotBlank()) {
+                    if (entry.llmPicked != null) {
+                    if (infoItems.isNotEmpty()) {
+                    imageVector = Icons.Default.Delete,
+                    maxLines = 1,
+                    model = account.avatarUrl,
+                    modifier = Modifier
+                    modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
+                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.handCursor(),
+                    modifier = Modifier.padding(start = 40.dp, top = 2.dp),
+                    modifier = Modifier.weight(1f),
+                    onClick = onStartBattle,
+                    onClick = onStopBattle,
+                    onClick = {
+                    onClick = { showKey = !showKey },
+                    onDismissRequest = { showConfirm = false },
+                    onTestAndAdd(username, postingKey)
+                    overflow = TextOverflow.Ellipsis,
+                    postingKey = ""
+                    scrollState = activityScrollState,
+                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodySmall,
+                    style = MaterialTheme.typography.labelMedium,
+                    text = "${bs.wins}W ${bs.losses}L",
+                    text = "Error",
+                    text = "vs ${entry.opponent}",
+                    text = account.username,
+                    text = if (entry.won) "Victory" else "Defeat",
+                    text = { Text("Remove ${account.username} from Splinterlands?") },
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    title = { Text("Remove Account") },
+                    username = ""
+                    val entry = serviceMap[id]
+                    val infoItems = buildList {
+                    val label = if (bs.llmPickedTeam == true) bs.winningServiceName.ifBlank { "LLM" } else "Auto"
+                    val relTime = remember(entry.timestampMs) {
+                    verticalAlignment = Alignment.CenterVertically,
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
+                    }
+                    } else {
+                    },
+                )
+                ) {
+                ) { Text("View Battle") }
+                // FlowRow: three unweighted facts in a Row run off the right edge once
+                // W/L badge
+                // the text grows, taking the rulesets with them.
+                AlertDialog(
+                BattlePhase.CheckingEnergy -> "Checking energy..."
+                BattlePhase.FetchingCollection -> "Fetching cards..."
+                BattlePhase.FindingMatch -> "Finding match..."
+                BattlePhase.Finished -> "Done"
+                BattlePhase.LoggingIn -> "Logging in..."
+                BattlePhase.PickingTeam -> "Picking team..."
+                BattlePhase.SubmittingTeam -> "Submitting team..."
+                BattlePhase.WaitingForOpponent -> "Waiting for opponent..."
+                BattlePhase.WaitingForResult -> "Waiting for result..."
+                Box(
+                Button(
+                Column(modifier = Modifier.verticalScroll(activityScrollState)) {
+                FlowRow(
+                HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+                Icon(
+                Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
+                IconButton(
+                OutlinedButton(
+                ReorderableItem {
+                Row(
+                Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(2.dp))
+                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.width(4.dp))
+                Spacer(Modifier.width(8.dp))
+                SplinterlandsModelRankings(modelStats)
+                SplinterlandsModelRow(index + 1, stats)
+                Text(
+                Text("Cancel")
+                Text(if (instanceIds.isEmpty()) "Add Service" else "Add Another Service")
+                TextButton(
+                VerticalScrollbarForScroll(
+                addStatus = addStatus,
+                availableServices = availableServices,
+                coil3.compose.AsyncImage(
+                color = MaterialTheme.colorScheme.error,
+                color = MaterialTheme.colorScheme.onBackground,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = barColor,
+                else -> ""
+                enabled = !isTesting,
+                enabled = username.isNotBlank() && postingKey.isNotBlank() && !isTesting,
+                expanded = false
+                expanded = showDropdown,
+                for ((serviceId, status) in bs.serviceStatuses) {
+                for (account in accounts) {
+                for (entry in visibleEntries) {
+                for (service in notYetAdded) {
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                if (account.energy >= 0) {
+                if (battleLog.size > 5 && !showAll) {
+                if (entry.activity.isNotEmpty()) {
+                if (entry.mana > 0) add("${entry.mana} mana")
+                if (entry.rulesets.isNotBlank()) add(entry.rulesets)
+                if (entry.timestampMs > 0) {
+                if (index > 0) Spacer(Modifier.height(6.dp))
+                if (isTesting) {
+                if (phaseText.isNotBlank()) {
+                if (showLlmIndicator) {
+                if (showTimer) {
+                instanceIds = instanceIds,
+                kotlinx.coroutines.delay(1.seconds)
+                maxLines = 1,
+                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.handCursor(),
+                modifier = Modifier.padding(start = 40.dp),
+                modifier = Modifier.padding(start = 40.dp, top = 2.dp),
+                modifier = Modifier.weight(1f),
+                onAddService = onAddService,
+                onClick = onDismiss,
+                onClick = {
+                onClick = { showConfirm = true },
+                onClick = { showDropdown = true },
+                onDismissRequest = { showDropdown = false },
+                onRemoveService = onRemoveService,
+                onReorderServices = onReorderServices,
+                onReorderServices(reordered)
+                onTestAndAdd = onTestAndAddAccount,
+                overflow = TextOverflow.Ellipsis,
+                remaining = ((deadlineMs - kotlin.time.Clock.System.now().toEpochMilliseconds()) / 1000).coerceAtLeast(0L)
+                reordered.add(toIndex, reordered.removeAt(fromIndex))
+                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.labelMedium,
+                style = MaterialTheme.typography.labelSmall,
+                text = "#$rank",
+                text = "$winPct%",
+                text = "${stats.wins}W ${stats.losses}L",
+                text = addStatus.message,
+                text = bs.errorMessage,
+                text = stats.modelName,
+                val reordered = instanceIds.toMutableList()
+                val showLlmIndicator = bs.llmPickedTeam != null && bs.phase in setOf(
+                val showTimer = bs.teamDeadlineMs > 0L && bs.phase in setOf(
+                val visibleEntries = if (showAll) battleLog else battleLog.take(5)
+                var showAll by remember { mutableStateOf(false) }
+                verticalAlignment = Alignment.CenterVertically,
+                }
+                } else {
+                },
+            )
+            ) {
+            ) { Text("Close") }
+            ),
+            .fillMaxWidth()
+            .padding(vertical = 3.dp)
+            .then(
+            // Account list
+            // Add account form
+            // Avatar
+            // Battle log
+            // Details row
+            // Error indicator
+            // Match info row: opponent, mana, rulesets
+            // Model Rankings (below services)
+            // Multi-service list
+            // Per-service status rows during PickingTeam
+            // Remove button with confirmation
+            // Start/Stop button
+            // Stats if any
+            // Status row: phase + LLM indicator + timer
+            // Username + energy
+            Box {
+            Button(
+            Column(modifier = Modifier.weight(1f)) {
+            HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+            Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
+            IconButton(
+            OutlinedButton(
+            Row(
+            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(4.dp))
+            Spacer(Modifier.width(4.dp))
+            SplinterlandsAddAccountForm(
+            SplinterlandsServiceList(
+            Text(
+            Text("Add Account")
+            TextButton(
+            androidx.compose.material3.DropdownMenu(
+            checked = isEnabled,
+            color = MaterialTheme.colorScheme.onBackground,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
+            description = "Splinterlands is a blockchain-based trading card game. This experimental feature auto-battles Wild Ranked matches using an LLM to pick teams. Battle outcome heavily depends on the chosen model and its response speed (must respond within 180 seconds). Falls back to a simple greedy picker if the LLM fails.",
+            enabled = !isTesting,
+            for ((index, stats) in modelStats.withIndex()) {
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            if (account.avatarUrl.isNotBlank()) {
+            if (accounts.isNotEmpty()) {
+            if (battleLog.isNotEmpty()) {
+            if (bs.currentOpponent.isNotBlank() || bs.currentMana > 0) {
+            if (bs.isRunning) {
+            if (bs.phase == BattlePhase.Error) {
+            if (bs.phase == BattlePhase.PickingTeam && bs.serviceStatuses.isNotEmpty()) {
+            if (bs.wins > 0 || bs.losses > 0) {
+            if (details.isNotEmpty() || entry.llmPicked != null || entry.account.isNotBlank()) {
+            if (entry.battleId.isNotBlank()) {
+            if (expanded && username.isEmpty() && postingKey.isEmpty()) {
+            if (modelStats.isNotEmpty()) {
+            if (showConfirm) {
+            key(id) {
+            label = { Text("Hive Username") },
+            label = { Text("Posting Key") },
+            list = instanceIds,
+            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.handCursor(),
+            onCheckedChange = onToggle,
+            onClick = { expanded = true },
+            onSettle = { fromIndex, toIndex ->
+            onValueChange = { postingKey = it },
+            onValueChange = { username = it },
+            singleLine = true,
+            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.labelMedium,
+            text = "LLM Services (priority order)",
+            text = "Your posting key is stored securely on this device and is never sent to the LLM. It is only used to sign battle transactions on the Hive blockchain.",
+            title = "Splinterlands",
+            trailingIcon = {
+            val activityScrollState = rememberScrollState()
+            val details = buildList {
+            val modelStats = remember(battleLog) { computeModelStats(battleLog).toImmutableList() }
+            val phaseText = when (bs.phase) {
+            value = postingKey,
+            value = username,
+            var showConfirm by remember { mutableStateOf(false) }
+            verticalAlignment = Alignment.CenterVertically,
+            verticalArrangement = Arrangement.spacedBy(2.dp),
+            visualTransformation = if (showKey) VisualTransformation.None else PasswordVisualTransformation(),
+            while (true) {
+            }
+            } else {
+            },
+        )
+        ) {
+        ) { index, id, _ ->
+        ),
+        // Battle details (below player row)
+        // Error message
+        Box {
+        Column(modifier = Modifier.padding(10.dp)) {
+        Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)) {
+        KaiOutlinedTextField(
+        MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.35f)
+        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f)
+        OutlinedButton(
+        ReorderableColumn(
+        Row(
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Spacer(Modifier.height(4.dp))
+        Spacer(Modifier.height(8.dp))
+        SplinterlandsActivityDialog(entry) { showActivity = false }
+        Text(
+        ToggleableHeadline(
+        availableServices.filter { it.instanceId !in instanceIds }
+        color = MaterialTheme.colorScheme.onBackground,
+        color = bgColor,
+        color = if (remaining <= 30) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
+        colors = CardDefaults.outlinedCardColors(
+        confirmButton = {
+        days == 1L -> "1 day"
+        else -> "$days days"
+        else -> MaterialTheme.colorScheme.error
+        hours < 24 -> "$hours hours"
+        hours == 1L -> "1 hour"
+        if (addStatus is SplinterlandsAddStatus.Error) {
+        if (addStatus is SplinterlandsAddStatus.Idle) {
+        if (bs.errorMessage.isNotBlank() && bs.phase == BattlePhase.Error) {
+        if (bs.isRunning) {
+        if (deadlineMs > 0L) {
+        if (isEnabled) {
+        minutes < 1 -> "just now"
+        minutes < 60 -> "$minutes min"
+        minutes == 1L -> "1 min"
+        modifier = Modifier
+        modifier = Modifier.fillMaxWidth(),
+        onDismissRequest = onDismiss,
+        shape = RoundedCornerShape(10.dp),
+        shape = RoundedCornerShape(8.dp),
+        style = MaterialTheme.typography.labelMedium,
+        text = "$mins:${secs.toString().padStart(2, '0')}",
+        text = "Model Rankings",
+        text = {
+        title = { Text("Battle Activity") },
+        var showDropdown by remember { mutableStateOf(false) }
+        winPct >= 40 -> MaterialTheme.colorScheme.primary
+        winPct >= 60 -> Color(0xFF4CAF50)
+        }
+        },
+    )
+    ) {
+    // Add service dropdown
+    // Collapse form after successful add
+    AlertDialog(
+    Column {
+    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+    LaunchedEffect(addStatus) {
+    LaunchedEffect(deadlineMs) {
+    OutlinedCard(
+    Spacer(Modifier.height(6.dp))
+    Surface(
+    Text(
+    account: SplinterlandsAccountUiState,
+    accounts: ImmutableList<SplinterlandsAccountUiState>,
+    addStatus: SplinterlandsAddStatus,
+    availableServices: ImmutableList<com.inspiredandroid.kai.data.ServiceEntry>,
+    battleLog: ImmutableList<BattleLogEntry>,
+    entry: BattleLogEntry,
+    hasServices: Boolean,
+    if (!expanded) {
+    if (instanceIds.isNotEmpty()) {
+    if (notYetAdded.isNotEmpty()) {
+    if (showActivity) {
+    instanceIds: ImmutableList<String>,
+    isEnabled: Boolean,
+    onAddService: (String) -> Unit,
+    onClearBattleLog: () -> Unit,
+    onDismiss: () -> Unit,
+    onRemove: () -> Unit,
+    onRemoveAccount: (String) -> Unit,
+    onRemoveService: (String) -> Unit,
+    onReorderServices: (List<String>) -> Unit,
+    onStartBattle: () -> Unit,
+    onStartBattle: (String) -> Unit,
+    onStopBattle: () -> Unit,
+    onStopBattle: (String) -> Unit,
+    onTestAndAdd: (String, String) -> Unit,
+    onTestAndAddAccount: (String, String) -> Unit,
+    onToggle: (Boolean) -> Unit,
+    return when {
+    val barColor = when {
+    val bgColor = if (entry.won) {
+    val bs = account.battleStatus
+    val days = hours / 24
+    val diffMs = nowMs - timestampMs
+    val hours = minutes / 60
+    val isTesting = addStatus is SplinterlandsAddStatus.Testing
+    val mins = remaining / 60
+    val minutes = diffMs / 60_000
+    val notYetAdded = remember(availableServices, instanceIds) {
+    val secs = remaining % 60
+    val serviceMap = remember(availableServices) { availableServices.associateBy { it.instanceId } }
+    val uriHandler = LocalUriHandler.current
+    val winPct = (stats.winRate * 100).toInt()
+    var expanded by remember { mutableStateOf(false) }
+    var postingKey by remember { mutableStateOf("") }
+    var remaining by remember { mutableStateOf(0L) }
+    var showActivity by remember { mutableStateOf(false) }
+    var showKey by remember { mutableStateOf(false) }
+    var username by remember { mutableStateOf("") }
+    }
+    } else {
+) {
+@Composable
+@OptIn(kotlin.time.ExperimentalTime::class)
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -64,894 +608,19 @@ import com.inspiredandroid.kai.ui.handCursor
 import com.inspiredandroid.kai.ui.icons.DragIndicator
 import com.inspiredandroid.kai.ui.icons.Visibility
 import com.inspiredandroid.kai.ui.icons.VisibilityOff
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import sh.calvin.reorderable.ReorderableColumn
-import kotlin.time.Duration.Companion.seconds
-
-@Composable
 internal fun SplinterlandsSection(
-    isEnabled: Boolean,
-    accounts: ImmutableList<SplinterlandsAccountUiState>,
-    instanceIds: ImmutableList<String>,
-    addStatus: SplinterlandsAddStatus,
-    battleLog: ImmutableList<BattleLogEntry>,
-    availableServices: ImmutableList<com.inspiredandroid.kai.data.ServiceEntry>,
-    onToggle: (Boolean) -> Unit,
-    onTestAndAddAccount: (String, String) -> Unit,
-    onRemoveAccount: (String) -> Unit,
-    onAddService: (String) -> Unit,
-    onRemoveService: (String) -> Unit,
-    onReorderServices: (List<String>) -> Unit,
-    onStartBattle: (String) -> Unit,
-    onStopBattle: (String) -> Unit,
-    onClearBattleLog: () -> Unit,
-) {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        ToggleableHeadline(
-            title = "Splinterlands",
-            description = "Splinterlands is a blockchain-based trading card game. This experimental feature auto-battles Wild Ranked matches using an LLM to pick teams. Battle outcome heavily depends on the chosen model and its response speed (must respond within 180 seconds). Falls back to a simple greedy picker if the LLM fails.",
-            checked = isEnabled,
-            onCheckedChange = onToggle,
-        )
-
-        if (isEnabled) {
-            Spacer(Modifier.height(12.dp))
-
-            // Multi-service list
-            SplinterlandsServiceList(
-                instanceIds = instanceIds,
-                availableServices = availableServices,
-                onAddService = onAddService,
-                onRemoveService = onRemoveService,
-                onReorderServices = onReorderServices,
-            )
-
-            // Model Rankings (below services)
-            val modelStats = remember(battleLog) { computeModelStats(battleLog).toImmutableList() }
-            if (modelStats.isNotEmpty()) {
-                Spacer(Modifier.height(12.dp))
-                SplinterlandsModelRankings(modelStats)
-            }
-
-            // Account list
-            if (accounts.isNotEmpty()) {
-                Spacer(Modifier.height(12.dp))
-                for (account in accounts) {
-                    SplinterlandsAccountRow(
-                        account = account,
-                        hasServices = instanceIds.isNotEmpty(),
-                        onRemove = { onRemoveAccount(account.accountId) },
-                        onStartBattle = { onStartBattle(account.accountId) },
-                        onStopBattle = { onStopBattle(account.accountId) },
-                    )
-                }
-            }
-
-            // Battle log
-            if (battleLog.isNotEmpty()) {
-                Spacer(Modifier.height(12.dp))
-                HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
-                Spacer(Modifier.height(8.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = "Recent Battles",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        modifier = Modifier.weight(1f),
-                    )
-                    TextButton(
-                        onClick = onClearBattleLog,
-                        modifier = Modifier.handCursor(),
-                    ) {
-                        Text("Clear", style = MaterialTheme.typography.labelSmall)
-                    }
-                }
-                var showAll by remember { mutableStateOf(false) }
-                val visibleEntries = if (showAll) battleLog else battleLog.take(5)
-                for (entry in visibleEntries) {
-                    SplinterlandsBattleLogRow(entry)
-                }
-                if (battleLog.size > 5 && !showAll) {
-                    TextButton(
-                        onClick = { showAll = true },
-                        modifier = Modifier.handCursor(),
-                    ) {
-                        Text("Show more (${battleLog.size - 5})")
-                    }
-                }
-            }
-
-            Spacer(Modifier.height(12.dp))
-            HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
-            Spacer(Modifier.height(12.dp))
-
-            // Add account form
-            SplinterlandsAddAccountForm(
-                addStatus = addStatus,
-                onTestAndAdd = onTestAndAddAccount,
-            )
-        }
-    }
-}
-
-@Composable
-private fun SplinterlandsServiceList(
-    instanceIds: ImmutableList<String>,
-    availableServices: ImmutableList<com.inspiredandroid.kai.data.ServiceEntry>,
-    onAddService: (String) -> Unit,
-    onRemoveService: (String) -> Unit,
-    onReorderServices: (List<String>) -> Unit,
-) {
-    val serviceMap = remember(availableServices) { availableServices.associateBy { it.instanceId } }
-
-    if (instanceIds.isNotEmpty()) {
-        Text(
-            text = "LLM Services (priority order)",
-            style = MaterialTheme.typography.labelMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
-        Spacer(Modifier.height(4.dp))
-        ReorderableColumn(
-            list = instanceIds,
-            onSettle = { fromIndex, toIndex ->
-                val reordered = instanceIds.toMutableList()
-                reordered.add(toIndex, reordered.removeAt(fromIndex))
-                onReorderServices(reordered)
-            },
-            verticalArrangement = Arrangement.spacedBy(2.dp),
-        ) { index, id, _ ->
-            key(id) {
-                ReorderableItem {
-                    val entry = serviceMap[id]
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    ) {
-                        // Drag handle
-                        if (instanceIds.size >= 2) {
-                            Icon(
-                                imageVector = Icons.Rounded.DragIndicator,
-                                contentDescription = "Reorder",
-                                modifier = Modifier.draggableHandle().handCursor(),
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                        // Priority number
-                        Text(
-                            text = "${index + 1}.",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.width(20.dp),
-                        )
-                        // Service icon
-                        if (entry != null) {
-                            Icon(
-                                imageVector = org.jetbrains.compose.resources.vectorResource(entry.icon),
-                                contentDescription = entry.serviceName,
-                                modifier = Modifier.size(20.dp),
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                        // Name + model
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = entry?.serviceName ?: id,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onBackground,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                            )
-                            if (entry != null && entry.modelId.isNotBlank()) {
-                                Text(
-                                    text = entry.modelId,
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis,
-                                )
-                            }
-                        }
-                        // Remove button
-                        IconButton(
-                            onClick = { onRemoveService(id) },
-                            modifier = Modifier.handCursor(),
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Delete,
-                                contentDescription = "Remove",
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                    }
-                }
-            }
-        }
-        Spacer(Modifier.height(4.dp))
-    }
-
-    // Add service dropdown
-    val notYetAdded = remember(availableServices, instanceIds) {
-        availableServices.filter { it.instanceId !in instanceIds }
-    }
-    if (notYetAdded.isNotEmpty()) {
-        var showDropdown by remember { mutableStateOf(false) }
-        Box {
-            OutlinedButton(
-                onClick = { showDropdown = true },
-                modifier = Modifier.handCursor(),
-            ) {
-                Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
-                Spacer(Modifier.width(4.dp))
-                Text(if (instanceIds.isEmpty()) "Add Service" else "Add Another Service")
-            }
-            androidx.compose.material3.DropdownMenu(
-                expanded = showDropdown,
-                onDismissRequest = { showDropdown = false },
-            ) {
-                for (service in notYetAdded) {
-                    androidx.compose.material3.DropdownMenuItem(
-                        text = {
-                            Column {
-                                Text(service.serviceName, style = MaterialTheme.typography.bodyMedium)
-                                if (service.modelId.isNotBlank()) {
-                                    Text(service.modelId, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                                }
-                            }
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = org.jetbrains.compose.resources.vectorResource(service.icon),
-                                contentDescription = service.serviceName,
-                                modifier = Modifier.size(20.dp),
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        },
-                        onClick = {
-                            onAddService(service.instanceId)
-                            showDropdown = false
-                        },
-                        modifier = Modifier.handCursor(),
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun SplinterlandsModelRankings(modelStats: ImmutableList<ModelStats>) {
-    Text(
-        text = "Model Rankings",
-        style = MaterialTheme.typography.labelMedium,
-        color = MaterialTheme.colorScheme.onBackground,
-    )
-    Spacer(Modifier.height(6.dp))
-    OutlinedCard(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(10.dp),
-        colors = CardDefaults.outlinedCardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
-        ),
-    ) {
-        Column(modifier = Modifier.padding(10.dp)) {
-            for ((index, stats) in modelStats.withIndex()) {
-                if (index > 0) Spacer(Modifier.height(6.dp))
-                SplinterlandsModelRow(index + 1, stats)
-            }
-        }
-    }
-}
-
-@Composable
-private fun SplinterlandsModelRow(rank: Int, stats: ModelStats) {
-    val winPct = (stats.winRate * 100).toInt()
-    val barColor = when {
-        winPct >= 60 -> Color(0xFF4CAF50)
-        winPct >= 40 -> MaterialTheme.colorScheme.primary
-        else -> MaterialTheme.colorScheme.error
-    }
-    Column {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-        ) {
-            Text(
-                text = "#$rank",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Text(
-                text = stats.modelName,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onBackground,
-                modifier = Modifier.weight(1f),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-                text = "${stats.wins}W ${stats.losses}L",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-            )
-            Text(
-                text = "$winPct%",
-                style = MaterialTheme.typography.labelMedium,
-                color = barColor,
-                maxLines = 1,
-            )
-        }
-    }
-}
-
-@OptIn(kotlin.time.ExperimentalTime::class)
-@Composable
-private fun SplinterlandsBattleLogRow(entry: BattleLogEntry) {
-    var showActivity by remember { mutableStateOf(false) }
-    val bgColor = if (entry.won) {
-        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f)
-    } else {
-        MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.35f)
-    }
-    Surface(
-        shape = RoundedCornerShape(8.dp),
-        color = bgColor,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 3.dp)
-            .then(
-                if (entry.activity.isNotEmpty()) {
-                    Modifier.clickable { showActivity = true }.handCursor()
-                } else {
-                    Modifier
-                },
-            ),
-    ) {
-        Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                // W/L badge
-                Text(
-                    text = if (entry.won) "Victory" else "Defeat",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = if (entry.won) Color(0xFF4CAF50) else MaterialTheme.colorScheme.error,
-                )
-                Spacer(Modifier.width(8.dp))
-                Text(
-                    text = "vs ${entry.opponent}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.weight(1f),
-                )
-                if (entry.timestampMs > 0) {
-                    val relTime = remember(entry.timestampMs) {
-                        val nowMs = kotlin.time.Clock.System.now().toEpochMilliseconds()
-                        formatRelativeTime(entry.timestampMs, nowMs)
-                    }
-                    Text(
-                        text = relTime,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-            }
-            // Details row
-            val details = buildList {
-                if (entry.mana > 0) add("${entry.mana} mana")
-                if (entry.rulesets.isNotBlank()) add(entry.rulesets)
-            }
-            if (details.isNotEmpty() || entry.llmPicked != null || entry.account.isNotBlank()) {
-                Spacer(Modifier.height(2.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    val infoItems = buildList {
-                        if (entry.account.isNotBlank()) add(entry.account)
-                        addAll(details)
-                    }
-                    if (infoItems.isNotEmpty()) {
-                        Text(
-                            text = infoItems.joinToString(" · "),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.weight(1f),
-                        )
-                    } else {
-                        Spacer(Modifier.weight(1f))
-                    }
-                    if (entry.llmPicked != null) {
-                        val label = if (entry.llmPicked) entry.modelName.ifBlank { "LLM" } else "none"
-                        Text(
-                            text = label,
-                            style = MaterialTheme.typography.labelSmall,
-                            color = if (entry.llmPicked) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurfaceVariant,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                    }
-                }
-            }
-        }
-    }
-    if (showActivity) {
-        SplinterlandsActivityDialog(entry) { showActivity = false }
-    }
-}
-
-@Composable
-private fun SplinterlandsActivityDialog(
-    entry: BattleLogEntry,
-    onDismiss: () -> Unit,
-) {
-    val uriHandler = LocalUriHandler.current
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Battle Activity") },
-        text = {
-            val activityScrollState = rememberScrollState()
-            Box {
-                Column(modifier = Modifier.verticalScroll(activityScrollState)) {
-                    for (line in entry.activity) {
-                        Text(
-                            text = line,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurface,
-                            modifier = Modifier.padding(vertical = 1.dp),
-                        )
-                    }
-                }
-                VerticalScrollbarForScroll(
-                    scrollState = activityScrollState,
-                    modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
-                )
-            }
-        },
-        confirmButton = {
-            if (entry.battleId.isNotBlank()) {
-                TextButton(
-                    onClick = {
-                        uriHandler.openUri("https://splinterlands.com/battle/${entry.battleId}")
-                    },
-                    modifier = Modifier.handCursor(),
-                ) { Text("View Battle") }
-            }
-            TextButton(
-                onClick = onDismiss,
-                modifier = Modifier.handCursor(),
-            ) { Text("Close") }
-        },
-    )
-}
-
-private fun formatRelativeTime(timestampMs: Long, nowMs: Long): String {
-    val diffMs = nowMs - timestampMs
-    val minutes = diffMs / 60_000
-    val hours = minutes / 60
-    val days = hours / 24
-    return when {
-        minutes < 1 -> "just now"
-        minutes == 1L -> "1 min"
-        minutes < 60 -> "$minutes min"
-        hours == 1L -> "1 hour"
-        hours < 24 -> "$hours hours"
-        days == 1L -> "1 day"
-        else -> "$days days"
-    }
-}
-
-@Composable
-private fun SplinterlandsAddAccountForm(
-    addStatus: SplinterlandsAddStatus,
-    onTestAndAdd: (String, String) -> Unit,
-) {
-    var expanded by remember { mutableStateOf(false) }
-    var username by remember { mutableStateOf("") }
-    var postingKey by remember { mutableStateOf("") }
-    var showKey by remember { mutableStateOf(false) }
-    val isTesting = addStatus is SplinterlandsAddStatus.Testing
-
-    // Collapse form after successful add
-    LaunchedEffect(addStatus) {
-        if (addStatus is SplinterlandsAddStatus.Idle) {
-            if (expanded && username.isEmpty() && postingKey.isEmpty()) {
-                expanded = false
-            }
-        }
-    }
-
-    if (!expanded) {
-        OutlinedButton(
-            onClick = { expanded = true },
-            modifier = Modifier.handCursor(),
-        ) {
-            Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
-            Spacer(Modifier.width(4.dp))
-            Text("Add Account")
-        }
-    } else {
-        Text(
-            text = "Your posting key is stored securely on this device and is never sent to the LLM. It is only used to sign battle transactions on the Hive blockchain.",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.height(8.dp))
-        KaiOutlinedTextField(
-            value = username,
-            onValueChange = { username = it },
-            label = { Text("Hive Username") },
-            singleLine = true,
-            enabled = !isTesting,
-            modifier = Modifier.fillMaxWidth(),
-        )
-
-        Spacer(Modifier.height(8.dp))
-
-        KaiOutlinedTextField(
-            value = postingKey,
-            onValueChange = { postingKey = it },
-            label = { Text("Posting Key") },
-            singleLine = true,
-            enabled = !isTesting,
-            visualTransformation = if (showKey) VisualTransformation.None else PasswordVisualTransformation(),
-            trailingIcon = {
-                IconButton(
-                    onClick = { showKey = !showKey },
-                    modifier = Modifier.handCursor(),
-                ) {
-                    Icon(
-                        imageVector = if (showKey) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                        contentDescription = if (showKey) "Hide" else "Show",
-                    )
-                }
-            },
-            modifier = Modifier.fillMaxWidth(),
-        )
-
-        Spacer(Modifier.height(8.dp))
-
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(
-                onClick = {
-                    onTestAndAdd(username, postingKey)
-                    username = ""
-                    postingKey = ""
-                },
-                modifier = Modifier.handCursor(),
-                enabled = username.isNotBlank() && postingKey.isNotBlank() && !isTesting,
-            ) {
-                if (isTesting) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(16.dp),
-                        strokeWidth = 2.dp,
-                        color = MaterialTheme.colorScheme.onPrimary,
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    Text("Testing...")
-                } else {
-                    Text("Test & Add")
-                }
-            }
-            OutlinedButton(
-                onClick = {
-                    expanded = false
-                    username = ""
-                    postingKey = ""
-                },
-                modifier = Modifier.handCursor(),
-                enabled = !isTesting,
-            ) {
-                Text("Cancel")
-            }
-        }
-
-        if (addStatus is SplinterlandsAddStatus.Error) {
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = addStatus.message,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.error,
-            )
-        }
-    }
-}
-
-@Composable
+package com.inspiredandroid.kai.ui.settings
 private fun SplinterlandsAccountRow(
-    account: SplinterlandsAccountUiState,
-    hasServices: Boolean,
-    onRemove: () -> Unit,
-    onStartBattle: () -> Unit,
-    onStopBattle: () -> Unit,
-) {
-    val bs = account.battleStatus
-    Column(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            // Avatar
-            if (account.avatarUrl.isNotBlank()) {
-                coil3.compose.AsyncImage(
-                    model = account.avatarUrl,
-                    contentDescription = account.username,
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clip(CircleShape),
-                    contentScale = ContentScale.Crop,
-                )
-            } else {
-                Box(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.primaryContainer),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(
-                        text = account.username.take(1).uppercase(),
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    )
-                }
-            }
-
-            // Username + energy
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = account.username,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
-                if (account.energy >= 0) {
-                    Text(
-                        text = "\u26A1 ${account.energy}",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-            }
-
-            // Stats if any
-            if (bs.wins > 0 || bs.losses > 0) {
-                Text(
-                    text = "${bs.wins}W ${bs.losses}L",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-
-            // Error indicator
-            if (bs.phase == BattlePhase.Error) {
-                Text(
-                    text = "Error",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.error,
-                )
-            }
-
-            // Start/Stop button
-            if (bs.isRunning) {
-                OutlinedButton(
-                    onClick = onStopBattle,
-                    modifier = Modifier.handCursor(),
-                    enabled = !bs.isStopping,
-                    colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
-                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
-                ) {
-                    Text(if (bs.isStopping) "Stopping..." else "Stop", style = MaterialTheme.typography.bodySmall)
-                }
-            } else {
-                Button(
-                    onClick = onStartBattle,
-                    modifier = Modifier.handCursor(),
-                    enabled = hasServices,
-                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
-                ) {
-                    Text("Start", style = MaterialTheme.typography.bodySmall)
-                }
-            }
-
-            // Remove button with confirmation
-            var showConfirm by remember { mutableStateOf(false) }
-            IconButton(
-                onClick = { showConfirm = true },
-                modifier = Modifier.handCursor(),
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = "Remove",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-            if (showConfirm) {
-                AlertDialog(
-                    onDismissRequest = { showConfirm = false },
-                    title = { Text("Remove Account") },
-                    text = { Text("Remove ${account.username} from Splinterlands?") },
-                    confirmButton = {
-                        TextButton(
-                            onClick = {
-                                showConfirm = false
-                                onRemove()
-                            },
-                            modifier = Modifier.handCursor(),
-                        ) {
-                            Text("Remove", color = MaterialTheme.colorScheme.error)
-                        }
-                    },
-                    dismissButton = {
-                        TextButton(
-                            onClick = { showConfirm = false },
-                            modifier = Modifier.handCursor(),
-                        ) { Text("Cancel") }
-                    },
-                )
-            }
-        }
-
-        // Battle details (below player row)
-        if (bs.isRunning) {
-            val phaseText = when (bs.phase) {
-                BattlePhase.LoggingIn -> "Logging in..."
-                BattlePhase.CheckingEnergy -> "Checking energy..."
-                BattlePhase.FindingMatch -> "Finding match..."
-                BattlePhase.WaitingForOpponent -> "Waiting for opponent..."
-                BattlePhase.FetchingCollection -> "Fetching cards..."
-                BattlePhase.PickingTeam -> "Picking team..."
-                BattlePhase.SubmittingTeam -> "Submitting team..."
-                BattlePhase.WaitingForResult -> "Waiting for result..."
-                BattlePhase.Finished -> "Done"
-                else -> ""
-            }
-
-            // Match info row: opponent, mana, rulesets
-            if (bs.currentOpponent.isNotBlank() || bs.currentMana > 0) {
-                // FlowRow: three unweighted facts in a Row run off the right edge once
-                // the text grows, taking the rulesets with them.
-                FlowRow(
-                    modifier = Modifier.padding(start = 40.dp, top = 2.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(2.dp),
-                ) {
-                    if (bs.currentOpponent.isNotBlank()) {
-                        Text(
-                            text = "vs ${bs.currentOpponent}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onBackground,
-                        )
-                    }
-                    if (bs.currentMana > 0) {
-                        Text(
-                            text = "${bs.currentMana} mana",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                    if (bs.currentRulesets.isNotBlank()) {
-                        Text(
-                            text = bs.currentRulesets,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                    }
-                }
-            }
-
-            // Status row: phase + LLM indicator + timer
-            Row(
-                modifier = Modifier.padding(start = 40.dp, top = 2.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                if (phaseText.isNotBlank()) {
-                    Text(
-                        text = phaseText,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                }
-                val showLlmIndicator = bs.llmPickedTeam != null && bs.phase in setOf(
-                    BattlePhase.SubmittingTeam,
-                    BattlePhase.WaitingForResult,
-                )
-                if (showLlmIndicator) {
-                    val label = if (bs.llmPickedTeam == true) bs.winningServiceName.ifBlank { "LLM" } else "Auto"
-                    Text(
-                        text = label,
-                        style = MaterialTheme.typography.labelSmall,
-                        color = if (bs.llmPickedTeam == true) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
-                val showTimer = bs.teamDeadlineMs > 0L && bs.phase in setOf(
-                    BattlePhase.FetchingCollection,
-                    BattlePhase.PickingTeam,
-                )
-                if (showTimer) {
-                    SplinterlandsCountdown(bs.teamDeadlineMs)
-                }
-            }
-
-            // Per-service status rows during PickingTeam
-            if (bs.phase == BattlePhase.PickingTeam && bs.serviceStatuses.isNotEmpty()) {
-                for ((serviceId, status) in bs.serviceStatuses) {
-                    Row(
-                        modifier = Modifier.padding(start = 48.dp, top = 1.dp),
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        // Status indicator
-                        when (status) {
-                            LlmServiceStatus.Querying -> CircularProgressIndicator(
-                                modifier = Modifier.size(12.dp),
-                                strokeWidth = 1.5.dp,
-                                color = MaterialTheme.colorScheme.primary,
-                            )
-
-                            LlmServiceStatus.ValidResponse -> Text("\u2714", style = MaterialTheme.typography.labelSmall, color = Color(0xFF4CAF50))
-
-                            LlmServiceStatus.InvalidResponse -> Text("\u2718", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
-
-                            LlmServiceStatus.Failed -> Text("\u2718", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
-
-                            LlmServiceStatus.Selected -> Text("\u2605", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.tertiary)
-                        }
-                        Text(
-                            text = serviceId,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                    }
-                }
-            }
-        }
-
-        // Error message
-        if (bs.errorMessage.isNotBlank() && bs.phase == BattlePhase.Error) {
-            Text(
-                text = bs.errorMessage,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(start = 40.dp),
-            )
-        }
-    }
-}
-
-@OptIn(kotlin.time.ExperimentalTime::class)
-@Composable
+private fun SplinterlandsActivityDialog(
+private fun SplinterlandsAddAccountForm(
+private fun SplinterlandsBattleLogRow(entry: BattleLogEntry) {
 private fun SplinterlandsCountdown(deadlineMs: Long) {
-    var remaining by remember { mutableStateOf(0L) }
-    LaunchedEffect(deadlineMs) {
-        if (deadlineMs > 0L) {
-            while (true) {
-                remaining = ((deadlineMs - kotlin.time.Clock.System.now().toEpochMilliseconds()) / 1000).coerceAtLeast(0L)
-                kotlinx.coroutines.delay(1.seconds)
-            }
-        }
-    }
-    val mins = remaining / 60
-    val secs = remaining % 60
-    Text(
-        text = "$mins:${secs.toString().padStart(2, '0')}",
-        style = MaterialTheme.typography.labelMedium,
-        color = if (remaining <= 30) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
-    )
+private fun SplinterlandsModelRankings(modelStats: ImmutableList<ModelStats>) {
+private fun SplinterlandsModelRow(rank: Int, stats: ModelStats) {
+private fun SplinterlandsServiceList(
+private fun formatRelativeTime(timestampMs: Long, nowMs: Long): String {
 }

@@ -1,41 +1,26 @@
-package com.inspiredandroid.kai.daemon
 
-import kotlinx.serialization.Serializable
-
-@Serializable
-data class KaiTask(
-    val pid: Int,
     val command: String,
+    val cpu_ticks: Long
+    val last_updated: String,
+    val logs: String? = null
+    val manifest: SkillManifest? = null,
+    val mem_kb: Int,
+    val message: String? = null,
+    val metrics: TaskMetrics? = null
+    val params: Map<String, String> = emptyMap()
+    val pid: Int,
+    val pid: Int? = null,
+    val skills: List<String>
     val startTime: String,
     val status: String,
-    val metrics: TaskMetrics? = null
+    val task_id: String? = null,
+    val tasks: Map<String, KaiTask>? = null,
 )
-
-@Serializable
-data class TaskMetrics(
-    val mem_kb: Int,
-    val cpu_ticks: Long
-)
-
-@Serializable
-data class SkillManifest(
-    val last_updated: String,
-    val skills: List<String>
-)
-
 @Serializable
 data class DaemonRequest(
-    val command: String,
-    val params: Map<String, String> = emptyMap()
-)
-
-@Serializable
 data class DaemonResponse(
-    val status: String,
-    val message: String? = null,
-    val task_id: String? = null,
-    val pid: Int? = null,
-    val tasks: Map<String, KaiTask>? = null,
-    val manifest: SkillManifest? = null,
-    val logs: String? = null
-)
+data class KaiTask(
+data class SkillManifest(
+data class TaskMetrics(
+import kotlinx.serialization.Serializable
+package com.inspiredandroid.kai.daemon

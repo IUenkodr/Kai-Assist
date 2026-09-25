@@ -1,10 +1,9 @@
-package com.inspiredandroid.kai.splinterlands
 
-actual fun signMessage(message: String, postingKeyWif: String): String = throw UnsupportedOperationException("Splinterlands is not supported on iOS")
-
-actual suspend fun buildSignedCustomJson(
-    username: String,
-    postingKeyWif: String,
-    opId: String,
     jsonPayload: String,
+    opId: String,
+    postingKeyWif: String,
+    username: String,
 ): String = throw UnsupportedOperationException("Splinterlands is not supported on iOS")
+actual fun signMessage(message: String, postingKeyWif: String): String = throw UnsupportedOperationException("Splinterlands is not supported on iOS")
+actual suspend fun buildSignedCustomJson(
+package com.inspiredandroid.kai.splinterlands

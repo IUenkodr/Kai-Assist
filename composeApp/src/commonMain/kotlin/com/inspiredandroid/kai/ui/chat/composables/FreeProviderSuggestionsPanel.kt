@@ -1,5 +1,76 @@
-package com.inspiredandroid.kai.ui.chat.composables
 
+                            color = MaterialTheme.colorScheme.onSurface,
+                            contentDescription = null,
+                            imageVector = vectorResource(suggestion.service.icon),
+                            maxLines = 1,
+                            modifier = Modifier.size(16.dp),
+                            overflow = TextOverflow.Ellipsis,
+                            style = MaterialTheme.typography.labelMedium,
+                            text = suggestion.service.displayName,
+                            tint = MaterialTheme.colorScheme.onSurface,
+                        )
+                        .clickable { uriHandler.openUri(suggestion.signupUrl) },
+                        .clip(RoundedCornerShape(50))
+                        .handCursor()
+                        Icon(
+                        Spacer(Modifier.width(6.dp))
+                        Text(
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                    Row(
+                    color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                    modifier = Modifier
+                    shape = RoundedCornerShape(50),
+                    }
+                ) {
+                Surface(
+                contentDescription = null,
+                imageVector = vectorResource(Res.drawable.ic_refresh),
+                tint = MaterialTheme.colorScheme.onBackground,
+                }
+            )
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+            Icon(
+            color = MaterialTheme.colorScheme.onBackground,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            freeProviderSuggestions.forEach { suggestion ->
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.handCursor(),
+            onClick = retry,
+            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.titleMedium,
+            text = stringResource(Res.string.error_free_limit_body),
+            text = stringResource(Res.string.error_free_limit_title),
+            text = uiErrorText(error),
+            textAlign = TextAlign.Center,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            }
+        )
+        ) {
+        FlowRow(
+        IconButton(
+        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.height(6.dp))
+        Spacer(Modifier.height(8.dp))
+        Text(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+        }
+    ) {
+    // No verticalScroll — this panel is often a LazyColumn item.
+    Column(
+    error: UiError,
+    modifier: Modifier = Modifier,
+    retry: () -> Unit,
+    val uriHandler = LocalUriHandler.current
+    }
+) {
+@Composable
+@OptIn(ExperimentalLayoutApi::class)
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -35,89 +106,6 @@ import kai.composeapp.generated.resources.error_free_limit_title
 import kai.composeapp.generated.resources.ic_refresh
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
-
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
 internal fun FreeProviderSuggestionsPanel(
-    error: UiError,
-    retry: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val uriHandler = LocalUriHandler.current
-    // No verticalScroll — this panel is often a LazyColumn item.
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(
-            text = stringResource(Res.string.error_free_limit_title),
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-            textAlign = TextAlign.Center,
-        )
-        Spacer(Modifier.height(8.dp))
-        Text(
-            text = stringResource(Res.string.error_free_limit_body),
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Center,
-        )
-        Spacer(Modifier.height(6.dp))
-        Text(
-            text = uiErrorText(error),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Center,
-        )
-        Spacer(Modifier.height(12.dp))
-        FlowRow(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            freeProviderSuggestions.forEach { suggestion ->
-                Surface(
-                    modifier = Modifier
-                        .handCursor()
-                        .clip(RoundedCornerShape(50))
-                        .clickable { uriHandler.openUri(suggestion.signupUrl) },
-                    shape = RoundedCornerShape(50),
-                    color = MaterialTheme.colorScheme.surfaceContainerHigh,
-                ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Icon(
-                            imageVector = vectorResource(suggestion.service.icon),
-                            contentDescription = null,
-                            modifier = Modifier.size(16.dp),
-                            tint = MaterialTheme.colorScheme.onSurface,
-                        )
-                        Spacer(Modifier.width(6.dp))
-                        Text(
-                            text = suggestion.service.displayName,
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurface,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                    }
-                }
-            }
-        }
-        Spacer(Modifier.height(8.dp))
-        IconButton(
-            modifier = Modifier.handCursor(),
-            onClick = retry,
-        ) {
-            Icon(
-                imageVector = vectorResource(Res.drawable.ic_refresh),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onBackground,
-            )
-        }
-    }
+package com.inspiredandroid.kai.ui.chat.composables
 }

@@ -1,23 +1,22 @@
-package com.inspiredandroid.kai.data
 
-/**
+            "FreeProviderSuggestion requires apiKeyUrl on ${service.id}"
+        get() = requireNotNull(service.apiKeyUrl) {
+        }
+    FreeProviderSuggestion(Service.Cerebras),
+    FreeProviderSuggestion(Service.Gemini),
+    FreeProviderSuggestion(Service.Groq),
+    FreeProviderSuggestion(Service.OllamaCloud),
+    FreeProviderSuggestion(Service.OpenRouter),
+    val service: Service,
+    val signupUrl: String
  * Providers with meaningful free-tier usage that we recommend when the
  * built-in Free FAST/EXPERT path is rate-limited and the user has no
  * configured services yet.
  */
-data class FreeProviderSuggestion(
-    val service: Service,
-) {
-    val signupUrl: String
-        get() = requireNotNull(service.apiKeyUrl) {
-            "FreeProviderSuggestion requires apiKeyUrl on ${service.id}"
-        }
-}
-
-val freeProviderSuggestions: List<FreeProviderSuggestion> = listOf(
-    FreeProviderSuggestion(Service.Groq),
-    FreeProviderSuggestion(Service.Cerebras),
-    FreeProviderSuggestion(Service.Gemini),
-    FreeProviderSuggestion(Service.OpenRouter),
-    FreeProviderSuggestion(Service.OllamaCloud),
 )
+) {
+/**
+data class FreeProviderSuggestion(
+package com.inspiredandroid.kai.data
+val freeProviderSuggestions: List<FreeProviderSuggestion> = listOf(
+}

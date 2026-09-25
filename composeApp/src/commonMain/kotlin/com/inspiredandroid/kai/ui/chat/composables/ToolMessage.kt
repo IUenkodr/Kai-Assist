@@ -1,5 +1,109 @@
-package com.inspiredandroid.kai.ui.chat.composables
 
+                        .using(SizeTransform(clip = false) { _, _ -> tween(300) })
+                    (fadeIn(tween(300)) togetherWith fadeOut(tween(300)))
+                    MaterialTheme.colorScheme.surfaceVariant,
+                    RoundedCornerShape(8.dp),
+                    alpha = pulseAlpha
+                    animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing),
+                    color = textColor,
+                    maxLines = 1,
+                    modifier = Modifier.weight(1f),
+                    overflow = TextOverflow.Ellipsis,
+                    scaleX = pulseScale
+                    scaleY = pulseScale
+                    style = textStyle,
+                    text = " · $toolSummary",
+                    text = stringResource(waitingTexts[targetIndex]),
+                )
+                .animateContentSize(
+                .background(
+                .background(dotColor, CircleShape),
+                .graphicsLayer {
+                .padding(12.dp)
+                .semantics { contentDescription = waitingCd },
+                .size(dotSize)
+                // Weighted: the animated status text ahead of this takes what it needs,
+                // actually doing — is pushed off the right edge at large font scales.
+                // and without a weight the summary — the only hint of what the agent is
+                Text(
+                color = textColor,
+                dotColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                dotSize = 16.dp,
+                isStatusOnly = effectiveStatusOnly,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                style = textStyle,
+                targetState = index,
+                text = toolSummary,
+                textAlign = TextAlign.Center,
+                textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                textStyle = MaterialTheme.typography.bodyMedium,
+                toolSummary = summary,
+                transitionSpec = {
+                }
+                },
+            )
+            ) { targetIndex ->
+            .clipToBounds(),
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            AnimatedContent(
+            PulsingStatusIndicator(
+            Res.string.waiting_brewing,
+            Res.string.waiting_thinking,
+            Res.string.waiting_working,
+            Text(
+            animation = tween(durationMillis = 800, easing = FastOutSlowInEasing),
+            delay(3.seconds)
+            if (toolSummary != null) {
+            index = (index + 1) % waitingTexts.size
+            modifier = Modifier
+            repeatMode = RepeatMode.Reverse,
+            }
+        )
+        ) {
+        ),
+        Box(
+        Spacer(Modifier.width(8.dp))
+        animationSpec = infiniteRepeatable(
+        if (isStatusOnly && toolSummary != null) {
+        initialValue = 0.4f,
+        initialValue = 0.6f,
+        listOf(
+        modifier = Modifier
+        modifier = modifier,
+        targetValue = 1.0f,
+        verticalAlignment = Alignment.CenterVertically,
+        while (true) {
+        }
+        } else {
+    )
+    ) {
+    LaunchedEffect(Unit) {
+    Row(
+    dotColor: Color,
+    dotSize: Dp,
+    else -> stringResource(Res.string.tools_count, executingTools.size)
+    executingTools.isEmpty() -> null
+    executingTools.size == 1 -> executingTools.first().second
+    executingTools: ImmutableList<Pair<String, String>>,
+    isStatusOnly: Boolean = false,
+    modifier: Modifier = Modifier,
+    statusText: String? = null,
+    textColor: Color,
+    textStyle: TextStyle,
+    toolSummary: String?,
+    val effectiveStatusOnly = isStatusOnly || statusText != null
+    val infiniteTransition = rememberInfiniteTransition()
+    val pulseAlpha by infiniteTransition.animateFloat(
+    val pulseScale by infiniteTransition.animateFloat(
+    val summary = statusText ?: toolSummaryText(executingTools)
+    val waitingCd = stringResource(Res.string.waiting_content_description)
+    val waitingTexts = remember {
+    var index by remember { mutableIntStateOf(0) }
+    }
+) {
+): String? = when {
+@Composable
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.animateContentSize
@@ -47,152 +151,12 @@ import kai.composeapp.generated.resources.waiting_brewing
 import kai.composeapp.generated.resources.waiting_content_description
 import kai.composeapp.generated.resources.waiting_thinking
 import kai.composeapp.generated.resources.waiting_working
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
-import kotlin.time.Duration.Companion.seconds
-
-@Composable
-internal fun toolSummaryText(
-    executingTools: ImmutableList<Pair<String, String>>,
-): String? = when {
-    executingTools.isEmpty() -> null
-    executingTools.size == 1 -> executingTools.first().second
-    else -> stringResource(Res.string.tools_count, executingTools.size)
-}
-
-@Composable
-internal fun WaitingResponseRow(
-    executingTools: ImmutableList<Pair<String, String>>,
-    isStatusOnly: Boolean = false,
-    statusText: String? = null,
-) {
-    val summary = statusText ?: toolSummaryText(executingTools)
-    val effectiveStatusOnly = isStatusOnly || statusText != null
-    val waitingCd = stringResource(Res.string.waiting_content_description)
-
-    Row(
-        modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clipToBounds(),
-    ) {
-        Box(
-            modifier = Modifier
-                .background(
-                    MaterialTheme.colorScheme.surfaceVariant,
-                    RoundedCornerShape(8.dp),
-                )
-                .animateContentSize(
-                    animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing),
-                )
-                .padding(12.dp)
-                .semantics { contentDescription = waitingCd },
-        ) {
-            PulsingStatusIndicator(
-                toolSummary = summary,
-                isStatusOnly = effectiveStatusOnly,
-                dotSize = 16.dp,
-                dotColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                textColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                textStyle = MaterialTheme.typography.bodyMedium,
-            )
-        }
-    }
-}
-
-@Composable
 internal fun PulsingStatusIndicator(
-    toolSummary: String?,
-    dotSize: Dp,
-    dotColor: Color,
-    textColor: Color,
-    textStyle: TextStyle,
-    modifier: Modifier = Modifier,
-    isStatusOnly: Boolean = false,
-) {
-    val infiniteTransition = rememberInfiniteTransition()
-    val pulseScale by infiniteTransition.animateFloat(
-        initialValue = 0.6f,
-        targetValue = 1.0f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 800, easing = FastOutSlowInEasing),
-            repeatMode = RepeatMode.Reverse,
-        ),
-    )
-    val pulseAlpha by infiniteTransition.animateFloat(
-        initialValue = 0.4f,
-        targetValue = 1.0f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 800, easing = FastOutSlowInEasing),
-            repeatMode = RepeatMode.Reverse,
-        ),
-    )
-    val waitingTexts = remember {
-        listOf(
-            Res.string.waiting_thinking,
-            Res.string.waiting_working,
-            Res.string.waiting_brewing,
-        )
-    }
-    var index by remember { mutableIntStateOf(0) }
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(3.seconds)
-            index = (index + 1) % waitingTexts.size
-        }
-    }
-
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Box(
-            modifier = Modifier
-                .size(dotSize)
-                .graphicsLayer {
-                    scaleX = pulseScale
-                    scaleY = pulseScale
-                    alpha = pulseAlpha
-                }
-                .background(dotColor, CircleShape),
-        )
-        Spacer(Modifier.width(8.dp))
-        if (isStatusOnly && toolSummary != null) {
-            Text(
-                text = toolSummary,
-                color = textColor,
-                style = textStyle,
-                textAlign = TextAlign.Center,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-            )
-        } else {
-            AnimatedContent(
-                targetState = index,
-                transitionSpec = {
-                    (fadeIn(tween(300)) togetherWith fadeOut(tween(300)))
-                        .using(SizeTransform(clip = false) { _, _ -> tween(300) })
-                },
-            ) { targetIndex ->
-                Text(
-                    text = stringResource(waitingTexts[targetIndex]),
-                    color = textColor,
-                    style = textStyle,
-                )
-            }
-            if (toolSummary != null) {
-                // Weighted: the animated status text ahead of this takes what it needs,
-                // and without a weight the summary — the only hint of what the agent is
-                // actually doing — is pushed off the right edge at large font scales.
-                Text(
-                    text = " · $toolSummary",
-                    modifier = Modifier.weight(1f),
-                    color = textColor,
-                    style = textStyle,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-            }
-        }
-    }
+internal fun WaitingResponseRow(
+internal fun toolSummaryText(
+package com.inspiredandroid.kai.ui.chat.composables
 }

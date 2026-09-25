@@ -1,7 +1,357 @@
+
+                            message = entry.error,
+                            message = entry.message,
+                            success = entry.success,
+                            timestampEpochMs = entry.timestampEpochMs,
+                        "${task.status} - $scheduledTime $offset"
+                        )
+                        ExecutionLogRow(
+                        accessGranted = uiState.notificationListenerAccessGranted,
+                        contentDescription = stringResource(Res.string.settings_soul_reset),
+                        editedText = localizedDefault
+                        emailAccounts = uiState.emailAccounts,
+                        imageVector = Icons.Default.Replay,
+                        isEmailEnabled = uiState.isEmailEnabled,
+                        isEnabled = uiState.isNotificationsEnabled,
+                        isRefreshing = uiState.isRefreshingSms,
+                        isSmsEnabled = uiState.isSmsEnabled,
+                        isSmsSendEnabled = uiState.isSmsSendEnabled,
+                        label = stringResource(Res.string.settings_task_details_next_run),
+                        label = stringResource(Res.string.settings_task_details_schedule),
+                        listenerBound = uiState.notificationListenerBound,
+                        onChangePollInterval = actions.onChangeEmailPollInterval,
+                        onChangePollInterval = actions.onChangeSmsPollInterval,
+                        onClearPending = actions.onClearPendingNotifications,
+                        onOpenAccessSettings = actions.onOpenNotificationListenerSettings,
+                        onRefresh = actions.onRefreshSms,
+                        onRefreshAccount = actions.onRefreshEmailAccount,
+                        onRemoveAccount = actions.onRemoveEmailAccount,
+                        onSaveSoul("")
+                        onToggle = actions.onToggleNotifications,
+                        onToggleEmail = actions.onToggleEmail,
+                        onToggleSms = actions.onToggleSms,
+                        onToggleSmsSend = actions.onToggleSmsSend,
+                        pendingCount = uiState.emailPendingCount,
+                        pendingCount = uiState.notificationPendingCount,
+                        pendingCount = uiState.smsPendingCount,
+                        permissionGranted = uiState.smsPermissionGranted,
+                        pollIntervalMinutes = uiState.emailPollIntervalMinutes,
+                        pollIntervalMinutes = uiState.smsPollIntervalMinutes,
+                        refreshingAccountIds = uiState.refreshingEmailAccountIds,
+                        sendPermissionGranted = uiState.smsSendPermissionGranted,
+                        showResetDialog = false
+                        syncState = uiState.smsSyncState,
+                        syncStates = uiState.emailSyncStates,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        val instant = Instant.fromEpochMilliseconds(task.scheduledAtEpochMs)
+                        val offset = zone.offsetAt(instant)
+                        val scheduledTime = instant.toLocalDateTime(zone)
+                        val zone = TimeZone.currentSystemDefault()
+                        value = formatTaskInstant(task.scheduledAtEpochMs),
+                        value = task.cron?.let { describeCron(it) } ?: "cron",
+                    )
+                    EmailSection(
+                    EmptyLogText(stringResource(Res.string.settings_task_details_no_heartbeat_runs))
+                    EmptyLogText(stringResource(Res.string.settings_task_details_no_runs))
+                    Icon(
+                    NotificationsSection(
+                    SmsSection(
+                    TaskDetailRow(
+                    TaskTrigger.CRON -> "${task.status} - ${task.cron?.let { describeCron(it) } ?: "cron"}"
+                    TaskTrigger.HEARTBEAT -> "${task.status} - $onEveryHeartbeat"
+                    TaskTrigger.TIME -> {
+                    Text(stringResource(Res.string.settings_memories_edit_cancel))
+                    Text(stringResource(Res.string.settings_memories_edit_save))
+                    Text(stringResource(Res.string.settings_memories_show_all, sortedMemories.size))
+                    Text(stringResource(Res.string.settings_soul_reset))
+                    Text(stringResource(Res.string.settings_soul_reset_cancel))
+                    activeHoursEnd = uiState.heartbeatActiveHoursEnd,
+                    activeHoursStart = uiState.heartbeatActiveHoursStart,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    color = if (success) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.error,
+                    deleteContentDescription = deleteContentDescription,
+                    deleteContentDescription = stringResource(Res.string.settings_memories_delete),
+                    deleteContentDescription = stringResource(Res.string.settings_scheduled_tasks_cancel),
+                    enabled = hasChanges,
+                    heartbeatIntervalMinutes = uiState.heartbeatIntervalMinutes,
+                    heartbeatLog = uiState.heartbeatLog,
+                    heartbeatLog.forEach { entry ->
+                    heartbeatPrompt = uiState.heartbeatPrompt,
+                    heartbeatSelectedInstanceId = uiState.heartbeatSelectedInstanceId,
+                    heartbeatServiceEntries = uiState.heartbeatServiceEntries,
+                    isHeartbeatEnabled = uiState.isHeartbeatEnabled,
+                    isMemoryEnabled = uiState.isMemoryEnabled,
+                    isRefreshing = uiState.isRefreshingHeartbeat,
+                    isSchedulingEnabled = uiState.isSchedulingEnabled,
+                    label = stringResource(Res.string.settings_task_details_consecutive_failures),
+                    label = stringResource(Res.string.settings_task_details_last_result),
+                    label = stringResource(Res.string.settings_task_details_schedule),
+                    label = stringResource(Res.string.settings_task_details_scheduled_for),
+                    maxLines = 4,
+                    memories = uiState.memories,
+                    modifier = Modifier.align(CenterHorizontally).handCursor(),
+                    modifier = Modifier.handCursor(),
+                    onCancelTask = actions.onCancelTask,
+                    onChangeActiveHours = actions.onChangeHeartbeatActiveHours,
+                    onChangeHeartbeatService = actions.onChangeHeartbeatService,
+                    onChangeInterval = actions.onChangeHeartbeatInterval,
+                    onClick = onDismiss,
+                    onClick = {
+                    onClick = { editingMemory = memory },
+                    onClick = { onEditMemory(memory) },
+                    onClick = { onSave(content.trim()) },
+                    onClick = { selectedTaskId = task.id },
+                    onClick = { showAllDialog = true },
+                    onClick = { showResetDialog = false },
+                    onClick = { showResetDialog = true },
+                    onDelete = { onCancelTask(task.id) },
+                    onDelete = { onDeleteMemory(memory.key) },
+                    onDeleteMemory = actions.onDeleteMemory,
+                    onRefresh = actions.onRefreshHeartbeat,
+                    onSaveHeartbeatPrompt = actions.onSaveHeartbeatPrompt,
+                    onSaveSoul = actions.onSaveSoul,
+                    onToggleHeartbeat = actions.onToggleHeartbeat,
+                    onToggleMemory = actions.onToggleMemory,
+                    onToggleScheduling = actions.onToggleScheduling,
+                    onUpdateMemory = actions.onUpdateMemory,
+                    overflow = TextOverflow.Ellipsis,
+                    soulText = uiState.soulText,
+                    stringResource(Res.string.settings_soul),
+                    style = MaterialTheme.typography.labelSmall,
+                    subtitle = memory.content,
+                    subtitle = subtitle,
+                    subtitleMaxLines = 3,
+                    task.recentExecutions.forEach { entry ->
+                    tasks = uiState.scheduledTasks,
+                    text = message,
+                    title = memory.key,
+                    title = task.description,
+                    value = formatTaskInstant(task.scheduledAtEpochMs),
+                    value = result,
+                    value = stringResource(Res.string.settings_task_details_on_every_heartbeat),
+                    value = task.consecutiveFailures.toString(),
+                    }
+                    },
+                )
+                ) {
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+                .verticalScroll(rememberScrollState())
+                // Heartbeat additions don't carry their own log — they fire as part of every
+                // heartbeat run, so the heartbeat-wide log is the right surface.
+                HeartbeatSection(
+                IconButton(
+                MemoryList(
+                OutlinedButton(
+                ScheduledTaskList(
+                SettingsCard {
+                SettingsListItem(
+                SoulEditor(
+                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.width(8.dp))
+                TaskDetailRow(
+                TaskTrigger.CRON -> {
+                TaskTrigger.HEARTBEAT -> TaskDetailRow(
+                TaskTrigger.TIME -> TaskDetailRow(
+                Text(
+                Text(stringResource(Res.string.settings_soul_save))
+                TextButton(
+                color = MaterialTheme.colorScheme.onBackground,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                editingMemory = null
+                horizontalArrangement = Arrangement.End,
+                if (heartbeatLog.isEmpty()) {
+                if (task.recentExecutions.isEmpty()) {
+                label = stringResource(Res.string.settings_task_details_created),
+                label = stringResource(Res.string.settings_task_details_status),
+                label = stringResource(Res.string.settings_task_details_trigger),
+                maxLines = 10,
+                minLines = 4,
+                modifier = Modifier.align(CenterHorizontally).handCursor(),
+                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.weight(1f),
+                onClick = { onSaveSoul(editedText.trim()) },
+                onUpdateMemory(memory.key, newContent)
+                onValueChange = { content = it },
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.labelMedium,
+                style = MaterialTheme.typography.titleMedium,
+                text = formatTaskInstant(timestampEpochMs),
+                text = memory.key,
+                text = stringResource(Res.string.settings_heartbeat_recent),
+                text = stringResource(Res.string.settings_memories_all_title),
+                text = stringResource(Res.string.settings_memories_edit_title),
+                text = stringResource(Res.string.settings_soul),
+                text = task.description,
+                val subtitle = when (task.trigger) {
+                value = content,
+                value = formatTaskInstant(task.createdAtEpochMs),
+                value = task.status.name,
+                value = task.trigger.name,
+                }
+                } else {
+            )
+            ) {
+            // ... (retry after 120s backoff)"). Surface it so the user can see what the
+            // The scheduler stores its retry/backoff phrasing in `lastResult` ("Failed at ...:
+            // scheduler is going to do next, not just what already happened.
+            Button(
+            KaiOutlinedTextField(
+            Row(
+            SettingsCard {
+            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(4.dp))
+            Spacer(Modifier.height(8.dp))
+            TaskDetailRow(
+            Text(
+            checked = isMemoryEnabled,
+            checked = isSchedulingEnabled,
+            color = MaterialTheme.colorScheme.onBackground,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = if (success) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
+            confirmButton = {
+            description = stringResource(Res.string.settings_memories_description),
+            description = stringResource(Res.string.settings_scheduled_tasks_description),
+            dismissButton = {
+            heartbeatLog = heartbeatLog,
+            if (!message.isNullOrBlank()) {
+            if (sortedMemories.size > previewMemories.size) {
+            if (soulText.isNotEmpty()) {
+            if (task.consecutiveFailures > 0) {
+            if (task.trigger == TaskTrigger.HEARTBEAT) {
+            if (uiState.showEmailToggle) {
+            if (uiState.showNotificationsSection) {
+            if (uiState.showSmsSection) {
+            label = {
+            maxLines = 8,
+            memories = sortedMemories,
+            memories.forEach { memory ->
+            memory = memory,
+            minLines = 8,
+            modifier = Modifier
+            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.weight(1f),
+            modifier = Modifier.width(140.dp * LocalDensity.current.fontScale),
+            modifier = Modifier.widthIn(min = 36.dp * LocalDensity.current.fontScale),
+            onCheckedChange = onToggleMemory,
+            onCheckedChange = onToggleScheduling,
+            onDeleteMemory = onDeleteMemory,
+            onDismiss = { editingMemory = null },
+            onDismiss = { selectedTaskId = null },
+            onDismiss = { showAllDialog = false },
+            onDismissRequest = { showResetDialog = false },
+            onEditMemory = { editingMemory = it },
+            onSave = { newContent ->
+            onValueChange = { if (it.length <= maxChars) editedText = it },
+            previewMemories.forEach { memory ->
+            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.labelSmall,
+            task = selectedTask,
+            task.lastResult?.takeIf { it.isNotBlank() }?.let { result ->
+            tasks.forEach { task ->
+            text = "${editedText.length}/$maxChars",
+            text = if (success) stringResource(Res.string.execution_log_status_ok) else stringResource(Res.string.execution_log_status_fail),
+            text = label,
+            text = stringResource(Res.string.settings_soul_description),
+            text = value,
+            text = { Text(stringResource(Res.string.settings_soul_reset_confirm)) },
+            textAlign = TextAlign.End,
+            title = stringResource(Res.string.settings_memories),
+            title = stringResource(Res.string.settings_scheduled_tasks),
+            title = { Text(stringResource(Res.string.settings_soul_reset)) },
+            value = editedText,
+            verticalAlignment = Alignment.CenterVertically,
+            when (task.trigger) {
+            }
+            } else {
+            },
+        )
+        ) {
+        // The label column is sized in dp for a fixed amount of text, so it has to
+        // track the font scale; the value needs a weight or it overflows the row.
+        AlertDialog(
+        AllMemoriesSheet(
+        Column {
+        Column(
+        EditMemorySheet(
+        KaiOutlinedTextField(
+        Row(
+        Spacer(Modifier.height(12.dp))
+        TaskDetailsSheet(
+        Text(
+        ToggleableHeadline(
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        end = {
+        if (hasChanges) {
+        if (isMemoryEnabled) {
+        if (isSchedulingEnabled && tasks.isNotEmpty()) {
+        memories.sortedByDescending { it.updatedAt }.toImmutableList()
+        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        start = {
+        style = MaterialTheme.typography.bodySmall,
+        text = text,
+        val onEveryHeartbeat = stringResource(Res.string.settings_task_details_on_every_heartbeat)
+        verticalAlignment = Alignment.Top,
+        }
+        },
+    )
+    ) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+    ModalBottomSheet(
+    Row(
+    StaggeredSettingsColumns(
+    Text(
+    editingMemory?.let { memory ->
+    heartbeatLog: ImmutableList<HeartbeatLogEntry>,
+    if (epochMs <= 0L) return "—"
+    if (selectedTask != null) {
+    if (showAllDialog) {
+    if (showResetDialog) {
+    isMemoryEnabled: Boolean,
+    isSchedulingEnabled: Boolean,
+    memories: ImmutableList<MemoryEntry>,
+    memory: MemoryEntry,
+    onCancelTask: (String) -> Unit,
+    onDeleteMemory: (String) -> Unit,
+    onDismiss: () -> Unit,
+    onEditMemory: (MemoryEntry) -> Unit,
+    onSave: (String) -> Unit,
+    onSaveSoul: (String) -> Unit,
+    onToggleMemory: (Boolean) -> Unit,
+    onToggleScheduling: (Boolean) -> Unit,
+    onUpdateMemory: (String, String) -> Unit,
+    return "${local.day} $month ${local.year} ${local.hour}:$minute"
+    soulText: String,
+    task: ScheduledTask,
+    tasks: ImmutableList<ScheduledTask>,
+    val deleteContentDescription = stringResource(Res.string.settings_memories_delete)
+    val displayText = soulText.ifEmpty { localizedDefault }
+    val hasChanges = content != memory.content && content.isNotBlank()
+    val hasChanges = editedText != displayText
+    val instant = Instant.fromEpochMilliseconds(epochMs)
+    val local = instant.toLocalDateTime(zone)
+    val localizedDefault = stringResource(Res.string.default_soul)
+    val maxChars = 4000
+    val minute = local.minute.toString().padStart(2, '0')
+    val month = local.month.name.take(3).lowercase().replaceFirstChar { it.uppercase() }
+    val previewMemories = remember(sortedMemories) { sortedMemories.take(5).toImmutableList() }
+    val selectedTask = selectedTaskId?.let { id -> tasks.firstOrNull { it.id == id } }
+    val sortedMemories = remember(memories) {
+    val zone = TimeZone.currentSystemDefault()
+    var content by remember(memory.key) { mutableStateOf(memory.content) }
+    var editedText by remember(displayText) { mutableStateOf(displayText) }
+    var editingMemory by remember { mutableStateOf<MemoryEntry?>(null) }
+    var selectedTaskId by remember { mutableStateOf<String?>(null) }
+    var showAllDialog by remember { mutableStateOf(false) }
+    var showResetDialog by remember { mutableStateOf(false) }
+    }
+) {
+@Composable
 @file:OptIn(ExperimentalMaterial3Api::class)
-
-package com.inspiredandroid.kai.ui.settings
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -79,630 +429,23 @@ import kai.composeapp.generated.resources.settings_task_details_schedule
 import kai.composeapp.generated.resources.settings_task_details_scheduled_for
 import kai.composeapp.generated.resources.settings_task_details_status
 import kai.composeapp.generated.resources.settings_task_details_trigger
+import kotlin.time.Instant
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.offsetAt
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringResource
-import kotlin.time.Instant
-
-@Composable
 internal fun AgentContent(uiState: SettingsUiState, actions: SettingsActions) {
-    StaggeredSettingsColumns(
-        start = {
-            SettingsCard {
-                SoulEditor(
-                    soulText = uiState.soulText,
-                    onSaveSoul = actions.onSaveSoul,
-                )
-            }
-            SettingsCard {
-                ScheduledTaskList(
-                    tasks = uiState.scheduledTasks,
-                    heartbeatLog = uiState.heartbeatLog,
-                    onCancelTask = actions.onCancelTask,
-                    isSchedulingEnabled = uiState.isSchedulingEnabled,
-                    onToggleScheduling = actions.onToggleScheduling,
-                )
-            }
-            SettingsCard {
-                MemoryList(
-                    memories = uiState.memories,
-                    onDeleteMemory = actions.onDeleteMemory,
-                    onUpdateMemory = actions.onUpdateMemory,
-                    isMemoryEnabled = uiState.isMemoryEnabled,
-                    onToggleMemory = actions.onToggleMemory,
-                )
-            }
-        },
-        end = {
-            SettingsCard {
-                HeartbeatSection(
-                    isHeartbeatEnabled = uiState.isHeartbeatEnabled,
-                    heartbeatIntervalMinutes = uiState.heartbeatIntervalMinutes,
-                    activeHoursStart = uiState.heartbeatActiveHoursStart,
-                    activeHoursEnd = uiState.heartbeatActiveHoursEnd,
-                    heartbeatPrompt = uiState.heartbeatPrompt,
-                    heartbeatLog = uiState.heartbeatLog,
-                    heartbeatServiceEntries = uiState.heartbeatServiceEntries,
-                    heartbeatSelectedInstanceId = uiState.heartbeatSelectedInstanceId,
-                    isRefreshing = uiState.isRefreshingHeartbeat,
-                    onToggleHeartbeat = actions.onToggleHeartbeat,
-                    onChangeInterval = actions.onChangeHeartbeatInterval,
-                    onChangeActiveHours = actions.onChangeHeartbeatActiveHours,
-                    onSaveHeartbeatPrompt = actions.onSaveHeartbeatPrompt,
-                    onChangeHeartbeatService = actions.onChangeHeartbeatService,
-                    onRefresh = actions.onRefreshHeartbeat,
-                )
-            }
-            if (uiState.showEmailToggle) {
-                SettingsCard {
-                    EmailSection(
-                        isEmailEnabled = uiState.isEmailEnabled,
-                        emailAccounts = uiState.emailAccounts,
-                        pollIntervalMinutes = uiState.emailPollIntervalMinutes,
-                        pendingCount = uiState.emailPendingCount,
-                        syncStates = uiState.emailSyncStates,
-                        refreshingAccountIds = uiState.refreshingEmailAccountIds,
-                        onToggleEmail = actions.onToggleEmail,
-                        onRemoveAccount = actions.onRemoveEmailAccount,
-                        onChangePollInterval = actions.onChangeEmailPollInterval,
-                        onRefreshAccount = actions.onRefreshEmailAccount,
-                    )
-                }
-            }
-            if (uiState.showSmsSection) {
-                SettingsCard {
-                    SmsSection(
-                        isSmsEnabled = uiState.isSmsEnabled,
-                        permissionGranted = uiState.smsPermissionGranted,
-                        pollIntervalMinutes = uiState.smsPollIntervalMinutes,
-                        pendingCount = uiState.smsPendingCount,
-                        syncState = uiState.smsSyncState,
-                        isRefreshing = uiState.isRefreshingSms,
-                        isSmsSendEnabled = uiState.isSmsSendEnabled,
-                        sendPermissionGranted = uiState.smsSendPermissionGranted,
-                        onToggleSms = actions.onToggleSms,
-                        onChangePollInterval = actions.onChangeSmsPollInterval,
-                        onRefresh = actions.onRefreshSms,
-                        onToggleSmsSend = actions.onToggleSmsSend,
-                    )
-                }
-            }
-            if (uiState.showNotificationsSection) {
-                SettingsCard {
-                    NotificationsSection(
-                        isEnabled = uiState.isNotificationsEnabled,
-                        accessGranted = uiState.notificationListenerAccessGranted,
-                        listenerBound = uiState.notificationListenerBound,
-                        pendingCount = uiState.notificationPendingCount,
-                        onToggle = actions.onToggleNotifications,
-                        onOpenAccessSettings = actions.onOpenNotificationListenerSettings,
-                        onClearPending = actions.onClearPendingNotifications,
-                    )
-                }
-            }
-        },
-    )
-}
-
-@Composable
-private fun SoulEditor(
-    soulText: String,
-    onSaveSoul: (String) -> Unit,
-) {
-    val localizedDefault = stringResource(Res.string.default_soul)
-    val displayText = soulText.ifEmpty { localizedDefault }
-    var editedText by remember(displayText) { mutableStateOf(displayText) }
-    val hasChanges = editedText != displayText
-    val maxChars = 4000
-
-    var showResetDialog by remember { mutableStateOf(false) }
-
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = stringResource(Res.string.settings_soul),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onBackground,
-                modifier = Modifier.weight(1f),
-            )
-            if (soulText.isNotEmpty()) {
-                IconButton(
-                    onClick = { showResetDialog = true },
-                    modifier = Modifier.handCursor(),
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Replay,
-                        contentDescription = stringResource(Res.string.settings_soul_reset),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-            }
-        }
-        Text(
-            text = stringResource(Res.string.settings_soul_description),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.height(12.dp))
-
-        KaiOutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            value = editedText,
-            onValueChange = { if (it.length <= maxChars) editedText = it },
-            minLines = 8,
-            maxLines = 8,
-            label = {
-                Text(
-                    stringResource(Res.string.settings_soul),
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
-            },
-        )
-
-        Text(
-            text = "${editedText.length}/$maxChars",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.End,
-        )
-
-        if (hasChanges) {
-            Spacer(Modifier.height(8.dp))
-            Button(
-                onClick = { onSaveSoul(editedText.trim()) },
-                modifier = Modifier.align(CenterHorizontally).handCursor(),
-            ) {
-                Text(stringResource(Res.string.settings_soul_save))
-            }
-        }
-    }
-
-    if (showResetDialog) {
-        AlertDialog(
-            onDismissRequest = { showResetDialog = false },
-            title = { Text(stringResource(Res.string.settings_soul_reset)) },
-            text = { Text(stringResource(Res.string.settings_soul_reset_confirm)) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        showResetDialog = false
-                        onSaveSoul("")
-                        editedText = localizedDefault
-                    },
-                    modifier = Modifier.handCursor(),
-                ) {
-                    Text(stringResource(Res.string.settings_soul_reset))
-                }
-            },
-            dismissButton = {
-                TextButton(
-                    onClick = { showResetDialog = false },
-                    modifier = Modifier.handCursor(),
-                ) {
-                    Text(stringResource(Res.string.settings_soul_reset_cancel))
-                }
-            },
-        )
-    }
-}
-
-@Composable
-private fun MemoryList(
-    memories: ImmutableList<MemoryEntry>,
-    onDeleteMemory: (String) -> Unit,
-    onUpdateMemory: (String, String) -> Unit,
-    isMemoryEnabled: Boolean,
-    onToggleMemory: (Boolean) -> Unit,
-) {
-    var showAllDialog by remember { mutableStateOf(false) }
-    var editingMemory by remember { mutableStateOf<MemoryEntry?>(null) }
-
-    val sortedMemories = remember(memories) {
-        memories.sortedByDescending { it.updatedAt }.toImmutableList()
-    }
-    val previewMemories = remember(sortedMemories) { sortedMemories.take(5).toImmutableList() }
-
-    Column(modifier = Modifier.fillMaxWidth()) {
-        ToggleableHeadline(
-            title = stringResource(Res.string.settings_memories),
-            description = stringResource(Res.string.settings_memories_description),
-            checked = isMemoryEnabled,
-            onCheckedChange = onToggleMemory,
-        )
-        Spacer(Modifier.height(12.dp))
-
-        if (isMemoryEnabled) {
-            previewMemories.forEach { memory ->
-                SettingsListItem(
-                    title = memory.key,
-                    subtitle = memory.content,
-                    onDelete = { onDeleteMemory(memory.key) },
-                    deleteContentDescription = stringResource(Res.string.settings_memories_delete),
-                    subtitleMaxLines = 3,
-                    onClick = { editingMemory = memory },
-                )
-                Spacer(Modifier.height(8.dp))
-            }
-            if (sortedMemories.size > previewMemories.size) {
-                OutlinedButton(
-                    onClick = { showAllDialog = true },
-                    modifier = Modifier.align(CenterHorizontally).handCursor(),
-                ) {
-                    Text(stringResource(Res.string.settings_memories_show_all, sortedMemories.size))
-                }
-            }
-        }
-    }
-
-    if (showAllDialog) {
-        AllMemoriesSheet(
-            memories = sortedMemories,
-            onDismiss = { showAllDialog = false },
-            onDeleteMemory = onDeleteMemory,
-            onEditMemory = { editingMemory = it },
-        )
-    }
-
-    editingMemory?.let { memory ->
-        EditMemorySheet(
-            memory = memory,
-            onDismiss = { editingMemory = null },
-            onSave = { newContent ->
-                onUpdateMemory(memory.key, newContent)
-                editingMemory = null
-            },
-        )
-    }
-}
-
-@Composable
+package com.inspiredandroid.kai.ui.settings
 private fun AllMemoriesSheet(
-    memories: ImmutableList<MemoryEntry>,
-    onDismiss: () -> Unit,
-    onDeleteMemory: (String) -> Unit,
-    onEditMemory: (MemoryEntry) -> Unit,
-) {
-    val deleteContentDescription = stringResource(Res.string.settings_memories_delete)
-    ModalBottomSheet(
-        onDismissRequest = onDismiss,
-        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-        ) {
-            Text(
-                text = stringResource(Res.string.settings_memories_all_title),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Spacer(Modifier.height(12.dp))
-            memories.forEach { memory ->
-                SettingsListItem(
-                    title = memory.key,
-                    subtitle = memory.content,
-                    onDelete = { onDeleteMemory(memory.key) },
-                    deleteContentDescription = deleteContentDescription,
-                    subtitleMaxLines = 3,
-                    onClick = { onEditMemory(memory) },
-                )
-                Spacer(Modifier.height(8.dp))
-            }
-            Spacer(Modifier.height(8.dp))
-        }
-    }
-}
-
-@Composable
 private fun EditMemorySheet(
-    memory: MemoryEntry,
-    onDismiss: () -> Unit,
-    onSave: (String) -> Unit,
-) {
-    var content by remember(memory.key) { mutableStateOf(memory.content) }
-    val hasChanges = content != memory.content && content.isNotBlank()
-
-    ModalBottomSheet(
-        onDismissRequest = onDismiss,
-        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-        ) {
-            Text(
-                text = stringResource(Res.string.settings_memories_edit_title),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Spacer(Modifier.height(12.dp))
-            Text(
-                text = memory.key,
-                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Spacer(Modifier.height(8.dp))
-            KaiOutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = content,
-                onValueChange = { content = it },
-                minLines = 4,
-                maxLines = 10,
-            )
-            Spacer(Modifier.height(12.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End,
-            ) {
-                TextButton(
-                    onClick = onDismiss,
-                    modifier = Modifier.handCursor(),
-                ) {
-                    Text(stringResource(Res.string.settings_memories_edit_cancel))
-                }
-                Spacer(Modifier.width(8.dp))
-                TextButton(
-                    onClick = { onSave(content.trim()) },
-                    enabled = hasChanges,
-                    modifier = Modifier.handCursor(),
-                ) {
-                    Text(stringResource(Res.string.settings_memories_edit_save))
-                }
-            }
-            Spacer(Modifier.height(8.dp))
-        }
-    }
-}
-
-@Composable
-private fun ScheduledTaskList(
-    tasks: ImmutableList<ScheduledTask>,
-    heartbeatLog: ImmutableList<HeartbeatLogEntry>,
-    onCancelTask: (String) -> Unit,
-    isSchedulingEnabled: Boolean,
-    onToggleScheduling: (Boolean) -> Unit,
-) {
-    var selectedTaskId by remember { mutableStateOf<String?>(null) }
-
-    Column(modifier = Modifier.fillMaxWidth()) {
-        ToggleableHeadline(
-            title = stringResource(Res.string.settings_scheduled_tasks),
-            description = stringResource(Res.string.settings_scheduled_tasks_description),
-            checked = isSchedulingEnabled,
-            onCheckedChange = onToggleScheduling,
-        )
-        Spacer(Modifier.height(12.dp))
-
-        val onEveryHeartbeat = stringResource(Res.string.settings_task_details_on_every_heartbeat)
-        if (isSchedulingEnabled && tasks.isNotEmpty()) {
-            tasks.forEach { task ->
-                val subtitle = when (task.trigger) {
-                    TaskTrigger.HEARTBEAT -> "${task.status} - $onEveryHeartbeat"
-
-                    TaskTrigger.CRON -> "${task.status} - ${task.cron?.let { describeCron(it) } ?: "cron"}"
-
-                    TaskTrigger.TIME -> {
-                        val instant = Instant.fromEpochMilliseconds(task.scheduledAtEpochMs)
-                        val zone = TimeZone.currentSystemDefault()
-                        val scheduledTime = instant.toLocalDateTime(zone)
-                        val offset = zone.offsetAt(instant)
-                        "${task.status} - $scheduledTime $offset"
-                    }
-                }
-                SettingsListItem(
-                    title = task.description,
-                    subtitle = subtitle,
-                    onClick = { selectedTaskId = task.id },
-                    onDelete = { onCancelTask(task.id) },
-                    deleteContentDescription = stringResource(Res.string.settings_scheduled_tasks_cancel),
-                )
-                Spacer(Modifier.height(8.dp))
-            }
-        }
-    }
-
-    val selectedTask = selectedTaskId?.let { id -> tasks.firstOrNull { it.id == id } }
-    if (selectedTask != null) {
-        TaskDetailsSheet(
-            task = selectedTask,
-            heartbeatLog = heartbeatLog,
-            onDismiss = { selectedTaskId = null },
-        )
-    }
-}
-
-@Composable
-private fun TaskDetailsSheet(
-    task: ScheduledTask,
-    heartbeatLog: ImmutableList<HeartbeatLogEntry>,
-    onDismiss: () -> Unit,
-) {
-    ModalBottomSheet(
-        onDismissRequest = onDismiss,
-        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-        ) {
-            Text(
-                text = task.description,
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Spacer(Modifier.height(12.dp))
-
-            TaskDetailRow(
-                label = stringResource(Res.string.settings_task_details_trigger),
-                value = task.trigger.name,
-            )
-            TaskDetailRow(
-                label = stringResource(Res.string.settings_task_details_status),
-                value = task.status.name,
-            )
-            when (task.trigger) {
-                TaskTrigger.TIME -> TaskDetailRow(
-                    label = stringResource(Res.string.settings_task_details_scheduled_for),
-                    value = formatTaskInstant(task.scheduledAtEpochMs),
-                )
-
-                TaskTrigger.CRON -> {
-                    TaskDetailRow(
-                        label = stringResource(Res.string.settings_task_details_schedule),
-                        value = task.cron?.let { describeCron(it) } ?: "cron",
-                    )
-                    TaskDetailRow(
-                        label = stringResource(Res.string.settings_task_details_next_run),
-                        value = formatTaskInstant(task.scheduledAtEpochMs),
-                    )
-                }
-
-                TaskTrigger.HEARTBEAT -> TaskDetailRow(
-                    label = stringResource(Res.string.settings_task_details_schedule),
-                    value = stringResource(Res.string.settings_task_details_on_every_heartbeat),
-                )
-            }
-            TaskDetailRow(
-                label = stringResource(Res.string.settings_task_details_created),
-                value = formatTaskInstant(task.createdAtEpochMs),
-            )
-            if (task.consecutiveFailures > 0) {
-                TaskDetailRow(
-                    label = stringResource(Res.string.settings_task_details_consecutive_failures),
-                    value = task.consecutiveFailures.toString(),
-                )
-            }
-            // The scheduler stores its retry/backoff phrasing in `lastResult` ("Failed at ...:
-            // ... (retry after 120s backoff)"). Surface it so the user can see what the
-            // scheduler is going to do next, not just what already happened.
-            task.lastResult?.takeIf { it.isNotBlank() }?.let { result ->
-                TaskDetailRow(
-                    label = stringResource(Res.string.settings_task_details_last_result),
-                    value = result,
-                )
-            }
-
-            Spacer(Modifier.height(16.dp))
-            Text(
-                text = stringResource(Res.string.settings_heartbeat_recent),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Spacer(Modifier.height(4.dp))
-
-            if (task.trigger == TaskTrigger.HEARTBEAT) {
-                // Heartbeat additions don't carry their own log — they fire as part of every
-                // heartbeat run, so the heartbeat-wide log is the right surface.
-                if (heartbeatLog.isEmpty()) {
-                    EmptyLogText(stringResource(Res.string.settings_task_details_no_heartbeat_runs))
-                } else {
-                    heartbeatLog.forEach { entry ->
-                        ExecutionLogRow(
-                            success = entry.success,
-                            timestampEpochMs = entry.timestampEpochMs,
-                            message = entry.error,
-                        )
-                    }
-                }
-            } else {
-                if (task.recentExecutions.isEmpty()) {
-                    EmptyLogText(stringResource(Res.string.settings_task_details_no_runs))
-                } else {
-                    task.recentExecutions.forEach { entry ->
-                        ExecutionLogRow(
-                            success = entry.success,
-                            timestampEpochMs = entry.timestampEpochMs,
-                            message = entry.message,
-                        )
-                    }
-                }
-            }
-            Spacer(Modifier.height(16.dp))
-        }
-    }
-}
-
-@Composable
-private fun TaskDetailRow(label: String, value: String) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
-    ) {
-        // The label column is sized in dp for a fixed amount of text, so it has to
-        // track the font scale; the value needs a weight or it overflows the row.
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.width(140.dp * LocalDensity.current.fontScale),
-        )
-        Text(
-            text = value,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.weight(1f),
-        )
-    }
-}
-
-@Composable
-private fun ExecutionLogRow(success: Boolean, timestampEpochMs: Long, message: String?) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
-        verticalAlignment = Alignment.Top,
-    ) {
-        Text(
-            text = if (success) stringResource(Res.string.execution_log_status_ok) else stringResource(Res.string.execution_log_status_fail),
-            style = MaterialTheme.typography.labelSmall,
-            color = if (success) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
-            modifier = Modifier.widthIn(min = 36.dp * LocalDensity.current.fontScale),
-        )
-        Column {
-            Text(
-                text = formatTaskInstant(timestampEpochMs),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            if (!message.isNullOrBlank()) {
-                Text(
-                    text = message,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = if (success) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.error,
-                    maxLines = 4,
-                    overflow = TextOverflow.Ellipsis,
-                )
-            }
-        }
-    }
-}
-
-@Composable
 private fun EmptyLogText(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.bodySmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-    )
-}
-
+private fun ExecutionLogRow(success: Boolean, timestampEpochMs: Long, message: String?) {
+private fun MemoryList(
+private fun ScheduledTaskList(
+private fun SoulEditor(
+private fun TaskDetailRow(label: String, value: String) {
+private fun TaskDetailsSheet(
 private fun formatTaskInstant(epochMs: Long): String {
-    if (epochMs <= 0L) return "—"
-    val instant = Instant.fromEpochMilliseconds(epochMs)
-    val zone = TimeZone.currentSystemDefault()
-    val local = instant.toLocalDateTime(zone)
-    val month = local.month.name.take(3).lowercase().replaceFirstChar { it.uppercase() }
-    val minute = local.minute.toString().padStart(2, '0')
-    return "${local.day} $month ${local.year} ${local.hour}:$minute"
 }

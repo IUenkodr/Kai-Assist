@@ -1,68 +1,35 @@
+
+        TODO("Not yet implemented")
+        callback: (Result<Unit>) -> Unit,
+        clearQueue: Boolean,
+        clearQueueOnCancellation: Boolean,
+        get() = TODO("Not yet implemented")
+        get() = null
+        set(value) {}
+        text: String,
+    ) {
+    @ExperimentalVoiceApi
+    override fun close() {
+    override fun enqueue(text: String, clearQueue: Boolean) {
+    override fun plusAssign(text: String) {
+    override fun say(
+    override fun stop() {
+    override suspend fun say(
+    override val isSynthesizing: StateFlow<Boolean>
+    override val isWarmingUp: StateFlow<Boolean>
+    override val language: String = "en-US"
+    override val voices: Sequence<Voice> = emptySequence()
+    override var currentVoice: Voice?
+    override var isMuted: Boolean
+    override var pitch: Float
+    override var rate: Float
+    override var volume: Int
+    }
 @file:OptIn(ExperimentalVoiceApi::class)
-
-package com.inspiredandroid.kai.screenshots
-
+class FakeTextToSpeechInstance : TextToSpeechInstance {
 import kotlinx.coroutines.flow.StateFlow
 import nl.marc_apps.tts.TextToSpeechInstance
 import nl.marc_apps.tts.Voice
 import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
-
-class FakeTextToSpeechInstance : TextToSpeechInstance {
-    override val isSynthesizing: StateFlow<Boolean>
-        get() = TODO("Not yet implemented")
-    override val isWarmingUp: StateFlow<Boolean>
-        get() = TODO("Not yet implemented")
-    override var volume: Int
-        get() = TODO("Not yet implemented")
-        set(value) {}
-    override var isMuted: Boolean
-        get() = TODO("Not yet implemented")
-        set(value) {}
-    override var pitch: Float
-        get() = TODO("Not yet implemented")
-        set(value) {}
-    override var rate: Float
-        get() = TODO("Not yet implemented")
-        set(value) {}
-    override val language: String = "en-US"
-
-    @ExperimentalVoiceApi
-    override var currentVoice: Voice?
-        get() = null
-        set(value) {}
-
-    @ExperimentalVoiceApi
-    override val voices: Sequence<Voice> = emptySequence()
-
-    override fun enqueue(text: String, clearQueue: Boolean) {
-        TODO("Not yet implemented")
-    }
-
-    override fun say(
-        text: String,
-        clearQueue: Boolean,
-        callback: (Result<Unit>) -> Unit,
-    ) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun say(
-        text: String,
-        clearQueue: Boolean,
-        clearQueueOnCancellation: Boolean,
-    ) {
-        TODO("Not yet implemented")
-    }
-
-    override fun plusAssign(text: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun stop() {
-        TODO("Not yet implemented")
-    }
-
-    override fun close() {
-        TODO("Not yet implemented")
-    }
+package com.inspiredandroid.kai.screenshots
 }

@@ -1,7 +1,98 @@
+
+                    content()
+                FakeTextToSpeechInstance(),
+                LocalInspectionMode provides true,
+                LocalPreviewImages provides previewImages,
+                Theme(colorScheme = colorScheme) {
+                initialSandboxOpen = true,
+                isSandboxAvailable = true,
+                locale = deviceLocale,
+                previewSandboxLines = ScreenshotTestData.sandboxTerminalLines,
+                previewSandboxState = ScreenshotTestData.sandboxState,
+                softButtons = false,
+                uiState = ScreenshotTestData.chatEmptyState,
+                uiState = ScreenshotTestData.localizedChatWithDynamicUi(locale),
+                uiState = ScreenshotTestData.localizedChatWithMessages(locale),
+                }
+            "${parts[0]}-r${parts[1]}"
+            "android:Theme.Material.Light.NoActionBar"
+            "android:Theme.Material.NoActionBar"
+            )
+            ) {
+            ),
+            ChatScreenContent(
+            CompositionLocalProvider(
+            Locale(locale)
+            Locale(parts[0], parts[1])
+            SettingsScreenContent(uiState = ScreenshotTestData.freeConnected)
+            SettingsScreenContent(uiState = ScreenshotTestData.settingsAgent)
+            SettingsScreenContent(uiState = ScreenshotTestData.settingsTools)
+            deviceConfig = DeviceConfig.PIXEL_TABLET.copy(
+            locale
+            val parts = locale.split("-")
+            }
+        )
+        @JvmStatic
+        @Parameterized.Parameters(name = "{1}")
+        Locale.setDefault(newLocale)
+        Locale.setDefault(originalLocale)
+        colorScheme: ColorScheme,
+        content: @Composable () -> Unit,
+        deviceConfig = DeviceConfig.PIXEL_TABLET.copy(softButtons = false),
+        fun locales() = StoreLocales.all
+        loadPreviewImage("resource://cacio_e_pepe.png", "/cacio_e_pepe.png")
+        loadPreviewImage("resource://orc_survival.png", "/orc_survival.png")
+        name: String,
+        originalLocale = Locale.getDefault()
+        paparazzi.snapshot(name = "tablet_${playStoreLocale}_$name") {
+        paparazzi.unsafeUpdateConfig(
+        paparazzi.unsafeUpdateConfig(theme = theme)
+        previewImages[key] = bitmap.asImageBitmap()
+        setResourceReaderAndroidContext(paparazzi.context)
+        showSystemUi = true,
+        snap("01", LightColorScheme) {
+        snap("02", DarkColorScheme) {
+        snap("03", LightColorScheme) {
+        snap("04", DarkColorScheme) {
+        snap("05", LightColorScheme) {
+        snap("06", DarkColorScheme) {
+        snap("07", DarkColorScheme) {
+        useDeviceResolution = true,
+        val bitmap = BitmapFactory.decodeStream(javaClass.getResourceAsStream(resourcePath)) ?: return
+        val deviceLocale = if (locale.contains("-")) {
+        val newLocale = if (locale.contains("-")) {
+        val theme = if (colorScheme == DarkColorScheme) {
+        }
+        } else {
+    )
+    ) {
+    @After
+    @Before
+    @OptIn(ExperimentalResourceApi::class)
+    @Test
+    @get:Rule
+    companion object {
+    fun chatEmptyState() {
+    fun chatWithDynamicUi() {
+    fun chatWithMessages() {
+    fun settingsAgent() {
+    fun settingsFree() {
+    fun settingsSandbox() {
+    fun settingsTools() {
+    fun setup() {
+    fun tearDown() {
+    private fun loadPreviewImage(key: String, resourcePath: String) {
+    private fun snap(
+    private lateinit var originalLocale: Locale
+    private val locale: String,
+    private val playStoreLocale: String,
+    private val previewImages = mutableMapOf<String, ImageBitmap>()
+    val paparazzi = Paparazzi(
+    }
+) {
+@RunWith(Parameterized::class)
 @file:OptIn(ExperimentalVoiceApi::class)
-
-package com.inspiredandroid.kai.screenshots
-
+class TabletStoreScreenshotTest(
 import android.graphics.BitmapFactory
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
@@ -17,6 +108,7 @@ import com.inspiredandroid.kai.ui.Theme
 import com.inspiredandroid.kai.ui.chat.ChatScreenContent
 import com.inspiredandroid.kai.ui.dynamicui.LocalPreviewImages
 import com.inspiredandroid.kai.ui.settings.SettingsScreenContent
+import java.util.Locale
 import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.setResourceReaderAndroidContext
@@ -26,152 +118,5 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import java.util.Locale
-
-@RunWith(Parameterized::class)
-class TabletStoreScreenshotTest(
-    private val locale: String,
-    private val playStoreLocale: String,
-) {
-    companion object {
-        @JvmStatic
-        @Parameterized.Parameters(name = "{1}")
-        fun locales() = StoreLocales.all
-    }
-
-    @get:Rule
-    val paparazzi = Paparazzi(
-        deviceConfig = DeviceConfig.PIXEL_TABLET.copy(softButtons = false),
-        showSystemUi = true,
-        useDeviceResolution = true,
-    )
-
-    private lateinit var originalLocale: Locale
-    private val previewImages = mutableMapOf<String, ImageBitmap>()
-
-    @OptIn(ExperimentalResourceApi::class)
-    @Before
-    fun setup() {
-        originalLocale = Locale.getDefault()
-        val newLocale = if (locale.contains("-")) {
-            val parts = locale.split("-")
-            Locale(parts[0], parts[1])
-        } else {
-            Locale(locale)
-        }
-        Locale.setDefault(newLocale)
-
-        val deviceLocale = if (locale.contains("-")) {
-            val parts = locale.split("-")
-            "${parts[0]}-r${parts[1]}"
-        } else {
-            locale
-        }
-        paparazzi.unsafeUpdateConfig(
-            deviceConfig = DeviceConfig.PIXEL_TABLET.copy(
-                softButtons = false,
-                locale = deviceLocale,
-            ),
-        )
-        setResourceReaderAndroidContext(paparazzi.context)
-        loadPreviewImage("resource://orc_survival.png", "/orc_survival.png")
-        loadPreviewImage("resource://cacio_e_pepe.png", "/cacio_e_pepe.png")
-    }
-
-    private fun loadPreviewImage(key: String, resourcePath: String) {
-        val bitmap = BitmapFactory.decodeStream(javaClass.getResourceAsStream(resourcePath)) ?: return
-        previewImages[key] = bitmap.asImageBitmap()
-    }
-
-    @After
-    fun tearDown() {
-        Locale.setDefault(originalLocale)
-    }
-
-    private fun snap(
-        name: String,
-        colorScheme: ColorScheme,
-        content: @Composable () -> Unit,
-    ) {
-        val theme = if (colorScheme == DarkColorScheme) {
-            "android:Theme.Material.NoActionBar"
-        } else {
-            "android:Theme.Material.Light.NoActionBar"
-        }
-        paparazzi.unsafeUpdateConfig(theme = theme)
-        paparazzi.snapshot(name = "tablet_${playStoreLocale}_$name") {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-                LocalPreviewImages provides previewImages,
-            ) {
-                Theme(colorScheme = colorScheme) {
-                    content()
-                }
-            }
-        }
-    }
-
-    @Test
-    fun chatEmptyState() {
-        snap("01", LightColorScheme) {
-            ChatScreenContent(
-                uiState = ScreenshotTestData.chatEmptyState,
-                FakeTextToSpeechInstance(),
-            )
-        }
-    }
-
-    @Test
-    fun chatWithMessages() {
-        snap("02", DarkColorScheme) {
-            ChatScreenContent(
-                uiState = ScreenshotTestData.localizedChatWithMessages(locale),
-                FakeTextToSpeechInstance(),
-            )
-        }
-    }
-
-    @Test
-    fun chatWithDynamicUi() {
-        snap("03", LightColorScheme) {
-            ChatScreenContent(
-                uiState = ScreenshotTestData.localizedChatWithDynamicUi(locale),
-                FakeTextToSpeechInstance(),
-            )
-        }
-    }
-
-    @Test
-    fun settingsFree() {
-        snap("04", DarkColorScheme) {
-            SettingsScreenContent(uiState = ScreenshotTestData.freeConnected)
-        }
-    }
-
-    @Test
-    fun settingsTools() {
-        snap("05", LightColorScheme) {
-            SettingsScreenContent(uiState = ScreenshotTestData.settingsTools)
-        }
-    }
-
-    @Test
-    fun settingsAgent() {
-        snap("06", DarkColorScheme) {
-            SettingsScreenContent(uiState = ScreenshotTestData.settingsAgent)
-        }
-    }
-
-    @Test
-    fun settingsSandbox() {
-        snap("07", DarkColorScheme) {
-            ChatScreenContent(
-                uiState = ScreenshotTestData.chatEmptyState,
-                isSandboxAvailable = true,
-                initialSandboxOpen = true,
-                previewSandboxState = ScreenshotTestData.sandboxState,
-                previewSandboxLines = ScreenshotTestData.sandboxTerminalLines,
-            )
-        }
-    }
+package com.inspiredandroid.kai.screenshots
 }

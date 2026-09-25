@@ -1,27 +1,21 @@
-package com.inspiredandroid.kai.network.tools
 
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonObject
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
-
-@Serializable
-data class ToolSchema(
+    suspend fun execute(args: Map<String, Any>): Any // Return result as JSON-serializable
+    val description: String,
     val name: String,
-    val description: String,
     val parameters: Map<String, ParameterSchema>, // e.g., type: "string", required: true
-)
-
-@Serializable
-data class ParameterSchema(
-    val type: String,
-    val description: String,
-    val required: Boolean,
     val rawSchema: JsonObject? = null,
-)
-
-interface Tool {
+    val required: Boolean,
     val schema: ToolSchema
     val timeout: Duration get() = 30.seconds
-    suspend fun execute(args: Map<String, Any>): Any // Return result as JSON-serializable
+    val type: String,
+)
+@Serializable
+data class ParameterSchema(
+data class ToolSchema(
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
+interface Tool {
+package com.inspiredandroid.kai.network.tools
 }

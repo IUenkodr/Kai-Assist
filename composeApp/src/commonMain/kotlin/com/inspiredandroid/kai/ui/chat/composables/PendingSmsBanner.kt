@@ -1,5 +1,110 @@
-package com.inspiredandroid.kai.ui.chat.composables
 
+                            Text(stringResource(Res.string.sms_draft_banner_send))
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(14.dp),
+                            strokeWidth = 2.dp,
+                            style = MaterialTheme.typography.labelSmall,
+                            text = stringResource(Res.string.sms_draft_banner_sending),
+                        )
+                        CircularProgressIndicator(
+                        Res.string.sms_draft_banner_discard
+                        Res.string.sms_draft_banner_dismiss
+                        Spacer(Modifier.size(8.dp))
+                        Text(
+                        TextButton(onClick = onSend) {
+                        contentDescription = dismissLabel,
+                        draft = draft,
+                        horizontalArrangement = Arrangement.End,
+                        imageVector = vectorResource(Res.drawable.ic_close),
+                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.size(16.dp),
+                        onDiscard = { onDiscard(draft.id) },
+                        onSend = { onSend(draft.id) },
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        verticalAlignment = Alignment.CenterVertically,
+                        }
+                    )
+                    ) {
+                    Icon(
+                    PendingSmsBanner(
+                    Row(
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                    color = MaterialTheme.colorScheme.error,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.SemiBold,
+                    if (draft.status == SmsDraftStatus.SENT) {
+                    maxLines = 1,
+                    modifier = Modifier.size(24.dp).handCursor(),
+                    modifier = Modifier.weight(1f),
+                    onClick = onDiscard,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.labelMedium,
+                    style = MaterialTheme.typography.labelSmall,
+                    text = stringResource(Res.string.sms_draft_banner_failed, draft.lastError ?: "unknown error"),
+                    text = stringResource(Res.string.sms_draft_banner_sent),
+                    text = stringResource(Res.string.sms_draft_banner_to, draft.address),
+                    }
+                    } else {
+                    },
+                )
+                ) {
+                // Stable key so a status change on one draft doesn't recompose siblings.
+                IconButton(
+                SmsDraftStatus.FAILED -> Text(
+                SmsDraftStatus.PENDING -> {
+                SmsDraftStatus.SENDING -> {
+                SmsDraftStatus.SENT -> Text(
+                Text(
+                color = MaterialTheme.colorScheme.onBackground,
+                key(draft.id) {
+                maxLines = 3,
+                modifier = Modifier.fillMaxWidth(),
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.bodySmall,
+                text = draft.body,
+                val dismissLabel = stringResource(
+                verticalAlignment = Alignment.CenterVertically,
+                }
+            )
+            ) {
+            .fillMaxWidth()
+            .padding(horizontal = 12.dp, vertical = 2.dp),
+            Row(
+            Spacer(Modifier.height(4.dp))
+            Text(
+            for (draft in drafts) {
+            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            when (draft.status) {
+            }
+        ) {
+        Column(
+        border = kaiAdaptiveCardBorder(),
+        colors = kaiAdaptiveCardColors(),
+        enter = slideInVertically { -it },
+        exit = slideOutVertically { -it },
+        modifier = Modifier
+        visible = drafts.isNotEmpty(),
+        }
+    ) {
+    AnimatedVisibility(
+    Card(
+    draft: SmsDraft,
+    drafts: ImmutableList<SmsDraft>,
+    onDiscard: () -> Unit,
+    onDiscard: (String) -> Unit,
+    onSend: () -> Unit,
+    onSend: (String) -> Unit,
+    }
+ * Stack of cards, one per pending/sending/sent/failed SMS draft. Explicit
+ * confirmation gate — the AI stages drafts via `send_sms` / `reply_sms` but
+ * nothing leaves the device until the user taps Send here.
+ */
+) {
+/**
+@Composable
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
@@ -42,139 +147,7 @@ import kai.composeapp.generated.resources.sms_draft_banner_to
 import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
-
-/**
- * Stack of cards, one per pending/sending/sent/failed SMS draft. Explicit
- * confirmation gate — the AI stages drafts via `send_sms` / `reply_sms` but
- * nothing leaves the device until the user taps Send here.
- */
-@Composable
 internal fun PendingSmsBanners(
-    drafts: ImmutableList<SmsDraft>,
-    onSend: (String) -> Unit,
-    onDiscard: (String) -> Unit,
-) {
-    AnimatedVisibility(
-        visible = drafts.isNotEmpty(),
-        enter = slideInVertically { -it },
-        exit = slideOutVertically { -it },
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-        ) {
-            for (draft in drafts) {
-                // Stable key so a status change on one draft doesn't recompose siblings.
-                key(draft.id) {
-                    PendingSmsBanner(
-                        draft = draft,
-                        onSend = { onSend(draft.id) },
-                        onDiscard = { onDiscard(draft.id) },
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
+package com.inspiredandroid.kai.ui.chat.composables
 private fun PendingSmsBanner(
-    draft: SmsDraft,
-    onSend: () -> Unit,
-    onDiscard: () -> Unit,
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 2.dp),
-        colors = kaiAdaptiveCardColors(),
-        border = kaiAdaptiveCardBorder(),
-    ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = stringResource(Res.string.sms_draft_banner_to, draft.address),
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    modifier = Modifier.weight(1f),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-                val dismissLabel = stringResource(
-                    if (draft.status == SmsDraftStatus.SENT) {
-                        Res.string.sms_draft_banner_dismiss
-                    } else {
-                        Res.string.sms_draft_banner_discard
-                    },
-                )
-                IconButton(
-                    modifier = Modifier.size(24.dp).handCursor(),
-                    onClick = onDiscard,
-                ) {
-                    Icon(
-                        imageVector = vectorResource(Res.drawable.ic_close),
-                        contentDescription = dismissLabel,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(16.dp),
-                    )
-                }
-            }
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = draft.body,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onBackground,
-                maxLines = 3,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Spacer(Modifier.height(4.dp))
-            when (draft.status) {
-                SmsDraftStatus.PENDING -> {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.End,
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        TextButton(onClick = onSend) {
-                            Text(stringResource(Res.string.sms_draft_banner_send))
-                        }
-                    }
-                }
-
-                SmsDraftStatus.SENDING -> {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(14.dp),
-                            strokeWidth = 2.dp,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                        Spacer(Modifier.size(8.dp))
-                        Text(
-                            text = stringResource(Res.string.sms_draft_banner_sending),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                }
-
-                SmsDraftStatus.SENT -> Text(
-                    text = stringResource(Res.string.sms_draft_banner_sent),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.primary,
-                )
-
-                SmsDraftStatus.FAILED -> Text(
-                    text = stringResource(Res.string.sms_draft_banner_failed, draft.lastError ?: "unknown error"),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.error,
-                )
-            }
-        }
-    }
 }

@@ -1,11 +1,9 @@
-package com.inspiredandroid.kai.data
 
+    companion object Key : CoroutineContext.Key<ConversationIdElement>
+class ConversationIdElement(val conversationId: String) : AbstractCoroutineContextElement(Key) {
 import kotlin.coroutines.AbstractCoroutineContextElement
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.coroutineContext
-
-class ConversationIdElement(val conversationId: String) : AbstractCoroutineContextElement(Key) {
-    companion object Key : CoroutineContext.Key<ConversationIdElement>
-}
-
+package com.inspiredandroid.kai.data
 suspend fun currentConversationIdOrNull(): String? = coroutineContext[ConversationIdElement]?.conversationId
+}

@@ -1,5 +1,23 @@
-package com.inspiredandroid.kai
 
+                taskScheduler.appInForeground = false
+                taskScheduler.appInForeground = true
+            androidContext(this@KaiApplication)
+            modules(appModule, sandboxModule)
+            override fun onStart(owner: LifecycleOwner) {
+            override fun onStop(owner: LifecycleOwner) {
+            }
+        // Track app foreground state so the scheduler only pushes a heartbeat notification
+        // it survives backgrounding and only clears on Activity destruction.
+        // when the in-app banner isn't visible. ViewModel lifecycle is the wrong signal —
+        ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
+        startKoin {
+        super.onCreate()
+        }
+        })
+    override fun onCreate() {
+    private val taskScheduler: TaskScheduler by inject()
+    }
+class KaiApplication : Application() {
 import android.app.Application
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -9,27 +27,5 @@ import com.inspiredandroid.kai.sandbox.sandboxModule
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-
-class KaiApplication : Application() {
-
-    private val taskScheduler: TaskScheduler by inject()
-
-    override fun onCreate() {
-        super.onCreate()
-        startKoin {
-            androidContext(this@KaiApplication)
-            modules(appModule, sandboxModule)
-        }
-        // Track app foreground state so the scheduler only pushes a heartbeat notification
-        // when the in-app banner isn't visible. ViewModel lifecycle is the wrong signal —
-        // it survives backgrounding and only clears on Activity destruction.
-        ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
-            override fun onStart(owner: LifecycleOwner) {
-                taskScheduler.appInForeground = true
-            }
-            override fun onStop(owner: LifecycleOwner) {
-                taskScheduler.appInForeground = false
-            }
-        })
-    }
+package com.inspiredandroid.kai
 }

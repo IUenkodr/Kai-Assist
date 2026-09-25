@@ -1,5 +1,126 @@
-package com.inspiredandroid.kai.ui.chat.composables
 
+                                            onSelectService(entry.instanceId)
+                                        expanded = false
+                                        if (!isCurrent) {
+                                        }
+                                    entry = entry,
+                                    isCurrent = isCurrent,
+                                    onClick = {
+                                    },
+                                )
+                                .heightIn(max = maxMenuHeight)
+                                .padding(vertical = 4.dp),
+                                .verticalScroll(rememberScrollState())
+                                ServiceMenuItem(
+                                val isCurrent = entry.instanceId == current.instanceId
+                            modifier = Modifier
+                            services.forEach { entry ->
+                            }
+                        ) {
+                        Column(
+                        color = MaterialTheme.colorScheme.surface,
+                        shadowElevation = 8.dp,
+                        shape = RoundedCornerShape(16.dp),
+                        tonalElevation = 3.dp,
+                        }
+                    ) {
+                    Surface(
+                    color = subTextColor,
+                    style = MaterialTheme.typography.bodySmall,
+                    text = entry.modelId,
+                    val maxMenuHeight = maxHeight - 24.dp // keep a margin from screen edges
+                    }
+                )
+                .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape)
+                .clickable { expanded = true }
+                .clip(CircleShape)
+                .handCursor(),
+                .size(42.dp)
+                BoxWithConstraints {
+                Text(
+                color = textColor,
+                contentDescription = current.serviceName,
+                imageVector = vectorResource(current.icon),
+                modifier = Modifier.size(18.dp),
+                onDismissRequest = { expanded = false },
+                popupPositionProvider = remember(spacingPx) { AnchorAbovePositionProvider(spacingPx) },
+                properties = PopupProperties(focusable = false),
+                style = MaterialTheme.typography.bodyMedium,
+                text = entry.serviceName,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                }
+            (anchorBounds.bottom + verticalSpacing).coerceAtMost(maxY)
+            )
+            ) {
+            .background(rowBackground)
+            .clickable(onClick = onClick)
+            .clip(RoundedCornerShape(12.dp))
+            .handCursor()
+            .padding(horizontal = 12.dp, vertical = 10.dp)
+            .padding(horizontal = 4.dp)
+            .widthIn(min = 200.dp),
+            Icon(
+            Popup(
+            Text(
+            above
+            contentAlignment = Alignment.Center,
+            contentDescription = null,
+            if (entry.modelId.isNotEmpty()) {
+            imageVector = vectorResource(entry.icon),
+            modifier = Modifier
+            modifier = Modifier.size(18.dp),
+            tint = textColor,
+            val maxY = (windowSize.height - popupContentSize.height).coerceAtLeast(0)
+            val spacingPx = with(LocalDensity.current) { 8.dp.roundToPx() }
+            }
+        )
+        ) {
+        Box(
+        Color.Transparent
+        Column {
+        Icon(
+        MaterialTheme.colorScheme.onPrimaryContainer
+        MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+        MaterialTheme.colorScheme.onSurface
+        MaterialTheme.colorScheme.onSurfaceVariant
+        MaterialTheme.colorScheme.primaryContainer
+        Spacer(Modifier.width(12.dp))
+        anchorBounds: IntRect,
+        if (expanded) {
+        layoutDirection: LayoutDirection,
+        modifier = Modifier
+        popupContentSize: IntSize,
+        return IntOffset(x, y)
+        val above = anchorBounds.top - popupContentSize.height - verticalSpacing
+        val maxX = (windowSize.width - popupContentSize.width).coerceAtLeast(0)
+        val x = (anchorBounds.right - popupContentSize.width).coerceIn(0, maxX)
+        val y = if (above >= 0) {
+        verticalAlignment = Alignment.CenterVertically,
+        windowSize: IntSize,
+        }
+        } else {
+    ) {
+    ): IntOffset {
+    Box {
+    Row(
+    entry: ServiceEntry,
+    if (services.isEmpty()) return
+    isCurrent: Boolean,
+    onClick: () -> Unit,
+    onSelectService: (String) -> Unit,
+    override fun calculatePosition(
+    private val verticalSpacing: Int,
+    services: ImmutableList<ServiceEntry>,
+    val current = services.first()
+    val rowBackground = if (isCurrent) {
+    val subTextColor = if (isCurrent) {
+    val textColor = if (isCurrent) {
+    var expanded by remember { mutableStateOf(false) }
+    }
+    } else {
+) : PopupPositionProvider {
+) {
+@Composable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -42,151 +163,8 @@ import com.inspiredandroid.kai.data.ServiceEntry
 import com.inspiredandroid.kai.ui.handCursor
 import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.vectorResource
-
-@Composable
 internal fun ServiceSelector(
-    services: ImmutableList<ServiceEntry>,
-    onSelectService: (String) -> Unit,
-) {
-    if (services.isEmpty()) return
-
-    val current = services.first()
-    var expanded by remember { mutableStateOf(false) }
-
-    Box {
-        Box(
-            modifier = Modifier
-                .size(42.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape)
-                .clickable { expanded = true }
-                .handCursor(),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = vectorResource(current.icon),
-                contentDescription = current.serviceName,
-                modifier = Modifier.size(18.dp),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-
-        if (expanded) {
-            val spacingPx = with(LocalDensity.current) { 8.dp.roundToPx() }
-            Popup(
-                onDismissRequest = { expanded = false },
-                properties = PopupProperties(focusable = false),
-                popupPositionProvider = remember(spacingPx) { AnchorAbovePositionProvider(spacingPx) },
-            ) {
-                BoxWithConstraints {
-                    val maxMenuHeight = maxHeight - 24.dp // keep a margin from screen edges
-                    Surface(
-                        shape = RoundedCornerShape(16.dp),
-                        color = MaterialTheme.colorScheme.surface,
-                        tonalElevation = 3.dp,
-                        shadowElevation = 8.dp,
-                    ) {
-                        Column(
-                            modifier = Modifier
-                                .heightIn(max = maxMenuHeight)
-                                .verticalScroll(rememberScrollState())
-                                .padding(vertical = 4.dp),
-                        ) {
-                            services.forEach { entry ->
-                                val isCurrent = entry.instanceId == current.instanceId
-                                ServiceMenuItem(
-                                    entry = entry,
-                                    isCurrent = isCurrent,
-                                    onClick = {
-                                        expanded = false
-                                        if (!isCurrent) {
-                                            onSelectService(entry.instanceId)
-                                        }
-                                    },
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun ServiceMenuItem(
-    entry: ServiceEntry,
-    isCurrent: Boolean,
-    onClick: () -> Unit,
-) {
-    val rowBackground = if (isCurrent) {
-        MaterialTheme.colorScheme.primaryContainer
-    } else {
-        Color.Transparent
-    }
-    val textColor = if (isCurrent) {
-        MaterialTheme.colorScheme.onPrimaryContainer
-    } else {
-        MaterialTheme.colorScheme.onSurface
-    }
-    val subTextColor = if (isCurrent) {
-        MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
-    } else {
-        MaterialTheme.colorScheme.onSurfaceVariant
-    }
-    Row(
-        modifier = Modifier
-            .padding(horizontal = 4.dp)
-            .clip(RoundedCornerShape(12.dp))
-            .background(rowBackground)
-            .clickable(onClick = onClick)
-            .handCursor()
-            .padding(horizontal = 12.dp, vertical = 10.dp)
-            .widthIn(min = 200.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(
-            imageVector = vectorResource(entry.icon),
-            contentDescription = null,
-            modifier = Modifier.size(18.dp),
-            tint = textColor,
-        )
-        Spacer(Modifier.width(12.dp))
-        Column {
-            Text(
-                text = entry.serviceName,
-                style = MaterialTheme.typography.bodyMedium,
-                color = textColor,
-            )
-            if (entry.modelId.isNotEmpty()) {
-                Text(
-                    text = entry.modelId,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = subTextColor,
-                )
-            }
-        }
-    }
-}
-
+package com.inspiredandroid.kai.ui.chat.composables
 private class AnchorAbovePositionProvider(
-    private val verticalSpacing: Int,
-) : PopupPositionProvider {
-    override fun calculatePosition(
-        anchorBounds: IntRect,
-        windowSize: IntSize,
-        layoutDirection: LayoutDirection,
-        popupContentSize: IntSize,
-    ): IntOffset {
-        val maxX = (windowSize.width - popupContentSize.width).coerceAtLeast(0)
-        val x = (anchorBounds.right - popupContentSize.width).coerceIn(0, maxX)
-        val above = anchorBounds.top - popupContentSize.height - verticalSpacing
-        val y = if (above >= 0) {
-            above
-        } else {
-            val maxY = (windowSize.height - popupContentSize.height).coerceAtLeast(0)
-            (anchorBounds.bottom + verticalSpacing).coerceAtMost(maxY)
-        }
-        return IntOffset(x, y)
-    }
+private fun ServiceMenuItem(
 }

@@ -1,8 +1,7 @@
-package com.inspiredandroid.kai.data
 
-import kotlinx.serialization.json.Json
-
-val SharedJson = Json {
-    ignoreUnknownKeys = true
     coerceInputValues = true
+    ignoreUnknownKeys = true
+import kotlinx.serialization.json.Json
+package com.inspiredandroid.kai.data
+val SharedJson = Json {
 }

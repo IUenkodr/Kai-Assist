@@ -1,5 +1,51 @@
-package com.inspiredandroid.kai.ui.components
 
+                color = MaterialTheme.colorScheme.onBackground,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                contentDescription = deleteContentDescription,
+                contentDescription = refreshContentDescription.orEmpty(),
+                imageVector = Icons.Default.Delete,
+                isRefreshing = isRefreshing,
+                maxLines = subtitleMaxLines,
+                onClick = onRefresh,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+                style = MaterialTheme.typography.bodySmall,
+                text = subtitle,
+                text = title,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            .fillMaxWidth()
+            .kaiAdaptiveCardSurface(RoundedCornerShape(8.dp))
+            .padding(12.dp),
+            .then(if (onClick != null) Modifier.clickable(onClick = onClick).handCursor() else Modifier)
+            Icon(
+            RefreshIconButton(
+            Text(
+            modifier = Modifier.handCursor(),
+            onClick = onDelete,
+        ) {
+        Column(modifier = Modifier.weight(1f)) {
+        IconButton(
+        if (onRefresh != null) {
+        modifier = modifier
+        verticalAlignment = Alignment.CenterVertically,
+        }
+    ) {
+    Row(
+    deleteContentDescription: String?,
+    isRefreshing: Boolean = false,
+    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
+    onDelete: () -> Unit,
+    onRefresh: (() -> Unit)? = null,
+    refreshContentDescription: String? = null,
+    subtitle: String,
+    subtitleMaxLines: Int = 1,
+    title: String,
+    }
+) {
+@Composable
+fun SettingsListItem(
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,58 +66,5 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.inspiredandroid.kai.ui.handCursor
 import com.inspiredandroid.kai.ui.kaiAdaptiveCardSurface
-
-@Composable
-fun SettingsListItem(
-    title: String,
-    subtitle: String,
-    onDelete: () -> Unit,
-    deleteContentDescription: String?,
-    modifier: Modifier = Modifier,
-    subtitleMaxLines: Int = 1,
-    onClick: (() -> Unit)? = null,
-    onRefresh: (() -> Unit)? = null,
-    refreshContentDescription: String? = null,
-    isRefreshing: Boolean = false,
-) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .kaiAdaptiveCardSurface(RoundedCornerShape(8.dp))
-            .then(if (onClick != null) Modifier.clickable(onClick = onClick).handCursor() else Modifier)
-            .padding(12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Text(
-                text = subtitle,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = subtitleMaxLines,
-                overflow = TextOverflow.Ellipsis,
-            )
-        }
-        if (onRefresh != null) {
-            RefreshIconButton(
-                onClick = onRefresh,
-                isRefreshing = isRefreshing,
-                contentDescription = refreshContentDescription.orEmpty(),
-            )
-        }
-        IconButton(
-            onClick = onDelete,
-            modifier = Modifier.handCursor(),
-        ) {
-            Icon(
-                imageVector = Icons.Default.Delete,
-                contentDescription = deleteContentDescription,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-    }
+package com.inspiredandroid.kai.ui.components
 }

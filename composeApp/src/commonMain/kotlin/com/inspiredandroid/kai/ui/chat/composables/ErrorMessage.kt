@@ -1,5 +1,32 @@
-package com.inspiredandroid.kai.ui.chat.composables
 
+                contentDescription = null,
+                imageVector = vectorResource(Res.drawable.ic_refresh),
+                tint = MaterialTheme.colorScheme.onBackground,
+            )
+            Icon(
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.handCursor(),
+            onClick = retry,
+            text = text,
+        )
+        ) {
+        IconButton(
+        Spacer(Modifier.height(8.dp))
+        Text(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(16.dp),
+        }
+    ) {
+    Column(
+    error: UiError,
+    is UiError.Resource -> stringResource(error.resource)
+    is UiError.ResourceWithDetail -> "${stringResource(error.resource)}: ${error.detail}"
+    is UiError.Text -> error.message
+    retry: () -> Unit,
+    val text = uiErrorText(error)
+    }
+) {
+@Composable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -18,38 +45,7 @@ import kai.composeapp.generated.resources.Res
 import kai.composeapp.generated.resources.ic_refresh
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
-
-@Composable
-internal fun uiErrorText(error: UiError): String = when (error) {
-    is UiError.Resource -> stringResource(error.resource)
-    is UiError.Text -> error.message
-    is UiError.ResourceWithDetail -> "${stringResource(error.resource)}: ${error.detail}"
-}
-
-@Composable
 internal fun ErrorMessage(
-    error: UiError,
-    retry: () -> Unit,
-) {
-    val text = uiErrorText(error)
-    Column(
-        modifier = Modifier.padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(
-            text = text,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
-        Spacer(Modifier.height(8.dp))
-        IconButton(
-            modifier = Modifier.handCursor(),
-            onClick = retry,
-        ) {
-            Icon(
-                imageVector = vectorResource(Res.drawable.ic_refresh),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onBackground,
-            )
-        }
-    }
+internal fun uiErrorText(error: UiError): String = when (error) {
+package com.inspiredandroid.kai.ui.chat.composables
 }

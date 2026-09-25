@@ -1,7 +1,67 @@
+
+                    content()
+                FakeTextToSpeechInstance(),
+                LocalInspectionMode provides true,
+                LocalPreviewImages provides previewImages,
+                Theme(colorScheme = colorScheme) {
+                initialSandboxOpen = true,
+                isSandboxAvailable = true,
+                previewSandboxLines = ScreenshotTestData.sandboxTerminalLines,
+                previewSandboxState = ScreenshotTestData.sandboxState,
+                sandboxState = ScreenshotTestData.sandboxState,
+                uiState = ScreenshotTestData.chatEmptyState,
+                uiState = ScreenshotTestData.chatWithDynamicUi,
+                uiState = ScreenshotTestData.chatWithMessages,
+                uiState = ScreenshotTestData.freeConnected,
+                uiState = ScreenshotTestData.settingsAgent,
+                uiState = ScreenshotTestData.settingsTools,
+                }
+            "android:Theme.Material.Light.NoActionBar"
+            "android:Theme.Material.NoActionBar"
+            )
+            ) {
+            ChatScreenContent(
+            CompositionLocalProvider(
+            SettingsScreenContent(
+            }
+        colorScheme: ColorScheme,
+        content: @Composable () -> Unit,
+        deviceConfig = DeviceConfig.PIXEL_9A.copy(softButtons = false),
+        loadPreviewImage("resource://cacio_e_pepe.png", "/cacio_e_pepe.png")
+        loadPreviewImage("resource://orc_survival.png", "/orc_survival.png")
+        maxPercentDifference = 0.1,
+        paparazzi.snap(DarkColorScheme) {
+        paparazzi.snap(LightColorScheme) {
+        previewImages[key] = bitmap.asImageBitmap()
+        setResourceReaderAndroidContext(paparazzi.context)
+        showSystemUi = true,
+        snapshot {
+        unsafeUpdateConfig(theme = theme)
+        val bitmap = BitmapFactory.decodeStream(javaClass.getResourceAsStream(resourcePath)) ?: return
+        val theme = if (colorScheme == DarkColorScheme) {
+        }
+        } else {
+    )
+    ) {
+    @Before
+    @Test
+    @get:Rule
+    fun Paparazzi.snap(
+    fun chatEmptyState_light() {
+    fun chatWithDynamicUi_light() {
+    fun chatWithMessages_dark() {
+    fun settingsAgent_dark() {
+    fun settingsFree_dark() {
+    fun settingsSandbox_dark() {
+    fun settingsTools_light() {
+    fun setup() {
+    private fun loadPreviewImage(key: String, resourcePath: String) {
+    private val previewImages = mutableMapOf<String, ImageBitmap>()
+    val paparazzi = Paparazzi(
+    }
+@OptIn(ExperimentalResourceApi::class)
 @file:OptIn(ExperimentalVoiceApi::class)
-
-package com.inspiredandroid.kai.screenshots
-
+class ScreenshotTest {
 import android.graphics.BitmapFactory
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
@@ -23,124 +83,5 @@ import org.jetbrains.compose.resources.setResourceReaderAndroidContext
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-
-@OptIn(ExperimentalResourceApi::class)
-class ScreenshotTest {
-
-    @get:Rule
-    val paparazzi = Paparazzi(
-        deviceConfig = DeviceConfig.PIXEL_9A.copy(softButtons = false),
-        showSystemUi = true,
-        maxPercentDifference = 0.1,
-    )
-
-    private val previewImages = mutableMapOf<String, ImageBitmap>()
-
-    @Before
-    fun setup() {
-        setResourceReaderAndroidContext(paparazzi.context)
-        loadPreviewImage("resource://orc_survival.png", "/orc_survival.png")
-        loadPreviewImage("resource://cacio_e_pepe.png", "/cacio_e_pepe.png")
-    }
-
-    private fun loadPreviewImage(key: String, resourcePath: String) {
-        val bitmap = BitmapFactory.decodeStream(javaClass.getResourceAsStream(resourcePath)) ?: return
-        previewImages[key] = bitmap.asImageBitmap()
-    }
-
-    fun Paparazzi.snap(
-        colorScheme: ColorScheme,
-        content: @Composable () -> Unit,
-    ) {
-        val theme = if (colorScheme == DarkColorScheme) {
-            "android:Theme.Material.NoActionBar"
-        } else {
-            "android:Theme.Material.Light.NoActionBar"
-        }
-        unsafeUpdateConfig(theme = theme)
-
-        snapshot {
-            CompositionLocalProvider(
-                LocalInspectionMode provides true,
-                LocalPreviewImages provides previewImages,
-            ) {
-                Theme(colorScheme = colorScheme) {
-                    content()
-                }
-            }
-        }
-    }
-
-    @Test
-    fun chatEmptyState_light() {
-        paparazzi.snap(LightColorScheme) {
-            ChatScreenContent(
-                uiState = ScreenshotTestData.chatEmptyState,
-                FakeTextToSpeechInstance(),
-            )
-        }
-    }
-
-    @Test
-    fun chatWithMessages_dark() {
-        paparazzi.snap(DarkColorScheme) {
-            ChatScreenContent(
-                uiState = ScreenshotTestData.chatWithMessages,
-                FakeTextToSpeechInstance(),
-            )
-        }
-    }
-
-    @Test
-    fun chatWithDynamicUi_light() {
-        paparazzi.snap(LightColorScheme) {
-            ChatScreenContent(
-                uiState = ScreenshotTestData.chatWithDynamicUi,
-                FakeTextToSpeechInstance(),
-            )
-        }
-    }
-
-    @Test
-    fun settingsAgent_dark() {
-        paparazzi.snap(DarkColorScheme) {
-            SettingsScreenContent(
-                uiState = ScreenshotTestData.settingsAgent,
-                sandboxState = ScreenshotTestData.sandboxState,
-            )
-        }
-    }
-
-    @Test
-    fun settingsFree_dark() {
-        paparazzi.snap(DarkColorScheme) {
-            SettingsScreenContent(
-                uiState = ScreenshotTestData.freeConnected,
-                sandboxState = ScreenshotTestData.sandboxState,
-            )
-        }
-    }
-
-    @Test
-    fun settingsTools_light() {
-        paparazzi.snap(LightColorScheme) {
-            SettingsScreenContent(
-                uiState = ScreenshotTestData.settingsTools,
-                sandboxState = ScreenshotTestData.sandboxState,
-            )
-        }
-    }
-
-    @Test
-    fun settingsSandbox_dark() {
-        paparazzi.snap(DarkColorScheme) {
-            ChatScreenContent(
-                uiState = ScreenshotTestData.chatEmptyState,
-                isSandboxAvailable = true,
-                initialSandboxOpen = true,
-                previewSandboxState = ScreenshotTestData.sandboxState,
-                previewSandboxLines = ScreenshotTestData.sandboxTerminalLines,
-            )
-        }
-    }
+package com.inspiredandroid.kai.screenshots
 }

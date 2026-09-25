@@ -1,95 +1,59 @@
-package com.inspiredandroid.kai.email
 
-/**
- * Auto-detects IMAP/SMTP server settings based on email domain.
- */
-object ServerAutoDetect {
-
-    data class ServerConfig(
+            imapHost = "127.0.0.1",
+            imapHost = "imap.aol.com",
+            imapHost = "imap.fastmail.com",
+            imapHost = "imap.gmail.com",
+            imapHost = "imap.mail.me.com",
+            imapHost = "imap.mail.yahoo.com",
+            imapHost = "imap.zoho.com",
+            imapHost = "outlook.office365.com",
+            imapPort = 1143,
+            note = "Requires ProtonMail Bridge running locally",
+            note = "Requires an App Password. Go to Yahoo Account Security > Generate app password",
+            note = "Requires an App Password. Go to myaccount.google.com > Security > 2-Step Verification > App passwords",
+            note = "Requires an App-Specific Password. Go to appleid.apple.com > Sign-In and Security > App-Specific Passwords",
+            smtpHost = "127.0.0.1",
+            smtpHost = "smtp.aol.com",
+            smtpHost = "smtp.fastmail.com",
+            smtpHost = "smtp.gmail.com",
+            smtpHost = "smtp.mail.me.com",
+            smtpHost = "smtp.mail.yahoo.com",
+            smtpHost = "smtp.office365.com",
+            smtpHost = "smtp.zoho.com",
+            smtpPort = 1025,
+            smtpPort = 465,
+            useStartTls = false,
+        "aol.com" to ServerConfig(
+        "fastmail.com" to ServerConfig(
+        "gmail.com" to ServerConfig(
+        "googlemail.com" to ServerConfig(
+        "hotmail.com" to ServerConfig(
+        "icloud.com" to ServerConfig(
+        "live.com" to ServerConfig(
+        "mac.com" to ServerConfig(
+        "me.com" to ServerConfig(
+        "outlook.com" to ServerConfig(
+        "proton.me" to ServerConfig(
+        "protonmail.com" to ServerConfig(
+        "yahoo.com" to ServerConfig(
+        "zoho.com" to ServerConfig(
+        ),
+        return knownProviders[domain]
+        val domain = email.substringAfter("@").lowercase()
         val imapHost: String,
         val imapPort: Int = 993,
+        val note: String = "",
         val smtpHost: String,
         val smtpPort: Int = 587,
         val useStartTls: Boolean = true,
-        val note: String = "",
     )
-
-    private val knownProviders = mapOf(
-        "gmail.com" to ServerConfig(
-            imapHost = "imap.gmail.com",
-            smtpHost = "smtp.gmail.com",
-            note = "Requires an App Password. Go to myaccount.google.com > Security > 2-Step Verification > App passwords",
-        ),
-        "googlemail.com" to ServerConfig(
-            imapHost = "imap.gmail.com",
-            smtpHost = "smtp.gmail.com",
-            note = "Requires an App Password. Go to myaccount.google.com > Security > 2-Step Verification > App passwords",
-        ),
-        "outlook.com" to ServerConfig(
-            imapHost = "outlook.office365.com",
-            smtpHost = "smtp.office365.com",
-        ),
-        "hotmail.com" to ServerConfig(
-            imapHost = "outlook.office365.com",
-            smtpHost = "smtp.office365.com",
-        ),
-        "live.com" to ServerConfig(
-            imapHost = "outlook.office365.com",
-            smtpHost = "smtp.office365.com",
-        ),
-        "yahoo.com" to ServerConfig(
-            imapHost = "imap.mail.yahoo.com",
-            smtpHost = "smtp.mail.yahoo.com",
-            note = "Requires an App Password. Go to Yahoo Account Security > Generate app password",
-        ),
-        "icloud.com" to ServerConfig(
-            imapHost = "imap.mail.me.com",
-            smtpHost = "smtp.mail.me.com",
-            note = "Requires an App-Specific Password. Go to appleid.apple.com > Sign-In and Security > App-Specific Passwords",
-        ),
-        "me.com" to ServerConfig(
-            imapHost = "imap.mail.me.com",
-            smtpHost = "smtp.mail.me.com",
-            note = "Requires an App-Specific Password. Go to appleid.apple.com > Sign-In and Security > App-Specific Passwords",
-        ),
-        "mac.com" to ServerConfig(
-            imapHost = "imap.mail.me.com",
-            smtpHost = "smtp.mail.me.com",
-            note = "Requires an App-Specific Password. Go to appleid.apple.com > Sign-In and Security > App-Specific Passwords",
-        ),
-        "aol.com" to ServerConfig(
-            imapHost = "imap.aol.com",
-            smtpHost = "smtp.aol.com",
-        ),
-        "protonmail.com" to ServerConfig(
-            imapHost = "127.0.0.1",
-            imapPort = 1143,
-            smtpHost = "127.0.0.1",
-            smtpPort = 1025,
-            useStartTls = false,
-            note = "Requires ProtonMail Bridge running locally",
-        ),
-        "proton.me" to ServerConfig(
-            imapHost = "127.0.0.1",
-            imapPort = 1143,
-            smtpHost = "127.0.0.1",
-            smtpPort = 1025,
-            useStartTls = false,
-            note = "Requires ProtonMail Bridge running locally",
-        ),
-        "zoho.com" to ServerConfig(
-            imapHost = "imap.zoho.com",
-            smtpHost = "smtp.zoho.com",
-            smtpPort = 465,
-        ),
-        "fastmail.com" to ServerConfig(
-            imapHost = "imap.fastmail.com",
-            smtpHost = "smtp.fastmail.com",
-        ),
-    )
-
+    data class ServerConfig(
     fun detect(email: String): ServerConfig? {
-        val domain = email.substringAfter("@").lowercase()
-        return knownProviders[domain]
+    private val knownProviders = mapOf(
     }
+ * Auto-detects IMAP/SMTP server settings based on email domain.
+ */
+/**
+object ServerAutoDetect {
+package com.inspiredandroid.kai.email
 }

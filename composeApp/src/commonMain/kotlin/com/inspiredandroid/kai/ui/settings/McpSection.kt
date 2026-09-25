@@ -1,5 +1,285 @@
-package com.inspiredandroid.kai.ui.settings
 
+                                        .forEach { remove(it) }
+                                        .toList()
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        maxLines = 1,
+                                        onAddPopular(server)
+                                        overflow = TextOverflow.Ellipsis,
+                                        prefillPopularWithAuth(server)
+                                        style = MaterialTheme.typography.bodySmall,
+                                        text = stringResource(Res.string.settings_mcp_header_key),
+                                        text = stringResource(Res.string.settings_mcp_header_value),
+                                        text = tool.description,
+                                    )
+                                    .filter { it.key.isNotBlank() && it.value.isNotBlank() }
+                                    .forEach { put(it.key.trim(), it.value.trim()) }
+                                    // Replace any Authorization row with the dedicated API key field.
+                                    Text(
+                                    color = MaterialTheme.colorScheme.onBackground,
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    contentDescription = stringResource(Res.string.settings_mcp_remove),
+                                    if (server.requiresAuth) {
+                                    imageVector = Icons.Default.Clear,
+                                    keys.filter { it.equals("Authorization", ignoreCase = true) }
+                                    put("Authorization", authorizationHeaderValue(apiKey))
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    text = server.description,
+                                    text = server.name,
+                                    text = tool.name,
+                                    }
+                                    } else {
+                                )
+                                .clickable {
+                                .clip(CardDefaults.shape)
+                                .fillMaxWidth()
+                                .handCursor(),
+                                Icon(
+                                Text(
+                                checked = tool.isEnabled,
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
+                                headers
+                                if (requiresAuth && apiKey.isNotBlank()) {
+                                if (tool.description.isNotEmpty()) {
+                                label = {
+                                modifier = Modifier.handCursor(),
+                                modifier = Modifier.weight(0.5f),
+                                onCheckedChange = { enabled -> onToggleTool(tool.id, enabled) },
+                                onClick = { headers.removeAt(index) },
+                                onValueChange = { headers[index] = entry.copy(key = it) },
+                                onValueChange = { headers[index] = entry.copy(value = it) },
+                                singleLine = true,
+                                value = entry.key,
+                                value = entry.value,
+                                }
+                                },
+                            )
+                            ) {
+                            ),
+                            // The floating labels must stay on one line: at large font
+                            // lands on top of the URL field above it.
+                            // scales a wrapped label grows upward out of the field and
+                            Column(modifier = Modifier.padding(12.dp)) {
+                            Column(modifier = Modifier.weight(1f)) {
+                            IconButton(
+                            KaiOutlinedTextField(
+                            McpConnectionStatus.Error -> MaterialTheme.colorScheme.error
+                            Spacer(Modifier.width(8.dp))
+                            Switch(
+                            color = MaterialTheme.colorScheme.error,
+                            colors = CardDefaults.cardColors(
+                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                            modifier = Modifier
+                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                            onAdd(name, url, headerMap)
+                            text = stringResource(Res.string.settings_mcp_remove),
+                            val headerMap = buildMap {
+                            verticalAlignment = Alignment.CenterVertically,
+                            }
+                        )
+                        ) {
+                        .background(statusColor),
+                        .clip(CircleShape)
+                        .size(10.dp)
+                        // Auth-required popular servers (e.g. Jina) can still be added without a
+                        // key — some tools work unauthenticated; search needs a key later.
+                        Card(
+                        Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Row(
+                        Spacer(Modifier.height(4.dp))
+                        Spacer(Modifier.width(4.dp))
+                        Text(
+                        Text(stringResource(Res.string.settings_mcp_add))
+                        Text(stringResource(Res.string.settings_mcp_add_header))
+                        Text(stringResource(Res.string.settings_mcp_refresh))
+                        color = MaterialTheme.colorScheme.onBackground,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = when (server.connectionStatus) {
+                        enabled = name.isNotBlank() && url.isNotBlank(),
+                        label = { Text(stringResource(Res.string.settings_mcp_api_key)) },
+                        maxLines = 1,
+                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.handCursor(),
+                        onClick = {
+                        onClick = { headers.add(HeaderEntry(key = "", value = "")) },
+                        onValueChange = { apiKey = it },
+                        overflow = TextOverflow.Ellipsis,
+                        singleLine = true,
+                        style = MaterialTheme.typography.bodySmall,
+                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.titleSmall,
+                        text = server.name,
+                        text = server.url,
+                        text = statusText,
+                        text = stringResource(Res.string.settings_mcp_api_key_help),
+                        text = stringResource(Res.string.settings_mcp_no_tools),
+                        text = stringResource(Res.string.settings_mcp_popular_servers),
+                        value = apiKey,
+                        }
+                        },
+                    )
+                    ) {
+                    .padding(16.dp),
+                    .verticalScroll(mcpScrollState)
+                    KaiOutlinedTextField(
+                    McpConnectionStatus.Connected -> StatusColorConnected
+                    McpConnectionStatus.Connected -> stringResource(Res.string.settings_mcp_status_connected)
+                    McpConnectionStatus.Connecting -> StatusColorChecking
+                    McpConnectionStatus.Connecting -> stringResource(Res.string.settings_mcp_status_connecting)
+                    McpConnectionStatus.Error -> StatusColorError
+                    McpConnectionStatus.Error -> stringResource(Res.string.settings_mcp_status_error)
+                    McpConnectionStatus.Unknown -> ""
+                    McpConnectionStatus.Unknown -> StatusColorUnknown
+                    Spacer(Modifier.height(12.dp))
+                    Spacer(Modifier.height(16.dp))
+                    Spacer(Modifier.height(4.dp))
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                    TextButton(
+                    TextButton(onClick = onRefresh, modifier = Modifier.handCursor()) {
+                    TextButton(onClick = onRemove, modifier = Modifier.handCursor()) {
+                    checked = server.isEnabled,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    contentDescription = null,
+                    for (server in popularMcpServers) {
+                    for (tool in server.tools) {
+                    headers.forEachIndexed { index, entry ->
+                    horizontalArrangement = Arrangement.End,
+                    imageVector = vectorResource(Res.drawable.ic_arrow_drop_down),
+                    label = { Text(stringResource(Res.string.settings_mcp_server_name)) },
+                    label = { Text(stringResource(Res.string.settings_mcp_server_url)) },
+                    modifier = Modifier
+                    modifier = Modifier.fillMaxWidth(),
+                    onCheckedChange = onToggle,
+                    onValueChange = { name = it },
+                    onValueChange = { url = it },
+                    singleLine = true,
+                    style = MaterialTheme.typography.headlineSmall,
+                    text = stringResource(Res.string.settings_mcp_add_server),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    value = name,
+                    value = url,
+                    }
+                )
+                ) {
+                // Status dot
+                // Status text
+                // Tools list
+                Box(
+                Column(modifier = Modifier.weight(1f)) {
+                Icon(
+                KaiOutlinedTextField(
+                Row(
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(16.dp))
+                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.width(12.dp))
+                Spacer(Modifier.width(8.dp))
+                Switch(
+                Text(
+                if (popularMcpServers.isNotEmpty()) {
+                if (requiresAuth) {
+                if (server.tools.isNotEmpty()) {
+                if (statusText.isNotEmpty()) {
+                modifier = Modifier
+                modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
+                modifier = Modifier.fillMaxWidth(),
+                onRefresh = { onRefreshMcpServer(server.id) },
+                onRemove = { onRemoveMcpServer(server.id) },
+                onToggle = { enabled -> onToggleMcpServer(server.id, enabled) },
+                onToggleTool = onToggleTool,
+                scrollState = mcpScrollState,
+                server = server,
+                val statusColor = when (server.connectionStatus) {
+                val statusText = when (server.connectionStatus) {
+                verticalAlignment = Alignment.CenterVertically,
+                }
+                } else if (server.connectionStatus == McpConnectionStatus.Connected) {
+                } else {
+            )
+            ) {
+            Column(
+            McpServerCard(
+            Row(
+            Spacer(Modifier.height(8.dp))
+            Text(stringResource(Res.string.settings_mcp_add_server))
+            VerticalScrollbarForScroll(
+            color = MaterialTheme.colorScheme.onBackground,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            if (expanded) {
+            modifier = Modifier.align(Alignment.CenterHorizontally).handCursor(),
+            onAdd = onAddMcpServer,
+            onAddPopular = onAddPopularMcpServer,
+            onClick = { onShowAddDialog(true) },
+            onDismiss = { onShowAddDialog(false) },
+            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.titleMedium,
+            text = stringResource(Res.string.settings_mcp_servers),
+            text = stringResource(Res.string.settings_mcp_servers_description),
+            }
+        )
+        ) {
+        AddMcpServerDialog(
+        Box {
+        Column(modifier = Modifier.padding(16.dp)) {
+        OutlinedButton(
+        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.height(4.dp))
+        Text(
+        apiKey = ""
+        border = kaiAdaptiveCardBorder(),
+        colors = kaiAdaptiveCardColors(),
+        for (server in mcpServers) {
+        headers.add(HeaderEntry(key = "Authorization", value = ""))
+        headers.clear()
+        modifier = Modifier.fillMaxWidth().handCursor(),
+        name = server.name
+        onClick = { expanded = !expanded },
+        onDismissRequest = onDismiss,
+        requiresAuth = true
+        scope.launch { mcpScrollState.animateScrollTo(0) }
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        url = server.url
+        }
+    ) {
+    // When a popular server needs auth (e.g. Jina), prefill the form and show an API key field.
+    Card(
+    Column(modifier = Modifier.fillMaxWidth()) {
+    ModalBottomSheet(
+    fun prefillPopularWithAuth(server: PopularMcpServer) {
+    if (showAddDialog) {
+    mcpServers: ImmutableList<McpServerUiState>,
+    onAdd: (String, String, Map<String, String>) -> Unit,
+    onAddMcpServer: (String, String, Map<String, String>) -> Unit,
+    onAddPopular: (PopularMcpServer) -> Unit,
+    onAddPopularMcpServer: (PopularMcpServer) -> Unit,
+    onDismiss: () -> Unit,
+    onRefresh: () -> Unit,
+    onRefreshMcpServer: (String) -> Unit,
+    onRemove: () -> Unit,
+    onRemoveMcpServer: (String) -> Unit,
+    onShowAddDialog: (Boolean) -> Unit,
+    onToggle: (Boolean) -> Unit,
+    onToggleMcpServer: (String, Boolean) -> Unit,
+    onToggleTool: (String, Boolean) -> Unit,
+    server: McpServerUiState,
+    showAddDialog: Boolean,
+    val headers = remember { mutableStateListOf(HeaderEntry()) }
+    val mcpScrollState = rememberScrollState()
+    val scope = rememberCoroutineScope()
+    var apiKey by remember { mutableStateOf("") }
+    var expanded by remember { mutableStateOf(false) }
+    var name by remember { mutableStateOf("") }
+    var requiresAuth by remember { mutableStateOf(false) }
+    var url by remember { mutableStateOf("") }
+    }
+) {
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -75,417 +355,9 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
-
-@Composable
 internal fun McpServersSection(
-    mcpServers: ImmutableList<McpServerUiState>,
-    onAddMcpServer: (String, String, Map<String, String>) -> Unit,
-    onRemoveMcpServer: (String) -> Unit,
-    onToggleMcpServer: (String, Boolean) -> Unit,
-    onRefreshMcpServer: (String) -> Unit,
-    onToggleTool: (String, Boolean) -> Unit,
-    showAddDialog: Boolean,
-    onShowAddDialog: (Boolean) -> Unit,
-    onAddPopularMcpServer: (PopularMcpServer) -> Unit,
-) {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Text(
-            text = stringResource(Res.string.settings_mcp_servers),
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = stringResource(Res.string.settings_mcp_servers_description),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-
-        Spacer(Modifier.height(12.dp))
-
-        for (server in mcpServers) {
-            McpServerCard(
-                server = server,
-                onToggle = { enabled -> onToggleMcpServer(server.id, enabled) },
-                onRemove = { onRemoveMcpServer(server.id) },
-                onRefresh = { onRefreshMcpServer(server.id) },
-                onToggleTool = onToggleTool,
-            )
-            Spacer(Modifier.height(8.dp))
-        }
-
-        OutlinedButton(
-            onClick = { onShowAddDialog(true) },
-            modifier = Modifier.align(Alignment.CenterHorizontally).handCursor(),
-        ) {
-            Text(stringResource(Res.string.settings_mcp_add_server))
-        }
-    }
-
-    if (showAddDialog) {
-        AddMcpServerDialog(
-            onDismiss = { onShowAddDialog(false) },
-            onAdd = onAddMcpServer,
-            onAddPopular = onAddPopularMcpServer,
-        )
-    }
-}
-
-@Composable
-private fun McpServerCard(
-    server: McpServerUiState,
-    onToggle: (Boolean) -> Unit,
-    onRemove: () -> Unit,
-    onRefresh: () -> Unit,
-    onToggleTool: (String, Boolean) -> Unit,
-) {
-    var expanded by remember { mutableStateOf(false) }
-
-    Card(
-        onClick = { expanded = !expanded },
-        modifier = Modifier.fillMaxWidth().handCursor(),
-        colors = kaiAdaptiveCardColors(),
-        border = kaiAdaptiveCardBorder(),
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                // Status dot
-                val statusColor = when (server.connectionStatus) {
-                    McpConnectionStatus.Connected -> StatusColorConnected
-                    McpConnectionStatus.Connecting -> StatusColorChecking
-                    McpConnectionStatus.Error -> StatusColorError
-                    McpConnectionStatus.Unknown -> StatusColorUnknown
-                }
-                Box(
-                    modifier = Modifier
-                        .size(10.dp)
-                        .clip(CircleShape)
-                        .background(statusColor),
-                )
-                Spacer(Modifier.width(12.dp))
-
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = server.name,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onBackground,
-                    )
-                    Text(
-                        text = server.url,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
-
-                Switch(
-                    checked = server.isEnabled,
-                    onCheckedChange = onToggle,
-                )
-
-                Spacer(Modifier.width(8.dp))
-
-                Icon(
-                    imageVector = vectorResource(Res.drawable.ic_arrow_drop_down),
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-
-            if (expanded) {
-                Spacer(Modifier.height(12.dp))
-
-                // Status text
-                val statusText = when (server.connectionStatus) {
-                    McpConnectionStatus.Connected -> stringResource(Res.string.settings_mcp_status_connected)
-                    McpConnectionStatus.Connecting -> stringResource(Res.string.settings_mcp_status_connecting)
-                    McpConnectionStatus.Error -> stringResource(Res.string.settings_mcp_status_error)
-                    McpConnectionStatus.Unknown -> ""
-                }
-                if (statusText.isNotEmpty()) {
-                    Text(
-                        text = statusText,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = when (server.connectionStatus) {
-                            McpConnectionStatus.Error -> MaterialTheme.colorScheme.error
-                            else -> MaterialTheme.colorScheme.onSurfaceVariant
-                        },
-                    )
-                    Spacer(Modifier.height(8.dp))
-                }
-
-                // Tools list
-                if (server.tools.isNotEmpty()) {
-                    for (tool in server.tools) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    text = tool.name,
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onBackground,
-                                )
-                                if (tool.description.isNotEmpty()) {
-                                    Text(
-                                        text = tool.description,
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    )
-                                }
-                            }
-                            Switch(
-                                checked = tool.isEnabled,
-                                onCheckedChange = { enabled -> onToggleTool(tool.id, enabled) },
-                            )
-                        }
-                    }
-                } else if (server.connectionStatus == McpConnectionStatus.Connected) {
-                    Text(
-                        text = stringResource(Res.string.settings_mcp_no_tools),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-
-                Spacer(Modifier.height(8.dp))
-
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    TextButton(onClick = onRefresh, modifier = Modifier.handCursor()) {
-                        Text(stringResource(Res.string.settings_mcp_refresh))
-                    }
-                    TextButton(onClick = onRemove, modifier = Modifier.handCursor()) {
-                        Text(
-                            text = stringResource(Res.string.settings_mcp_remove),
-                            color = MaterialTheme.colorScheme.error,
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
+package com.inspiredandroid.kai.ui.settings
 private data class HeaderEntry(val key: String = "Authorization", val value: String = "")
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
 private fun AddMcpServerDialog(
-    onDismiss: () -> Unit,
-    onAdd: (String, String, Map<String, String>) -> Unit,
-    onAddPopular: (PopularMcpServer) -> Unit,
-) {
-    var name by remember { mutableStateOf("") }
-    var url by remember { mutableStateOf("") }
-    val headers = remember { mutableStateListOf(HeaderEntry()) }
-    // When a popular server needs auth (e.g. Jina), prefill the form and show an API key field.
-    var requiresAuth by remember { mutableStateOf(false) }
-    var apiKey by remember { mutableStateOf("") }
-    val mcpScrollState = rememberScrollState()
-    val scope = rememberCoroutineScope()
-
-    fun prefillPopularWithAuth(server: PopularMcpServer) {
-        name = server.name
-        url = server.url
-        requiresAuth = true
-        apiKey = ""
-        headers.clear()
-        headers.add(HeaderEntry(key = "Authorization", value = ""))
-        scope.launch { mcpScrollState.animateScrollTo(0) }
-    }
-
-    ModalBottomSheet(
-        onDismissRequest = onDismiss,
-        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-    ) {
-        Box {
-            Column(
-                modifier = Modifier
-                    .verticalScroll(mcpScrollState)
-                    .padding(16.dp),
-            ) {
-                Text(
-                    text = stringResource(Res.string.settings_mcp_add_server),
-                    style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.onSurface,
-                )
-                Spacer(Modifier.height(16.dp))
-
-                KaiOutlinedTextField(
-                    value = name,
-                    onValueChange = { name = it },
-                    label = { Text(stringResource(Res.string.settings_mcp_server_name)) },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                Spacer(Modifier.height(8.dp))
-                KaiOutlinedTextField(
-                    value = url,
-                    onValueChange = { url = it },
-                    label = { Text(stringResource(Res.string.settings_mcp_server_url)) },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                Spacer(Modifier.height(12.dp))
-
-                if (requiresAuth) {
-                    KaiOutlinedTextField(
-                        value = apiKey,
-                        onValueChange = { apiKey = it },
-                        label = { Text(stringResource(Res.string.settings_mcp_api_key)) },
-                        singleLine = true,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                    Spacer(Modifier.height(4.dp))
-                    Text(
-                        text = stringResource(Res.string.settings_mcp_api_key_help),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    Spacer(Modifier.height(12.dp))
-                } else {
-                    headers.forEachIndexed { index, entry ->
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            // The floating labels must stay on one line: at large font
-                            // scales a wrapped label grows upward out of the field and
-                            // lands on top of the URL field above it.
-                            KaiOutlinedTextField(
-                                value = entry.key,
-                                onValueChange = { headers[index] = entry.copy(key = it) },
-                                label = {
-                                    Text(
-                                        text = stringResource(Res.string.settings_mcp_header_key),
-                                        maxLines = 1,
-                                        overflow = TextOverflow.Ellipsis,
-                                    )
-                                },
-                                singleLine = true,
-                                modifier = Modifier.weight(0.5f),
-                            )
-                            Spacer(Modifier.width(8.dp))
-                            KaiOutlinedTextField(
-                                value = entry.value,
-                                onValueChange = { headers[index] = entry.copy(value = it) },
-                                label = {
-                                    Text(
-                                        text = stringResource(Res.string.settings_mcp_header_value),
-                                        maxLines = 1,
-                                        overflow = TextOverflow.Ellipsis,
-                                    )
-                                },
-                                singleLine = true,
-                                modifier = Modifier.weight(0.5f),
-                            )
-                            IconButton(
-                                onClick = { headers.removeAt(index) },
-                                modifier = Modifier.handCursor(),
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Clear,
-                                    contentDescription = stringResource(Res.string.settings_mcp_remove),
-                                )
-                            }
-                        }
-                        Spacer(Modifier.height(4.dp))
-                    }
-
-                    TextButton(
-                        onClick = { headers.add(HeaderEntry(key = "", value = "")) },
-                        modifier = Modifier.handCursor(),
-                    ) {
-                        Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
-                        Spacer(Modifier.width(4.dp))
-                        Text(stringResource(Res.string.settings_mcp_add_header))
-                    }
-                }
-
-                Spacer(Modifier.height(8.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End,
-                ) {
-                    TextButton(
-                        onClick = {
-                            val headerMap = buildMap {
-                                headers
-                                    .filter { it.key.isNotBlank() && it.value.isNotBlank() }
-                                    .forEach { put(it.key.trim(), it.value.trim()) }
-                                if (requiresAuth && apiKey.isNotBlank()) {
-                                    // Replace any Authorization row with the dedicated API key field.
-                                    keys.filter { it.equals("Authorization", ignoreCase = true) }
-                                        .toList()
-                                        .forEach { remove(it) }
-                                    put("Authorization", authorizationHeaderValue(apiKey))
-                                }
-                            }
-                            onAdd(name, url, headerMap)
-                        },
-                        // Auth-required popular servers (e.g. Jina) can still be added without a
-                        // key — some tools work unauthenticated; search needs a key later.
-                        enabled = name.isNotBlank() && url.isNotBlank(),
-                        modifier = Modifier.handCursor(),
-                    ) {
-                        Text(stringResource(Res.string.settings_mcp_add))
-                    }
-                }
-
-                if (popularMcpServers.isNotEmpty()) {
-                    Spacer(Modifier.height(16.dp))
-                    Text(
-                        text = stringResource(Res.string.settings_mcp_popular_servers),
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onSurface,
-                    )
-                    Spacer(Modifier.height(8.dp))
-                    for (server in popularMcpServers) {
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(CardDefaults.shape)
-                                .clickable {
-                                    if (server.requiresAuth) {
-                                        prefillPopularWithAuth(server)
-                                    } else {
-                                        onAddPopular(server)
-                                    }
-                                }
-                                .handCursor(),
-                            colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
-                            ),
-                        ) {
-                            Column(modifier = Modifier.padding(12.dp)) {
-                                Text(
-                                    text = server.name,
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onSurface,
-                                )
-                                Text(
-                                    text = server.description,
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                )
-                            }
-                        }
-                        Spacer(Modifier.height(4.dp))
-                    }
-                }
-
-                Spacer(Modifier.height(16.dp))
-            }
-            VerticalScrollbarForScroll(
-                scrollState = mcpScrollState,
-                modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
-            )
-        }
-    }
+private fun McpServerCard(
 }

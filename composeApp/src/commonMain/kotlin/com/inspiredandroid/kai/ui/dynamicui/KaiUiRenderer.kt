@@ -1,7 +1,871 @@
+
+                                        MaterialTheme.colorScheme.primary.copy(alpha = 0.15f),
+                                        pillShape,
+                                    )
+                                    Modifier
+                                    Modifier.background(
+                                    indication = null,
+                                    interactionSource = interactionSource,
+                                    onClick = { formState[node.id] = option },
+                                )
+                                MaterialTheme.colorScheme.onSurfaceVariant
+                                MaterialTheme.colorScheme.primary
+                                Modifier
+                                Modifier.clickable(
+                                currentOnCallback(action.event, data)
+                                if (isSelected) current - value else current + value
+                                if (isSelected) emptySet() else setOf(value)
+                                if (isSelected) {
+                                toggleState[action.targetId] = !(toggleState[action.targetId] ?: true)
+                                val data = collectFormData(action, formState)
+                                } else {
+                                },
+                            )
+                            .clickable { selectedIndex = index }
+                            .clip(pillShape)
+                            .defaultMinSize(minHeight = 32.dp)
+                            .handCursor()
+                            .padding(horizontal = 16.dp, vertical = 4.dp),
+                            .then(
+                            color = if (isSelected) {
+                            csv.split(",").contains(value)
+                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                            formState[node.id] = newSelection.joinToString(",")
+                            if (!isInteractive) return@KaiChip
+                            if (isInteractive) {
+                            indication = ripple(bounded = false, radius = 20.dp),
+                            interactionSource = interactionSource,
+                            is CallbackAction -> {
+                            is CopyToClipboardAction -> {}
+                            is OpenUrlAction -> {}
+                            is ToggleAction -> {
+                            maxLines = 1,
+                            null -> {}
+                            style = MaterialTheme.typography.labelLarge,
+                            text = tab.label,
+                            val csv = formState[node.id] ?: ""
+                            val current = (formState[node.id] ?: "").split(",").filter { it.isNotEmpty() }.toSet()
+                            val newSelection = if (isMulti) {
+                            }
+                            } else {
+                            },
+                        )
+                        ),
+                        .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(50)),
+                        .fillMaxWidth()
+                        .handCursor()
+                        .size(20.dp)
+                        .then(
+                        Text(
+                        Text(chip.label)
+                        activeTrackColor = MaterialTheme.colorScheme.primary,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        constraints.copy(minWidth = 0, maxWidth = wider),
+                        constraints.maxWidth
+                        constraints.maxWidth + bleed * 2
+                        contentAlignment = Alignment.Center,
+                        derivedStateOf {
+                        enabled = isInteractive,
+                        expanded = false
+                        fontWeight = FontWeight.Bold,
+                        formState = formState,
+                        formState[node.id] = option
+                        inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
+                        indication = null,
+                        interactionSource = interactionSource,
+                        isInteractive = isInteractive,
+                        modifier = Modifier
+                        modifier = Modifier.indication(
+                        modifier = Modifier.padding(bottom = 4.dp, end = 32.dp),
+                        modifier = Modifier.padding(start = 8.dp),
+                        modifier = Modifier.weight(1f),
+                        node = node,
+                        onCallback = safeCallback(onCallback),
+                        onClick = null,
+                        onClick = toggle,
+                        onClick = {
+                        placeable.place(0, 0)
+                        selected = isSelected,
+                        selected = selected == option,
+                        style = MaterialTheme.typography.bodyLarge,
+                        style = MaterialTheme.typography.bodyMedium,
+                        style = MaterialTheme.typography.labelSmall,
+                        style = MaterialTheme.typography.titleSmall,
+                        text = node.headers.getOrElse(index) { "" },
+                        text = node.language,
+                        text = node.title,
+                        text = option,
+                        text = row.getOrElse(index) { "" },
+                        toggleState = toggleState,
+                        when (val action = node.action) {
+                        }
+                        },
+                    )
+                    ) {
+                    ),
+                    .align(Alignment.TopEnd)
+                    .background(MaterialTheme.colorScheme.surfaceContainerHigh, pillShape)
+                    .clickable { copyToClipboard(node.code) },
+                    .clip(RoundedCornerShape(6.dp))
+                    .clip(pillShape)
+                    .handCursor()
+                    .padding(4.dp),
+                    .size(28.dp)
+                    Box(
+                    KaiChip { Text(chip.label) }
+                    KaiChip(
+                    Modifier
+                    Modifier.clickable(
+                    RadioButton(
+                    RenderChildren(node.children, isInteractive, formState, toggleState, onCallback, depth)
+                    RenderNode(
+                    RenderNode(item, isInteractive, formState, toggleState, onCallback, depth + 1)
+                    Spacer(Modifier.height(2.dp))
+                    Text(
+                    clicked = true
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = MaterialTheme.colorScheme.primary,
+                    colors = SliderDefaults.colors(
+                    contentDescription = null,
+                    contentDescription = stringResource(Res.string.kai_ui_code_copy),
+                    copyToClipboard(action.text)
+                    drawStopIndicator = null,
+                    drawTick = { _, _ -> },
+                    expired = true
+                    fontWeight = FontWeight.Bold,
+                    imageVector = Icons.Default.Person,
+                    imageVector = Icons.Filled.ContentCopy,
+                    imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                    layout(wider, placeable.height) {
+                    modifier = Modifier
+                    modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, bottom = 12.dp),
+                    modifier = Modifier.handCursor(),
+                    modifier = Modifier.horizontalScroll(rememberScrollState()).padding(end = 32.dp),
+                    modifier = Modifier.size(16.dp),
+                    modifier = Modifier.size(sizeDp * 0.6f),
+                    modifier = Modifier.weight(1f),
+                    node.id?.let { formState[it] = "0" }
+                    onCallback(action.event, data)
+                    onClick = {
+                    sliderState = sliderState,
+                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyMedium.copy(fontFamily = FontFamily.Monospace),
+                    style = MaterialTheme.typography.bodySmall,
+                    style = MaterialTheme.typography.titleSmall,
+                    text = "— ${node.source}",
+                    text = formatSliderValue(currentValue, step),
+                    text = initials,
+                    text = node.code,
+                    text = node.message,
+                    text = node.title,
+                    text = { Text(option) },
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    toggleState[action.targetId] = !(toggleState[action.targetId] ?: true)
+                    try {
+                    uriHandler.openUri(action.url)
+                    val bleed = 12.dp.roundToPx()
+                    val data = collectFormData(action, formState)
+                    val isSelected = selectedIndex == index
+                    val isSelected by remember {
+                    val placeable = measurable.measure(
+                    val wider = if (constraints.maxWidth == Int.MAX_VALUE) {
+                    verticalAlignment = Alignment.CenterVertically,
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    }
+                    } catch (_: Exception) {}
+                    } else {
+                    },
+                )
+                ) {
+                .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(1.5.dp)),
+                .fillMaxHeight()
+                .handCursor(),
+                .horizontalScroll(rememberScrollState()),
+                .layout { measurable, constraints ->
+                .width(3.dp)
+                Box(
+                Column(
+                Column(Modifier.padding(12.dp).wrapContentHeight()) {
+                Column(Modifier.weight(1f)) {
+                Column(modifier = modifier.fillMaxWidth().wrapContentHeight()) {
+                DropdownMenuItem(
+                Icon(
+                Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                RenderChildren(selectedTab.children, isInteractive, formState, toggleState, onCallback, depth)
+                RenderNode(child, isInteractive, formState, toggleState, onCallback, depth + 1)
+                Row(
+                SliderDefaults.Track(
+                Spacer(Modifier.height(2.dp))
+                Text(
+                Text(node.label, style = MaterialTheme.typography.bodyLarge)
+                Text(prefix, style = MaterialTheme.typography.bodyLarge)
+                activeTickColor = Color.Transparent,
+                activeTrackColor = MaterialTheme.colorScheme.primary,
+                bitmap = previewBitmap,
+                border = kaiAdaptiveCardBorder(),
+                break
+                color = MaterialTheme.colorScheme.onSurface,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                colors = kaiAdaptiveCardColors(),
+                contentAlignment = Alignment.Center,
+                contentDescription = node.alt,
+                contentDescription = node.name,
+                contentDescription = stringResource(Res.string.bot_message_copy_content_description),
+                contentScale = ContentScale.Crop,
+                drawStopIndicator = {},
+                enter = expandVertically(),
+                exit = shrinkVertically(),
+                fontStyle = FontStyle.Italic,
+                for (index in 0 until columnCount) {
+                gapSize = 0.dp,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                if (!expired) {
+                if (isDisplayOnly) {
+                if (isInteractive) {
+                if (node.language != null) {
+                if (node.title != null) {
+                imageVector = Icons.Filled.ContentCopy,
+                inactiveTickColor = Color.Transparent,
+                inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
+                indication = ripple(bounded = false, radius = 20.dp),
+                interactionSource = interactionSource,
+                is CallbackAction -> {
+                is CopyToClipboardAction -> {
+                is OpenUrlAction -> {
+                is ToggleAction -> {
+                model = node.imageUrl,
+                model = node.url,
+                modifier = Modifier
+                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().padding(12.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                modifier = Modifier.padding(bottom = 4.dp),
+                modifier = Modifier.size(sizeDp),
+                modifier = modifier,
+                modifier = modifier.fillMaxWidth().wrapContentHeight(),
+                node.tabs.forEachIndexed { index, tab ->
+                null -> {}
+                progress = { node.value.coerceIn(0f, 1f) },
+                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.titleSmall,
+                text = node.description,
+                text = node.label,
+                text = node.text,
+                thumbColor = MaterialTheme.colorScheme.primary,
+                val interactionSource = remember { MutableInteractionSource() }
+                val prefix = if (node.ordered == true) "${index + 1}. " else "\u2022 "
+                verticalAlignment = Alignment.CenterVertically,
+                verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                visible = expanded,
+                }
+                } else {
+                },
+            "$h:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}"
+            "${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}"
+            "bottom_center" -> Alignment.BottomCenter
+            "bottom_end" -> Alignment.BottomEnd
+            "bottom_start" -> Alignment.BottomStart
+            "center" -> Alignment.Center
+            "center_end" -> Alignment.CenterEnd
+            "center_start" -> Alignment.CenterStart
+            "error" -> MaterialTheme.colorScheme.error
+            "primary" -> MaterialTheme.colorScheme.primary
+            "secondary" -> MaterialTheme.colorScheme.secondary
+            "top_center" -> Alignment.TopCenter
+            "top_end" -> Alignment.TopEnd
+            "top_start" -> Alignment.TopStart
+            ((max - min) / step).toInt() - 1
+            )
+            ) {
+            ),
+            .background(contentColor, androidx.compose.foundation.shape.CircleShape),
+            .fillMaxWidth()
+            .filter { it.isNotEmpty() }
+            .handCursor()
+            .joinToString("") { it.first().uppercase() }
+            .size(20.dp)
+            .take(2)
+            .then(
+            .wrapContentHeight(),
+            // Prevent crashes from action handlers
+            0
+            AlertIcon(node.severity, contentColor, containerColor)
+            AlertSeverity.ERROR -> Icon(Icons.Default.Close, null, Modifier.size(14.dp), tint = containerColor)
+            AlertSeverity.INFO, null -> Text("i", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = containerColor)
+            AlertSeverity.SUCCESS -> Icon(Icons.Default.Check, null, Modifier.size(14.dp), tint = containerColor)
+            AlertSeverity.WARNING -> Text("!", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = containerColor)
+            AnimatedVisibility(
+            Box(
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.size(sizeDp)) {
+            Card(
+            Column {
+            Column(
+            CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onBackground) {
+            HorizontalDivider()
+            Icon(
+            Image(
+            LinearProgressIndicator(
+            RenderChildren(node.children, isInteractive, formState, toggleState, onCallback, depth)
+            RenderNode(child, isInteractive, formState, toggleState, onCallback, depth + 1)
+            Row {
+            Row(
+            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+            Spacer(Modifier.width(12.dp))
+            Text(
+            animation = tween(durationMillis = 700, easing = FastOutSlowInEasing),
+            checked = checked,
+            coil3.compose.AsyncImage(
+            color = MaterialTheme.colorScheme.error,
+            color = MaterialTheme.colorScheme.onSurface,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = MaterialTheme.colorScheme.primaryContainer,
+            color = MaterialTheme.colorScheme.surfaceContainer,
+            color = if (expired) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
+            colors = SliderDefaults.colors(
+            colors = pressedColors,
+            contentAlignment = alignment,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            contentDescription = node.name,
+            delay(1.seconds)
+            disabledContainerColor = MaterialTheme.colorScheme.primary,
+            disabledContentColor = MaterialTheme.colorScheme.onPrimary,
+            else -> Alignment.TopStart
+            else -> MaterialTheme.colorScheme.onSurface
+            enabled = false,
+            enabled = isInteractive,
+            fontSize = with(LocalDensity.current) { size.toSp() },
+            fontWeight = FontWeight.Bold,
+            for (child in node.children) {
+            for (option in node.options) {
+            formState[node.id] = ""
+            frozen?.values?.let { formState.putAll(it) }
+            hasError = true
+            if (diff <= 0L) {
+            if (node.source != null) {
+            imageVector = imageVector,
+            initializeFormState(node, formState)
+            interactionSource = interactionSource,
+            key(option) {
+            key(value) {
+            label = node.label?.let { { Text(it) } },
+            modifier = Modifier
+            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).handCursor(),
+            modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+            modifier = Modifier.indication(
+            modifier = Modifier.padding(12.dp),
+            modifier = Modifier.padding(16.dp).wrapContentHeight(),
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
+            modifier = Modifier.size(size),
+            modifier = Modifier.size(sizeDp),
+            modifier = Modifier.weight(1f),
+            modifier = buttonModifier,
+            modifier = modifier,
+            node.id?.let { formState[it] = diff.toString() }
+            onCheckedChange = null,
+            onClick = {},
+            onValueChange = { formState[node.id] = formatSliderValue(it, step) },
+            onValueChange = {},
+            readOnly = true,
+            remainingSeconds = diff.coerceAtLeast(0L)
+            repeatMode = RepeatMode.Reverse,
+            return rounded.toLong().toString()
+            shape = RoundedCornerShape(12.dp),
+            shape = androidx.compose.foundation.shape.CircleShape,
+            steps = steps.coerceAtLeast(0),
+            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.labelSmall,
+            text = formatted,
+            text = node.label,
+            text = node.name,
+            text = node.value,
+            text = stringResource(Res.string.kai_ui_render_failed),
+            thumb = {
+            tint = color,
+            track = { sliderState ->
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            val diff = (targetMs - Clock.System.now().toEpochMilliseconds()) / 1000L
+            val value = chip.value.ifEmpty { chip.label }
+            value = currentValue.coerceIn(min, max),
+            value = selected,
+            valueRange = min..max,
+            verticalAlignment = Alignment.CenterVertically,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            when (val action = node.action) {
+            }
+            },
+        "error" -> MaterialTheme.colorScheme.error
+        "error" -> MaterialTheme.colorScheme.onError
+        "primary" -> MaterialTheme.colorScheme.onPrimary
+        "primary" -> MaterialTheme.colorScheme.primary
+        "secondary" -> MaterialTheme.colorScheme.onSecondary
+        "secondary" -> MaterialTheme.colorScheme.secondary
+        )
+        ) {
+        ) { labelContent() }
+        ),
+        // Determine decimal places from step (e.g. step=0.1 → 1 decimal)
+        // Silently handle callback errors to prevent crashes
+        // The pressed button in a frozen snapshot uses primary colors so it stands out
+        // `size` is a Dp; converting it through Density keeps the emoji fallback the
+        // against the greyed-out disabled siblings. `enabled=false` prevents clicks; the
+        // override on disabled colors bypasses Material's auto-faded disabled appearance.
+        // same physical size as the Icon branch above instead of drifting apart as
+        // soon as the font scale is not 1.
+        AlertSeverity.ERROR -> MaterialTheme.colorScheme.errorContainer
+        AlertSeverity.ERROR -> MaterialTheme.colorScheme.onErrorContainer
+        AlertSeverity.INFO, null -> MaterialTheme.colorScheme.onPrimaryContainer
+        AlertSeverity.INFO, null -> MaterialTheme.colorScheme.primaryContainer
+        AlertSeverity.SUCCESS -> onSuccessContainer
+        AlertSeverity.SUCCESS -> successContainer
+        AlertSeverity.WARNING -> onWarningContainer
+        AlertSeverity.WARNING -> warningContainer
+        Box(
+        Box(Modifier.padding(12.dp)) {
+        Button(
+        ButtonVariant.FILLED, null -> Button(onClick = onClick, enabled = enabled, modifier = buttonModifier) { labelContent() }
+        ButtonVariant.OUTLINED -> OutlinedButton(onClick = onClick, enabled = enabled, modifier = buttonModifier) { labelContent() }
+        ButtonVariant.TEXT -> TextButton(onClick = onClick, enabled = enabled, modifier = buttonModifier) { labelContent() }
+        ButtonVariant.TONAL -> FilledTonalButton(onClick = onClick, enabled = enabled, modifier = buttonModifier) { labelContent() }
+        Checkbox(
+        Column {
+        Column(
+        Column(Modifier.fillMaxWidth()) {
+        ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+        Icon(
+        IconButton(onClick = onClick, enabled = enabled, modifier = buttonModifier) {
+        Modifier.fillMaxWidth(),
+        OutlinedTextField(
+        RenderChildren(node.children, isInteractive, formState, toggleState, onCallback, depth)
+        RenderNode(child, isInteractive, formState, toggleState, onCallback, depth + 1)
+        Row(
+        Slider(
+        Spacer(Modifier.width(12.dp))
+        Surface(
+        Switch(
+        Text(
+        Text(node.label, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(start = 8.dp))
+        TextNodeStyle.BODY -> MaterialTheme.typography.bodyLarge
+        TextNodeStyle.CAPTION -> MaterialTheme.typography.bodySmall
+        TextNodeStyle.HEADLINE -> MaterialTheme.typography.headlineSmall
+        TextNodeStyle.TITLE -> MaterialTheme.typography.titleMedium
+        action.event == frozen.pressedEvent && collectFormData(action, formState) == frozen.values
+        animationSpec = infiniteRepeatable(
+        border = kaiAdaptiveCardBorder(),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        color = MaterialTheme.colorScheme.surfaceVariant,
+        color = backgroundColor,
+        color = color,
+        color = containerColor,
+        colors = kaiAdaptiveCardColors(),
+        contentAlignment = Alignment.Center,
+        contentColor = contentColor,
+        else -> MaterialTheme.colorScheme.onPrimary
+        else -> MaterialTheme.colorScheme.onSurface
+        else -> MaterialTheme.colorScheme.primary
+        else -> {}
+        enabled = isInteractive,
+        expanded = expanded,
+        fontStyle = if (node.italic == true) FontStyle.Italic else null,
+        fontWeight = if (node.bold == true || node.value.startsWith("**")) FontWeight.Bold else null,
+        for ((index, item) in node.items.withIndex()) {
+        for (child in node.children) {
+        for (chip in node.chips) {
+        for (option in node.options) {
+        for (row in node.rows) {
+        formState[inputId]?.let { collected[inputId] = it }
+        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = if (allStats) Arrangement.SpaceEvenly else Arrangement.spacedBy(8.dp),
+        if (isInteractive) clicked = false
+        if (node.description != null) {
+        if (node.headers.isNotEmpty()) {
+        if (node.label != null) {
+        if (node.value != null) {
+        if (previewBitmap != null) {
+        if (rounded == rounded.toLong().toFloat()) {
+        if (selectedTab != null) {
+        if (wrapInCard) {
+        initialValue = 0.55f,
+        initialValue = 0.96f,
+        is AccordionNode -> RenderAccordion(node, isInteractive, formState, toggleState, onCallback, depth)
+        is AccordionNode -> node.children.forEach { initializeFormState(it, formState) }
+        is AlertNode -> RenderAlert(node)
+        is AvatarNode -> RenderAvatar(node)
+        is BadgeNode -> RenderBadge(node)
+        is BoxNode -> RenderBox(node, isInteractive, formState, toggleState, onCallback, depth)
+        is BoxNode -> node.children.forEach { initializeFormState(it, formState) }
+        is ButtonNode -> RenderButton(node, isInteractive, formState, toggleState, onCallback)
+        is CardNode -> RenderCard(node, isInteractive, formState, toggleState, onCallback, depth)
+        is CardNode -> node.children.forEach { initializeFormState(it, formState) }
+        is CheckboxNode -> RenderCheckbox(node, isInteractive, formState)
+        is CheckboxNode -> if (node.id !in formState) formState[node.id] = (node.checked ?: false).toString()
+        is ChipGroupNode -> RenderChipGroup(node, isInteractive, formState)
+        is ChipGroupNode -> if (node.selection != "none" && node.id !in formState) {
+        is CodeNode -> RenderCode(node)
+        is ColumnNode -> RenderColumn(node, isInteractive, formState, toggleState, onCallback, depth)
+        is ColumnNode -> node.children.forEach { initializeFormState(it, formState) }
+        is CountdownNode -> RenderCountdown(node, isInteractive, formState, toggleState, onCallback)
+        is DividerNode -> HorizontalDivider(Modifier.padding(vertical = 4.dp))
+        is IconNode -> RenderIcon(node)
+        is ImageNode -> RenderImage(node)
+        is ListNode -> RenderList(node, isInteractive, formState, toggleState, onCallback, depth)
+        is ListNode -> node.items.forEach { initializeFormState(it, formState) }
+        is ProgressNode -> RenderProgress(node)
+        is QuoteNode -> RenderQuote(node)
+        is RadioGroupNode -> RenderRadioGroup(node, isInteractive, formState)
+        is RadioGroupNode -> node.selected?.let { if (node.id !in formState) formState[node.id] = it }
+        is RowNode -> RenderRow(node, isInteractive, formState, toggleState, onCallback, depth)
+        is RowNode -> node.children.forEach { initializeFormState(it, formState) }
+        is SelectNode -> RenderSelect(node, isInteractive, formState)
+        is SelectNode -> node.selected?.let { if (node.id !in formState) formState[node.id] = it }
+        is SliderNode -> RenderSlider(node, isInteractive, formState)
+        is SliderNode -> if (node.id !in formState) formState[node.id] = formatSliderValue(node.value ?: node.min ?: 0f, node.step)
+        is StatNode -> RenderStat(node)
+        is SwitchNode -> RenderSwitch(node, isInteractive, formState)
+        is SwitchNode -> if (node.id !in formState) formState[node.id] = (node.checked ?: false).toString()
+        is TableNode -> RenderTable(node)
+        is TabsNode -> RenderTabs(node, isInteractive, formState, toggleState, onCallback, depth)
+        is TabsNode -> node.tabs.forEach { tab -> tab.children.forEach { initializeFormState(it, formState) } }
+        is TextInputNode -> RenderTextInput(node, isInteractive, formState)
+        is TextInputNode -> node.value?.let { if (node.id !in formState) formState[node.id] = it }
+        is TextNode -> RenderText(node)
+        label = "alpha",
+        label = "scale",
+        label = node.label?.let { { Text(it) } },
+        modifier = Modifier
+        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().handCursor(),
+        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+        modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+        modifier = Modifier.widthIn(min = 72.dp),
+        node.headers.size,
+        node.rows.maxOfOrNull { it.size } ?: 0,
+        null -> MaterialTheme.typography.bodyLarge
+        onCallback(event, data)
+        onClick = { expanded = !expanded },
+        onExpandedChange = { if (isInteractive) expanded = it },
+        onValueChange = { formState[node.id] = it },
+        placeholder = node.placeholder?.let { { Text(it) } },
+        repeat(decimals) { factor *= 10f }
+        return
+        return (kotlin.math.round(rounded * factor) / factor).toString()
+        rounded.toString()
+        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(6.dp),
+        shape = RoundedCornerShape(8.dp),
+        singleLine = node.multiline != true,
+        style = style,
+        targetValue = 1f,
+        text = node.value.replace("**", ""),
+        try {
+        val action = node.action as? CallbackAction ?: return@run false
+        val alignment = when (node.contentAlignment) {
+        val color = when (node.color) {
+        val decimals = stepStr.substringAfter('.', "").trimEnd('0').length.coerceIn(1, 6)
+        val formatted = if (h > 0) {
+        val h = remainingSeconds / 3600
+        val initials = node.name.split(" ")
+        val m = (remainingSeconds % 3600) / 60
+        val modifier = Modifier.height(width / aspectRatio).width(width).clip(RoundedCornerShape(6.dp))
+        val pressedColors = ButtonDefaults.buttonColors(
+        val previewBitmap = LocalPreviewImages.current[node.url]
+        val rounded = kotlin.math.round(value * 100.0f) / 100.0f
+        val rounded = kotlin.math.round(value / step) * step
+        val s = remainingSeconds % 60
+        val selectedTab = node.tabs.getOrNull(selectedIndex)
+        val stepStr = step.toString()
+        val steps = if (step != null && step > 0) {
+        val width = minOf(maxWidth, height * aspectRatio)
+        value = formState[node.id] ?: "",
+        value.toLong().toString()
+        var factor = 1f
+        verticalAlignment = Alignment.CenterVertically,
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        when (severity) {
+        while (true) {
+        }
+        } catch (_: Exception) {
+        } else {
+    "account_circle" -> Icons.Default.AccountCircle
+    "add" -> Icons.Default.Add
+    "alarm" -> Icons.Filled.Alarm
+    "analytics" -> Icons.Filled.Analytics
+    "arrow_back" -> Icons.AutoMirrored.Filled.ArrowBack
+    "arrow_forward" -> Icons.AutoMirrored.Filled.ArrowForward
+    "attach_file", "attachment" -> Icons.Filled.AttachFile
+    "bar_chart", "chart" -> Icons.Filled.BarChart
+    "battery_full", "battery" -> Icons.Filled.BatteryFull
+    "bluetooth" -> Icons.Filled.Bluetooth
+    "bolt", "flash", "lightning" -> Icons.Filled.Bolt
+    "bookmark" -> Icons.Filled.Bookmark
+    "bug_report", "bug" -> Icons.Filled.BugReport
+    "build", "construction" -> Icons.Default.Build
+    "calendar", "date_range", "schedule" -> Icons.Default.DateRange
+    "category" -> Icons.Filled.Category
+    "celebration", "party" -> Icons.Filled.Celebration
+    "check", "done" -> Icons.Default.Check
+    "check_circle" -> Icons.Default.CheckCircle
+    "clock", "access_time" -> Icons.Filled.AccessTime
+    "close" -> Icons.Default.Close
+    "cloud" -> Icons.Filled.Cloud
+    "code" -> Icons.Filled.Code
+    "copy", "content_copy" -> Icons.Filled.ContentCopy
+    "cut", "content_cut" -> Icons.Filled.ContentCut
+    "dark_mode", "moon" -> Icons.Filled.DarkMode
+    "dashboard" -> Icons.Filled.Dashboard
+    "delete" -> Icons.Default.Delete
+    "directions_car", "car" -> Icons.Filled.DirectionsCar
+    "download" -> Icons.Filled.Download
+    "eco", "leaf", "nature" -> Icons.Filled.Eco
+    "edit" -> Icons.Default.Edit
+    "emoji_events", "trophy" -> Icons.Filled.EmojiEvents
+    "expand_less" -> Icons.Default.KeyboardArrowUp
+    "expand_more" -> Icons.Default.KeyboardArrowDown
+    "explore", "compass" -> Icons.Filled.Explore
+    "favorite" -> Icons.Default.Favorite
+    "filter", "filter_list" -> Icons.Filled.FilterList
+    "fitness", "fitness_center" -> Icons.Filled.FitnessCenter
+    "flag" -> Icons.Filled.Flag
+    "flight", "airplane" -> Icons.Filled.Flight
+    "group" -> Icons.Default.Face
+    "health", "medical", "healing" -> Icons.Filled.Healing
+    "home" -> Icons.Default.Home
+    "hotel" -> Icons.Filled.Hotel
+    "info" -> Icons.Default.Info
+    "inventory" -> Icons.Filled.Inventory
+    "label", "tag" -> Icons.AutoMirrored.Filled.Label
+    "language", "globe" -> Icons.Filled.Language
+    "light_mode", "sun" -> Icons.Filled.LightMode
+    "lightbulb", "idea" -> Icons.Filled.Lightbulb
+    "link" -> Icons.Filled.Link
+    "local_cafe", "coffee" -> Icons.Filled.LocalCafe
+    "location", "place" -> Icons.Default.LocationOn
+    "lock" -> Icons.Default.Lock
+    "lock_open" -> Icons.Filled.LockOpen
+    "mail", "email" -> Icons.Default.Email
+    "map" -> Icons.Filled.Map
+    "menu" -> Icons.Default.Menu
+    "military_tech", "medal" -> Icons.Filled.MilitaryTech
+    "more", "more_vert" -> Icons.Default.MoreVert
+    "notifications" -> Icons.Default.Notifications
+    "paste", "content_paste" -> Icons.Filled.ContentPaste
+    "pause" -> Icons.Filled.Pause
+    "payments", "credit_card" -> Icons.Filled.Payments
+    "person" -> Icons.Default.Person
+    "pets", "pet" -> Icons.Filled.Pets
+    "phone" -> Icons.Default.Call
+    "photo", "image" -> Icons.Filled.Image
+    "pie_chart" -> Icons.Filled.PieChart
+    "pin", "push_pin" -> Icons.Filled.PushPin
+    "play_arrow", "play" -> Icons.Default.PlayArrow
+    "public", "earth" -> Icons.Filled.Public
+    "receipt" -> Icons.Filled.Receipt
+    "redo" -> Icons.AutoMirrored.Filled.Redo
+    "refresh" -> Icons.Default.Refresh
+    "restaurant", "food" -> Icons.Filled.Restaurant
+    "rocket_launch", "rocket" -> Icons.Filled.RocketLaunch
+    "savings", "money" -> Icons.Filled.Savings
+    "school", "education" -> Icons.Filled.School
+    "science", "flask" -> Icons.Filled.Science
+    "search" -> Icons.Default.Search
+    "security", "shield" -> Icons.Filled.Security
+    "send" -> Icons.AutoMirrored.Filled.Send
+    "settings" -> Icons.Default.Settings
+    "share" -> Icons.Default.Share
+    "shopping_cart", "cart" -> Icons.Default.ShoppingCart
+    "show_chart" -> Icons.AutoMirrored.Filled.ShowChart
+    "skip_next" -> Icons.Filled.SkipNext
+    "skip_previous" -> Icons.Filled.SkipPrevious
+    "sort" -> Icons.AutoMirrored.Filled.Sort
+    "speed" -> Icons.Filled.Speed
+    "star" -> Icons.Default.Star
+    "stop" -> Icons.Filled.Stop
+    "sunny", "weather" -> Icons.Filled.WbSunny
+    "swap", "swap_horiz" -> Icons.Filled.SwapHoriz
+    "sync" -> Icons.Filled.Sync
+    "task", "task_alt" -> Icons.Filled.TaskAlt
+    "terminal" -> Icons.Filled.Terminal
+    "thumb_down" -> Icons.Filled.ThumbDown
+    "thumb_up" -> Icons.Default.ThumbUp
+    "timer" -> Icons.Filled.Timer
+    "translate" -> Icons.Filled.Translate
+    "trending_down" -> Icons.AutoMirrored.Filled.TrendingDown
+    "trending_flat" -> Icons.AutoMirrored.Filled.TrendingFlat
+    "trending_up" -> Icons.AutoMirrored.Filled.TrendingUp
+    "undo" -> Icons.AutoMirrored.Filled.Undo
+    "upload" -> Icons.Filled.Upload
+    "verified" -> Icons.Filled.Verified
+    "visibility" -> Icons.Filled.Visibility
+    "visibility_off" -> Icons.Filled.VisibilityOff
+    "warning" -> Icons.Default.Warning
+    "water_drop", "water" -> Icons.Filled.WaterDrop
+    "wifi" -> Icons.Filled.Wifi
+    "work", "business" -> Icons.Filled.Work
+    "workspace_premium", "premium" -> Icons.Filled.WorkspacePremium
+    )
+    ) {
+    // LLMs frequently misuse box when they mean column, causing children to stack/overlap.
+    // Only use Box layout for single-child centering; fall back to Column for multiple children.
+    @OptIn(ExperimentalLayoutApi::class)
+    Box(
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+    Card(
+    Column(
+    Column(Modifier.fillMaxWidth()) {
+    Column(Modifier.fillMaxWidth().wrapContentHeight()) {
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+    CompositionLocalProvider(LocalFrozenSubmission provides frozen) {
+    ExposedDropdownMenuBox(
+    FlowRow(
+    KaiOutlinedTextField(
+    LaunchedEffect(isInteractive) {
+    LaunchedEffect(node, frozen?.values) {
+    LaunchedEffect(targetMs) {
+    Row(
+    Surface(
+    Text(
+    action.collectFrom?.forEach { inputId ->
+    action.dataAsStrings?.let { collected.putAll(it) }
+    children: ImmutableList<KaiUiNode>,
+    depth: Int = 0,
+    depth: Int,
+    else -> null
+    for (child in children) {
+    formState: SnapshotStateMap<String, String>,
+    frozen: FrozenSubmission? = null,
+    if (!active) return Modifier
+    if (columnCount == 0) return
+    if (depth > MAX_DEPTH) return
+    if (hasError) {
+    if (imageVector != null) {
+    if (isPressedSnapshot) {
+    if (node.action is CopyToClipboardAction) {
+    if (node.children.size <= 1 && node.contentAlignment != null) {
+    if (node.imageUrl != null) {
+    if (node.tabs.isEmpty()) return
+    if (nodeId != null && toggleState[nodeId] == false) return
+    if (step != null && step > 0) {
+    isInteractive: Boolean,
+    modifier: Modifier = Modifier,
+    node: AccordionNode,
+    node: BoxNode,
+    node: ButtonNode,
+    node: CardNode,
+    node: CheckboxNode,
+    node: ChipGroupNode,
+    node: ColumnNode,
+    node: CountdownNode,
+    node: KaiUiNode,
+    node: ListNode,
+    node: RadioGroupNode,
+    node: RowNode,
+    node: SelectNode,
+    node: SliderNode,
+    node: SwitchNode,
+    node: TabsNode,
+    node: TextInputNode,
+    onCallback: (String, Map<String, String>) -> Unit,
+    onCallback: (event: String, data: Map<String, String>) -> Unit,
+    return Modifier.graphicsLayer(scaleX = scale, scaleY = scale, alpha = alpha)
+    return collected
+    return if (value == value.toLong().toFloat()) {
+    toggleState: SnapshotStateMap<String, Boolean>,
+    try {
+    val allStats = node.children.isNotEmpty() && node.children.all { it is StatNode }
+    val alpha by transition.animateFloat(
+    val aspectRatio = (node.aspectRatio ?: DEFAULT_IMAGE_ASPECT_RATIO)
+    val backgroundColor = when (node.color) {
+    val buttonModifier = Modifier.handCursor().then(pulseModifier(showPulse))
+    val checked = formState[node.id]?.toBooleanStrictOrNull() ?: false
+    val collected = mutableMapOf<String, String>()
+    val color = when (node.color) {
+    val columnCount = maxOf(
+    val containerColor = when (node.severity) {
+    val contentColor = when (node.color) {
+    val contentColor = when (node.severity) {
+    val copyToClipboard = rememberCopyToClipboard()
+    val currentOnCallback by rememberUpdatedState(onCallback)
+    val currentValue = formState[node.id]?.toFloatOrNull() ?: (node.value ?: min)
+    val enabled = isInteractive && (node.enabled != false)
+    val formState = remember { mutableStateMapOf<String, String>() }
+    val frozen = LocalFrozenSubmission.current
+    val height = (node.height ?: DEFAULT_IMAGE_HEIGHT).dp
+    val imageVector = resolveIcon(node.name)
+    val interactionSource = remember { MutableInteractionSource() }
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val isDisplayOnly = node.selection == "none"
+    val isMulti = node.selection == "multi"
+    val isPending: Boolean = false,
+    val isPressedSnapshot = !isInteractive && frozen?.pressedEvent != null && run {
+    val labelContent: @Composable () -> Unit = { Text(node.label) }
+    val max = node.max ?: 100f
+    val min = node.min ?: 0f
+    val nodeId = node.id
+    val onClick: () -> Unit = {
+    val onSuccessContainer = if (isDark) Color(0xFFC8E6C9) else Color(0xFF1B5E20)
+    val onWarningContainer = if (isDark) Color(0xFFFF9100) else Color(0xFFE65100)
+    val pillShape = RoundedCornerShape(50)
+    val pressedEvent: String? = null,
+    val scale by transition.animateFloat(
+    val selected = formState[node.id] ?: ""
+    val showPulse = (clicked && !isInteractive) || (isPressedSnapshot && frozen.isPending)
+    val size = (node.size ?: 24).dp
+    val sizeDp = (node.size ?: 40).coerceIn(24, 80).dp
+    val step = node.step
+    val style = when (node.style) {
+    val successContainer = if (isDark) Color(0xFF1B3A1B) else Color(0xFFE8F5E9)
+    val targetMs = remember { Clock.System.now().toEpochMilliseconds() + node.seconds.toLong() * 1000L }
+    val toggle = { formState[node.id] = (!checked).toString() }
+    val toggleState = remember { mutableStateMapOf<String, Boolean>() }
+    val transition = rememberInfiniteTransition(label = "button-pulse")
+    val uriHandler = LocalUriHandler.current
+    val values: Map<String, String> = emptyMap(),
+    val warningContainer = if (isDark) Color(0xFF3D2600) else Color(0xFFFFF3E0)
+    var clicked by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(node.expanded ?: false) }
+    var expired by remember { mutableStateOf(false) }
+    var hasError by remember { mutableStateOf(false) }
+    var remainingSeconds by remember { mutableStateOf<Long>(node.seconds.toLong()) }
+    var selectedIndex by remember { mutableIntStateOf((node.selectedIndex ?: 0).coerceIn(0, node.tabs.lastIndex)) }
+    when (node) {
+    when (node.variant) {
+    wrapInCard: Boolean = true,
+    }
+    } catch (_: Exception) {
+    } else if (node.name != null) {
+    } else if (node.name.isNotEmpty() && node.name.any { it.code > 0x2600 }) {
+    } else {
+ * A frozen snapshot of a user's kai-ui submission: the values they submitted, plus the
+ * `isPending` is a transient UI flag — true while the AI is still answering this submission;
+ * event of the button they pressed. Matching a button uses event + collected form data
+ * per-button data payloads, e.g. a quiz with one event and different `choice` values).
+ * rather than event alone (multiple buttons often share an event but carry distinct
+ * the pressed button pulses to signal the in-flight request.
+ */
+)
+) {
+): (String, Map<String, String>) -> Unit = { event, data ->
+/**
+// --- Form state initialization ---
+// --- Icon resolution ---
+// --- New component renderers ---
+@Composable
+@Immutable
+@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @file:OptIn(ExperimentalMaterial3Api::class)
-
-package com.inspiredandroid.kai.ui.dynamicui
-
+data class FrozenSubmission(
+fun KaiUiRenderer(
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -223,1505 +1087,51 @@ import kai.composeapp.generated.resources.Res
 import kai.composeapp.generated.resources.bot_message_copy_content_description
 import kai.composeapp.generated.resources.kai_ui_code_copy
 import kai.composeapp.generated.resources.kai_ui_render_failed
+import kotlin.time.Clock
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
-import kotlin.time.Clock
-import kotlin.time.Duration.Companion.seconds
-
-val LocalPreviewImages = staticCompositionLocalOf<Map<String, ImageBitmap>> { emptyMap() }
-
-/**
- * A frozen snapshot of a user's kai-ui submission: the values they submitted, plus the
- * event of the button they pressed. Matching a button uses event + collected form data
- * rather than event alone (multiple buttons often share an event but carry distinct
- * per-button data payloads, e.g. a quiz with one event and different `choice` values).
- * `isPending` is a transient UI flag — true while the AI is still answering this submission;
- * the pressed button pulses to signal the in-flight request.
- */
-@Immutable
-data class FrozenSubmission(
-    val values: Map<String, String> = emptyMap(),
-    val pressedEvent: String? = null,
-    val isPending: Boolean = false,
-)
-
-private val LocalFrozenSubmission = compositionLocalOf<FrozenSubmission?> { null }
-
-@Composable
-fun KaiUiRenderer(
-    node: KaiUiNode,
-    isInteractive: Boolean,
-    onCallback: (event: String, data: Map<String, String>) -> Unit,
-    modifier: Modifier = Modifier,
-    wrapInCard: Boolean = true,
-    frozen: FrozenSubmission? = null,
-) {
-    val formState = remember { mutableStateMapOf<String, String>() }
-    val toggleState = remember { mutableStateMapOf<String, Boolean>() }
-    var hasError by remember { mutableStateOf(false) }
-
-    LaunchedEffect(node, frozen?.values) {
-        try {
-            initializeFormState(node, formState)
-            frozen?.values?.let { formState.putAll(it) }
-        } catch (_: Exception) {
-            hasError = true
-        }
-    }
-
-    if (hasError) {
-        Text(
-            text = stringResource(Res.string.kai_ui_render_failed),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.error,
-            modifier = modifier,
-        )
-        return
-    }
-
-    CompositionLocalProvider(LocalFrozenSubmission provides frozen) {
-        if (wrapInCard) {
-            Card(
-                modifier = modifier.fillMaxWidth().wrapContentHeight(),
-                colors = kaiAdaptiveCardColors(),
-                border = kaiAdaptiveCardBorder(),
-            ) {
-                Column(Modifier.padding(12.dp).wrapContentHeight()) {
-                    RenderNode(
-                        node = node,
-                        isInteractive = isInteractive,
-                        formState = formState,
-                        toggleState = toggleState,
-                        onCallback = safeCallback(onCallback),
-                    )
-                }
-            }
-        } else {
-            CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onBackground) {
-                Column(modifier = modifier.fillMaxWidth().wrapContentHeight()) {
-                    RenderNode(
-                        node = node,
-                        isInteractive = isInteractive,
-                        formState = formState,
-                        toggleState = toggleState,
-                        onCallback = safeCallback(onCallback),
-                    )
-                }
-            }
-        }
-    }
-}
-
-private fun safeCallback(
-    onCallback: (String, Map<String, String>) -> Unit,
-): (String, Map<String, String>) -> Unit = { event, data ->
-    try {
-        onCallback(event, data)
-    } catch (_: Exception) {
-        // Silently handle callback errors to prevent crashes
-    }
-}
-
-private const val MAX_DEPTH = 10
-private const val DEFAULT_IMAGE_HEIGHT = 220
+package com.inspiredandroid.kai.ui.dynamicui
 private const val DEFAULT_IMAGE_ASPECT_RATIO = 1.91f
-
-@Composable
-private fun RenderNode(
-    node: KaiUiNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int = 0,
-) {
-    if (depth > MAX_DEPTH) return
-
-    val nodeId = node.id
-    if (nodeId != null && toggleState[nodeId] == false) return
-
-    when (node) {
-        is ColumnNode -> RenderColumn(node, isInteractive, formState, toggleState, onCallback, depth)
-        is RowNode -> RenderRow(node, isInteractive, formState, toggleState, onCallback, depth)
-        is CardNode -> RenderCard(node, isInteractive, formState, toggleState, onCallback, depth)
-        is TextNode -> RenderText(node)
-        is ButtonNode -> RenderButton(node, isInteractive, formState, toggleState, onCallback)
-        is TextInputNode -> RenderTextInput(node, isInteractive, formState)
-        is CheckboxNode -> RenderCheckbox(node, isInteractive, formState)
-        is SelectNode -> RenderSelect(node, isInteractive, formState)
-        is ImageNode -> RenderImage(node)
-        is TableNode -> RenderTable(node)
-        is ListNode -> RenderList(node, isInteractive, formState, toggleState, onCallback, depth)
-        is DividerNode -> HorizontalDivider(Modifier.padding(vertical = 4.dp))
-        is SwitchNode -> RenderSwitch(node, isInteractive, formState)
-        is SliderNode -> RenderSlider(node, isInteractive, formState)
-        is RadioGroupNode -> RenderRadioGroup(node, isInteractive, formState)
-        is ProgressNode -> RenderProgress(node)
-        is CountdownNode -> RenderCountdown(node, isInteractive, formState, toggleState, onCallback)
-        is AlertNode -> RenderAlert(node)
-        is ChipGroupNode -> RenderChipGroup(node, isInteractive, formState)
-        is IconNode -> RenderIcon(node)
-        is CodeNode -> RenderCode(node)
-        is BoxNode -> RenderBox(node, isInteractive, formState, toggleState, onCallback, depth)
-        is TabsNode -> RenderTabs(node, isInteractive, formState, toggleState, onCallback, depth)
-        is AccordionNode -> RenderAccordion(node, isInteractive, formState, toggleState, onCallback, depth)
-        is QuoteNode -> RenderQuote(node)
-        is BadgeNode -> RenderBadge(node)
-        is StatNode -> RenderStat(node)
-        is AvatarNode -> RenderAvatar(node)
-    }
-}
-
-@Composable
-private fun RenderChildren(
-    children: ImmutableList<KaiUiNode>,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int,
-) {
-    for (child in children) {
-        RenderNode(child, isInteractive, formState, toggleState, onCallback, depth + 1)
-    }
-}
-
-@Composable
-private fun RenderColumn(
-    node: ColumnNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int,
-) {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight(),
-    ) {
-        RenderChildren(node.children, isInteractive, formState, toggleState, onCallback, depth)
-    }
-}
-
-@Composable
-private fun RenderRow(
-    node: RowNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int,
-) {
-    val allStats = node.children.isNotEmpty() && node.children.all { it is StatNode }
-    @OptIn(ExperimentalLayoutApi::class)
-    FlowRow(
-        horizontalArrangement = if (allStats) Arrangement.SpaceEvenly else Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight(),
-    ) {
-        for (child in node.children) {
-            RenderNode(child, isInteractive, formState, toggleState, onCallback, depth + 1)
-        }
-    }
-}
-
-@Composable
-private fun RenderCard(
-    node: CardNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int,
-) {
-    Card(
-        modifier = Modifier.fillMaxWidth().wrapContentHeight(),
-        colors = kaiAdaptiveCardColors(),
-        border = kaiAdaptiveCardBorder(),
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp).wrapContentHeight(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            RenderChildren(node.children, isInteractive, formState, toggleState, onCallback, depth)
-        }
-    }
-}
-
-@Composable
-private fun RenderText(node: TextNode) {
-    val style = when (node.style) {
-        TextNodeStyle.HEADLINE -> MaterialTheme.typography.headlineSmall
-        TextNodeStyle.TITLE -> MaterialTheme.typography.titleMedium
-        TextNodeStyle.BODY -> MaterialTheme.typography.bodyLarge
-        TextNodeStyle.CAPTION -> MaterialTheme.typography.bodySmall
-        null -> MaterialTheme.typography.bodyLarge
-    }
-    val color = when (node.color) {
-        "primary" -> MaterialTheme.colorScheme.primary
-        "secondary" -> MaterialTheme.colorScheme.secondary
-        "error" -> MaterialTheme.colorScheme.error
-        else -> MaterialTheme.colorScheme.onSurface
-    }
-    Text(
-        text = node.value.replace("**", ""),
-        style = style,
-        color = color,
-        fontWeight = if (node.bold == true || node.value.startsWith("**")) FontWeight.Bold else null,
-        fontStyle = if (node.italic == true) FontStyle.Italic else null,
-    )
-}
-
-@Composable
-private fun RenderButton(
-    node: ButtonNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-) {
-    val uriHandler = LocalUriHandler.current
-    val copyToClipboard = rememberCopyToClipboard()
-    var clicked by remember { mutableStateOf(false) }
-    LaunchedEffect(isInteractive) {
-        if (isInteractive) clicked = false
-    }
-    val frozen = LocalFrozenSubmission.current
-    val isPressedSnapshot = !isInteractive && frozen?.pressedEvent != null && run {
-        val action = node.action as? CallbackAction ?: return@run false
-        action.event == frozen.pressedEvent && collectFormData(action, formState) == frozen.values
-    }
-    val showPulse = (clicked && !isInteractive) || (isPressedSnapshot && frozen.isPending)
-    val enabled = isInteractive && (node.enabled != false)
-    val onClick: () -> Unit = {
-        try {
-            when (val action = node.action) {
-                is CallbackAction -> {
-                    val data = collectFormData(action, formState)
-                    clicked = true
-                    onCallback(action.event, data)
-                }
-
-                is ToggleAction -> {
-                    toggleState[action.targetId] = !(toggleState[action.targetId] ?: true)
-                }
-
-                is OpenUrlAction -> {
-                    uriHandler.openUri(action.url)
-                }
-
-                is CopyToClipboardAction -> {
-                    copyToClipboard(action.text)
-                }
-
-                null -> {}
-            }
-        } catch (_: Exception) {
-            // Prevent crashes from action handlers
-        }
-    }
-
-    val buttonModifier = Modifier.handCursor().then(pulseModifier(showPulse))
-    if (node.action is CopyToClipboardAction) {
-        IconButton(onClick = onClick, enabled = enabled, modifier = buttonModifier) {
-            Icon(
-                imageVector = Icons.Filled.ContentCopy,
-                contentDescription = stringResource(Res.string.bot_message_copy_content_description),
-            )
-        }
-        return
-    }
-    val labelContent: @Composable () -> Unit = { Text(node.label) }
-    if (isPressedSnapshot) {
-        // The pressed button in a frozen snapshot uses primary colors so it stands out
-        // against the greyed-out disabled siblings. `enabled=false` prevents clicks; the
-        // override on disabled colors bypasses Material's auto-faded disabled appearance.
-        val pressedColors = ButtonDefaults.buttonColors(
-            disabledContainerColor = MaterialTheme.colorScheme.primary,
-            disabledContentColor = MaterialTheme.colorScheme.onPrimary,
-        )
-        Button(
-            onClick = {},
-            enabled = false,
-            colors = pressedColors,
-            modifier = buttonModifier,
-        ) { labelContent() }
-        return
-    }
-    when (node.variant) {
-        ButtonVariant.OUTLINED -> OutlinedButton(onClick = onClick, enabled = enabled, modifier = buttonModifier) { labelContent() }
-        ButtonVariant.TEXT -> TextButton(onClick = onClick, enabled = enabled, modifier = buttonModifier) { labelContent() }
-        ButtonVariant.TONAL -> FilledTonalButton(onClick = onClick, enabled = enabled, modifier = buttonModifier) { labelContent() }
-        ButtonVariant.FILLED, null -> Button(onClick = onClick, enabled = enabled, modifier = buttonModifier) { labelContent() }
-    }
-}
-
-@Composable
-private fun pulseModifier(active: Boolean): Modifier {
-    if (!active) return Modifier
-    val transition = rememberInfiniteTransition(label = "button-pulse")
-    val scale by transition.animateFloat(
-        initialValue = 0.96f,
-        targetValue = 1f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 700, easing = FastOutSlowInEasing),
-            repeatMode = RepeatMode.Reverse,
-        ),
-        label = "scale",
-    )
-    val alpha by transition.animateFloat(
-        initialValue = 0.55f,
-        targetValue = 1f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 700, easing = FastOutSlowInEasing),
-            repeatMode = RepeatMode.Reverse,
-        ),
-        label = "alpha",
-    )
-    return Modifier.graphicsLayer(scaleX = scale, scaleY = scale, alpha = alpha)
-}
-
-@Composable
-private fun RenderTextInput(
-    node: TextInputNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-) {
-    KaiOutlinedTextField(
-        value = formState[node.id] ?: "",
-        onValueChange = { formState[node.id] = it },
-        label = node.label?.let { { Text(it) } },
-        placeholder = node.placeholder?.let { { Text(it) } },
-        enabled = isInteractive,
-        singleLine = node.multiline != true,
-        modifier = Modifier.fillMaxWidth(),
-    )
-}
-
-@Composable
-private fun RenderCheckbox(
-    node: CheckboxNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-) {
-    val checked = formState[node.id]?.toBooleanStrictOrNull() ?: false
-    val toggle = { formState[node.id] = (!checked).toString() }
-    val interactionSource = remember { MutableInteractionSource() }
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .handCursor()
-            .then(
-                if (isInteractive) {
-                    Modifier.clickable(
-                        interactionSource = interactionSource,
-                        indication = null,
-                        onClick = toggle,
-                    )
-                } else {
-                    Modifier
-                },
-            ),
-    ) {
-        Checkbox(
-            checked = checked,
-            onCheckedChange = null,
-            enabled = isInteractive,
-            modifier = Modifier.indication(
-                interactionSource = interactionSource,
-                indication = ripple(bounded = false, radius = 20.dp),
-            ),
-            interactionSource = interactionSource,
-        )
-        Text(node.label, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(start = 8.dp))
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun RenderSelect(
-    node: SelectNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-) {
-    var expanded by remember { mutableStateOf(false) }
-    val selected = formState[node.id] ?: ""
-
-    ExposedDropdownMenuBox(
-        expanded = expanded,
-        onExpandedChange = { if (isInteractive) expanded = it },
-    ) {
-        OutlinedTextField(
-            value = selected,
-            onValueChange = {},
-            readOnly = true,
-            label = node.label?.let { { Text(it) } },
-            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-            enabled = isInteractive,
-            shape = RoundedCornerShape(12.dp),
-            modifier = Modifier.fillMaxWidth().menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).handCursor(),
-        )
-        ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            for (option in node.options) {
-                DropdownMenuItem(
-                    text = { Text(option) },
-                    modifier = Modifier.handCursor(),
-                    onClick = {
-                        formState[node.id] = option
-                        expanded = false
-                    },
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun RenderImage(node: ImageNode) {
-    val height = (node.height ?: DEFAULT_IMAGE_HEIGHT).dp
-    val aspectRatio = (node.aspectRatio ?: DEFAULT_IMAGE_ASPECT_RATIO)
-    BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val width = minOf(maxWidth, height * aspectRatio)
-        val modifier = Modifier.height(width / aspectRatio).width(width).clip(RoundedCornerShape(6.dp))
-        val previewBitmap = LocalPreviewImages.current[node.url]
-        if (previewBitmap != null) {
-            Image(
-                bitmap = previewBitmap,
-                contentDescription = node.alt,
-                modifier = modifier,
-                contentScale = ContentScale.Crop,
-            )
-        } else {
-            coil3.compose.AsyncImage(
-                model = node.url,
-                contentDescription = node.alt,
-                modifier = modifier,
-                contentScale = ContentScale.Crop,
-            )
-        }
-    }
-}
-
-@Composable
-private fun RenderTable(node: TableNode) {
-    val columnCount = maxOf(
-        node.headers.size,
-        node.rows.maxOfOrNull { it.size } ?: 0,
-    )
-    if (columnCount == 0) return
-    Column(Modifier.fillMaxWidth().wrapContentHeight()) {
-        if (node.headers.isNotEmpty()) {
-            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
-                for (index in 0 until columnCount) {
-                    Text(
-                        text = node.headers.getOrElse(index) { "" },
-                        style = MaterialTheme.typography.titleSmall,
-                        modifier = Modifier.weight(1f),
-                    )
-                }
-            }
-            HorizontalDivider()
-        }
-        for (row in node.rows) {
-            Row(
-                Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-            ) {
-                for (index in 0 until columnCount) {
-                    Text(
-                        text = row.getOrElse(index) { "" },
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.weight(1f),
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun RenderList(
-    node: ListNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int,
-) {
-    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        for ((index, item) in node.items.withIndex()) {
-            Row {
-                val prefix = if (node.ordered == true) "${index + 1}. " else "\u2022 "
-                Text(prefix, style = MaterialTheme.typography.bodyLarge)
-                Column(Modifier.weight(1f)) {
-                    RenderNode(item, isInteractive, formState, toggleState, onCallback, depth + 1)
-                }
-            }
-        }
-    }
-}
-
-// --- New component renderers ---
-
-@Composable
-private fun RenderSwitch(
-    node: SwitchNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-) {
-    val checked = formState[node.id]?.toBooleanStrictOrNull() ?: false
-    val toggle = { formState[node.id] = (!checked).toString() }
-    val interactionSource = remember { MutableInteractionSource() }
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .handCursor()
-            .then(
-                if (isInteractive) {
-                    Modifier.clickable(
-                        interactionSource = interactionSource,
-                        indication = null,
-                        onClick = toggle,
-                    )
-                } else {
-                    Modifier
-                },
-            ),
-    ) {
-        Text(
-            text = node.label,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.weight(1f),
-        )
-        Switch(
-            checked = checked,
-            onCheckedChange = null,
-            enabled = isInteractive,
-            interactionSource = interactionSource,
-        )
-    }
-}
-
-@Composable
-private fun RenderSlider(
-    node: SliderNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-) {
-    val min = node.min ?: 0f
-    val max = node.max ?: 100f
-    val step = node.step
-    val currentValue = formState[node.id]?.toFloatOrNull() ?: (node.value ?: min)
-
-    Column(Modifier.fillMaxWidth()) {
-        if (node.label != null) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Text(node.label, style = MaterialTheme.typography.bodyLarge)
-                Text(
-                    text = formatSliderValue(currentValue, step),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.primary,
-                )
-            }
-        }
-        val steps = if (step != null && step > 0) {
-            ((max - min) / step).toInt() - 1
-        } else {
-            0
-        }
-        Slider(
-            value = currentValue.coerceIn(min, max),
-            onValueChange = { formState[node.id] = formatSliderValue(it, step) },
-            valueRange = min..max,
-            steps = steps.coerceAtLeast(0),
-            enabled = isInteractive,
-            modifier = Modifier.fillMaxWidth()
-                .handCursor(),
-            colors = SliderDefaults.colors(
-                thumbColor = MaterialTheme.colorScheme.primary,
-                activeTrackColor = MaterialTheme.colorScheme.primary,
-                inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
-                activeTickColor = Color.Transparent,
-                inactiveTickColor = Color.Transparent,
-            ),
-            thumb = {
-                Box(
-                    modifier = Modifier
-                        .size(20.dp)
-                        .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(50)),
-                )
-            },
-            track = { sliderState ->
-                SliderDefaults.Track(
-                    sliderState = sliderState,
-                    colors = SliderDefaults.colors(
-                        activeTrackColor = MaterialTheme.colorScheme.primary,
-                        inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
-                    ),
-                    drawStopIndicator = null,
-                    drawTick = { _, _ -> },
-                )
-            },
-        )
-    }
-}
-
-private fun formatSliderValue(value: Float, step: Float?): String {
-    if (step != null && step > 0) {
-        val rounded = kotlin.math.round(value / step) * step
-        if (rounded == rounded.toLong().toFloat()) {
-            return rounded.toLong().toString()
-        }
-        // Determine decimal places from step (e.g. step=0.1 → 1 decimal)
-        val stepStr = step.toString()
-        val decimals = stepStr.substringAfter('.', "").trimEnd('0').length.coerceIn(1, 6)
-        var factor = 1f
-        repeat(decimals) { factor *= 10f }
-        return (kotlin.math.round(rounded * factor) / factor).toString()
-    }
-    return if (value == value.toLong().toFloat()) {
-        value.toLong().toString()
-    } else {
-        val rounded = kotlin.math.round(value * 100.0f) / 100.0f
-        rounded.toString()
-    }
-}
-
-@Composable
-private fun RenderRadioGroup(
-    node: RadioGroupNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-) {
-    val selected = formState[node.id] ?: ""
-    Column(
-        Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        if (node.label != null) {
-            Text(
-                text = node.label,
-                style = MaterialTheme.typography.titleSmall,
-                modifier = Modifier.padding(bottom = 4.dp),
-            )
-        }
-        for (option in node.options) {
-            key(option) {
-                val interactionSource = remember { MutableInteractionSource() }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .handCursor()
-                        .then(
-                            if (isInteractive) {
-                                Modifier.clickable(
-                                    interactionSource = interactionSource,
-                                    indication = null,
-                                    onClick = { formState[node.id] = option },
-                                )
-                            } else {
-                                Modifier
-                            },
-                        ),
-                ) {
-                    RadioButton(
-                        selected = selected == option,
-                        onClick = null,
-                        enabled = isInteractive,
-                        modifier = Modifier.indication(
-                            interactionSource = interactionSource,
-                            indication = ripple(bounded = false, radius = 20.dp),
-                        ),
-                        interactionSource = interactionSource,
-                    )
-                    Text(
-                        text = option,
-                        style = MaterialTheme.typography.bodyLarge,
-                        modifier = Modifier.padding(start = 8.dp),
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun RenderProgress(node: ProgressNode) {
-    Column(Modifier.fillMaxWidth()) {
-        if (node.label != null) {
-            Text(
-                text = node.label,
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(bottom = 4.dp),
-            )
-        }
-        if (node.value != null) {
-            LinearProgressIndicator(
-                progress = { node.value.coerceIn(0f, 1f) },
-                modifier = Modifier.fillMaxWidth(),
-                drawStopIndicator = {},
-                gapSize = 0.dp,
-            )
-        } else {
-            LinearProgressIndicator(
-                modifier = Modifier.fillMaxWidth(),
-                gapSize = 0.dp,
-            )
-        }
-    }
-}
-
-@Composable
-private fun RenderCountdown(
-    node: CountdownNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-) {
-    val targetMs = remember { Clock.System.now().toEpochMilliseconds() + node.seconds.toLong() * 1000L }
-    var remainingSeconds by remember { mutableStateOf<Long>(node.seconds.toLong()) }
-    var expired by remember { mutableStateOf(false) }
-    val currentOnCallback by rememberUpdatedState(onCallback)
-
-    LaunchedEffect(targetMs) {
-        while (true) {
-            val diff = (targetMs - Clock.System.now().toEpochMilliseconds()) / 1000L
-            remainingSeconds = diff.coerceAtLeast(0L)
-            if (diff <= 0L) {
-                if (!expired) {
-                    expired = true
-                    node.id?.let { formState[it] = "0" }
-                    try {
-                        when (val action = node.action) {
-                            is CallbackAction -> {
-                                val data = collectFormData(action, formState)
-                                currentOnCallback(action.event, data)
-                            }
-
-                            is ToggleAction -> {
-                                toggleState[action.targetId] = !(toggleState[action.targetId] ?: true)
-                            }
-
-                            is OpenUrlAction -> {}
-
-                            is CopyToClipboardAction -> {}
-
-                            null -> {}
-                        }
-                    } catch (_: Exception) {}
-                }
-                break
-            }
-            node.id?.let { formState[it] = diff.toString() }
-            delay(1.seconds)
-        }
-    }
-
-    Column(Modifier.fillMaxWidth()) {
-        if (node.label != null) {
-            Text(
-                text = node.label,
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(bottom = 4.dp),
-            )
-        }
-        val h = remainingSeconds / 3600
-        val m = (remainingSeconds % 3600) / 60
-        val s = remainingSeconds % 60
-        val formatted = if (h > 0) {
-            "$h:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}"
-        } else {
-            "${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}"
-        }
-        Text(
-            text = formatted,
-            style = MaterialTheme.typography.headlineMedium,
-            color = if (expired) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
-        )
-    }
-}
-
-@Composable
-private fun RenderAlert(node: AlertNode) {
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val successContainer = if (isDark) Color(0xFF1B3A1B) else Color(0xFFE8F5E9)
-    val onSuccessContainer = if (isDark) Color(0xFFC8E6C9) else Color(0xFF1B5E20)
-    val warningContainer = if (isDark) Color(0xFF3D2600) else Color(0xFFFFF3E0)
-    val onWarningContainer = if (isDark) Color(0xFFFF9100) else Color(0xFFE65100)
-    val containerColor = when (node.severity) {
-        AlertSeverity.SUCCESS -> successContainer
-        AlertSeverity.WARNING -> warningContainer
-        AlertSeverity.ERROR -> MaterialTheme.colorScheme.errorContainer
-        AlertSeverity.INFO, null -> MaterialTheme.colorScheme.primaryContainer
-    }
-    val contentColor = when (node.severity) {
-        AlertSeverity.SUCCESS -> onSuccessContainer
-        AlertSeverity.WARNING -> onWarningContainer
-        AlertSeverity.ERROR -> MaterialTheme.colorScheme.onErrorContainer
-        AlertSeverity.INFO, null -> MaterialTheme.colorScheme.onPrimaryContainer
-    }
-    Surface(
-        color = containerColor,
-        contentColor = contentColor,
-        shape = RoundedCornerShape(8.dp),
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        Row(
-            modifier = Modifier.padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            AlertIcon(node.severity, contentColor, containerColor)
-            Spacer(Modifier.width(12.dp))
-            Column {
-                if (node.title != null) {
-                    Text(
-                        text = node.title,
-                        style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    Spacer(Modifier.height(2.dp))
-                }
-                Text(
-                    text = node.message,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-            }
-        }
-    }
-}
-
-@Composable
+private const val DEFAULT_IMAGE_HEIGHT = 220
+private const val MAX_DEPTH = 10
 private fun AlertIcon(severity: AlertSeverity?, contentColor: Color, containerColor: Color) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .size(20.dp)
-            .background(contentColor, androidx.compose.foundation.shape.CircleShape),
-    ) {
-        when (severity) {
-            AlertSeverity.SUCCESS -> Icon(Icons.Default.Check, null, Modifier.size(14.dp), tint = containerColor)
-            AlertSeverity.ERROR -> Icon(Icons.Default.Close, null, Modifier.size(14.dp), tint = containerColor)
-            AlertSeverity.WARNING -> Text("!", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = containerColor)
-            AlertSeverity.INFO, null -> Text("i", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = containerColor)
-        }
-    }
-}
-
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-private fun RenderChipGroup(
-    node: ChipGroupNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-) {
-    val isDisplayOnly = node.selection == "none"
-    val isMulti = node.selection == "multi"
-
-    FlowRow(
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        for (chip in node.chips) {
-            val value = chip.value.ifEmpty { chip.label }
-            key(value) {
-                if (isDisplayOnly) {
-                    KaiChip { Text(chip.label) }
-                } else {
-                    val isSelected by remember {
-                        derivedStateOf {
-                            val csv = formState[node.id] ?: ""
-                            csv.split(",").contains(value)
-                        }
-                    }
-                    KaiChip(
-                        selected = isSelected,
-                        onClick = {
-                            if (!isInteractive) return@KaiChip
-                            val current = (formState[node.id] ?: "").split(",").filter { it.isNotEmpty() }.toSet()
-                            val newSelection = if (isMulti) {
-                                if (isSelected) current - value else current + value
-                            } else {
-                                if (isSelected) emptySet() else setOf(value)
-                            }
-                            formState[node.id] = newSelection.joinToString(",")
-                        },
-                        enabled = isInteractive,
-                    ) {
-                        Text(chip.label)
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun RenderIcon(node: IconNode) {
-    val imageVector = resolveIcon(node.name)
-    val size = (node.size ?: 24).dp
-    if (imageVector != null) {
-        val color = when (node.color) {
-            "primary" -> MaterialTheme.colorScheme.primary
-            "secondary" -> MaterialTheme.colorScheme.secondary
-            "error" -> MaterialTheme.colorScheme.error
-            else -> MaterialTheme.colorScheme.onSurface
-        }
-        Icon(
-            imageVector = imageVector,
-            contentDescription = node.name,
-            modifier = Modifier.size(size),
-            tint = color,
-        )
-    } else if (node.name.isNotEmpty() && node.name.any { it.code > 0x2600 }) {
-        // `size` is a Dp; converting it through Density keeps the emoji fallback the
-        // same physical size as the Icon branch above instead of drifting apart as
-        // soon as the font scale is not 1.
-        Text(
-            text = node.name,
-            fontSize = with(LocalDensity.current) { size.toSp() },
-        )
-    }
-}
-
-@Composable
-private fun RenderCode(node: CodeNode) {
-    val copyToClipboard = rememberCopyToClipboard()
-    Surface(
-        color = MaterialTheme.colorScheme.surfaceVariant,
-        shape = RoundedCornerShape(8.dp),
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        Box(Modifier.padding(12.dp)) {
-            Column {
-                if (node.language != null) {
-                    Text(
-                        text = node.language,
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 4.dp, end = 32.dp),
-                    )
-                }
-                Text(
-                    text = node.code,
-                    style = MaterialTheme.typography.bodyMedium.copy(fontFamily = FontFamily.Monospace),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.horizontalScroll(rememberScrollState()).padding(end = 32.dp),
-                )
-            }
-            Box(
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .size(28.dp)
-                    .clip(RoundedCornerShape(6.dp))
-                    .handCursor()
-                    .clickable { copyToClipboard(node.code) },
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.ContentCopy,
-                    contentDescription = stringResource(Res.string.kai_ui_code_copy),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(16.dp),
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun RenderQuote(node: QuoteNode) {
-    Row(
-        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
-    ) {
-        Box(
-            modifier = Modifier
-                .width(3.dp)
-                .fillMaxHeight()
-                .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(1.5.dp)),
-        )
-        Spacer(Modifier.width(12.dp))
-        Column {
-            Text(
-                text = node.text,
-                style = MaterialTheme.typography.bodyLarge,
-                fontStyle = FontStyle.Italic,
-                color = MaterialTheme.colorScheme.onSurface,
-            )
-            if (node.source != null) {
-                Spacer(Modifier.height(2.dp))
-                Text(
-                    text = "— ${node.source}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun RenderBadge(node: BadgeNode) {
-    val backgroundColor = when (node.color) {
-        "primary" -> MaterialTheme.colorScheme.primary
-        "secondary" -> MaterialTheme.colorScheme.secondary
-        "error" -> MaterialTheme.colorScheme.error
-        else -> MaterialTheme.colorScheme.primary
-    }
-    val contentColor = when (node.color) {
-        "primary" -> MaterialTheme.colorScheme.onPrimary
-        "secondary" -> MaterialTheme.colorScheme.onSecondary
-        "error" -> MaterialTheme.colorScheme.onError
-        else -> MaterialTheme.colorScheme.onPrimary
-    }
-    Surface(
-        color = backgroundColor,
-        contentColor = contentColor,
-        shape = RoundedCornerShape(12.dp),
-    ) {
-        Text(
-            text = node.value,
-            style = MaterialTheme.typography.labelSmall,
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
-        )
-    }
-}
-
-@Composable
-private fun RenderStat(node: StatNode) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.widthIn(min = 72.dp),
-    ) {
-        Text(
-            text = node.value,
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onSurface,
-        )
-        Text(
-            text = node.label,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        if (node.description != null) {
-            Text(
-                text = node.description,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-    }
-}
-
-@Composable
-private fun RenderAvatar(node: AvatarNode) {
-    val sizeDp = (node.size ?: 40).coerceIn(24, 80).dp
-    if (node.imageUrl != null) {
-        Surface(
-            shape = androidx.compose.foundation.shape.CircleShape,
-            color = MaterialTheme.colorScheme.surfaceContainer,
-            modifier = Modifier.size(sizeDp),
-        ) {
-            coil3.compose.AsyncImage(
-                model = node.imageUrl,
-                contentDescription = node.name,
-                modifier = Modifier.size(sizeDp),
-            )
-        }
-    } else if (node.name != null) {
-        val initials = node.name.split(" ")
-            .filter { it.isNotEmpty() }
-            .take(2)
-            .joinToString("") { it.first().uppercase() }
-        Surface(
-            color = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            shape = androidx.compose.foundation.shape.CircleShape,
-            modifier = Modifier.size(sizeDp),
-        ) {
-            Box(contentAlignment = Alignment.Center, modifier = Modifier.size(sizeDp)) {
-                Text(
-                    text = initials,
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.Bold,
-                )
-            }
-        }
-    } else {
-        Surface(
-            color = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            shape = androidx.compose.foundation.shape.CircleShape,
-            modifier = Modifier.size(sizeDp),
-        ) {
-            Box(contentAlignment = Alignment.Center, modifier = Modifier.size(sizeDp)) {
-                Icon(
-                    imageVector = Icons.Default.Person,
-                    contentDescription = null,
-                    modifier = Modifier.size(sizeDp * 0.6f),
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun RenderBox(
-    node: BoxNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int,
-) {
-    // LLMs frequently misuse box when they mean column, causing children to stack/overlap.
-    // Only use Box layout for single-child centering; fall back to Column for multiple children.
-    if (node.children.size <= 1 && node.contentAlignment != null) {
-        val alignment = when (node.contentAlignment) {
-            "center" -> Alignment.Center
-            "top_start" -> Alignment.TopStart
-            "top_center" -> Alignment.TopCenter
-            "top_end" -> Alignment.TopEnd
-            "center_start" -> Alignment.CenterStart
-            "center_end" -> Alignment.CenterEnd
-            "bottom_start" -> Alignment.BottomStart
-            "bottom_center" -> Alignment.BottomCenter
-            "bottom_end" -> Alignment.BottomEnd
-            else -> Alignment.TopStart
-        }
-        Box(
-            contentAlignment = alignment,
-            modifier = Modifier.fillMaxWidth().wrapContentHeight(),
-        ) {
-            for (child in node.children) {
-                RenderNode(child, isInteractive, formState, toggleState, onCallback, depth + 1)
-            }
-        }
-    } else {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.fillMaxWidth().wrapContentHeight(),
-        ) {
-            RenderChildren(node.children, isInteractive, formState, toggleState, onCallback, depth)
-        }
-    }
-}
-
-@Composable
-private fun RenderTabs(
-    node: TabsNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int,
-) {
-    if (node.tabs.isEmpty()) return
-    var selectedIndex by remember { mutableIntStateOf((node.selectedIndex ?: 0).coerceIn(0, node.tabs.lastIndex)) }
-    val pillShape = RoundedCornerShape(50)
-
-    Column(Modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier
-                .layout { measurable, constraints ->
-                    val bleed = 12.dp.roundToPx()
-                    val wider = if (constraints.maxWidth == Int.MAX_VALUE) {
-                        constraints.maxWidth
-                    } else {
-                        constraints.maxWidth + bleed * 2
-                    }
-                    val placeable = measurable.measure(
-                        constraints.copy(minWidth = 0, maxWidth = wider),
-                    )
-                    layout(wider, placeable.height) {
-                        placeable.place(0, 0)
-                    }
-                }
-                .horizontalScroll(rememberScrollState()),
-        ) {
-            Spacer(Modifier.width(12.dp))
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier
-                    .clip(pillShape)
-                    .background(MaterialTheme.colorScheme.surfaceContainerHigh, pillShape)
-                    .padding(4.dp),
-            ) {
-                node.tabs.forEachIndexed { index, tab ->
-                    val isSelected = selectedIndex == index
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .defaultMinSize(minHeight = 32.dp)
-                            .clip(pillShape)
-                            .then(
-                                if (isSelected) {
-                                    Modifier.background(
-                                        MaterialTheme.colorScheme.primary.copy(alpha = 0.15f),
-                                        pillShape,
-                                    )
-                                } else {
-                                    Modifier
-                                },
-                            )
-                            .clickable { selectedIndex = index }
-                            .handCursor()
-                            .padding(horizontal = 16.dp, vertical = 4.dp),
-                    ) {
-                        Text(
-                            text = tab.label,
-                            style = MaterialTheme.typography.labelLarge,
-                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                            color = if (isSelected) {
-                                MaterialTheme.colorScheme.primary
-                            } else {
-                                MaterialTheme.colorScheme.onSurfaceVariant
-                            },
-                            maxLines = 1,
-                        )
-                    }
-                }
-            }
-            Spacer(Modifier.width(12.dp))
-        }
-
-        val selectedTab = node.tabs.getOrNull(selectedIndex)
-        if (selectedTab != null) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
-            ) {
-                RenderChildren(selectedTab.children, isInteractive, formState, toggleState, onCallback, depth)
-            }
-        }
-    }
-}
-
-@Composable
 private fun RenderAccordion(
-    node: AccordionNode,
-    isInteractive: Boolean,
-    formState: SnapshotStateMap<String, String>,
-    toggleState: SnapshotStateMap<String, Boolean>,
-    onCallback: (String, Map<String, String>) -> Unit,
-    depth: Int,
-) {
-    var expanded by remember { mutableStateOf(node.expanded ?: false) }
-
-    Surface(
-        onClick = { expanded = !expanded },
-        modifier = Modifier.fillMaxWidth().handCursor(),
-        shape = RoundedCornerShape(6.dp),
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
-    ) {
-        Column(Modifier.fillMaxWidth()) {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(12.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = node.title,
-                    style = MaterialTheme.typography.titleSmall,
-                    modifier = Modifier.weight(1f),
-                )
-                Icon(
-                    imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = null,
-                )
-            }
-            AnimatedVisibility(
-                visible = expanded,
-                enter = expandVertically(),
-                exit = shrinkVertically(),
-            ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, bottom = 12.dp),
-                ) {
-                    RenderChildren(node.children, isInteractive, formState, toggleState, onCallback, depth)
-                }
-            }
-        }
-    }
-}
-
-// --- Icon resolution ---
-
-private fun resolveIcon(name: String): ImageVector? = when (name) {
-    "home" -> Icons.Default.Home
-    "settings" -> Icons.Default.Settings
-    "search" -> Icons.Default.Search
-    "add" -> Icons.Default.Add
-    "delete" -> Icons.Default.Delete
-    "edit" -> Icons.Default.Edit
-    "check", "done" -> Icons.Default.Check
-    "check_circle" -> Icons.Default.CheckCircle
-    "close" -> Icons.Default.Close
-    "arrow_back" -> Icons.AutoMirrored.Filled.ArrowBack
-    "arrow_forward" -> Icons.AutoMirrored.Filled.ArrowForward
-    "star" -> Icons.Default.Star
-    "favorite" -> Icons.Default.Favorite
-    "share" -> Icons.Default.Share
-    "info" -> Icons.Default.Info
-    "warning" -> Icons.Default.Warning
-    "person" -> Icons.Default.Person
-    "group" -> Icons.Default.Face
-    "mail", "email" -> Icons.Default.Email
-    "phone" -> Icons.Default.Call
-    "calendar", "date_range", "schedule" -> Icons.Default.DateRange
-    "clock", "access_time" -> Icons.Filled.AccessTime
-    "location", "place" -> Icons.Default.LocationOn
-    "photo", "image" -> Icons.Filled.Image
-    "refresh" -> Icons.Default.Refresh
-    "menu" -> Icons.Default.Menu
-    "more", "more_vert" -> Icons.Default.MoreVert
-    "send" -> Icons.AutoMirrored.Filled.Send
-    "notifications" -> Icons.Default.Notifications
-    "expand_more" -> Icons.Default.KeyboardArrowDown
-    "expand_less" -> Icons.Default.KeyboardArrowUp
-    "trending_up" -> Icons.AutoMirrored.Filled.TrendingUp
-    "trending_down" -> Icons.AutoMirrored.Filled.TrendingDown
-    "trending_flat" -> Icons.AutoMirrored.Filled.TrendingFlat
-    "thumb_up" -> Icons.Default.ThumbUp
-    "thumb_down" -> Icons.Filled.ThumbDown
-    "visibility" -> Icons.Filled.Visibility
-    "visibility_off" -> Icons.Filled.VisibilityOff
-    "lock" -> Icons.Default.Lock
-    "lock_open" -> Icons.Filled.LockOpen
-    "shopping_cart", "cart" -> Icons.Default.ShoppingCart
-    "play_arrow", "play" -> Icons.Default.PlayArrow
-    "pause" -> Icons.Filled.Pause
-    "stop" -> Icons.Filled.Stop
-    "skip_next" -> Icons.Filled.SkipNext
-    "skip_previous" -> Icons.Filled.SkipPrevious
-    "download" -> Icons.Filled.Download
-    "upload" -> Icons.Filled.Upload
-    "cloud" -> Icons.Filled.Cloud
-    "attach_file", "attachment" -> Icons.Filled.AttachFile
-    "link" -> Icons.Filled.Link
-    "code" -> Icons.Filled.Code
-    "terminal" -> Icons.Filled.Terminal
-    "build", "construction" -> Icons.Default.Build
-    "bug_report", "bug" -> Icons.Filled.BugReport
-    "lightbulb", "idea" -> Icons.Filled.Lightbulb
-    "science", "flask" -> Icons.Filled.Science
-    "school", "education" -> Icons.Filled.School
-    "work", "business" -> Icons.Filled.Work
-    "account_circle" -> Icons.Default.AccountCircle
-    "language", "globe" -> Icons.Filled.Language
-    "translate" -> Icons.Filled.Translate
-    "dark_mode", "moon" -> Icons.Filled.DarkMode
-    "light_mode", "sun" -> Icons.Filled.LightMode
-    "bolt", "flash", "lightning" -> Icons.Filled.Bolt
-    "rocket_launch", "rocket" -> Icons.Filled.RocketLaunch
-    "savings", "money" -> Icons.Filled.Savings
-    "payments", "credit_card" -> Icons.Filled.Payments
-    "receipt" -> Icons.Filled.Receipt
-    "inventory" -> Icons.Filled.Inventory
-    "category" -> Icons.Filled.Category
-    "dashboard" -> Icons.Filled.Dashboard
-    "analytics" -> Icons.Filled.Analytics
-    "bar_chart", "chart" -> Icons.Filled.BarChart
-    "pie_chart" -> Icons.Filled.PieChart
-    "show_chart" -> Icons.AutoMirrored.Filled.ShowChart
-    "timer" -> Icons.Filled.Timer
-    "alarm" -> Icons.Filled.Alarm
-    "task", "task_alt" -> Icons.Filled.TaskAlt
-    "bookmark" -> Icons.Filled.Bookmark
-    "flag" -> Icons.Filled.Flag
-    "label", "tag" -> Icons.AutoMirrored.Filled.Label
-    "pin", "push_pin" -> Icons.Filled.PushPin
-    "copy", "content_copy" -> Icons.Filled.ContentCopy
-    "paste", "content_paste" -> Icons.Filled.ContentPaste
-    "cut", "content_cut" -> Icons.Filled.ContentCut
-    "undo" -> Icons.AutoMirrored.Filled.Undo
-    "redo" -> Icons.AutoMirrored.Filled.Redo
-    "filter", "filter_list" -> Icons.Filled.FilterList
-    "sort" -> Icons.AutoMirrored.Filled.Sort
-    "swap", "swap_horiz" -> Icons.Filled.SwapHoriz
-    "sync" -> Icons.Filled.Sync
-    "wifi" -> Icons.Filled.Wifi
-    "bluetooth" -> Icons.Filled.Bluetooth
-    "battery_full", "battery" -> Icons.Filled.BatteryFull
-    "speed" -> Icons.Filled.Speed
-    "security", "shield" -> Icons.Filled.Security
-    "verified" -> Icons.Filled.Verified
-    "health", "medical", "healing" -> Icons.Filled.Healing
-    "fitness", "fitness_center" -> Icons.Filled.FitnessCenter
-    "restaurant", "food" -> Icons.Filled.Restaurant
-    "local_cafe", "coffee" -> Icons.Filled.LocalCafe
-    "flight", "airplane" -> Icons.Filled.Flight
-    "hotel" -> Icons.Filled.Hotel
-    "directions_car", "car" -> Icons.Filled.DirectionsCar
-    "public", "earth" -> Icons.Filled.Public
-    "map" -> Icons.Filled.Map
-    "explore", "compass" -> Icons.Filled.Explore
-    "pets", "pet" -> Icons.Filled.Pets
-    "eco", "leaf", "nature" -> Icons.Filled.Eco
-    "water_drop", "water" -> Icons.Filled.WaterDrop
-    "sunny", "weather" -> Icons.Filled.WbSunny
-    "celebration", "party" -> Icons.Filled.Celebration
-    "emoji_events", "trophy" -> Icons.Filled.EmojiEvents
-    "military_tech", "medal" -> Icons.Filled.MilitaryTech
-    "workspace_premium", "premium" -> Icons.Filled.WorkspacePremium
-    else -> null
-}
-
-// --- Form state initialization ---
-
-private fun initializeFormState(node: KaiUiNode, formState: MutableMap<String, String>) {
-    when (node) {
-        is TextInputNode -> node.value?.let { if (node.id !in formState) formState[node.id] = it }
-
-        is CheckboxNode -> if (node.id !in formState) formState[node.id] = (node.checked ?: false).toString()
-
-        is SelectNode -> node.selected?.let { if (node.id !in formState) formState[node.id] = it }
-
-        is SwitchNode -> if (node.id !in formState) formState[node.id] = (node.checked ?: false).toString()
-
-        is SliderNode -> if (node.id !in formState) formState[node.id] = formatSliderValue(node.value ?: node.min ?: 0f, node.step)
-
-        is RadioGroupNode -> node.selected?.let { if (node.id !in formState) formState[node.id] = it }
-
-        is ChipGroupNode -> if (node.selection != "none" && node.id !in formState) {
-            formState[node.id] = ""
-        }
-
-        is ColumnNode -> node.children.forEach { initializeFormState(it, formState) }
-
-        is RowNode -> node.children.forEach { initializeFormState(it, formState) }
-
-        is CardNode -> node.children.forEach { initializeFormState(it, formState) }
-
-        is ListNode -> node.items.forEach { initializeFormState(it, formState) }
-
-        is BoxNode -> node.children.forEach { initializeFormState(it, formState) }
-
-        is TabsNode -> node.tabs.forEach { tab -> tab.children.forEach { initializeFormState(it, formState) } }
-
-        is AccordionNode -> node.children.forEach { initializeFormState(it, formState) }
-
-        else -> {}
-    }
-}
-
+private fun RenderAlert(node: AlertNode) {
+private fun RenderAvatar(node: AvatarNode) {
+private fun RenderBadge(node: BadgeNode) {
+private fun RenderBox(
+private fun RenderButton(
+private fun RenderCard(
+private fun RenderCheckbox(
+private fun RenderChildren(
+private fun RenderChipGroup(
+private fun RenderCode(node: CodeNode) {
+private fun RenderColumn(
+private fun RenderCountdown(
+private fun RenderIcon(node: IconNode) {
+private fun RenderImage(node: ImageNode) {
+private fun RenderList(
+private fun RenderNode(
+private fun RenderProgress(node: ProgressNode) {
+private fun RenderQuote(node: QuoteNode) {
+private fun RenderRadioGroup(
+private fun RenderRow(
+private fun RenderSelect(
+private fun RenderSlider(
+private fun RenderStat(node: StatNode) {
+private fun RenderSwitch(
+private fun RenderTable(node: TableNode) {
+private fun RenderTabs(
+private fun RenderText(node: TextNode) {
+private fun RenderTextInput(
 private fun collectFormData(action: CallbackAction, formState: Map<String, String>): Map<String, String> {
-    val collected = mutableMapOf<String, String>()
-    action.dataAsStrings?.let { collected.putAll(it) }
-    action.collectFrom?.forEach { inputId ->
-        formState[inputId]?.let { collected[inputId] = it }
-    }
-    return collected
+private fun formatSliderValue(value: Float, step: Float?): String {
+private fun initializeFormState(node: KaiUiNode, formState: MutableMap<String, String>) {
+private fun pulseModifier(active: Boolean): Modifier {
+private fun resolveIcon(name: String): ImageVector? = when (name) {
+private fun safeCallback(
+private val LocalFrozenSubmission = compositionLocalOf<FrozenSubmission?> { null }
+val LocalPreviewImages = staticCompositionLocalOf<Map<String, ImageBitmap>> { emptyMap() }
 }

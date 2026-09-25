@@ -5,7 +5,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.*
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun OverlayContent(viewModel: OverlayViewModel) {

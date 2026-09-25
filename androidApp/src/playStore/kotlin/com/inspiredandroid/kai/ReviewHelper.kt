@@ -1,15 +1,14 @@
-package com.inspiredandroid.kai
 
-import android.app.Activity
-import com.google.android.play.core.review.ReviewManagerFactory
-
-fun requestReview(activity: Activity) {
+            manager.launchReviewFlow(activity, reviewInfo)
+            val reviewInfo = task.result
+        if (task.isSuccessful) {
+        }
+    request.addOnCompleteListener { task ->
     val manager = ReviewManagerFactory.create(activity)
     val request = manager.requestReviewFlow()
-    request.addOnCompleteListener { task ->
-        if (task.isSuccessful) {
-            val reviewInfo = task.result
-            manager.launchReviewFlow(activity, reviewInfo)
-        }
     }
+fun requestReview(activity: Activity) {
+import android.app.Activity
+import com.google.android.play.core.review.ReviewManagerFactory
+package com.inspiredandroid.kai
 }

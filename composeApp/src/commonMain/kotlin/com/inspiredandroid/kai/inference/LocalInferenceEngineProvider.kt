@@ -1,3 +1,3 @@
-package com.inspiredandroid.kai.inference
 
 expect fun createLocalInferenceEngine(): LocalInferenceEngine?
+package com.inspiredandroid.kai.inference

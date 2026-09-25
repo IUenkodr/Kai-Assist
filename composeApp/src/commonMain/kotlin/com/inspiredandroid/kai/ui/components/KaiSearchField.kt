@@ -1,5 +1,40 @@
-package com.inspiredandroid.kai.ui.components
 
+                    Icon(Icons.Filled.Clear, contentDescription = clearContentDescription)
+                    modifier = Modifier.handCursor(),
+                    onClick = { onQueryChange("") },
+                ) {
+                IconButton(
+                }
+            disabledBorderColor = Color.Transparent,
+            focusedBorderColor = Color.Transparent,
+            focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            null
+            unfocusedBorderColor = Color.Transparent,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            {
+            }
+        ),
+        colors = OutlinedTextFieldDefaults.colors(
+        leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
+        modifier = modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 8.dp),
+        onValueChange = onQueryChange,
+        placeholder = { Text(placeholder) },
+        shape = RoundedCornerShape(28.dp),
+        singleLine = true,
+        trailingIcon = if (query.isNotEmpty()) {
+        value = query,
+        } else {
+        },
+    )
+    OutlinedTextField(
+    clearContentDescription: String? = null,
+    modifier: Modifier = Modifier,
+    onQueryChange: (String) -> Unit,
+    placeholder: String,
+    query: String,
+) {
+@Composable
+fun KaiSearchField(
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,41 +52,5 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.inspiredandroid.kai.ui.handCursor
-
-@Composable
-fun KaiSearchField(
-    query: String,
-    onQueryChange: (String) -> Unit,
-    placeholder: String,
-    modifier: Modifier = Modifier,
-    clearContentDescription: String? = null,
-) {
-    OutlinedTextField(
-        value = query,
-        onValueChange = onQueryChange,
-        modifier = modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 8.dp),
-        shape = RoundedCornerShape(28.dp),
-        singleLine = true,
-        placeholder = { Text(placeholder) },
-        leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
-        trailingIcon = if (query.isNotEmpty()) {
-            {
-                IconButton(
-                    onClick = { onQueryChange("") },
-                    modifier = Modifier.handCursor(),
-                ) {
-                    Icon(Icons.Filled.Clear, contentDescription = clearContentDescription)
-                }
-            }
-        } else {
-            null
-        },
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = Color.Transparent,
-            unfocusedBorderColor = Color.Transparent,
-            disabledBorderColor = Color.Transparent,
-            focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-            unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-        ),
-    )
+package com.inspiredandroid.kai.ui.components
 }

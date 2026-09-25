@@ -1,13 +1,12 @@
-package com.inspiredandroid.kai.data
 
-import androidx.compose.runtime.Immutable
-import org.jetbrains.compose.resources.DrawableResource
-
-@Immutable
-data class ServiceEntry(
+    val icon: DrawableResource,
     val instanceId: String,
+    val modelId: String,
     val serviceId: String,
     val serviceName: String,
-    val modelId: String,
-    val icon: DrawableResource,
 )
+@Immutable
+data class ServiceEntry(
+import androidx.compose.runtime.Immutable
+import org.jetbrains.compose.resources.DrawableResource
+package com.inspiredandroid.kai.data

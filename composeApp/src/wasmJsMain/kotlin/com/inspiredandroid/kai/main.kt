@@ -1,8 +1,41 @@
-@file:Suppress("ktlint:standard:filename")
+
+                        "#settings"
+                    else -> ""
+                    navController.navigate(Home)
+                    navController.navigate(Settings)
+                    route.startsWith(Settings.serializer().descriptor.serialName) -> {
+                    }
+                else -> {
+                initRoute.endsWith("settings") -> {
+                val route = entry.destination.route.orEmpty()
+                when {
+                }
+            navController = navController,
+            navController.bindToBrowserNavigation { entry ->
+            null
+            rememberTextToSpeechOrNull(TextToSpeechEngine.Google)
+            textToSpeech = textToSpeech,
+            val initRoute = window.location.hash.substringAfter('#', "")
+            when {
+            }
+        )
+        // Defer TTS initialization until after the first frame
+        App(
+        LaunchedEffect(Unit) {
+        LaunchedEffect(Unit) { ttsReady = true }
+        val navController = rememberNavController()
+        val textToSpeech = if (ttsReady) {
+        var ttsReady by remember { mutableStateOf(false) }
+        }
+        } else {
+    ComposeViewport(body) {
+    document.getElementById("loader")?.remove()
+    val body = document.body ?: return
+    }
+@OptIn(ExperimentalComposeUiApi::class)
 @file:OptIn(ExperimentalBrowserHistoryApi::class)
-
-package com.inspiredandroid.kai
-
+@file:Suppress("ktlint:standard:filename")
+fun main() {
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,46 +50,5 @@ import kotlinx.browser.document
 import kotlinx.browser.window
 import nl.marc_apps.tts.TextToSpeechEngine
 import nl.marc_apps.tts.rememberTextToSpeechOrNull
-
-@OptIn(ExperimentalComposeUiApi::class)
-fun main() {
-    val body = document.body ?: return
-    document.getElementById("loader")?.remove()
-    ComposeViewport(body) {
-        // Defer TTS initialization until after the first frame
-        var ttsReady by remember { mutableStateOf(false) }
-        LaunchedEffect(Unit) { ttsReady = true }
-        val textToSpeech = if (ttsReady) {
-            rememberTextToSpeechOrNull(TextToSpeechEngine.Google)
-        } else {
-            null
-        }
-        val navController = rememberNavController()
-        App(
-            navController = navController,
-            textToSpeech = textToSpeech,
-        )
-        LaunchedEffect(Unit) {
-            val initRoute = window.location.hash.substringAfter('#', "")
-            when {
-                initRoute.endsWith("settings") -> {
-                    navController.navigate(Settings)
-                }
-
-                else -> {
-                    navController.navigate(Home)
-                }
-            }
-            navController.bindToBrowserNavigation { entry ->
-                val route = entry.destination.route.orEmpty()
-                when {
-                    route.startsWith(Settings.serializer().descriptor.serialName) -> {
-                        "#settings"
-                    }
-
-                    else -> ""
-                }
-            }
-        }
-    }
+package com.inspiredandroid.kai
 }

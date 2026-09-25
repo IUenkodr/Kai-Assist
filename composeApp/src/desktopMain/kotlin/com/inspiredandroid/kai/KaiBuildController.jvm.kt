@@ -1,3 +1,3 @@
-package com.inspiredandroid.kai
 
 actual fun createKaiBuildController(): KaiBuildController = NoOpKaiBuildController()
+package com.inspiredandroid.kai

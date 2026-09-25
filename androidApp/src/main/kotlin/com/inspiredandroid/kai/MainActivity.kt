@@ -1,5 +1,115 @@
-package com.inspiredandroid.kai
 
+                            android.graphics.Color.TRANSPARENT,
+                        )
+                        SystemBarStyle.dark(android.graphics.Color.TRANSPARENT)
+                        SystemBarStyle.light(
+                        requestReview(this@MainActivity)
+                    if (appOpens % 5 == 0) {
+                    navigationBarStyle = if (isDarkTheme) {
+                    statusBarStyle = if (isDarkTheme) {
+                    }
+                    } else {
+                    },
+                )
+                .orEmpty()
+                ?.toString()
+                ?.trim()
+                ThemeMode.Dark, ThemeMode.OledBlack -> true
+                ThemeMode.Light -> false
+                ThemeMode.System -> systemInDark
+                darkColorScheme = darkScheme,
+                dataRepository.requestOpenShare(sharedText)
+                enableEdgeToEdge(
+                isKoinStarted = true,
+                lightColorScheme = lightScheme,
+                navController = navController,
+                null
+                onAppOpens = { appOpens ->
+                rememberSystemTextToSpeechOrNull()
+                textToSpeech = textToSpeech,
+                val dataRepository: DataRepository = get()
+                },
+            )
+            // ChatViewModel has already consumed it.
+            // Clear the action so a configuration change doesn't re-trigger a fresh
+            // Defer TTS initialization until after the first frame
+            // Drop the action and extra so rotation doesn't re-apply the share after
+            // Drop the extra so a configuration change (screen rotation) doesn't re-trigger
+            // chat after ChatViewModel has already consumed the request.
+            // the deep-link after ChatViewModel has already consumed it.
+            ?: TextToSpeechFactory(context, TextToSpeechEngine.Google).createOrNull()
+            App(
+            LaunchedEffect(Unit) { ttsReady = true }
+            LaunchedEffect(isDarkTheme) {
+            daemonController.start()
+            dataRepository.requestOpenAssist()
+            dataRepository.requestOpenHeartbeat()
+            if (sharedText.isNotEmpty()) {
+            intent.action = null
+            intent.removeExtra(EXTRA_OPEN_HEARTBEAT)
+            intent.removeExtra(Intent.EXTRA_TEXT)
+            textToSpeech = null
+            textToSpeech?.close()
+            val context = LocalContext.current
+            val darkScheme: ColorScheme = if (dynamicColor) dynamicDarkColorScheme(context) else DarkColorScheme
+            val dataRepository: DataRepository = get()
+            val isDarkTheme = when (themeMode) {
+            val lightScheme: ColorScheme = if (dynamicColor) dynamicLightColorScheme(context) else LightColorScheme
+            val navController = rememberNavController()
+            val sharedText = intent.getCharSequenceExtra(Intent.EXTRA_TEXT)
+            val systemInDark = isSystemInDarkTheme()
+            val textToSpeech = if (ttsReady) {
+            val themeMode by appSettings.themeModeFlow.collectAsStateWithLifecycle()
+            var ttsReady by remember { mutableStateOf(false) }
+            }
+            } else {
+        // EMUI/Huawei) sometimes kill the foreground service while the activity
+        // Re-assert the daemon every time the activity is brought to the foreground.
+        // `onCreate`-only is not enough: aggressive OEM battery managers (MIUI,
+        // close and reopen the app for scheduling to resume. `startForegroundService`
+        // is idempotent when the service is already up.
+        // is still alive in the background — without this, the user has to fully
+        FileKit.init(this)
+        autoStartDaemon()
+        enableEdgeToEdge()
+        handleDeepLinkIntent(intent)
+        if (daemonController is AndroidDaemonController && daemonController.shouldAutoStart()) {
+        if (intent?.action == Intent.ACTION_ASSIST) {
+        if (intent?.action == Intent.ACTION_SEND) {
+        if (intent?.getBooleanExtra(EXTRA_OPEN_HEARTBEAT, false) == true) {
+        onDispose {
+        setContent {
+        setIntent(intent)
+        super.onCreate(savedInstanceState)
+        super.onNewIntent(intent)
+        super.onStart()
+        textToSpeech = TextToSpeechFactory(context, TextToSpeechEngine.SystemDefault).createOrNull()
+        val appSettings: AppSettings = get()
+        val daemonController: DaemonController = get()
+        val dynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+        }
+    App(navController = rememberNavController())
+    DisposableEffect(Unit) {
+    LaunchedEffect(Unit) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onNewIntent(intent: Intent) {
+    override fun onStart() {
+    private fun autoStartDaemon() {
+    private fun handleDeepLinkIntent(intent: Intent?) {
+    return textToSpeech
+    val context = LocalContext.current.applicationContext
+    var textToSpeech by remember { mutableStateOf<TextToSpeechInstance?>(null) }
+    }
+ * Google's engine is only used when the system default fails to initialise, which happens on
+ * Speaks with the engine the user selected in the system text-to-speech settings, so a
+ * devices where no default engine is configured.
+ * third-party engine (Sherpa, RHVoice, eSpeak, ...) is honoured instead of being overridden.
+ */
+/**
+@Composable
+@Preview
+class MainActivity : ComponentActivity() {
+fun AppAndroidPreview() {
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -33,156 +143,6 @@ import nl.marc_apps.tts.TextToSpeechEngine
 import nl.marc_apps.tts.TextToSpeechFactory
 import nl.marc_apps.tts.TextToSpeechInstance
 import org.koin.android.ext.android.get
-
-class MainActivity : ComponentActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
-        super.onCreate(savedInstanceState)
-        FileKit.init(this)
-        handleDeepLinkIntent(intent)
-
-        val dynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-        val appSettings: AppSettings = get()
-        setContent {
-            val themeMode by appSettings.themeModeFlow.collectAsStateWithLifecycle()
-            val systemInDark = isSystemInDarkTheme()
-            val isDarkTheme = when (themeMode) {
-                ThemeMode.System -> systemInDark
-                ThemeMode.Light -> false
-                ThemeMode.Dark, ThemeMode.OledBlack -> true
-            }
-            LaunchedEffect(isDarkTheme) {
-                enableEdgeToEdge(
-                    statusBarStyle = if (isDarkTheme) {
-                        SystemBarStyle.dark(android.graphics.Color.TRANSPARENT)
-                    } else {
-                        SystemBarStyle.light(
-                            android.graphics.Color.TRANSPARENT,
-                            android.graphics.Color.TRANSPARENT,
-                        )
-                    },
-                    navigationBarStyle = if (isDarkTheme) {
-                        SystemBarStyle.dark(android.graphics.Color.TRANSPARENT)
-                    } else {
-                        SystemBarStyle.light(
-                            android.graphics.Color.TRANSPARENT,
-                            android.graphics.Color.TRANSPARENT,
-                        )
-                    },
-                )
-            }
-            val context = LocalContext.current
-            val lightScheme: ColorScheme = if (dynamicColor) dynamicLightColorScheme(context) else LightColorScheme
-            val darkScheme: ColorScheme = if (dynamicColor) dynamicDarkColorScheme(context) else DarkColorScheme
-            val navController = rememberNavController()
-            // Defer TTS initialization until after the first frame
-            var ttsReady by remember { mutableStateOf(false) }
-            LaunchedEffect(Unit) { ttsReady = true }
-            val textToSpeech = if (ttsReady) {
-                rememberSystemTextToSpeechOrNull()
-            } else {
-                null
-            }
-            App(
-                navController = navController,
-                lightColorScheme = lightScheme,
-                darkColorScheme = darkScheme,
-                textToSpeech = textToSpeech,
-                isKoinStarted = true,
-                onAppOpens = { appOpens ->
-                    if (appOpens % 5 == 0) {
-                        requestReview(this@MainActivity)
-                    }
-                },
-            )
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        // Re-assert the daemon every time the activity is brought to the foreground.
-        // `onCreate`-only is not enough: aggressive OEM battery managers (MIUI,
-        // EMUI/Huawei) sometimes kill the foreground service while the activity
-        // is still alive in the background — without this, the user has to fully
-        // close and reopen the app for scheduling to resume. `startForegroundService`
-        // is idempotent when the service is already up.
-        autoStartDaemon()
-    }
-
-    private fun autoStartDaemon() {
-        val daemonController: DaemonController = get()
-        if (daemonController is AndroidDaemonController && daemonController.shouldAutoStart()) {
-            daemonController.start()
-        }
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        setIntent(intent)
-        handleDeepLinkIntent(intent)
-    }
-
-    private fun handleDeepLinkIntent(intent: Intent?) {
-        if (intent?.getBooleanExtra(EXTRA_OPEN_HEARTBEAT, false) == true) {
-            val dataRepository: DataRepository = get()
-            dataRepository.requestOpenHeartbeat()
-            // Drop the extra so a configuration change (screen rotation) doesn't re-trigger
-            // the deep-link after ChatViewModel has already consumed it.
-            intent.removeExtra(EXTRA_OPEN_HEARTBEAT)
-        }
-        if (intent?.action == Intent.ACTION_ASSIST) {
-            val dataRepository: DataRepository = get()
-            dataRepository.requestOpenAssist()
-            // Clear the action so a configuration change doesn't re-trigger a fresh
-            // chat after ChatViewModel has already consumed the request.
-            intent.action = null
-        }
-        if (intent?.action == Intent.ACTION_SEND) {
-            val sharedText = intent.getCharSequenceExtra(Intent.EXTRA_TEXT)
-                ?.toString()
-                ?.trim()
-                .orEmpty()
-            if (sharedText.isNotEmpty()) {
-                val dataRepository: DataRepository = get()
-                dataRepository.requestOpenShare(sharedText)
-            }
-            // Drop the action and extra so rotation doesn't re-apply the share after
-            // ChatViewModel has already consumed it.
-            intent.action = null
-            intent.removeExtra(Intent.EXTRA_TEXT)
-        }
-    }
-}
-
-/**
- * Speaks with the engine the user selected in the system text-to-speech settings, so a
- * third-party engine (Sherpa, RHVoice, eSpeak, ...) is honoured instead of being overridden.
- * Google's engine is only used when the system default fails to initialise, which happens on
- * devices where no default engine is configured.
- */
-@Composable
+package com.inspiredandroid.kai
 private fun rememberSystemTextToSpeechOrNull(): TextToSpeechInstance? {
-    val context = LocalContext.current.applicationContext
-    var textToSpeech by remember { mutableStateOf<TextToSpeechInstance?>(null) }
-
-    LaunchedEffect(Unit) {
-        textToSpeech = TextToSpeechFactory(context, TextToSpeechEngine.SystemDefault).createOrNull()
-            ?: TextToSpeechFactory(context, TextToSpeechEngine.Google).createOrNull()
-    }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            textToSpeech?.close()
-            textToSpeech = null
-        }
-    }
-
-    return textToSpeech
-}
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App(navController = rememberNavController())
 }

@@ -1,5 +1,92 @@
-package com.inspiredandroid.kai.ui.chat.composables
 
+                            append(policyText)
+                        withStyle(style = SpanStyle(color = linkColor)) {
+                        }
+                    append(prefixText)
+                    contentDescription = null,
+                    imageVector = Icons.Default.Terminal,
+                    modifier = Modifier.size(18.dp),
+                    withLink(LinkAnnotation.Url(url = "https://schubert-simon.de/privacy/kai.txt")) {
+                    }
+                )
+                Icon(
+                Spacer(Modifier.width(8.dp))
+                TerminalGreenOnDark
+                TerminalGreenOnLight
+                Text(stringResource(Res.string.kai_build_open))
+                annotatedString,
+                backgroundColor = MaterialTheme.colorScheme.background,
+                border = BorderStroke(1.dp, terminalGreen.copy(alpha = 0.6f)),
+                borderWidth = 3.dp,
+                buildAnnotatedString {
+                color = MaterialTheme.colorScheme.onBackground,
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = terminalGreen),
+                cornerRadius = 50.dp,
+                modifier = Modifier.handCursor(),
+                modifier = Modifier.padding(horizontal = 16.dp),
+                onClick = onOpenKaiBuild,
+                onClick = onStartInteractiveMode,
+                style = MaterialTheme.typography.bodyMedium,
+                text = stringResource(Res.string.start_interactive_ui),
+                textAlign = TextAlign.Center,
+                }
+            )
+            ) {
+            ),
+            .animatedGradientBorder(
+            .clickable(onClick = onClick)
+            .clip(RoundedCornerShape(50))
+            .handCursor()
+            AnimatedBorderButton(
+            OutlinedButton(
+            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(8.dp))
+            Text(
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            style = MaterialTheme.typography.labelLarge,
+            style = MaterialTheme.typography.titleLarge,
+            text = stringResource(Res.string.welcome_message),
+            text = text,
+            textAlign = TextAlign.Center,
+            val annotatedString = remember(prefixText, policyText, linkColor) {
+            val linkColor = MaterialTheme.colorScheme.primary
+            val policyText = stringResource(Res.string.privacy_policy)
+            val prefixText = stringResource(Res.string.privacy_agree_prefix)
+            val terminalGreen = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) {
+            }
+            } else {
+        )
+        LogoAnimation()
+        Spacer(Modifier.height(16.dp))
+        Text(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        if (isUsingSharedKey) {
+        if (onOpenKaiBuild != null) {
+        if (onStartInteractiveMode != null) {
+        modifier = Modifier
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        }
+    ) {
+    Box(
+    Column(
+    isUsingSharedKey: Boolean,
+    modifier: Modifier,
+    onClick: () -> Unit,
+    onOpenKaiBuild: (() -> Unit)? = null,
+    onStartInteractiveMode: (() -> Unit)? = null,
+    text: String,
+    }
+ * Phosphor green for the Kai Build button, taken from the ANSI palette its own
+ * green where a light one would wash it out. Colors only — the button keeps the
+ * shape and label style it shares with the rest of the empty state.
+ * terminal paints with: the bright green on dark backgrounds, the darker normal
+ */
+) {
+/**
+@Composable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -43,113 +130,9 @@ import kai.composeapp.generated.resources.privacy_policy
 import kai.composeapp.generated.resources.start_interactive_ui
 import kai.composeapp.generated.resources.welcome_message
 import org.jetbrains.compose.resources.stringResource
-
-/**
- * Phosphor green for the Kai Build button, taken from the ANSI palette its own
- * terminal paints with: the bright green on dark backgrounds, the darker normal
- * green where a light one would wash it out. Colors only — the button keeps the
- * shape and label style it shares with the rest of the empty state.
- */
+internal fun EmptyState(
+package com.inspiredandroid.kai.ui.chat.composables
+private fun AnimatedBorderButton(
 private val TerminalGreenOnDark = Color(0xFF16C60C)
 private val TerminalGreenOnLight = Color(0xFF13A10E)
-
-@Composable
-internal fun EmptyState(
-    modifier: Modifier,
-    isUsingSharedKey: Boolean,
-    onStartInteractiveMode: (() -> Unit)? = null,
-    onOpenKaiBuild: (() -> Unit)? = null,
-) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        LogoAnimation()
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(Res.string.welcome_message),
-            modifier = Modifier.padding(horizontal = 16.dp),
-            style = MaterialTheme.typography.titleLarge,
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
-        if (onStartInteractiveMode != null) {
-            Spacer(Modifier.height(16.dp))
-            AnimatedBorderButton(
-                text = stringResource(Res.string.start_interactive_ui),
-                onClick = onStartInteractiveMode,
-            )
-            Spacer(Modifier.height(8.dp))
-        }
-        if (onOpenKaiBuild != null) {
-            val terminalGreen = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) {
-                TerminalGreenOnDark
-            } else {
-                TerminalGreenOnLight
-            }
-            OutlinedButton(
-                onClick = onOpenKaiBuild,
-                modifier = Modifier.handCursor(),
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = terminalGreen),
-                border = BorderStroke(1.dp, terminalGreen.copy(alpha = 0.6f)),
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Terminal,
-                    contentDescription = null,
-                    modifier = Modifier.size(18.dp),
-                )
-                Spacer(Modifier.width(8.dp))
-                Text(stringResource(Res.string.kai_build_open))
-            }
-            Spacer(Modifier.height(8.dp))
-        }
-        if (isUsingSharedKey) {
-            val linkColor = MaterialTheme.colorScheme.primary
-            val prefixText = stringResource(Res.string.privacy_agree_prefix)
-            val policyText = stringResource(Res.string.privacy_policy)
-            val annotatedString = remember(prefixText, policyText, linkColor) {
-                buildAnnotatedString {
-                    append(prefixText)
-                    withLink(LinkAnnotation.Url(url = "https://schubert-simon.de/privacy/kai.txt")) {
-                        withStyle(style = SpanStyle(color = linkColor)) {
-                            append(policyText)
-                        }
-                    }
-                }
-            }
-            Text(
-                annotatedString,
-                modifier = Modifier.padding(horizontal = 16.dp),
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-        }
-    }
-}
-
-@Composable
-private fun AnimatedBorderButton(
-    text: String,
-    onClick: () -> Unit,
-) {
-    Box(
-        modifier = Modifier
-            .handCursor()
-            .clip(RoundedCornerShape(50))
-            .clickable(onClick = onClick)
-            .animatedGradientBorder(
-                cornerRadius = 50.dp,
-                borderWidth = 3.dp,
-                backgroundColor = MaterialTheme.colorScheme.background,
-            ),
-    ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-        )
-    }
 }

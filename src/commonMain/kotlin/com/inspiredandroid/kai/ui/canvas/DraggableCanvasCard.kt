@@ -7,8 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.*
 
 @Composable
-fun CanvasContainer() {
-    Box(modifier = Modifier.fillMaxSize()) {
-        Text("AI-Canvas Spatial Workspace", modifier = Modifier.align(Alignment.Center))
+fun DraggableCanvasCard(obj: CanvasObject) {
+    Card(modifier = Modifier.padding(8.dp)) {
+        Text("Canvas Object ${obj.id}", modifier = Modifier.padding(16.dp))
     }
 }

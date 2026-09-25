@@ -1,5 +1,143 @@
-package com.inspiredandroid.kai.ui.markdown
 
+                        inlines = cell,
+                        modifier = Modifier.weight(1f).padding(4.dp),
+                        style = MaterialTheme.typography.bodyLarge,
+                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+                        textAlign = alignTextFor(block.alignments.getOrNull(i)),
+                    )
+                    InlineContent(
+                    code = block.code,
+                    language = block.language,
+                    modifier = Modifier.padding(vertical = 4.dp),
+                )
+                BlockRenderer(block, isInteractive, onUiCallback, frozen)
+                CodeFenceBlock(
+                block.headers.forEachIndexed { i, cell ->
+                row.forEachIndexed { i, cell ->
+                }
+            .fillMaxWidth()
+            .horizontalScroll(scroll),
+            .padding(vertical = 8.dp)
+            HorizontalDivider()
+            ListItemRow("${block.start + index}.", 24.dp, item, isInteractive, onUiCallback, frozen)
+            ListItemRow("•", 16.dp, item, isInteractive, onUiCallback, frozen)
+            MarkdownDocument(persistentListOf(Paragraph(persistentListOf(com.inspiredandroid.kai.ui.markdown.Text(content)))))
+            Row {
+            block.children.forEach { BlockRenderer(it, isInteractive, onUiCallback, frozen) }
+            code = block.rawJson,
+            color = MaterialTheme.colorScheme.outline,
+            contentDescription = img.alt,
+            for (block in document.blocks) {
+            frozen = frozen,
+            if (block.code.isNotBlank() || !block.language.isNullOrBlank()) {
+            isInteractive = isInteractive,
+            item.children.forEach { BlockRenderer(it, isInteractive, onUiCallback, frozen) }
+            language = "json",
+            model = img.src,
+            modifier = Modifier.fillMaxHeight(),
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+            modifier = Modifier.padding(vertical = 4.dp),
+            modifier = Modifier.padding(vertical = 8.dp),
+            modifier = Modifier.widthIn(min = scaledMarkerWidth).padding(end = 4.dp),
+            node = block.node,
+            onCallback = onUiCallback,
+            style = MaterialTheme.typography.bodyLarge,
+            text = marker,
+            thickness = 3.dp,
+            }
+        )
+        1 -> typography.headlineSmall
+        2 -> typography.titleLarge
+        3 -> typography.titleMedium
+        4 -> typography.titleSmall
+        5 -> typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
+        AsyncImage(
+        Column(Modifier.fillMaxWidth()) {
+        Column(Modifier.padding(start = 8.dp)) {
+        Column(modifier) {
+        HorizontalRule -> HorizontalDivider(Modifier.padding(vertical = 8.dp))
+        MathFormula(latex = block.latex, display = true)
+        Text(
+        VerticalDivider(
+        block.items.forEachIndexed { index, item ->
+        contentAlignment = Alignment.Center,
+        else -> typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
+        for (item in block.items) {
+        for (row in block.rows) {
+        if (block.headers.any { it.isNotEmpty() }) {
+        inlines = block.inlines,
+        is Blockquote -> BlockquoteBlock(block, isInteractive, onUiCallback, frozen)
+        is BulletList -> BulletListBlock(block, isInteractive, onUiCallback, frozen)
+        is CodeFence -> {
+        is DisplayMath -> DisplayMathBlock(block)
+        is Heading -> HeadingBlock(block)
+        is KaiUiBlock -> KaiUiRenderer(
+        is KaiUiError -> CodeFenceBlock(
+        is OrderedList -> OrderedListBlock(block, isInteractive, onUiCallback, frozen)
+        is Paragraph -> ParagraphBlock(block)
+        is Table -> TableBlock(block)
+        modifier = Modifier
+        modifier = Modifier.padding(vertical = 2.dp),
+        modifier = Modifier.padding(vertical = 4.dp),
+        return
+        runCatching { parseMarkdown(content) }.getOrElse {
+        style = MaterialTheme.typography.bodyLarge,
+        style = style,
+        val img = block.inlines[0] as Image
+        }
+    )
+    ) {
+    // The marker column is sized for the default font scale; scale it so "10." still
+    // Wrap in horizontal scroll so wide formulas overflow cleanly instead of squishing
+    // an unusually long marker widens instead of being clipped.
+    // fits when body text doubles, and keep it a minimum rather than a fixed width so
+    // their children into a narrow column (KaTeX/MathJax use the same pattern).
+    Box(
+    Column(Modifier.padding(vertical = 4.dp)) {
+    Column(modifier = Modifier.padding(vertical = 2.dp)) {
+    ColumnAlign.CENTER -> TextAlign.Center
+    ColumnAlign.LEFT -> TextAlign.Start
+    ColumnAlign.RIGHT -> TextAlign.End
+    CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurface) {
+    InlineContent(
+    MarkdownContent(doc, modifier, isInteractive, onUiCallback, frozen)
+    Row {
+    Row(modifier = Modifier.padding(vertical = 4.dp).height(IntrinsicSize.Min)) {
+    block: BlockNode,
+    block: Blockquote,
+    block: BulletList,
+    block: OrderedList,
+    content: String,
+    document: MarkdownDocument,
+    else -> TextAlign.Unspecified
+    frozen: FrozenSubmission? = null,
+    frozen: FrozenSubmission?,
+    if (block.inlines.size == 1 && block.inlines[0] is Image) {
+    isInteractive: Boolean = false,
+    isInteractive: Boolean,
+    item: ListItem,
+    marker: String,
+    markerWidth: androidx.compose.ui.unit.Dp,
+    modifier: Modifier = Modifier,
+    onUiCallback: (String, Map<String, String>) -> Unit,
+    onUiCallback: (event: String, data: Map<String, String>) -> Unit = { _, _ -> },
+    val doc = remember(content) {
+    val scaledMarkerWidth = markerWidth * LocalDensity.current.fontScale
+    val scroll = rememberScrollState()
+    val style = when (block.level) {
+    val typography = MaterialTheme.typography
+    when (block) {
+    }
+ *
+ * Kai-UI blocks dispatch to [KaiUiRenderer]; pass `isInteractive = false` to render them as
+ * Render a parsed [MarkdownDocument] as a Compose layout. Each block becomes one child of the
+ * outer [Column]; inline content is rendered as [androidx.compose.ui.text.AnnotatedString].
+ * read-only (completed historical messages keep their layout but disable buttons/inputs).
+ */
+) {
+/**
+@Composable
+fun MarkdownContent(
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,255 +168,15 @@ import com.inspiredandroid.kai.ui.dynamicui.FrozenSubmission
 import com.inspiredandroid.kai.ui.dynamicui.KaiUiRenderer
 import com.inspiredandroid.kai.ui.markdown.math.MathFormula
 import kotlinx.collections.immutable.persistentListOf
-
-/**
- * Render a parsed [MarkdownDocument] as a Compose layout. Each block becomes one child of the
- * outer [Column]; inline content is rendered as [androidx.compose.ui.text.AnnotatedString].
- *
- * Kai-UI blocks dispatch to [KaiUiRenderer]; pass `isInteractive = false` to render them as
- * read-only (completed historical messages keep their layout but disable buttons/inputs).
- */
-@Composable
-fun MarkdownContent(
-    document: MarkdownDocument,
-    modifier: Modifier = Modifier,
-    isInteractive: Boolean = false,
-    onUiCallback: (event: String, data: Map<String, String>) -> Unit = { _, _ -> },
-    frozen: FrozenSubmission? = null,
-) {
-    CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurface) {
-        Column(modifier) {
-            for (block in document.blocks) {
-                BlockRenderer(block, isInteractive, onUiCallback, frozen)
-            }
-        }
-    }
-}
-
-@Composable
-fun MarkdownContent(
-    content: String,
-    modifier: Modifier = Modifier,
-    isInteractive: Boolean = false,
-    onUiCallback: (event: String, data: Map<String, String>) -> Unit = { _, _ -> },
-    frozen: FrozenSubmission? = null,
-) {
-    val doc = remember(content) {
-        runCatching { parseMarkdown(content) }.getOrElse {
-            MarkdownDocument(persistentListOf(Paragraph(persistentListOf(com.inspiredandroid.kai.ui.markdown.Text(content)))))
-        }
-    }
-    MarkdownContent(doc, modifier, isInteractive, onUiCallback, frozen)
-}
-
-@Composable
+package com.inspiredandroid.kai.ui.markdown
 private fun BlockRenderer(
-    block: BlockNode,
-    isInteractive: Boolean,
-    onUiCallback: (String, Map<String, String>) -> Unit,
-    frozen: FrozenSubmission?,
-) {
-    when (block) {
-        is Heading -> HeadingBlock(block)
-
-        is Paragraph -> ParagraphBlock(block)
-
-        is CodeFence -> {
-            if (block.code.isNotBlank() || !block.language.isNullOrBlank()) {
-                CodeFenceBlock(
-                    language = block.language,
-                    code = block.code,
-                    modifier = Modifier.padding(vertical = 4.dp),
-                )
-            }
-        }
-
-        is Blockquote -> BlockquoteBlock(block, isInteractive, onUiCallback, frozen)
-
-        is BulletList -> BulletListBlock(block, isInteractive, onUiCallback, frozen)
-
-        is OrderedList -> OrderedListBlock(block, isInteractive, onUiCallback, frozen)
-
-        is Table -> TableBlock(block)
-
-        HorizontalRule -> HorizontalDivider(Modifier.padding(vertical = 8.dp))
-
-        is DisplayMath -> DisplayMathBlock(block)
-
-        is KaiUiBlock -> KaiUiRenderer(
-            node = block.node,
-            isInteractive = isInteractive,
-            onCallback = onUiCallback,
-            frozen = frozen,
-            modifier = Modifier.padding(vertical = 8.dp),
-        )
-
-        is KaiUiError -> CodeFenceBlock(
-            language = "json",
-            code = block.rawJson,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-    }
-}
-
-@Composable
-private fun HeadingBlock(block: Heading) {
-    val typography = MaterialTheme.typography
-    val style = when (block.level) {
-        1 -> typography.headlineSmall
-        2 -> typography.titleLarge
-        3 -> typography.titleMedium
-        4 -> typography.titleSmall
-        5 -> typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
-        else -> typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
-    }
-    InlineContent(
-        inlines = block.inlines,
-        style = style,
-        modifier = Modifier.padding(vertical = 4.dp),
-    )
-}
-
-@Composable
-private fun ParagraphBlock(block: Paragraph) {
-    if (block.inlines.size == 1 && block.inlines[0] is Image) {
-        val img = block.inlines[0] as Image
-        AsyncImage(
-            model = img.src,
-            contentDescription = img.alt,
-            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-        )
-        return
-    }
-    InlineContent(
-        inlines = block.inlines,
-        style = MaterialTheme.typography.bodyLarge,
-        modifier = Modifier.padding(vertical = 2.dp),
-    )
-}
-
-@Composable
-private fun DisplayMathBlock(block: DisplayMath) {
-    // Wrap in horizontal scroll so wide formulas overflow cleanly instead of squishing
-    // their children into a narrow column (KaTeX/MathJax use the same pattern).
-    val scroll = rememberScrollState()
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .horizontalScroll(scroll),
-        contentAlignment = Alignment.Center,
-    ) {
-        MathFormula(latex = block.latex, display = true)
-    }
-}
-
-@Composable
 private fun BlockquoteBlock(
-    block: Blockquote,
-    isInteractive: Boolean,
-    onUiCallback: (String, Map<String, String>) -> Unit,
-    frozen: FrozenSubmission?,
-) {
-    Row(modifier = Modifier.padding(vertical = 4.dp).height(IntrinsicSize.Min)) {
-        VerticalDivider(
-            thickness = 3.dp,
-            color = MaterialTheme.colorScheme.outline,
-            modifier = Modifier.fillMaxHeight(),
-        )
-        Column(Modifier.padding(start = 8.dp)) {
-            block.children.forEach { BlockRenderer(it, isInteractive, onUiCallback, frozen) }
-        }
-    }
-}
-
-@Composable
 private fun BulletListBlock(
-    block: BulletList,
-    isInteractive: Boolean,
-    onUiCallback: (String, Map<String, String>) -> Unit,
-    frozen: FrozenSubmission?,
-) {
-    Column(modifier = Modifier.padding(vertical = 2.dp)) {
-        for (item in block.items) {
-            ListItemRow("•", 16.dp, item, isInteractive, onUiCallback, frozen)
-        }
-    }
-}
-
-@Composable
-private fun OrderedListBlock(
-    block: OrderedList,
-    isInteractive: Boolean,
-    onUiCallback: (String, Map<String, String>) -> Unit,
-    frozen: FrozenSubmission?,
-) {
-    Column(modifier = Modifier.padding(vertical = 2.dp)) {
-        block.items.forEachIndexed { index, item ->
-            ListItemRow("${block.start + index}.", 24.dp, item, isInteractive, onUiCallback, frozen)
-        }
-    }
-}
-
-@Composable
+private fun DisplayMathBlock(block: DisplayMath) {
+private fun HeadingBlock(block: Heading) {
 private fun ListItemRow(
-    marker: String,
-    markerWidth: androidx.compose.ui.unit.Dp,
-    item: ListItem,
-    isInteractive: Boolean,
-    onUiCallback: (String, Map<String, String>) -> Unit,
-    frozen: FrozenSubmission?,
-) {
-    // The marker column is sized for the default font scale; scale it so "10." still
-    // fits when body text doubles, and keep it a minimum rather than a fixed width so
-    // an unusually long marker widens instead of being clipped.
-    val scaledMarkerWidth = markerWidth * LocalDensity.current.fontScale
-    Row {
-        Text(
-            text = marker,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.widthIn(min = scaledMarkerWidth).padding(end = 4.dp),
-        )
-        Column(Modifier.fillMaxWidth()) {
-            item.children.forEach { BlockRenderer(it, isInteractive, onUiCallback, frozen) }
-        }
-    }
-}
-
-@Composable
+private fun OrderedListBlock(
+private fun ParagraphBlock(block: Paragraph) {
 private fun TableBlock(block: Table) {
-    Column(Modifier.padding(vertical = 4.dp)) {
-        if (block.headers.any { it.isNotEmpty() }) {
-            Row {
-                block.headers.forEachIndexed { i, cell ->
-                    InlineContent(
-                        inlines = cell,
-                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
-                        textAlign = alignTextFor(block.alignments.getOrNull(i)),
-                        modifier = Modifier.weight(1f).padding(4.dp),
-                    )
-                }
-            }
-            HorizontalDivider()
-        }
-        for (row in block.rows) {
-            Row {
-                row.forEachIndexed { i, cell ->
-                    InlineContent(
-                        inlines = cell,
-                        style = MaterialTheme.typography.bodyLarge,
-                        textAlign = alignTextFor(block.alignments.getOrNull(i)),
-                        modifier = Modifier.weight(1f).padding(4.dp),
-                    )
-                }
-            }
-        }
-    }
-}
-
 private fun alignTextFor(align: ColumnAlign?): TextAlign = when (align) {
-    ColumnAlign.LEFT -> TextAlign.Start
-    ColumnAlign.CENTER -> TextAlign.Center
-    ColumnAlign.RIGHT -> TextAlign.End
-    else -> TextAlign.Unspecified
 }

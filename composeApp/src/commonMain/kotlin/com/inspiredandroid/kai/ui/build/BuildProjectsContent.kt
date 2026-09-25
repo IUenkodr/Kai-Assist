@@ -1,5 +1,282 @@
-package com.inspiredandroid.kai.ui.build
 
+                            Text(text = agent.title, style = MaterialTheme.typography.labelMedium)
+                            color = MaterialTheme.colorScheme.primary,
+                            onClick = { onSelectLaunchAgent(agent.id) },
+                            selected = launchAgentId == agent.id,
+                            style = MaterialTheme.typography.labelMedium,
+                            text = openSessionsLabel(open),
+                            text = stringResource(Res.string.kai_build_session_shell),
+                        )
+                        ) {
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 4.dp, top = 4.dp, bottom = 4.dp),
+                        KaiChip(
+                        Text(
+                        Text(text = agent.title, style = MaterialTheme.typography.labelMedium)
+                        color = MaterialTheme.colorScheme.error,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        contentDescription = null,
+                        imageVector = Icons.Default.Folder,
+                        modifier = Modifier.weight(1f),
+                        onClick = { onSelectLaunchAgent(null) },
+                        onDelete = { deleting = project },
+                        onRename = { renaming = project },
+                        onUninstall()
+                        selected = launchAgentId == null,
+                        showUninstall = false
+                        style = MaterialTheme.typography.bodySmall,
+                        style = MaterialTheme.typography.titleMedium,
+                        text = openSessionsLabel(openSessions),
+                        text = project,
+                        text = stringResource(Res.string.kai_build_open_with),
+                        tint = MaterialTheme.colorScheme.primary,
+                        }
+                    )
+                    ) {
+                    // Shells left behind here: the list is the only place they can be
+                    // found from, now that stepping out of a project keeps them.
+                    Icon(
+                    KaiChip(
+                    KaiChip(onClick = { onInstallAgent(agent.id) }) {
+                    ProjectRowMenu(
+                    Text(
+                    color = MaterialTheme.colorScheme.error,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    expanded = false
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    if (open > 0) {
+                    installedAgents.forEach { agent ->
+                    modifier = Modifier
+                    modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                    modifier = Modifier.handCursor(),
+                    onClick = {
+                    onClick = { showUninstall = false },
+                    onDelete()
+                    onRename()
+                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodySmall,
+                    text = error,
+                    text = stringResource(Res.string.kai_build_projects_empty),
+                    text = stringResource(Res.string.kai_build_system_packages, info.packageCount),
+                    text = stringResource(Res.string.sandbox_files_delete_confirm),
+                    val open = sessionCounts[project] ?: 0
+                    verticalAlignment = Alignment.CenterVertically,
+                    }
+                    },
+                )
+                ) {
+                ) { Text(stringResource(Res.string.kai_build_uninstall)) }
+                ) { Text(stringResource(Res.string.settings_sandbox_cancel)) }
+                // The row pads itself: the menu button brings its own touch target,
+                // and a card's full padding around that makes every project tall.
+                Row(
+                Text(
+                Text(stringResource(Res.string.sandbox_files_delete_message_directory))
+                Text(stringResource(Res.string.settings_sandbox_cancel))
+                TextButton(
+                color = MaterialTheme.colorScheme.error,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                contentDescription = stringResource(Res.string.sandbox_files_action_more),
+                deleting = null
+                enabled = error == null,
+                enabled = name.isNotBlank(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                if (openSessions > 0) {
+                imageVector = Icons.Default.MoreVert,
+                info = state.systemInfo,
+                innerPadding = false,
+                isError = error != null,
+                keyboardActions = KeyboardActions(onDone = { create() }),
+                keyboardActions = KeyboardActions(onDone = { rename() }),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                label = stringResource(Res.string.kai_build_system_disk_free),
+                label = stringResource(Res.string.kai_build_system_disk_projects),
+                label = stringResource(Res.string.kai_build_system_disk_system),
+                label = { Text(stringResource(Res.string.sandbox_files_rename_label)) },
+                missingAgents = missingAgents,
+                missingAgents.forEach { agent ->
+                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                modifier = Modifier.handCursor(),
+                onClick = create,
+                onClick = rename,
+                onClick = {
+                onClick = { onOpenProject(project) },
+                onDeleteProject(project)
+                onInstallAgent = onInstallAgent,
+                onRenameProject(project, newName)
+                onUninstall = { showUninstall = true },
+                onValueChange = { name = it },
+                placeholder = { Text(stringResource(Res.string.kai_build_projects_new_placeholder)) },
+                renaming = null
+                singleLine = true,
+                style = MaterialTheme.typography.bodySmall,
+                supportingText = error?.let { res -> { Text(stringResource(res)) } },
+                text = "${info.distribution} · ${info.architecture}",
+                text = stringResource(Res.string.kai_build_projects_add_agent),
+                text = stringResource(Res.string.kai_build_uninstall),
+                text = { Text(stringResource(Res.string.sandbox_files_action_delete)) },
+                text = { Text(stringResource(Res.string.sandbox_files_action_rename)) },
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                value = formatFileSize(info.freeBytes),
+                value = formatFileSize(info.projectsBytes),
+                value = formatFileSize(info.systemBytes),
+                value = name,
+                verticalAlignment = Alignment.CenterVertically,
+                }
+                },
+            )
+            ) {
+            ) { Text(stringResource(Res.string.kai_build_projects_create)) }
+            ) { Text(stringResource(Res.string.sandbox_files_rename_confirm)) }
+            BuildSystemCard(
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            DropdownMenuItem(
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+            Icon(
+            OutlinedTextField(
+            Row(
+            SettingsCard(
+            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(8.dp))
+            SystemInfoRow(
+            Text(
+            TextButton(
+            TextButton(onClick = onDelete, modifier = Modifier.handCursor()) {
+            TextButton(onClick = onDismiss, modifier = Modifier.handCursor()) {
+            color = MaterialTheme.colorScheme.onSurface,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            confirmButton = {
+            dismissButton = {
+            expanded = expanded,
+            if (info.packageCount > 0) {
+            item {
+            modifier = Modifier.handCursor(),
+            modifier = Modifier.weight(1f),
+            onClick = onUninstall,
+            onClick = { expanded = true },
+            onDelete = {
+            onDismiss = { deleting = null },
+            onDismiss = { renaming = null },
+            onDismissRequest = { expanded = false },
+            onDismissRequest = { showUninstall = false },
+            onRename = { newName ->
+            openSessions = sessionCounts[project] ?: 0,
+            project = project,
+            projects = state.projects,
+            shape = RoundedCornerShape(16.dp),
+            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.titleMedium,
+            text = label,
+            text = stringResource(Res.string.kai_build_system_title),
+            text = value,
+            text = { Text(stringResource(Res.string.kai_build_uninstall_message)) },
+            textAlign = TextAlign.End,
+            title = { Text(stringResource(Res.string.kai_build_uninstall_title)) },
+            }
+            },
+        )
+        ) {
+        AlertDialog(
+        BuildAgents.all.filterNot { it.id in state.installedAgents }
+        DeleteProjectDialog(
+        DropdownMenu(
+        IconButton(
+        RenameProjectDialog(
+        Spacer(Modifier.height(4.dp))
+        Spacer(Modifier.width(8.dp))
+        Text(
+        TextButton(
+        confirmButton = {
+        contentPadding = PaddingValues(16.dp),
+        dismissButton = {
+        else -> null
+        horizontalArrangement = Arrangement.SpaceBetween,
+        if (info != null) {
+        if (installedAgents.isNotEmpty()) {
+        if (missingAgents.isNotEmpty()) {
+        if (state.projects.isEmpty()) {
+        item {
+        items(state.projects, key = { it }) { project ->
+        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+        modifier = modifier.fillMaxSize(),
+        onDismissRequest = onDismiss,
+        state.lastError?.let { error ->
+        state.sessions.groupingBy { it.project }.eachCount()
+        text = {
+        title = { Text(stringResource(Res.string.kai_build_new_project_title)) },
+        title = { Text(stringResource(Res.string.sandbox_files_delete_title, project)) },
+        title = { Text(stringResource(Res.string.sandbox_files_rename_title)) },
+        trimmed != project && trimmed in projects -> Res.string.sandbox_files_rename_error_collision
+        trimmed.isEmpty() || trimmed.contains('/') -> Res.string.sandbox_files_rename_error_invalid
+        verticalAlignment = Alignment.CenterVertically,
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        }
+        },
+    )
+    ) {
+    // The project each dialog is about; null while it is closed.
+    AlertDialog(
+    Box {
+    LazyColumn(
+    Row(
+    SettingsCard(modifier = Modifier.fillMaxWidth()) {
+    deleting?.let { project ->
+    if (showUninstall) {
+    info: BuildSystemInfo?,
+    installedAgents: ImmutableList<BuildAgent>,
+    launchAgentId: String?,
+    missingAgents: List<BuildAgent>,
+    modifier: Modifier = Modifier,
+    onCreate: (String) -> Unit,
+    onDelete: () -> Unit,
+    onDeleteProject: (String) -> Unit,
+    onDismiss: () -> Unit,
+    onInstallAgent: (String) -> Unit,
+    onOpenProject: (String) -> Unit,
+    onRename: () -> Unit,
+    onRename: (String) -> Unit,
+    onRenameProject: (name: String, newName: String) -> Unit,
+    onSelectLaunchAgent: (String?) -> Unit,
+    onUninstall: () -> Unit,
+    openSessions: Int,
+    project: String,
+    projects: ImmutableList<String>,
+    renaming?.let { project ->
+    state: KaiBuildState,
+    stringResource(Res.string.kai_build_projects_session_open)
+    stringResource(Res.string.kai_build_projects_sessions_open, open)
+    val create = { if (name.isNotBlank()) onCreate(name) }
+    val error = when {
+    val missingAgents = remember(state.installedAgents) {
+    val rename = { if (error == null) onRename(trimmed) }
+    val sessionCounts = remember(state.sessions) {
+    val trimmed = name.trim()
+    var deleting by rememberSaveable { mutableStateOf<String?>(null) }
+    var expanded by remember { mutableStateOf(false) }
+    var name by rememberSaveable { mutableStateOf("") }
+    var name by rememberSaveable(project) { mutableStateOf(project) }
+    var renaming by rememberSaveable { mutableStateOf<String?>(null) }
+    var showUninstall by remember { mutableStateOf(false) }
+    }
+ * Landing surface once Debian is ready: pick what a project opens with, open one
+ * New name for an existing project folder. The list is right here, so a name that
+ * Rename and delete for one project. Kept behind an overflow so the row's own tap
+ * as a silent no-op.
+ * is already taken is caught before the rename is attempted rather than reported
+ * itself (size, facts, extra agents, uninstall) sits in one card below.
+ * stays the thing it looks like — opening the project.
+ * — new projects come from the plus button in the top bar. The Linux system
+ */
+) {
+/**
+/** Deleting takes the folder's contents with it, and any shell still open in it. */
+/** How many shells the project has running, said in words. */
+/** Reached from the plus button in the top bar; creating opens the project right away. */
+/** What the Linux install is and what it costs, plus the two things you can do to it. */
+@Composable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -82,476 +359,14 @@ import kai.composeapp.generated.resources.sandbox_files_rename_title
 import kai.composeapp.generated.resources.settings_sandbox_cancel
 import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
-
-/**
- * Landing surface once Debian is ready: pick what a project opens with, open one
- * — new projects come from the plus button in the top bar. The Linux system
- * itself (size, facts, extra agents, uninstall) sits in one card below.
- */
-@Composable
 internal fun BuildProjectsContent(
-    state: KaiBuildState,
-    launchAgentId: String?,
-    installedAgents: ImmutableList<BuildAgent>,
-    onSelectLaunchAgent: (String?) -> Unit,
-    onOpenProject: (String) -> Unit,
-    onDeleteProject: (String) -> Unit,
-    onRenameProject: (name: String, newName: String) -> Unit,
-    onInstallAgent: (String) -> Unit,
-    onUninstall: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    var showUninstall by remember { mutableStateOf(false) }
-    // The project each dialog is about; null while it is closed.
-    var renaming by rememberSaveable { mutableStateOf<String?>(null) }
-    var deleting by rememberSaveable { mutableStateOf<String?>(null) }
-    val missingAgents = remember(state.installedAgents) {
-        BuildAgents.all.filterNot { it.id in state.installedAgents }
-    }
-    val sessionCounts = remember(state.sessions) {
-        state.sessions.groupingBy { it.project }.eachCount()
-    }
-
-    LazyColumn(
-        modifier = modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        if (installedAgents.isNotEmpty()) {
-            item {
-                Row(
-                    modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = stringResource(Res.string.kai_build_open_with),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    KaiChip(
-                        selected = launchAgentId == null,
-                        onClick = { onSelectLaunchAgent(null) },
-                    ) {
-                        Text(
-                            text = stringResource(Res.string.kai_build_session_shell),
-                            style = MaterialTheme.typography.labelMedium,
-                        )
-                    }
-                    installedAgents.forEach { agent ->
-                        KaiChip(
-                            selected = launchAgentId == agent.id,
-                            onClick = { onSelectLaunchAgent(agent.id) },
-                        ) {
-                            Text(text = agent.title, style = MaterialTheme.typography.labelMedium)
-                        }
-                    }
-                }
-            }
-        }
-
-        if (state.projects.isEmpty()) {
-            item {
-                Text(
-                    text = stringResource(Res.string.kai_build_projects_empty),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-        }
-
-        items(state.projects, key = { it }) { project ->
-            SettingsCard(
-                modifier = Modifier.fillMaxWidth(),
-                // The row pads itself: the menu button brings its own touch target,
-                // and a card's full padding around that makes every project tall.
-                innerPadding = false,
-                onClick = { onOpenProject(project) },
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, end = 4.dp, top = 4.dp, bottom = 4.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Folder,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                    )
-                    Text(
-                        text = project,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.weight(1f),
-                    )
-                    // Shells left behind here: the list is the only place they can be
-                    // found from, now that stepping out of a project keeps them.
-                    val open = sessionCounts[project] ?: 0
-                    if (open > 0) {
-                        Text(
-                            text = openSessionsLabel(open),
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.primary,
-                        )
-                    }
-                    ProjectRowMenu(
-                        onRename = { renaming = project },
-                        onDelete = { deleting = project },
-                    )
-                }
-            }
-        }
-
-        state.lastError?.let { error ->
-            item {
-                Text(
-                    text = error,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.error,
-                )
-            }
-        }
-
-        item {
-            BuildSystemCard(
-                info = state.systemInfo,
-                missingAgents = missingAgents,
-                onInstallAgent = onInstallAgent,
-                onUninstall = { showUninstall = true },
-            )
-        }
-    }
-
-    renaming?.let { project ->
-        RenameProjectDialog(
-            project = project,
-            projects = state.projects,
-            onDismiss = { renaming = null },
-            onRename = { newName ->
-                renaming = null
-                onRenameProject(project, newName)
-            },
-        )
-    }
-
-    deleting?.let { project ->
-        DeleteProjectDialog(
-            project = project,
-            openSessions = sessionCounts[project] ?: 0,
-            onDismiss = { deleting = null },
-            onDelete = {
-                deleting = null
-                onDeleteProject(project)
-            },
-        )
-    }
-
-    if (showUninstall) {
-        AlertDialog(
-            onDismissRequest = { showUninstall = false },
-            title = { Text(stringResource(Res.string.kai_build_uninstall_title)) },
-            text = { Text(stringResource(Res.string.kai_build_uninstall_message)) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        showUninstall = false
-                        onUninstall()
-                    },
-                    modifier = Modifier.handCursor(),
-                ) { Text(stringResource(Res.string.kai_build_uninstall)) }
-            },
-            dismissButton = {
-                TextButton(
-                    onClick = { showUninstall = false },
-                    modifier = Modifier.handCursor(),
-                ) { Text(stringResource(Res.string.settings_sandbox_cancel)) }
-            },
-        )
-    }
-}
-
-/** How many shells the project has running, said in words. */
-@Composable
-private fun openSessionsLabel(open: Int): String = if (open == 1) {
-    stringResource(Res.string.kai_build_projects_session_open)
-} else {
-    stringResource(Res.string.kai_build_projects_sessions_open, open)
-}
-
-/**
- * Rename and delete for one project. Kept behind an overflow so the row's own tap
- * stays the thing it looks like — opening the project.
- */
-@Composable
-private fun ProjectRowMenu(
-    onRename: () -> Unit,
-    onDelete: () -> Unit,
-) {
-    var expanded by remember { mutableStateOf(false) }
-    Box {
-        IconButton(
-            onClick = { expanded = true },
-            modifier = Modifier.handCursor(),
-        ) {
-            Icon(
-                imageVector = Icons.Default.MoreVert,
-                contentDescription = stringResource(Res.string.sandbox_files_action_more),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-            shape = RoundedCornerShape(16.dp),
-        ) {
-            DropdownMenuItem(
-                text = { Text(stringResource(Res.string.sandbox_files_action_rename)) },
-                onClick = {
-                    expanded = false
-                    onRename()
-                },
-                modifier = Modifier.handCursor(),
-            )
-            DropdownMenuItem(
-                text = { Text(stringResource(Res.string.sandbox_files_action_delete)) },
-                onClick = {
-                    expanded = false
-                    onDelete()
-                },
-                modifier = Modifier.handCursor(),
-            )
-        }
-    }
-}
-
-/**
- * New name for an existing project folder. The list is right here, so a name that
- * is already taken is caught before the rename is attempted rather than reported
- * as a silent no-op.
- */
-@Composable
-private fun RenameProjectDialog(
-    project: String,
-    projects: ImmutableList<String>,
-    onDismiss: () -> Unit,
-    onRename: (String) -> Unit,
-) {
-    var name by rememberSaveable(project) { mutableStateOf(project) }
-    val trimmed = name.trim()
-    val error = when {
-        trimmed.isEmpty() || trimmed.contains('/') -> Res.string.sandbox_files_rename_error_invalid
-        trimmed != project && trimmed in projects -> Res.string.sandbox_files_rename_error_collision
-        else -> null
-    }
-    val rename = { if (error == null) onRename(trimmed) }
-
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(Res.string.sandbox_files_rename_title)) },
-        text = {
-            OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text(stringResource(Res.string.sandbox_files_rename_label)) },
-                singleLine = true,
-                isError = error != null,
-                supportingText = error?.let { res -> { Text(stringResource(res)) } },
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                keyboardActions = KeyboardActions(onDone = { rename() }),
-            )
-        },
-        confirmButton = {
-            TextButton(
-                onClick = rename,
-                enabled = error == null,
-                modifier = Modifier.handCursor(),
-            ) { Text(stringResource(Res.string.sandbox_files_rename_confirm)) }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss, modifier = Modifier.handCursor()) {
-                Text(stringResource(Res.string.settings_sandbox_cancel))
-            }
-        },
-    )
-}
-
-/** Deleting takes the folder's contents with it, and any shell still open in it. */
-@Composable
-private fun DeleteProjectDialog(
-    project: String,
-    openSessions: Int,
-    onDismiss: () -> Unit,
-    onDelete: () -> Unit,
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(Res.string.sandbox_files_delete_title, project)) },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(stringResource(Res.string.sandbox_files_delete_message_directory))
-                if (openSessions > 0) {
-                    Text(
-                        text = openSessionsLabel(openSessions),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.error,
-                    )
-                }
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDelete, modifier = Modifier.handCursor()) {
-                Text(
-                    text = stringResource(Res.string.sandbox_files_delete_confirm),
-                    color = MaterialTheme.colorScheme.error,
-                )
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss, modifier = Modifier.handCursor()) {
-                Text(stringResource(Res.string.settings_sandbox_cancel))
-            }
-        },
-    )
-}
-
-/** What the Linux install is and what it costs, plus the two things you can do to it. */
-@Composable
-private fun BuildSystemCard(
-    info: BuildSystemInfo?,
-    missingAgents: List<BuildAgent>,
-    onInstallAgent: (String) -> Unit,
-    onUninstall: () -> Unit,
-) {
-    SettingsCard(modifier = Modifier.fillMaxWidth()) {
-        Text(
-            text = stringResource(Res.string.kai_build_system_title),
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onSurface,
-        )
-        if (info != null) {
-            Text(
-                text = "${info.distribution} · ${info.architecture}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            if (info.packageCount > 0) {
-                Text(
-                    text = stringResource(Res.string.kai_build_system_packages, info.packageCount),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-            Spacer(Modifier.height(12.dp))
-            SystemInfoRow(
-                label = stringResource(Res.string.kai_build_system_disk_system),
-                value = formatFileSize(info.systemBytes),
-            )
-            SystemInfoRow(
-                label = stringResource(Res.string.kai_build_system_disk_projects),
-                value = formatFileSize(info.projectsBytes),
-            )
-            SystemInfoRow(
-                label = stringResource(Res.string.kai_build_system_disk_free),
-                value = formatFileSize(info.freeBytes),
-            )
-        }
-
-        if (missingAgents.isNotEmpty()) {
-            Spacer(Modifier.height(12.dp))
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-            Spacer(Modifier.height(12.dp))
-            Text(
-                text = stringResource(Res.string.kai_build_projects_add_agent),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Spacer(Modifier.height(8.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                missingAgents.forEach { agent ->
-                    KaiChip(onClick = { onInstallAgent(agent.id) }) {
-                        Text(text = agent.title, style = MaterialTheme.typography.labelMedium)
-                    }
-                }
-            }
-        }
-
-        Spacer(Modifier.height(4.dp))
-        TextButton(
-            onClick = onUninstall,
-            modifier = Modifier.handCursor(),
-        ) {
-            Text(
-                text = stringResource(Res.string.kai_build_uninstall),
-                color = MaterialTheme.colorScheme.error,
-            )
-        }
-    }
-}
-
-@Composable
-private fun SystemInfoRow(label: String, value: String) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text = label,
-            modifier = Modifier.weight(1f),
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.width(8.dp))
-        Text(
-            text = value,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface,
-            textAlign = TextAlign.End,
-        )
-    }
-}
-
-/** Reached from the plus button in the top bar; creating opens the project right away. */
-@Composable
 internal fun CreateProjectDialog(
-    onDismiss: () -> Unit,
-    onCreate: (String) -> Unit,
-) {
-    var name by rememberSaveable { mutableStateOf("") }
-    val create = { if (name.isNotBlank()) onCreate(name) }
-
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(Res.string.kai_build_new_project_title)) },
-        text = {
-            OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
-                modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text(stringResource(Res.string.kai_build_projects_new_placeholder)) },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                keyboardActions = KeyboardActions(onDone = { create() }),
-            )
-        },
-        confirmButton = {
-            TextButton(
-                onClick = create,
-                enabled = name.isNotBlank(),
-                modifier = Modifier.handCursor(),
-            ) { Text(stringResource(Res.string.kai_build_projects_create)) }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss, modifier = Modifier.handCursor()) {
-                Text(stringResource(Res.string.settings_sandbox_cancel))
-            }
-        },
-    )
+package com.inspiredandroid.kai.ui.build
+private fun BuildSystemCard(
+private fun DeleteProjectDialog(
+private fun ProjectRowMenu(
+private fun RenameProjectDialog(
+private fun SystemInfoRow(label: String, value: String) {
+private fun openSessionsLabel(open: Int): String = if (open == 1) {
 }
+} else {

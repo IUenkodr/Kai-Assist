@@ -1,5 +1,48 @@
-package com.inspiredandroid.kai
 
+    // No system back gesture on web
+    // Web has no secure storage - using localStorage
+    // Web uses localStorage, return empty string as no file path is needed
+    FileKit.download(bytes = bytes, fileName = "$baseName.$extension")
+    appSettings = WebKoinHelper.appSettings,
+    config(this)
+    false
+    kotlinx.browser.window.open(url, "_blank")
+    mcpServerManager = WebKoinHelper.mcpServerManager,
+    memoryStore = WebKoinHelper.memoryStore,
+    null
+    org.jetbrains.skia.Image.makeFromEncoded(bytes).toComposeImageBitmap()
+    return ""
+    return StorageSettings()
+    taskStore = WebKoinHelper.taskStore,
+    true
+    val appSettings: AppSettings by inject()
+    val mcpServerManager: McpServerManager by inject()
+    val memoryStore: MemoryStore by inject()
+    val taskStore: TaskStore by inject()
+)
+// Web notifications API isn't wired up; stub.
+@androidx.compose.runtime.Composable
+actual fun PlatformBackHandler(enabled: Boolean, onBack: () -> Unit) {
+actual fun createLegacySettings(): Settings? = null // Same storage location, no migration needed
+actual fun createSecureSettings(): Settings {
+actual fun decodeToImageBitmap(bytes: ByteArray): ImageBitmap? = try {
+actual fun getAppFilesDirectory(): String {
+actual fun getAvailableTools(): List<Tool> = buildAgentToolSet(
+actual fun getBackgroundDispatcher(): CoroutineContext = EmptyCoroutineContext
+actual fun getPlatformToolDefinitions(): List<ToolInfo> = CommonTools.commonToolDefinitions
+actual fun httpClient(config: HttpClientConfig<*>.() -> Unit): HttpClient = HttpClient(Js) {
+actual fun onDragAndDropEventDropped(event: DragAndDropEvent): PlatformFile? = null
+actual fun openUrl(url: String): Boolean = try {
+actual fun sendHeartbeatNotification(title: String, body: String) = Unit
+actual suspend fun compressImageBytes(bytes: ByteArray, mimeType: String): ByteArray = bytes
+actual suspend fun saveFileToDevice(bytes: ByteArray, baseName: String, extension: String) {
+actual val BackIcon: ImageVector = Icons.AutoMirrored.Filled.ArrowBack
+actual val currentPlatform: Platform = Platform.Web
+actual val defaultUiScale: Float = 1.0f
+actual val isEmailSupported: Boolean = false
+actual val isNotificationsSupported: Boolean = false
+actual val isSmsSupported: Boolean = false
+actual val isSplinterlandsSupported: Boolean = false
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.ui.draganddrop.DragAndDropEvent
@@ -22,84 +65,11 @@ import io.github.vinceglb.filekit.download
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.js.Js
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
-
-actual fun httpClient(config: HttpClientConfig<*>.() -> Unit): HttpClient = HttpClient(Js) {
-    config(this)
-}
-
-actual fun getBackgroundDispatcher(): CoroutineContext = EmptyCoroutineContext
-
-actual fun onDragAndDropEventDropped(event: DragAndDropEvent): PlatformFile? = null
-
-actual val BackIcon: ImageVector = Icons.AutoMirrored.Filled.ArrowBack
-
-actual val currentPlatform: Platform = Platform.Web
-
-actual val defaultUiScale: Float = 1.0f
-
-actual val isEmailSupported: Boolean = false
-
-actual val isSmsSupported: Boolean = false
-
-actual val isNotificationsSupported: Boolean = false
-
-actual val isSplinterlandsSupported: Boolean = false
-
-actual suspend fun compressImageBytes(bytes: ByteArray, mimeType: String): ByteArray = bytes
-
-actual fun getAppFilesDirectory(): String {
-    // Web uses localStorage, return empty string as no file path is needed
-    return ""
-}
-
-actual fun createSecureSettings(): Settings {
-    // Web has no secure storage - using localStorage
-    return StorageSettings()
-}
-
-actual fun createLegacySettings(): Settings? = null // Same storage location, no migration needed
-
-actual fun getPlatformToolDefinitions(): List<ToolInfo> = CommonTools.commonToolDefinitions
-
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+package com.inspiredandroid.kai
 private object WebKoinHelper : KoinComponent {
-    val appSettings: AppSettings by inject()
-    val memoryStore: MemoryStore by inject()
-    val taskStore: TaskStore by inject()
-    val mcpServerManager: McpServerManager by inject()
 }
-
-actual fun getAvailableTools(): List<Tool> = buildAgentToolSet(
-    appSettings = WebKoinHelper.appSettings,
-    memoryStore = WebKoinHelper.memoryStore,
-    taskStore = WebKoinHelper.taskStore,
-    mcpServerManager = WebKoinHelper.mcpServerManager,
-)
-
-actual fun openUrl(url: String): Boolean = try {
-    kotlinx.browser.window.open(url, "_blank")
-    true
 } catch (_: Exception) {
-    false
-}
-
-actual fun decodeToImageBitmap(bytes: ByteArray): ImageBitmap? = try {
-    org.jetbrains.skia.Image.makeFromEncoded(bytes).toComposeImageBitmap()
-} catch (_: Exception) {
-    null
-}
-
-@androidx.compose.runtime.Composable
-actual fun PlatformBackHandler(enabled: Boolean, onBack: () -> Unit) {
-    // No system back gesture on web
-}
-
-actual suspend fun saveFileToDevice(bytes: ByteArray, baseName: String, extension: String) {
-    FileKit.download(bytes = bytes, fileName = "$baseName.$extension")
-}
-
-// Web notifications API isn't wired up; stub.
-actual fun sendHeartbeatNotification(title: String, body: String) = Unit
