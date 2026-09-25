@@ -274,13 +274,6 @@ jobs:
           name: flatpak-package
           path: Kai.flatpak
 
-  play-store:
-    name: Upload AAB to Play Store
-    uses: ./.github/workflows/play-store.yml
-    with:
-      ref: ${{ github.ref }}
-    secrets: inherit
-
   release:
     name: Release APK, DMG, MSI, DEB, RPM, AppImage, Flatpak and Tarball
     needs: [apk, dmg, msi, deb, rpm, appimage, linux-tar, flatpak]
