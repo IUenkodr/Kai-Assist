@@ -1,7 +1,7 @@
-on:
-  workflow_dispatch: {}
 name: Build and Release
 
+on:
+  workflow_dispatch: {}
   push:
     tags:
       - 'v*'
@@ -205,14 +205,10 @@ jobs:
           mkdir -p AppDir/usr/share/applications
           mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
 
-          # Copy distributable contents
           cp -r composeApp/build/compose/binaries/main-release/app/Kai/* AppDir/usr/lib/
-
-          # Copy icon
           cp composeApp/icon.png AppDir/usr/share/icons/hicolor/256x256/apps/kai.png
           cp composeApp/icon.png AppDir/kai.png
 
-          # Create desktop file
           cat > AppDir/kai.desktop << 'EOF'
           [Desktop Entry]
           Name=Kai
@@ -225,7 +221,6 @@ jobs:
           EOF
           cp AppDir/kai.desktop AppDir/usr/share/applications/
 
-          # Create AppRun
           cat > AppDir/AppRun << 'EOF'
           #!/bin/bash
           SELF=$(readlink -f "$0")
@@ -266,16 +261,11 @@ jobs:
           sudo flatpak install -y flathub org.freedesktop.Platform//24.08 org.freedesktop.Sdk//24.08
       - name: Build Flatpak
         run: |
-          # Copy tarball to flatpak dir and compute sha256
           cp Kai-linux-x86_64.tar.gz flatpak/
-          SHA256=$(sha256sum Kai-linux-x86_64.tar.gz | cut -d' ' -f1)
-
-          # Patch manifest to use local tarball instead of URL
+          SHA256=$(sha256sum Kai-linux-x86_64.tar.gz | cut -d ' ' -f1)
           cd flatpak
-          sed -i "s|url: https://github.com/SimonSchubert/Kai/releases/download/.*|path: Kai-linux-x86_64.tar.gz|" io.github.simonschubert.Kai.yaml
+          sed -i "s|url: https://github.com/SimonSchubert/Kai/releases/download/.*|path: Kai-linux-linux-x86_64.tar.gz|" io.github.simonschubert.Kai.yaml
           sed -i "s|sha256: .*|sha256: ${SHA256}|" io.github.simonschubert.Kai.yaml
-
-          # Build and bundle
           flatpak-builder --repo=repo --force-clean build-dir io.github.simonschubert.Kai.yaml
           flatpak build-bundle repo ../Kai.flatpak io.github.simonschubert.Kai
       - name: Upload Flatpak Artifact
@@ -301,50 +291,40 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-
       - name: Download APK Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: signed-apk
-
       - name: Download DMG Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: dmg-package
-
       - name: Download MSI Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: msi-package
-
       - name: Download DEB Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: deb-package
-
       - name: Download RPM Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: rpm-package
-
       - name: Download AppImage Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: appimage-package
-
       - name: Download Linux Tarball Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: linux-tar-package
-
       - name: Download Flatpak Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: flatpak-package
-
       - name: List downloaded files (for debugging)
         run: ls -la
-
       - name: Rename assets
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
@@ -356,35 +336,30 @@ jobs:
           mv *.AppImage "Kai-${VERSION}-linux.AppImage"
           mv Kai-linux-x86_64.tar.gz "Kai-${VERSION}-linux-x86_64.tar.gz"
           mv Kai.flatpak "Kai-${VERSION}-linux.flatpak"
-
       - name: Extract changelog
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           if [ -f CHANGELOG.md ]; then
             sed -n "/^## v${VERSION}/,/^## v/{ /^## v${VERSION}/d; /^## v/d; p; }" CHANGELOG.md > changelog.txt
           fi
-          # Fallback if CHANGELOG.md missing or section empty
           if [ ! -s changelog.txt ]; then
             PREVIOUS_TAG=$(git tag --sort=-creatordate | grep -v "^${GITHUB_REF_NAME}$" | head -n1)
             if [ -z "$PREVIOUS_TAG" ]; then
-              git log --pretty=format:"- %s" "${GITHUB_REF_NAME}" > changelog.txt
+              git log --pretty=format: "- %s" "${GITHUB_REF_NAME}" > changelog.txt
             else
-              git log --pretty=format:"- %s" "${PREVIOUS_TAG}..${GITHUB_REF_NAME}" --no-merges > changelog.txt
+              git log --pretty=format: "- %s" "${PREVIOUS_TAG}..${GITHUB_REF_NAME}" --no-merges > changelog.txt
             fi
           fi
-
       - name: Create Github Release
         uses: softprops/action-gh-release@v2
         with:
           name: Release ${{ github.ref_name }}
           body_path: changelog.txt
           files: Kai-*
-
       - name: Sync winget-pkgs fork
         env:
           GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
         run: gh repo sync SimonSchubert/winget-pkgs --source microsoft/winget-pkgs --branch master --force
-
       - name: Publish to WinGet
         uses: vedantmgoyal9/winget-releaser@v2
         with:
