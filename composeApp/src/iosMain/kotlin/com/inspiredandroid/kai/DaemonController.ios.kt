@@ -1,3 +1,3 @@
+package com.inspiredandroid.kai
 
 actual fun createDaemonController(): DaemonController = NoOpDaemonController()
-package com.inspiredandroid.kai

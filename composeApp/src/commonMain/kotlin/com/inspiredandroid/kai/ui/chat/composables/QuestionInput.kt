@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -321,5 +322,4 @@ internal fun CircleIconButton(
 internal fun TrailingIcon(
 internal fun detectSlashQuery(text: String, cursor: Int): String? {
 internal fun truncateFileName(name: String, maxChars: Int = 16): String {
-package com.inspiredandroid.kai.ui.chat.composables
 }

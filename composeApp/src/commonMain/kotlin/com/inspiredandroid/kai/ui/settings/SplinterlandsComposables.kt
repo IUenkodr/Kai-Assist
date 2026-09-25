@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -613,7 +614,6 @@ import sh.calvin.reorderable.ReorderableColumn
 @Composable
 @OptIn(kotlin.time.ExperimentalTime::class)
 internal fun SplinterlandsSection(
-package com.inspiredandroid.kai.ui.settings
 private fun SplinterlandsAccountRow(
 private fun SplinterlandsActivityDialog(
 private fun SplinterlandsAddAccountForm(

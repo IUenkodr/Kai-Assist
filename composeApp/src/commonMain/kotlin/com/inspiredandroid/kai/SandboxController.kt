@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
@@ -148,6 +149,5 @@ interface CommandHandle {
 interface SandboxController : FileBrowserSource {
 internal object NoOpCommandHandle : CommandHandle {
 object SandboxSessions {
-package com.inspiredandroid.kai
 sealed interface SandboxStatusLabel {
 }

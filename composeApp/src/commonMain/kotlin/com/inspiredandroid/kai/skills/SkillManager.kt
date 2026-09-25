@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 import com.inspiredandroid.kai.SandboxController
 import com.inspiredandroid.kai.TextFileResult
 import com.inspiredandroid.kai.getBackgroundDispatcher
@@ -142,5 +143,4 @@ import kotlinx.coroutines.sync.withLock
 /**
 class SkillManager(
 fun parseGitHubSkillUrl(input: String): SkillSource.GitHub? {
-package com.inspiredandroid.kai.skills
 }

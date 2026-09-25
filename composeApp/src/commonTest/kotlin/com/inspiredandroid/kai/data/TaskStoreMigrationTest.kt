@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.russhwolf.settings.MapSettings
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -53,5 +54,4 @@ import kotlinx.coroutines.test.runTest
  */
 /**
 class TaskStoreMigrationTest {
-package com.inspiredandroid.kai.data
 }

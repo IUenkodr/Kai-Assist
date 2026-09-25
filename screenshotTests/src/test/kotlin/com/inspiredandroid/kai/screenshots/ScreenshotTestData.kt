@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.screenshots
 import com.inspiredandroid.kai.TerminalLine
 import com.inspiredandroid.kai.data.MemoryEntry
 import com.inspiredandroid.kai.data.Service
@@ -209,5 +210,4 @@ import kotlinx.serialization.json.jsonPrimitive
     val settingsTools = SettingsUiState(
     }
 object ScreenshotTestData {
-package com.inspiredandroid.kai.screenshots
 }

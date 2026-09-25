@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.dynamicui
 import com.inspiredandroid.kai.data.SharedJson
 import kotlinx.collections.immutable.toImmutableList
 
@@ -142,5 +143,4 @@ import kotlinx.collections.immutable.toImmutableList
  */
 /**
 object KaiUiParser {
-package com.inspiredandroid.kai.ui.dynamicui
 }

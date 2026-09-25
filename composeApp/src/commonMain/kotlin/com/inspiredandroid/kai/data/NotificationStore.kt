@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlinx.serialization.serializer
@@ -58,5 +59,4 @@ import kotlinx.serialization.serializer
 /**
 @OptIn(ExperimentalTime::class)
 class NotificationStore(appSettings: AppSettings) {
-package com.inspiredandroid.kai.data
 }

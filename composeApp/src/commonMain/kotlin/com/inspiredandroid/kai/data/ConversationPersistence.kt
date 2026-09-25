@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import app.cash.sqldelight.db.SqlDriver
 import com.inspiredandroid.kai.TerminalLine
 import com.inspiredandroid.kai.db.KaiDatabase
@@ -142,7 +143,6 @@ expect fun createConversationSqlDriver(): SqlDriver?
 fun createConversationPersistence(appSettings: AppSettings): ConversationPersistence {
 interface ConversationPersistence {
 internal val ConversationJson = Json {
-package com.inspiredandroid.kai.data
 private const val MAX_MESSAGE_JSON_BYTES = 1_000_000L
 private const val MAX_MESSAGE_TEXT_CHARS = 200_000
 private fun String.exceedsUtf8Budget(budget: Long): Boolean = when {

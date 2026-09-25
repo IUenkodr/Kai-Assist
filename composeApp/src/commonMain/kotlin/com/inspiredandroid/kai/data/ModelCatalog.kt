@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 
             println("ModelCatalog miss: \"$key\" (raw: \"$modelId\")")
             put(key, if (score != null) info.copy(arenaScore = score) else info)
@@ -1807,5 +1808,4 @@
 /**
 internal data class CuratedModelInfo(
 internal object ModelCatalog {
-package com.inspiredandroid.kai.data
 }

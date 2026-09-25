@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -21,5 +22,4 @@ import kotlin.test.assertNull
     fun `returns token while typing slash command`() {
     }
 class DetectSlashQueryTest {
-package com.inspiredandroid.kai.ui.chat.composables
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.email
 
             imapHost = "127.0.0.1",
             imapHost = "imap.aol.com",
@@ -55,5 +56,4 @@
  */
 /**
 object ServerAutoDetect {
-package com.inspiredandroid.kai.email
 }

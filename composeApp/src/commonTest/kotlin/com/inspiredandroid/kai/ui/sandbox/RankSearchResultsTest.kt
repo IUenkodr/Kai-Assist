@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import com.inspiredandroid.kai.linux.PackageEntry
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -47,5 +48,4 @@ import kotlin.test.assertEquals
     private fun pkg(name: String, description: String? = null) = PackageEntry(name = name, version = "1.0.0-r0", description = description)
     }
 class RankSearchResultsTest {
-package com.inspiredandroid.kai.ui.sandbox
 }

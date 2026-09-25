@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
@@ -187,5 +188,4 @@ import kotlinx.collections.immutable.toImmutableList
  */
 /**
 internal object InlineTokenizer {
-package com.inspiredandroid.kai.ui.markdown
 }

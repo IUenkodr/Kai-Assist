@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable
 
@@ -23,5 +24,4 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class NotificationRecord(
 data class NotificationSyncState(
-package com.inspiredandroid.kai.data
 }

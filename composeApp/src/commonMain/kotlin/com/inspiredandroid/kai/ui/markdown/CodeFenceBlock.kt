@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -73,5 +74,4 @@ import org.jetbrains.compose.resources.stringResource
 ) {
 @Composable
 internal fun CodeFenceBlock(
-package com.inspiredandroid.kai.ui.markdown
 }

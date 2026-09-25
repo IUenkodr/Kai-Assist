@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -253,7 +254,6 @@ import org.jetbrains.compose.resources.stringResource
 ) {
 @Composable
 internal fun ExportImportSection(
-package com.inspiredandroid.kai.ui.settings
 private fun ExportPreviewDialog(
 private fun ImportPreviewDialog(
 private fun sectionDisplayName(section: ImportSection): String = when (section) {

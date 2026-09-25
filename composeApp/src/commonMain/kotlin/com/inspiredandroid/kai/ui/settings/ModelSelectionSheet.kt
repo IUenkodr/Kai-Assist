@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -259,7 +260,6 @@ import org.jetbrains.compose.resources.vectorResource
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 internal fun ModelSelection(
-package com.inspiredandroid.kai.ui.settings
 private enum class ModelSortOption(
 private fun FreeTierBadge(isSelected: Boolean) {
 private fun ModelCard(model: SettingsModel, isSelected: Boolean, onClick: () -> Unit) {

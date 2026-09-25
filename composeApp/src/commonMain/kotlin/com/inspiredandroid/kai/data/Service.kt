@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kai.composeapp.generated.resources.Res
 import kai.composeapp.generated.resources.ic_service_aihorde
 import kai.composeapp.generated.resources.ic_service_aihubmix
@@ -392,6 +393,5 @@ import org.jetbrains.compose.resources.StringResource
 data class ModelDefinition(
 enum class FreeMode(val modelId: String, val nameRes: StringResource, val icon: DrawableResource) {
 enum class ReasoningRequestMode {
-package com.inspiredandroid.kai.data
 sealed class Service(
 }

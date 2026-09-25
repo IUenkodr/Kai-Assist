@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import com.inspiredandroid.kai.httpClient
 import io.github.vinceglb.filekit.PlatformFile
 import io.github.vinceglb.filekit.name
@@ -469,7 +470,6 @@ import platform.posix.memcpy
 /** Streams an on-disk file through SHA-256. Null when the file cannot be opened. */
 @file:OptIn(kotlinx.cinterop.ExperimentalForeignApi::class, kotlinx.cinterop.BetaInteropApi::class)
 class IosLiteRTInferenceEngine : LocalInferenceEngine {
-package com.inspiredandroid.kai.inference
 private class DownloadOutcome(
 private const val HASH_BUFFER_SIZE_BYTES = 64 * 1024
 private fun MemScope.finalizeSha256(context: CC_SHA256_CTX): String {

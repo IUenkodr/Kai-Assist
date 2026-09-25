@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.AppSettings
 import com.inspiredandroid.kai.data.MemoryStore
 import com.inspiredandroid.kai.network.tools.Tool
@@ -50,5 +51,4 @@ import kotlin.test.assertTrue
  */
 /**
 class ToolDefinitionsTest {
-package com.inspiredandroid.kai.tools
 }

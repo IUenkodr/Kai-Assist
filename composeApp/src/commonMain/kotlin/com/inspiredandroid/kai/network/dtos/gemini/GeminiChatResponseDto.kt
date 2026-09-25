@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.gemini
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
 
@@ -24,5 +25,4 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 data class GeminiChatResponseDto(
 fun GeminiChatResponseDto.extractText(): String = candidates.firstOrNull()?.content?.parts
-package com.inspiredandroid.kai.network.dtos.gemini
 }

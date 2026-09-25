@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import android.Manifest
 import android.content.ContentValues
 import android.content.Context
@@ -138,7 +139,6 @@ import java.util.TimeZone
     }
 ) {
 class CalendarRepository(
-package com.inspiredandroid.kai.tools
 private const val TAG = "CalendarRepository"
 sealed class CalendarResult {
 }

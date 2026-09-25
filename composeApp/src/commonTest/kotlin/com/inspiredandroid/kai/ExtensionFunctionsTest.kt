@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -50,5 +51,4 @@ import kotlin.test.assertNull
     fun `toIsoDate returns null for zero or negative epoch`() {
     }
 class ExtensionFunctionsTest {
-package com.inspiredandroid.kai
 }

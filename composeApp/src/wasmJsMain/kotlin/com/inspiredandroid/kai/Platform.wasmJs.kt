@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.ui.draganddrop.DragAndDropEvent
@@ -69,7 +70,6 @@ actual val isEmailSupported: Boolean = false
 actual val isNotificationsSupported: Boolean = false
 actual val isSmsSupported: Boolean = false
 actual val isSplinterlandsSupported: Boolean = false
-package com.inspiredandroid.kai
 private object WebKoinHelper : KoinComponent {
 }
 } catch (_: Exception) {

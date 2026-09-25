@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -185,7 +186,6 @@ import org.jetbrains.compose.resources.stringResource
 /** The cap itself: colors for the three states, and the tint its content draws with. */
 @Composable
 internal fun TerminalKeyRow(
-package com.inspiredandroid.kai.ui.build
 private fun IconKeyCap(
 private fun KeyCap(
 private fun KeyCapSurface(

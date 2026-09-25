@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -41,5 +42,4 @@ import kotlin.test.assertTrue
     fun `unknown or missing id falls back to the default rather than throwing`() {
     }
 class LinuxDistroTest {
-package com.inspiredandroid.kai.linux
 }

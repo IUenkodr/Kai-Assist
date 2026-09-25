@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.notifications
 import android.app.NotificationManager
 import android.content.Context
 import android.content.pm.PackageManager
@@ -49,7 +50,6 @@ import org.koin.java.KoinJavaComponent.inject
 // safe to cache for the process lifetime. Shared with Platform.android.kt's
 actual class NotificationReader actual constructor() {
 internal fun Context.declaresNotificationListener(): Boolean = try {
-package com.inspiredandroid.kai.notifications
 private const val NOTIFICATION_LISTENER_FQN =
 }
 } catch (_: Exception) {

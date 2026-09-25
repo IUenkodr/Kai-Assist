@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import app.cash.turbine.test
 import com.inspiredandroid.kai.DaemonController
 import com.inspiredandroid.kai.data.Service
@@ -68,5 +69,4 @@ import kotlinx.coroutines.test.setMain
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class SplinterlandsViewModelTest {
-package com.inspiredandroid.kai.ui.settings
 }

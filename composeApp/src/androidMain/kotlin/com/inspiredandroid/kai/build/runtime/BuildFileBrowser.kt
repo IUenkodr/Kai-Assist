@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build.runtime
 import android.content.Context
 import com.inspiredandroid.kai.FileBrowserSource
 import com.inspiredandroid.kai.SandboxFileEntry
@@ -107,5 +108,4 @@ import kotlinx.coroutines.withContext
 ) : FileBrowserSource {
 /**
 class BuildFileBrowser(
-package com.inspiredandroid.kai.build.runtime
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
@@ -34,6 +35,5 @@ import org.jetbrains.compose.resources.painterResource
 ) {
 @Composable
 internal fun SmallIconButton(
-package com.inspiredandroid.kai.ui.chat.composables
 private fun SmallIconButtonBox(onClick: () -> Unit, content: @Composable () -> Unit) {
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.splinterlands
 import com.inspiredandroid.kai.httpClient
 import io.ktor.client.request.header
 import io.ktor.client.request.post
@@ -179,7 +180,6 @@ internal fun decodeWif(wif: String): ByteArray {
 internal fun ecdsaSign(hash: ByteArray, privKeyBytes: ByteArray): String {
 internal fun hexToBytes(hex: String): ByteArray {
 internal fun recoverPublicKey(hash: ByteArray, r: BigInteger, s: BigInteger, recId: Int): ECPoint? {
-package com.inspiredandroid.kai.splinterlands
 private const val BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 private const val HIVE_CHAIN_ID = "beeab0de00000000000000000000000000000000000000000000000000000000"
 private fun base58Decode(input: String): ByteArray {

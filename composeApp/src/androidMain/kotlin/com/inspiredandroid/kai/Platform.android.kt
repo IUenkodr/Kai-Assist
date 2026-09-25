@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.content.Context
 import android.content.Intent
 import androidx.compose.material.icons.Icons
@@ -225,7 +226,6 @@ actual val isEmailSupported: Boolean = true
 actual val isNotificationsSupported: Boolean by lazy {
 actual val isSmsSupported: Boolean by lazy {
 actual val isSplinterlandsSupported: Boolean = true
-package com.inspiredandroid.kai
 private fun createEncryptedPrefs(context: Context): android.content.SharedPreferences {
 }
 } catch (_: Exception) {

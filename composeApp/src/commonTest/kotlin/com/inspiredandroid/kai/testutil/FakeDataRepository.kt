@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.testutil
 import com.inspiredandroid.kai.data.Conversation
 import com.inspiredandroid.kai.data.DataRepository
 import com.inspiredandroid.kai.data.EmailAccount
@@ -418,5 +419,4 @@ import kotlinx.coroutines.flow.update
     var storedSandboxDistro: LinuxDistro = LinuxDistro.DEFAULT
     }
 class FakeDataRepository : DataRepository {
-package com.inspiredandroid.kai.testutil
 }

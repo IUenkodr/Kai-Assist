@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import android.content.Context
 import java.io.File
 
@@ -134,7 +135,6 @@ const val BUILD_DIR_NAME = "kai-build"
 const val LEGACY_READY_FILE = "ready"
 const val SANDBOX_DIR_NAME = "linux-sandbox"
 data class InstallMarker(
-package com.inspiredandroid.kai.linux
 private const val HOME_EXTERNAL = "external"
 private const val HOME_ROOTFS = "rootfs"
 private const val KEY_DISTRO = "distro"

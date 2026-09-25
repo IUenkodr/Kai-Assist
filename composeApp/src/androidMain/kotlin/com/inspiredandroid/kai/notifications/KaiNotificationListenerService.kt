@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.notifications
 import android.app.Notification
 import android.content.pm.PackageManager
 import android.service.notification.NotificationListenerService
@@ -98,5 +99,4 @@ import org.koin.java.KoinJavaComponent.inject
 /**
 @OptIn(ExperimentalTime::class)
 class KaiNotificationListenerService : NotificationListenerService() {
-package com.inspiredandroid.kai.notifications
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -167,7 +168,6 @@ import org.jetbrains.compose.resources.stringResource
 /** The strip's pill shape. [trailing] is shown only while selected — that is where a tab's close button goes. */
 @Composable
 internal fun BuildSessionBar(
-package com.inspiredandroid.kai.ui.build
 private fun SessionTab(
 private fun TabPill(
 }

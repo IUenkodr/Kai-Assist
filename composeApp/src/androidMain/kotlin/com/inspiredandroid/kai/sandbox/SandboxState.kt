@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sandbox
 import com.inspiredandroid.kai.SandboxStatusLabel
 
     data class Downloading(val progress: Float) : SandboxState
@@ -6,6 +7,5 @@ import com.inspiredandroid.kai.SandboxStatusLabel
     data object Extracting : SandboxState
     data object NotInstalled : SandboxState
     data object Ready : SandboxState
-package com.inspiredandroid.kai.sandbox
 sealed interface SandboxState {
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -19,5 +20,4 @@ import kotlin.test.assertEquals
     fun `sitting on the root offers nothing above it`() {
     }
 class BreadcrumbsTest {
-package com.inspiredandroid.kai.ui.sandbox
 }

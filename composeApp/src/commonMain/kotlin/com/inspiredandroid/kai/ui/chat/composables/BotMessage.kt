@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
@@ -232,6 +233,5 @@ import org.jetbrains.compose.resources.stringResource
 ) {
 @Composable
 internal fun BotMessage(
-package com.inspiredandroid.kai.ui.chat.composables
 private fun ReasoningBlockquote(
 }

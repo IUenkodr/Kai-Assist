@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
 import com.inspiredandroid.kai.network.tools.ToolInfo
@@ -59,5 +60,4 @@ import kotlin.time.Duration.Companion.seconds
 /**
 Actions:
 object ProcessManagerTool : Tool {
-package com.inspiredandroid.kai.tools
 }

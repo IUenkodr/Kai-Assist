@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -47,5 +48,4 @@ import org.jetbrains.compose.resources.vectorResource
 @Composable
 internal fun ErrorMessage(
 internal fun uiErrorText(error: UiError): String = when (error) {
-package com.inspiredandroid.kai.ui.chat.composables
 }

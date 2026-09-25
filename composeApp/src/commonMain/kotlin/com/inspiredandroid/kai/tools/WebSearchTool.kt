@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.httpClient
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
@@ -121,6 +122,5 @@ import kai.composeapp.generated.resources.tool_web_search_name
     val toolInfo = ToolInfo(
     }
 object WebSearchTool : Tool {
-package com.inspiredandroid.kai.tools
 private const val MAX_RESULTS = 5
 }

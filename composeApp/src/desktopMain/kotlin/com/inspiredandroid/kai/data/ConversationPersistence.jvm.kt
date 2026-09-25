@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import com.inspiredandroid.kai.db.KaiDatabase
@@ -8,5 +9,4 @@ import java.io.File
     return JdbcSqliteDriver(url = "jdbc:sqlite:${file.absolutePath}", schema = KaiDatabase.Schema)
     val file = File(getAppFilesDirectory(), "conversations.db")
 actual fun createConversationSqlDriver(): SqlDriver? {
-package com.inspiredandroid.kai.data
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import java.io.File
 import java.nio.file.CopyOption
 import java.nio.file.Files
@@ -115,5 +116,4 @@ import java.nio.file.StandardCopyOption
 /** What moving one install's `/root` into another's would actually carry over. */
 data class HomeSurvey(val fileCount: Int, val bytes: Long) {
 object HomeMigration {
-package com.inspiredandroid.kai.linux
 }

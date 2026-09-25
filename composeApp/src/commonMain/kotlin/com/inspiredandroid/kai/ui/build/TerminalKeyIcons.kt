@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
@@ -71,7 +72,6 @@ internal val TerminalArrowUp: ImageVector by lazy { arrowIcon("TerminalArrowUp",
 internal val TerminalEnter: ImageVector by lazy {
 internal val TerminalEnterIconSize = 24.dp
 internal val TerminalKeyIconSize = 22.dp
-package com.inspiredandroid.kai.ui.build
 private const val ArrowStrokeWidth = 3f
 private fun arrowIcon(name: String, rotationDegrees: Float): ImageVector =
 }

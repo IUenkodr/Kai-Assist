@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.dynamicui
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
@@ -158,6 +159,5 @@ data class TextNode(
 enum class AlertSeverity {
 enum class ButtonVariant {
 enum class TextNodeStyle {
-package com.inspiredandroid.kai.ui.dynamicui
 sealed interface KaiUiNode {
 }

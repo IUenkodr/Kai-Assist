@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import java.io.File
 
                 .any { it.split(Regex("\\s+")).contains("avx2") }
@@ -18,6 +19,5 @@ import java.io.File
  */
 /**
 actual fun createLocalInferenceEngine(): LocalInferenceEngine? = if (isLiteRtSupported()) LiteRTInferenceEngine() else null
-package com.inspiredandroid.kai.inference
 private fun isLiteRtSupported(): Boolean {
 }

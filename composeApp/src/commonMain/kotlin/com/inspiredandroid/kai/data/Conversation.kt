@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import androidx.compose.runtime.Immutable
 import com.inspiredandroid.kai.TerminalLine
 import kotlinx.serialization.EncodeDefault
@@ -58,5 +59,4 @@ data class Attachment(
 data class Conversation(
 data class ConversationsData(
 data class UiSubmission(
-package com.inspiredandroid.kai.data
 }

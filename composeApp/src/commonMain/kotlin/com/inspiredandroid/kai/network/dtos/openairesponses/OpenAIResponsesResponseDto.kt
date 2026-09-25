@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.openairesponses
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -54,5 +55,4 @@ import kotlinx.serialization.Serializable
 /**
 @Serializable
 data class OpenAIResponsesResponseDto(
-package com.inspiredandroid.kai.network.dtos.openairesponses
 }

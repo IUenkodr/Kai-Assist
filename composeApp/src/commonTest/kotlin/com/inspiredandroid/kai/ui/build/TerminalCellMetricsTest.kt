@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -36,5 +37,4 @@ import kotlin.test.assertEquals
  */
 /**
 class TerminalCellMetricsTest {
-package com.inspiredandroid.kai.ui.build
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data.providers
 import com.inspiredandroid.kai.data.Service
 import com.inspiredandroid.kai.data.modelSupportsImages
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
@@ -98,5 +99,4 @@ import kotlinx.serialization.json.JsonPrimitive
 /**
 internal fun buildOpenAIMessages(
 internal fun sanitizeToolMessages(
-package com.inspiredandroid.kai.data.providers
 }

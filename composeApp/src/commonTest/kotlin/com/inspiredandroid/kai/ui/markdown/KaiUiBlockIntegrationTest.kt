@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import com.inspiredandroid.kai.ui.dynamicui.AlertNode
 import com.inspiredandroid.kai.ui.dynamicui.ColumnNode
 import kotlin.test.Test
@@ -47,5 +48,4 @@ import kotlin.test.assertTrue
     fun `split-block pattern with json fence is treated as kai-ui`() {
     }
 class KaiUiBlockIntegrationTest {
-package com.inspiredandroid.kai.ui.markdown
 }

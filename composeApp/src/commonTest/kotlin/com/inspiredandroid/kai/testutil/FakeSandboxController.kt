@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.testutil
 import com.inspiredandroid.kai.CommandHandle
 import com.inspiredandroid.kai.NoOpCommandHandle
 import com.inspiredandroid.kai.SandboxController
@@ -58,5 +59,4 @@ import kotlinx.coroutines.flow.StateFlow
  */
 /**
 class FakeSandboxController(installed: Boolean = true) : SandboxController {
-package com.inspiredandroid.kai.testutil
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 
         cacheDir: String,
         maxNumTokens: Int,
@@ -32,5 +33,4 @@
 /**
 interface LiteRTSwiftBridge {
 object LiteRTBridgeRegistry {
-package com.inspiredandroid.kai.inference
 }

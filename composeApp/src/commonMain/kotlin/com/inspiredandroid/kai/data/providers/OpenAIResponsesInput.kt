@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data.providers
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
@@ -83,7 +84,6 @@ import kotlinx.serialization.json.put
  */
 /**
 internal fun toResponsesInput(messages: List<OpenAICompatibleChatRequestDto.Message>): List<JsonObject> = buildList {
-package com.inspiredandroid.kai.data.providers
 private fun JsonElement.toResponsesContentPart(): JsonObject {
 private fun JsonElement?.asPlainText(): String = when (this) {
 private fun easyMessage(role: String, content: String): JsonObject = buildJsonObject {

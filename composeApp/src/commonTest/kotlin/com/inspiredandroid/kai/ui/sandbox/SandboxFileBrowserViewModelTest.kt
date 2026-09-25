@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import app.cash.turbine.test
 import com.inspiredandroid.kai.CommandHandle
 import com.inspiredandroid.kai.NoOpCommandHandle
@@ -242,5 +243,4 @@ import kotlinx.coroutines.test.setMain
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class SandboxFileBrowserViewModelTest {
-package com.inspiredandroid.kai.ui.sandbox
 }

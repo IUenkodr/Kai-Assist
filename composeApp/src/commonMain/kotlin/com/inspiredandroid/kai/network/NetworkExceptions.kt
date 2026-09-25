@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network
 import com.inspiredandroid.kai.inference.InferenceTimeoutException
 import com.inspiredandroid.kai.inference.InsufficientMemoryException
 import com.inspiredandroid.kai.inference.ModelIntegrityException
@@ -126,7 +127,6 @@ fun Exception.isFreeCapacityError(): Boolean = when (this) {
 fun Exception.toUiError(): UiError = when (this) {
 fun shouldShowFreeProviderSuggestions(
 internal fun messageLooksLikeFreeCapacity(message: String?): Boolean {
-package com.inspiredandroid.kai.network
 sealed class AnthropicApiException(message: String? = null, cause: Throwable? = null) : ApiException(message, cause)
 sealed class ApiException(message: String?, cause: Throwable? = null) : Exception(message, cause)
 sealed class GeminiApiException(message: String? = null, cause: Throwable? = null) : ApiException(message, cause)

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.russhwolf.settings.MapSettings
 import kotlin.test.Test
 import kotlin.test.assertContains
@@ -415,5 +416,4 @@ import kotlinx.serialization.json.jsonPrimitive
     private val toolIds = listOf("tool_a", "tool_b", "tool_c")
     }
 class AppSettingsExportImportTest {
-package com.inspiredandroid.kai.data
 }

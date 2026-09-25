@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import io.github.vinceglb.filekit.PlatformFile
 
         force: Boolean = false,
@@ -53,6 +54,5 @@ import io.github.vinceglb.filekit.PlatformFile
 const val MAX_BROWSER_TEXT_BYTES: Int = 512_000
 interface FileBrowserSource {
 object NoOpFileBrowserSource : FileBrowserSource {
-package com.inspiredandroid.kai
 sealed interface TextFileResult {
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build.terminal
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -78,5 +79,4 @@ import kotlin.test.assertEquals
     private val shift = TerminalModifiers(shift = true)
     }
 class TerminalKeyEncoderTest {
-package com.inspiredandroid.kai.build.terminal
 }

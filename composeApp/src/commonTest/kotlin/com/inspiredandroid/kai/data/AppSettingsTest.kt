@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.russhwolf.settings.MapSettings
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -94,5 +95,4 @@ import kotlin.test.assertTrue
     fun `removeInstanceSettings clears custom model keys`() {
     }
 class AppSettingsTest {
-package com.inspiredandroid.kai.data
 }

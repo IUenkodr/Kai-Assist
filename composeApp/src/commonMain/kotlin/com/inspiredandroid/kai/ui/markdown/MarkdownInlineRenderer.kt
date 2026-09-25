@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -49,7 +50,6 @@ import androidx.compose.ui.text.withStyle
     }
 @Composable
 internal fun List<InlineNode>.toAnnotatedString(): AnnotatedString {
-package com.inspiredandroid.kai.ui.markdown
 private fun AnnotatedString.Builder.appendInline(node: InlineNode, colors: ColorScheme) {
 private fun AnnotatedString.Builder.appendInlines(nodes: List<InlineNode>, colors: ColorScheme) {
 }

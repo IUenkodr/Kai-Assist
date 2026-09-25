@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
@@ -46,5 +47,4 @@ import kotlin.test.assertTrue
     private val hfResolve =
     }
 class LocalModelCatalogTest {
-package com.inspiredandroid.kai.inference
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -750,7 +751,6 @@ import org.koin.compose.viewmodel.koinViewModel
 @file:OptIn(
 fun ChatScreen(
 fun ChatScreenContent(
-package com.inspiredandroid.kai.ui.chat
 private data class ExecutingToolsState(
 private fun ChatModeScreen(
 private fun InteractiveModeContent(

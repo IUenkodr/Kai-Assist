@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 
         if (mimeType == "application/pdf") return FileCategory.PDF
         if (mimeType.startsWith("image/")) return FileCategory.IMAGE
@@ -49,7 +50,6 @@ const val MAX_TEXT_FILE_BYTES = 200_000
 enum class FileCategory {
 fun classifyFile(mimeType: String?, fileName: String?): FileCategory {
 internal val imageExtensions = setOf(
-package com.inspiredandroid.kai.data
 private val textExtensions = setOf(
 private val textMimeTypes = setOf(
 val supportedFileExtensions = (imageExtensions + textExtensions).toList()

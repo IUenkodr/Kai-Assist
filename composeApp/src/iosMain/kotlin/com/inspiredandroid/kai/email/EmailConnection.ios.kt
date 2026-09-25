@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.email
 import io.ktor.network.selector.SelectorManager
 import io.ktor.network.sockets.aSocket
 import io.ktor.network.sockets.openReadChannel
@@ -49,6 +50,5 @@ import kotlinx.coroutines.IO
 ) : EmailConnection {
 @file:Suppress("DEPRECATION")
 actual suspend fun createEmailConnection(host: String, port: Int, tls: Boolean): EmailConnection {
-package com.inspiredandroid.kai.email
 private class KtorEmailConnection(
 }

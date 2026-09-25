@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 
         val owner: String,
         val path: String,
@@ -44,6 +45,5 @@
 data class DownloadedSkill(
 data class RegistrySkillEntry(
 data class SkillManifest(
-package com.inspiredandroid.kai.skills
 sealed class SkillSource {
 }

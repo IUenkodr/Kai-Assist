@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import com.inspiredandroid.kai.data.Attachment
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -37,5 +38,4 @@ import kotlinx.serialization.json.JsonPrimitive
  */
 /**
 class ToGroqMessageDtoImageTest {
-package com.inspiredandroid.kai.ui.chat
 }

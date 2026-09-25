@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.TaskStatus
 import com.inspiredandroid.kai.data.TaskStore
 import com.inspiredandroid.kai.data.TaskTrigger
@@ -157,5 +158,4 @@ import kotlinx.datetime.toInstant
     }
 @OptIn(ExperimentalTime::class)
 object SchedulingTools {
-package com.inspiredandroid.kai.tools
 }

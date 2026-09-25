@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.content.Context
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.inspiredandroid.kai.linux.LinuxDistro
@@ -315,7 +316,6 @@ import org.koin.java.KoinJavaComponent.inject
 /** Returned to the agent as a tool result, so it stays English like the rest of the tool surface. */
 actual fun createSandboxController(): SandboxController = AndroidSandboxController()
 class AndroidSandboxController : SandboxController {
-package com.inspiredandroid.kai
 private class PersistentCommandHandle(
 private const val SANDBOX_NOT_READY = "Sandbox is not ready"
 }

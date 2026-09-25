@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.daemon
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
@@ -36,5 +37,4 @@ import kotlinx.coroutines.launch
     val tasks: StateFlow<Map<String, KaiTask>> = _tasks.asStateFlow()
     }
 class DaemonViewModel(private val client: DaemonClient) : ViewModel() {
-package com.inspiredandroid.kai.daemon
 }

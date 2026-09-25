@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -591,7 +592,6 @@ internal fun HeartbeatSection(
 internal fun NotificationsSection(
 internal fun SmsSection(
 internal fun describeCron(cron: String): String {
-package com.inspiredandroid.kai.ui.settings
 private fun PermissionRequiredRow(
 private fun PresetSlider(
 private fun dayName(day: String): String? = when (day) {

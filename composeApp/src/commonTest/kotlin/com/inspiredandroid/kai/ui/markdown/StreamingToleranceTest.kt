@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -56,5 +57,4 @@ import kotlinx.collections.immutable.persistentListOf
     fun `unclosed emphasis yields literal text`() {
     }
 class StreamingToleranceTest {
-package com.inspiredandroid.kai.ui.markdown
 }

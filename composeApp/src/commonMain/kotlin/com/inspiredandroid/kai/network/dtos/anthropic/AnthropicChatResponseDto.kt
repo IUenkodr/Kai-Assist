@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.anthropic
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
@@ -15,5 +16,4 @@ import kotlinx.serialization.json.JsonObject
 @Serializable
 data class AnthropicChatResponseDto(
 fun AnthropicChatResponseDto.extractText(): String = content.filter { it.type == "text" }.mapNotNull { it.text }.joinToString("\n")
-package com.inspiredandroid.kai.network.dtos.anthropic
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.email
 import com.inspiredandroid.kai.data.EmailAccount
 import com.inspiredandroid.kai.data.EmailStore
 import kotlin.time.Clock
@@ -57,5 +58,4 @@ import kotlin.time.ExperimentalTime
 ) {
 @OptIn(ExperimentalTime::class)
 class EmailPoller(
-package com.inspiredandroid.kai.email
 }

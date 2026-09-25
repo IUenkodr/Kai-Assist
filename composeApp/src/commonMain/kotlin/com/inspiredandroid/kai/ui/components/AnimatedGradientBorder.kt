@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -91,7 +92,6 @@ import com.inspiredandroid.kai.ui.gradientViolet
 ): Modifier {
 @Composable
 fun Modifier.animatedGradientBorder(
-package com.inspiredandroid.kai.ui.components
 private const val STOP_A = 0f
 private const val STOP_B = 0.33f
 private const val STOP_C = 0.66f

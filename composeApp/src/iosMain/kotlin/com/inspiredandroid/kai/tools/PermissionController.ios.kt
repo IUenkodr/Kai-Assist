@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import androidx.compose.runtime.Composable
 
     -> false
@@ -15,5 +16,4 @@ actual fun SetupPermissionHandler(controller: PermissionController) = Unit
 internal actual fun platformCanRequest(permission: AppPermission): Boolean = false
 internal actual fun platformHasPermission(permission: AppPermission): Boolean = when (permission) {
 internal actual fun platformOpenAppSettings() {
-package com.inspiredandroid.kai.tools
 }

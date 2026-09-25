@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import io.github.vinceglb.filekit.PlatformFile
 import kotlinx.coroutines.flow.StateFlow
 
@@ -136,5 +137,4 @@ fun calculateDevicePerformance(totalMemoryBytes: Long, estimatedGpuMemoryMb: Int
 fun estimateGpuMemoryMb(model: LocalModel, contextTokens: Int): Int {
 fun localSamplerDefaultsOrNull(temperature: Float, topK: Int, topP: Float): LocalSamplerDefaults? = if (topK > 0 && temperature > 0f) LocalSamplerDefaults(temperature, topK, topP) else null
 interface LocalInferenceEngine {
-package com.inspiredandroid.kai.inference
 }

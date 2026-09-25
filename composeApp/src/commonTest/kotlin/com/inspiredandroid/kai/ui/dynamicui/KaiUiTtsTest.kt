@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.dynamicui
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -32,5 +33,4 @@ import kotlin.test.assertTrue
     fun `speaks text nodes and button labels inside a kai-ui fence`() {
     }
 class KaiUiTtsTest {
-package com.inspiredandroid.kai.ui.dynamicui
 }

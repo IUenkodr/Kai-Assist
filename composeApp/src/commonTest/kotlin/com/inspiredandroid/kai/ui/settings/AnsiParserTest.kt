@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -186,5 +187,4 @@ import kotlin.test.assertTrue
     private val esc = '\u001B'
     }
 class AnsiParserTest {
-package com.inspiredandroid.kai.ui.settings
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.SandboxController
 import com.inspiredandroid.kai.compressImageBytes
 import com.inspiredandroid.kai.currentPlatform
@@ -1483,7 +1484,6 @@ import org.jetbrains.compose.resources.getString
 @file:OptIn(ExperimentalEncodingApi::class, ExperimentalTime::class, ExperimentalUuidApi::class)
 class RemoteDataRepository(
 internal val LOCAL_TOOL_ALLOWLIST = setOf(
-package com.inspiredandroid.kai.data
 private const val COMPACTION_KEEP_RECENT = 4 // Number of recent user exchanges to keep verbatim
 private const val COMPACTION_THRESHOLD = 0.7 // Compact when history exceeds 70% of context window
 private const val ESTIMATED_CHARS_PER_TOKEN = 4

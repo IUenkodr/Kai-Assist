@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 
                     c.isLetterOrDigit() || c == '.' || c == '_' || c == '-' -> c
                     else -> '_'
@@ -106,6 +107,5 @@ fun isCustomModelId(modelId: String): Boolean = modelId.startsWith(CUSTOM_MODEL_
 fun isLitertlmExtension(fileName: String): Boolean = fileName.substringAfterLast('.', missingDelimiterValue = "").equals("litertlm", ignoreCase = true)
 fun resolveImportTarget(
 fun sanitizeImportFileName(raw: String): String {
-package com.inspiredandroid.kai.inference
 sealed class ModelImportResult {
 }

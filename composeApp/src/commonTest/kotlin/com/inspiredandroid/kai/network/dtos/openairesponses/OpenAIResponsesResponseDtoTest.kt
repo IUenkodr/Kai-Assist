@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.openairesponses
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -49,5 +50,4 @@ import kotlinx.serialization.json.Json
     }
 /** Parsing guard for the `/v1/responses` output array (issue #469). */
 class OpenAIResponsesResponseDtoTest {
-package com.inspiredandroid.kai.network.dtos.openairesponses
 }

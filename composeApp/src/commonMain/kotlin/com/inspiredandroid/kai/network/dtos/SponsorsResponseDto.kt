@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos
 import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable
 
@@ -14,5 +15,4 @@ import kotlinx.serialization.Serializable
 ) {
 @Serializable
 data class SponsorsResponseDto(
-package com.inspiredandroid.kai.network.dtos
 }

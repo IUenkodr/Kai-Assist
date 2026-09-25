@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -23,5 +24,4 @@ import kotlin.test.assertNull
     fun `strips trailing slash`() {
     }
 class GitHubSkillUrlTest {
-package com.inspiredandroid.kai.skills
 }

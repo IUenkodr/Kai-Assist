@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.openairesponses
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -41,5 +42,4 @@ import kotlinx.serialization.json.JsonObject
 /**
 @Serializable
 data class OpenAIResponsesRequestDto(
-package com.inspiredandroid.kai.network.dtos.openairesponses
 }

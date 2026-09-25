@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.SandboxSessions
 import com.inspiredandroid.kai.data.currentConversationIdOrNull
 import com.inspiredandroid.kai.linux.LinuxDistro
@@ -107,6 +108,5 @@ Pre-installed: ${distro.basePackages.joinToString(", ")}. Optional bundle (insta
 Shell session is PERSISTENT across calls within THIS conversation: cwd, exported environment variables, and any in-shell state carry from one call to the next, just like a normal terminal. So "cd /tmp" in one call, then "pwd" in the next, returns "/tmp". You do NOT need to chain "cd dir && command" unless you want directory changes to be one-shot. Other conversations and the in-app Terminal tab each have their own isolated shells; the rootfs and /root are still shared on disk, so files persist across all of them.
 To show a file you produced in /root to the user, call open_file with the path relative to /root (e.g. open_file path="page.html"). File needs to be self-contained."""
 object ShellCommandTool : Tool {
-package com.inspiredandroid.kai.tools
 private fun toolDescription(distro: LinuxDistro): String {
 }

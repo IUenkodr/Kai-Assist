@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -214,7 +215,6 @@ import org.jetbrains.compose.resources.vectorResource
 @Composable
 @file:OptIn(ExperimentalMaterial3Api::class)
 internal fun ChatHistorySheet(
-package com.inspiredandroid.kai.ui.chat.composables
 private fun formatDate(epochMillis: Long): String = try {
 private val dateFormat = Format {
 }

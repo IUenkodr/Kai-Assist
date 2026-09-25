@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -30,5 +31,4 @@ import kotlin.test.assertTrue
     fun `public hosts are not local`() {
     }
 class LocalNetworkUrlTest {
-package com.inspiredandroid.kai.tools
 }

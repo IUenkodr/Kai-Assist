@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -58,5 +59,4 @@ import kotlin.test.assertTrue
     private val tree = setOf(
     }
 class SkillMarketplaceManifestTest {
-package com.inspiredandroid.kai.skills
 }

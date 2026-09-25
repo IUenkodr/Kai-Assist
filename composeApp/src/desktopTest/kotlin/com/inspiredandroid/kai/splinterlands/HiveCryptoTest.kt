@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.splinterlands
 import java.math.BigInteger
 import java.security.MessageDigest
 import kotlin.test.Test
@@ -63,5 +64,4 @@ import org.bouncycastle.jce.ECNamedCurveTable
  */
 /**
 class HiveCryptoTest {
-package com.inspiredandroid.kai.splinterlands
 }

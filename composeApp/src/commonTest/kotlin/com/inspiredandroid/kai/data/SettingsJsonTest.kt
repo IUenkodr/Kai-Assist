@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.russhwolf.settings.MapSettings
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -115,5 +116,4 @@ import kotlinx.serialization.serializer
  */
 /**
 class SettingsJsonTest {
-package com.inspiredandroid.kai.data
 }

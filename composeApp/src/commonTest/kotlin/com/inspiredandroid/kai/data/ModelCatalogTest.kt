@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -145,5 +146,4 @@ import kotlin.test.assertNotNull
  */
 /**
 class ModelCatalogTest {
-package com.inspiredandroid.kai.data
 }

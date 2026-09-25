@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.dynamicui
 import com.inspiredandroid.kai.ui.markdown.KaiUiBlock
 import com.inspiredandroid.kai.ui.markdown.KaiUiError
 import com.inspiredandroid.kai.ui.markdown.Paragraph
@@ -514,5 +515,4 @@ import kotlin.test.assertTrue
     private fun parseUi(json: String): KaiUiNode {
     }
 class KaiUiParserTest {
-package com.inspiredandroid.kai.ui.dynamicui
 }

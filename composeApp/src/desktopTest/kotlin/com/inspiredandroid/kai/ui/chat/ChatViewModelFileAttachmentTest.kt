@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import app.cash.turbine.test
 import com.inspiredandroid.kai.data.TaskScheduler
 import com.inspiredandroid.kai.testutil.FakeDataRepository
@@ -105,5 +106,4 @@ import kotlinx.coroutines.test.setMain
 /**
 @OptIn(ExperimentalCoroutinesApi::class)
 class ChatViewModelFileAttachmentTest {
-package com.inspiredandroid.kai.ui.chat
 }

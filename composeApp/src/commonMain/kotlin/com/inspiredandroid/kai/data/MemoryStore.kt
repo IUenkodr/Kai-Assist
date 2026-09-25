@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import androidx.compose.runtime.Immutable
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
@@ -62,5 +63,4 @@ import kotlinx.serialization.serializer
 class MemoryStore(appSettings: AppSettings) {
 data class MemoryEntry(
 enum class MemoryCategory {
-package com.inspiredandroid.kai.data
 }

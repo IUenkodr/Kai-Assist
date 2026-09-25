@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.mcp
 import androidx.compose.runtime.Immutable
 
             .firstOrNull { matchesPopularMcpUrl(server.url, it.url) && it.headers.isNotEmpty() }
@@ -118,7 +119,6 @@ internal fun applyPopularDefaultHeaders(
 internal fun authorizationHeaderValue(apiKey: String): String {
 internal fun matchesPopularMcpUrl(savedUrl: String, popularUrl: String): Boolean {
 internal fun mergeMissingHeaders(
-package com.inspiredandroid.kai.mcp
 private fun mcpHost(normalizedUrl: String): String? {
 private fun normalizeMcpUrl(url: String): String = url.trim().trimEnd('/').lowercase()
 val popularMcpServers = listOf(

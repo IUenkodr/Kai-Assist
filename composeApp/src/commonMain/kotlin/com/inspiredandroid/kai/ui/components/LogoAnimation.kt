@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.EaseInOut
 import androidx.compose.animation.core.tween
@@ -39,5 +40,4 @@ import androidx.compose.ui.unit.dp
 ) {
 @Composable
 fun LogoAnimation(
-package com.inspiredandroid.kai.ui.components
 }

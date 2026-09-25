@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build.terminal
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -111,5 +112,4 @@ import kotlin.test.assertTrue
     fun writesPlainText() {
     }
 class TerminalScreenTest {
-package com.inspiredandroid.kai.build.terminal
 }

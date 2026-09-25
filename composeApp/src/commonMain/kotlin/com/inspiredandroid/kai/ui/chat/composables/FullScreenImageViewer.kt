@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -99,5 +100,4 @@ import org.jetbrains.compose.resources.stringResource
 /**
 @Composable
 internal fun FullScreenImageViewerOverlay(
-package com.inspiredandroid.kai.ui.chat.composables
 }

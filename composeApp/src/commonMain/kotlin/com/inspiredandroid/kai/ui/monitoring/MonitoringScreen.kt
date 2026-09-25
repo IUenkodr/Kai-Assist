@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.monitoring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -107,5 +108,4 @@ import com.inspiredandroid.kai.ui.glassSurface
 @Composable
 fun LogViewerOverlay(
 fun MonitoringScreen(
-package com.inspiredandroid.kai.ui.monitoring
 }

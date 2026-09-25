@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network
 import com.inspiredandroid.kai.data.Service
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -28,5 +29,4 @@ import kotlin.test.assertTrue
  */
 /**
 class SessionHeadersTest {
-package com.inspiredandroid.kai.network
 }

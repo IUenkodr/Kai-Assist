@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import com.inspiredandroid.kai.build.KaiBuildState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -69,5 +70,4 @@ import kotlinx.coroutines.flow.StateFlow
 class NoOpKaiBuildController : KaiBuildController {
 expect fun createKaiBuildController(): KaiBuildController
 interface KaiBuildController {
-package com.inspiredandroid.kai
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import com.inspiredandroid.kai.build.terminal.TerminalScreen
 import com.inspiredandroid.kai.build.terminal.TerminalSnapshot
 import kotlin.test.Test
@@ -44,5 +45,4 @@ import kotlin.test.assertTrue
     private fun flattenPerCell(snap: TerminalSnapshot): String = buildString {
     }
 class BuildTerminalTextTest {
-package com.inspiredandroid.kai.ui.build
 }

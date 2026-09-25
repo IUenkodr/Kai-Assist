@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -294,7 +295,6 @@ import org.jetbrains.compose.resources.StringResource
 class SandboxFileBrowserViewModel(
 data class FileBrowserUiState(
 data class RenameState(
-package com.inspiredandroid.kai.ui.sandbox
 private val EXTERNAL_EXTENSIONS = setOf(
 sealed interface EditorState {
 }

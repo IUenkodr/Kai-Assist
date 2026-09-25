@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.inspiredandroid.kai.DaemonController
@@ -749,5 +750,4 @@ import org.jetbrains.compose.resources.getString
     } catch (_: Exception) {
 ) : ViewModel() {
 class SettingsViewModel(
-package com.inspiredandroid.kai.ui.settings
 }

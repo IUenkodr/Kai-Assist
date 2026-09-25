@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import com.inspiredandroid.kai.getAppFilesDirectory
 import java.io.File
 
@@ -16,5 +17,4 @@ actual fun getTotalMemoryBytes(): Long = Long.MAX_VALUE
 actual fun startDownloadNotificationService() {
 actual fun stopDownloadNotificationService() {
 actual fun updateDownloadNotificationProgress(percent: Int) {
-package com.inspiredandroid.kai.inference
 }

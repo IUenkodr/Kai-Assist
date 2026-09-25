@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.draganddrop.DragAndDropEvent
 import androidx.compose.ui.graphics.ImageBitmap
@@ -159,7 +160,6 @@ actual val isEmailSupported: Boolean = true
 actual val isNotificationsSupported: Boolean = false
 actual val isSmsSupported: Boolean = false
 actual val isSplinterlandsSupported: Boolean = false
-package com.inspiredandroid.kai
 private fun NSData.toByteArray(): ByteArray {
 private object IosKoinHelper : KoinComponent {
 }

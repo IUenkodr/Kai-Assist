@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 import com.inspiredandroid.kai.data.SharedJson
 import com.inspiredandroid.kai.httpClient
 import io.ktor.client.HttpClient
@@ -195,5 +196,4 @@ import kotlinx.serialization.json.jsonPrimitive
 ) {
 /**
 class SkillRegistry(
-package com.inspiredandroid.kai.skills
 }

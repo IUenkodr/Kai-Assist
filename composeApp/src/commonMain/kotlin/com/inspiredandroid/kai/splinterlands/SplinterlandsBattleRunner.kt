@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.splinterlands
 import com.inspiredandroid.kai.DaemonController
 import com.inspiredandroid.kai.data.DataRepository
 import kotlin.time.Clock
@@ -474,7 +475,6 @@ import kotlinx.serialization.json.jsonPrimitive
 )
 ) {
 class SplinterlandsBattleRunner(
-package com.inspiredandroid.kai.splinterlands
 private const val APP_VERSION = "splinterlands/0.7.176"
 private const val MAX_CONSECUTIVE_ERRORS = 5
 private const val SLEEP_BETWEEN_BATTLES_MS = 30_000L

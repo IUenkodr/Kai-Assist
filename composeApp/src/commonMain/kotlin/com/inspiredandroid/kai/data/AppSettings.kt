@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.defaultUiScale
 import com.inspiredandroid.kai.linux.LinuxDistro
 import com.russhwolf.settings.Settings
@@ -392,5 +393,4 @@ enum class ImportSection {
 enum class ThemeMode {
 fun detectExportableSections(json: JsonObject): Map<ImportSection, String?> {
 fun detectImportSections(json: JsonObject): Map<ImportSection, String?> {
-package com.inspiredandroid.kai.data
 }

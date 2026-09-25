@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import com.inspiredandroid.kai.data.ReasoningRequestMode
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -42,5 +43,4 @@ import kotlinx.collections.immutable.persistentListOf
  */
 /**
 class ToGroqMessageDtoReasoningTest {
-package com.inspiredandroid.kai.ui.chat
 }

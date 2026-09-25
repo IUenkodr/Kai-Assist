@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
 import com.inspiredandroid.kai.network.tools.ToolInfo
@@ -62,5 +63,4 @@ import kai.composeapp.generated.resources.tool_create_calendar_event_name
     val toolInfo = ToolInfo(
     }
 object CreateCalendarEventTool {
-package com.inspiredandroid.kai.tools
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.defaultMinSize
@@ -64,5 +65,4 @@ import com.inspiredandroid.kai.ui.handCursor
 /**
 @Composable
 fun KaiChip(
-package com.inspiredandroid.kai.ui.components
 }

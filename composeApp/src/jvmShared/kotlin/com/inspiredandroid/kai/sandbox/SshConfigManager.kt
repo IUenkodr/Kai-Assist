@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sandbox
 import java.io.File
 
                 append("    IdentitiesOnly yes")
@@ -134,5 +135,4 @@ import java.io.File
  */
 /**
 class SshConfigManager(private val homeDir: File) {
-package com.inspiredandroid.kai.sandbox
 }

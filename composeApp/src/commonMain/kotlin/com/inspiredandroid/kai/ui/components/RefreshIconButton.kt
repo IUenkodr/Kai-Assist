@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
@@ -35,5 +36,4 @@ import com.inspiredandroid.kai.ui.handCursor
 ) {
 @Composable
 fun RefreshIconButton(
-package com.inspiredandroid.kai.ui.components
 }

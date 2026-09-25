@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -217,7 +218,6 @@ import org.jetbrains.compose.resources.stringResource
 ) {
 @Composable
 internal fun SandboxSettingsCard(
-package com.inspiredandroid.kai.ui.settings
 private fun DistroOption(
 private fun DistroPicker(
 }

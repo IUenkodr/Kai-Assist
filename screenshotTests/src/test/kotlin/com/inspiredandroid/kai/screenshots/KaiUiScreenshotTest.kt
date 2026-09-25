@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.screenshots
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ColorScheme
@@ -462,5 +463,4 @@ import org.junit.Test
 @OptIn(ExperimentalResourceApi::class)
 @file:OptIn(ExperimentalVoiceApi::class)
 class KaiUiScreenshotTest {
-package com.inspiredandroid.kai.screenshots
 }

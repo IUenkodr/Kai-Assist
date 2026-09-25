@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.inspiredandroid.kai.data.DataRepository
@@ -149,5 +150,4 @@ import kotlinx.coroutines.launch
     }
 ) : ViewModel() {
 class SplinterlandsViewModel(
-package com.inspiredandroid.kai.ui.settings
 }

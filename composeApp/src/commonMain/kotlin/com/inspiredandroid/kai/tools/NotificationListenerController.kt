@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 
     /** Open the system notification-access settings screen. No-op on unsupported platforms. */
     /** True when the build supports the listener at all (Android FOSS only). */
@@ -13,5 +14,4 @@
  */
 /**
 expect class NotificationListenerController() {
-package com.inspiredandroid.kai.tools
 }

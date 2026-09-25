@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.getAvailableTools
 import com.inspiredandroid.kai.getPlatformToolDefinitions
 import com.inspiredandroid.kai.network.tools.Tool
@@ -94,6 +95,5 @@ import org.jetbrains.compose.resources.getString
     }
 ) {
 class ToolExecutor(
-package com.inspiredandroid.kai.data
 private const val MAX_TOOL_RESULT_LENGTH = 20_000
 }

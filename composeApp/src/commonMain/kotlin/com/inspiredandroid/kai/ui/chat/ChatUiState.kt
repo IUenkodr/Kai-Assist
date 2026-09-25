@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import androidx.compose.runtime.Immutable
 import com.inspiredandroid.kai.data.Attachment
 import com.inspiredandroid.kai.data.FallbackStatus
@@ -271,7 +272,6 @@ fun History.toAnthropicContentBlocks(): JsonElement = when (role) {
 fun History.toGeminiMessageDto(): GeminiChatRequestDto.Content {
 fun History.toGroqMessageDto(
 fun List<History>.lastRenderedAssistant(): History? = lastOrNull { it.role == History.Role.ASSISTANT && it.content.isNotEmpty() && !it.isThinking }
-package com.inspiredandroid.kai.ui.chat
 private data class AttachmentSplit(
 private fun List<Attachment>.splitForMessage(): AttachmentSplit {
 private fun String.isTextMimeType(): Boolean = startsWith("text/") || this == "application/json" || this == "application/xml" ||

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.screenshots
 import android.graphics.BitmapFactory
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
@@ -118,5 +119,4 @@ import org.junit.runners.Parameterized
 @RunWith(Parameterized::class)
 @file:OptIn(ExperimentalVoiceApi::class)
 class TabletStoreScreenshotTest(
-package com.inspiredandroid.kai.screenshots
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.getAppFilesDirectory
 import com.russhwolf.settings.Settings
 import java.io.File
@@ -92,7 +93,6 @@ import kotlinx.serialization.json.Json
  */
 /**
 class EncryptedFileSettings : Settings {
-package com.inspiredandroid.kai.data
 private const val GCM_IV_LENGTH = 12
 private const val GCM_TAG_LENGTH = 128
 private const val KEY_FILE = "settings.key"

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -361,7 +362,6 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 internal fun BuildProjectsContent(
 internal fun CreateProjectDialog(
-package com.inspiredandroid.kai.ui.build
 private fun BuildSystemCard(
 private fun DeleteProjectDialog(
 private fun ProjectRowMenu(

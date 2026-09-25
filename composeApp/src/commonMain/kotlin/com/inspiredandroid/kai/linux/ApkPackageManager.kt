@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 
                 break
                 splitAt = i - 1
@@ -50,7 +51,6 @@
     }
 /** Alpine's `apk`. */
 object ApkPackageManager : PackageManagerSpec {
-package com.inspiredandroid.kai.linux
 private val ALPINE_REVISION_SUFFIX = Regex("-r\\d+$")
 private val UPGRADE_PROGRESS_LINE = Regex("""^\(\d+/\d+\)\s+Upgrading\s""")
 }

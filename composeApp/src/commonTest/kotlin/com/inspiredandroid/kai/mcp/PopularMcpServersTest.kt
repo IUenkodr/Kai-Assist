@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.mcp
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -48,5 +49,4 @@ import kotlin.test.assertTrue
     fun `mergeMissingHeaders keeps existing Authorization`() {
     }
 class PopularMcpServersTest {
-package com.inspiredandroid.kai.mcp
 }

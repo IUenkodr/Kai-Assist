@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import com.inspiredandroid.kai.smartTruncate
 import java.io.BufferedReader
 import java.io.File
@@ -184,6 +185,5 @@ class ProotHandle internal constructor(
 class ProotLauncher(
 const val DEFAULT_GUEST_PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 data class ProotResult(
-package com.inspiredandroid.kai.linux
 private const val DEFAULT_MAX_OUTPUT_CHARS = 15_000
 }

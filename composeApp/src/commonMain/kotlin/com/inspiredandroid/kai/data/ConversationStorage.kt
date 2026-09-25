@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.TerminalLine
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -89,6 +90,5 @@ import kotlinx.coroutines.flow.update
 class ConversationStorage(
 expect fun deleteLegacyConversationFile()
 expect fun readLegacyConversationFile(): ByteArray?
-package com.inspiredandroid.kai.data
 private const val MAX_SHELL_TRANSCRIPT_CHARS = 10_000
 }

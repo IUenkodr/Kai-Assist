@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown.math
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -184,5 +185,4 @@ import kotlinx.collections.immutable.persistentListOf
     }
 /** Tests for [MathParser] — LaTeX fragments → [MathAtom] tree. */
 class MathAtomParserTest {
-package com.inspiredandroid.kai.ui.markdown.math
 }

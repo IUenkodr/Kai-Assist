@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sandbox
 import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -144,7 +145,6 @@ internal fun openFileWithIntent(context: Context, file: File): FileOpenResult {
 internal fun readFileAsText(file: File, maxBytes: Int, force: Boolean): TextFileResult {
 internal fun resolveSandboxFile(homeRoot: String, rel: String): File? {
 internal suspend fun importFileInto(dir: File, source: PlatformFile): File {
-package com.inspiredandroid.kai.sandbox
 private const val APK_MIME = "application/vnd.android.package-archive"
 private const val COPY_BUFFER_BYTES = 64L * 1024
 private fun Context.declaresRequestInstallPackages(): Boolean = try {

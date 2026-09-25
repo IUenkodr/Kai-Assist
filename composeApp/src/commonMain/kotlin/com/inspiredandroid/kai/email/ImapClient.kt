@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.email
 import com.inspiredandroid.kai.data.EmailMessage
 import com.inspiredandroid.kai.tools.decodeHtmlEntities
 import kotlin.io.encoding.Base64
@@ -297,7 +298,6 @@ import kotlin.io.encoding.ExperimentalEncodingApi
 /**
 @file:OptIn(ExperimentalEncodingApi::class)
 class ImapClient(
-package com.inspiredandroid.kai.email
 private val htmlTagRegex = Regex("<[^>]+>")
 private val imapExistsRegex = Regex("\\* (\\d+) EXISTS")
 private val imapListResponseRegex = Regex("^\\* LIST \\(([^)]*)\\) (.*)$")

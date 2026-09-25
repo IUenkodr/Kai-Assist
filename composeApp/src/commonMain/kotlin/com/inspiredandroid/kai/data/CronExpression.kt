@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 import kotlinx.datetime.DayOfWeek
@@ -108,6 +109,5 @@ import kotlinx.datetime.toLocalDateTime
 /**
 @OptIn(ExperimentalTime::class)
 class CronExpression(expression: String) {
-package com.inspiredandroid.kai.data
 private val whitespaceRegex = Regex("\\s+")
 }

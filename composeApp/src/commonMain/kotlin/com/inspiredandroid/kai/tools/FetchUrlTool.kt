@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.httpClient
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
@@ -112,7 +113,6 @@ import kai.composeapp.generated.resources.tool_fetch_url_name
     val toolInfo = ToolInfo(
     }
 object FetchUrlTool : Tool {
-package com.inspiredandroid.kai.tools
 private val ALLOWED_METHODS = setOf("GET", "POST", "HEAD")
 private val HTML_TAG_REGEX = Regex("<[^>]*>")
 }

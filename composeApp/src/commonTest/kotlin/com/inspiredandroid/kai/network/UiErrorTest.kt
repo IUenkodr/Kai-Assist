@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network
 import com.inspiredandroid.kai.inference.InferenceTimeoutException
 import com.inspiredandroid.kai.inference.InsufficientMemoryException
 import com.inspiredandroid.kai.inference.NoModelDownloadedException
@@ -47,5 +48,4 @@ import kotlin.test.assertIs
     fun `known API exceptions still map to their specific resources`() {
     }
 class UiErrorTest {
-package com.inspiredandroid.kai.network
 }

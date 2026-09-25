@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 
@@ -17,5 +18,4 @@ import kotlinx.collections.immutable.toImmutableList
  */
 /**
 fun parseMarkdown(text: String): MarkdownDocument {
-package com.inspiredandroid.kai.ui.markdown
 }

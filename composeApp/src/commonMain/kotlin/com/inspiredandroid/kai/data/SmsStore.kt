@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlinx.serialization.serializer
 
         default = { SmsSyncState() },
@@ -19,5 +20,4 @@ import kotlinx.serialization.serializer
     suspend fun removePending(messages: List<SmsMessage>) = pendingQueue.remove(messages)
     suspend fun updateSyncState(state: SmsSyncState) = syncState.set(state)
 class SmsStore(appSettings: AppSettings) {
-package com.inspiredandroid.kai.data
 }

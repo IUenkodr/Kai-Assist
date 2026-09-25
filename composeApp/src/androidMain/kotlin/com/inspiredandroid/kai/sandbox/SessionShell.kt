@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sandbox
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.Snapshot
 import androidx.compose.runtime.snapshots.SnapshotStateList
@@ -75,6 +76,5 @@ import com.inspiredandroid.kai.TerminalLine
 ) {
 /**
 class SessionShell(
-package com.inspiredandroid.kai.sandbox
 private const val MAX_TRANSCRIPT_LINES = 500
 }

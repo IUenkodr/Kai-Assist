@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.runtime.Immutable
 import com.inspiredandroid.kai.data.ServiceEntry
 import com.inspiredandroid.kai.splinterlands.BattleLogEntry
@@ -33,6 +34,5 @@ import kotlinx.collections.immutable.persistentListOf
 @Immutable
 data class SplinterlandsAccountUiState(
 data class SplinterlandsUiState(
-package com.inspiredandroid.kai.ui.settings
 sealed interface SplinterlandsAddStatus {
 }

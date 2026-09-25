@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -51,5 +52,4 @@ import kotlinx.coroutines.launch
 internal class SandboxAwareUriHandler(
 internal fun rememberSandboxAwareUriHandler(sandboxController: SandboxController): UriHandler {
 internal fun toSandboxPath(uri: String): String? {
-package com.inspiredandroid.kai.ui
 }

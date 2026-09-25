@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.ConcurrentHashMap
@@ -88,5 +89,4 @@ import org.koin.java.KoinJavaComponent.inject
 /**
 class ProcessManager(private val sandboxManager: LinuxSandboxManager) {
 internal fun createProcessManager(): ProcessManager {
-package com.inspiredandroid.kai.tools
 }

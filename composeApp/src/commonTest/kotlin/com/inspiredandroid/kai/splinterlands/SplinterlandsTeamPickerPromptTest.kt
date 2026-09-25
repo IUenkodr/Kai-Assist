@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.splinterlands
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -117,5 +118,4 @@ import kotlinx.serialization.json.put
  */
 /**
 class SplinterlandsTeamPickerPromptTest {
-package com.inspiredandroid.kai.splinterlands
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.skills.SkillManifest
 import kotlin.time.Instant
 
@@ -351,7 +352,6 @@ internal data class ChatPromptRuntimeContext(
 internal data class EmailAccountSummary(
 internal enum class ChatPromptUiMode { NONE, DYNAMIC_UI, INTERACTIVE_UI }
 internal fun buildChatSystemPrompt(
-package com.inspiredandroid.kai.data
 private const val LOCAL_MEMORY_BUDGET_CHARS = 2_000
 private fun StringBuilder.appendActiveSkillSection(skill: SkillManifest) {
 private fun StringBuilder.appendContextSection(runtime: ChatPromptRuntimeContext) {

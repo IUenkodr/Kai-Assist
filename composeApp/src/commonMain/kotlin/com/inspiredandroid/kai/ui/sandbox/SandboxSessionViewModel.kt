@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -149,5 +150,4 @@ import org.jetbrains.compose.resources.getString
 ) : ViewModel() {
 class SandboxSessionViewModel(
 data class SessionTab(
-package com.inspiredandroid.kai.ui.sandbox
 }

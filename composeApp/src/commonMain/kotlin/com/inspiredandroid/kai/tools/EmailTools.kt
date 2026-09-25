@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.EmailAccount
 import com.inspiredandroid.kai.data.EmailStore
 import com.inspiredandroid.kai.email.ImapClient
@@ -404,5 +405,4 @@ import kotlin.uuid.Uuid
     val setupEmailToolInfo = ToolInfo(
     }
 object EmailTools {
-package com.inspiredandroid.kai.tools
 }

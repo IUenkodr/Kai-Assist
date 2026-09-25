@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import android.content.Context
 import android.content.Intent
 import android.provider.AlarmClock
@@ -70,5 +71,4 @@ import kai.composeapp.generated.resources.tool_set_alarm_name
     val toolInfo = ToolInfo(
     }
 object SetAlarmTool {
-package com.inspiredandroid.kai.tools
 }

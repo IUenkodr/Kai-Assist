@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.monitoring
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -102,5 +103,4 @@ import com.inspiredandroid.kai.ui.handCursor
 ) {
 @Composable
 fun TaskCard(
-package com.inspiredandroid.kai.ui.monitoring
 }

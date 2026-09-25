@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.daemon
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -22,5 +23,4 @@ import kotlinx.serialization.json.Json
  */
 /**
 class DaemonClient {
-package com.inspiredandroid.kai.daemon
 }

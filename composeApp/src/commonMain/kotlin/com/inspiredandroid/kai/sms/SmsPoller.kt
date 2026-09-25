@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sms
 import com.inspiredandroid.kai.data.SmsStore
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
@@ -49,5 +50,4 @@ import kotlin.time.ExperimentalTime
 ) {
 @OptIn(ExperimentalTime::class)
 class SmsPoller(
-package com.inspiredandroid.kai.sms
 }

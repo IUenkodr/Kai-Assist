@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown.math
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
 
@@ -98,6 +99,5 @@ enum class MathStyle {
 enum class MatrixAlign {
 enum class MatrixDelim(val left: String, val right: String) {
 enum class SymKind {
-package com.inspiredandroid.kai.ui.markdown.math
 sealed interface MathAtom
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.daemon
 import kotlinx.serialization.Serializable
 
     val command: String,
@@ -23,4 +24,3 @@ data class DaemonResponse(
 data class KaiTask(
 data class SkillManifest(
 data class TaskMetrics(
-package com.inspiredandroid.kai.daemon

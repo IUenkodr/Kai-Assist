@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -54,5 +55,4 @@ import com.inspiredandroid.kai.shared.R
     private fun createNotificationChannel() {
     }
 class ModelDownloadService : Service() {
-package com.inspiredandroid.kai.inference
 }

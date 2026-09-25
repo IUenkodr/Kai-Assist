@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_APP_OPENS
 import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_BASE_URL_V1_MIGRATION_COMPLETE
 import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
@@ -103,7 +104,6 @@ fun AppSettings.migrateInstanceSettingsIfNeeded() {
 fun AppSettings.runMigrations(legacySettings: Settings?) {
 internal fun ensureBaseUrlHasVersionPath(url: String): String {
 internal val versionPathRegex = Regex("/v\\d+$")
-package com.inspiredandroid.kai.data
 private fun AppSettings.migrateInt(legacy: Settings, key: String) {
 private fun AppSettings.migrateString(legacy: Settings, key: String) {
 }

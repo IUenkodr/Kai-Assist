@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -69,6 +70,5 @@ import org.jetbrains.compose.resources.getString
     }
 ) {
 class NotificationHelper(
-package com.inspiredandroid.kai.tools
 sealed class NotificationResult {
 }

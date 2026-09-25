@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.ScrollbarStyle
 import androidx.compose.foundation.VerticalScrollbar
@@ -38,6 +39,5 @@ import androidx.compose.ui.unit.dp
 actual fun VerticalScrollbarForGrid(
 actual fun VerticalScrollbarForList(
 actual fun VerticalScrollbarForScroll(
-package com.inspiredandroid.kai.ui.components
 private fun scrollbarStyle(): ScrollbarStyle {
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.mcp
 import com.inspiredandroid.kai.httpClient
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
@@ -108,5 +109,4 @@ import kotlinx.serialization.json.decodeFromJsonElement
 ) {
 class McpClient(
 class McpException(message: String) : Exception(message)
-package com.inspiredandroid.kai.mcp
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -437,7 +438,6 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 @file:OptIn(ExperimentalMaterial3Api::class)
 internal fun AgentContent(uiState: SettingsUiState, actions: SettingsActions) {
-package com.inspiredandroid.kai.ui.settings
 private fun AllMemoriesSheet(
 private fun EditMemorySheet(
 private fun EmptyLogText(text: String) {

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -78,6 +79,5 @@ import kotlinx.collections.immutable.ImmutableList
 /**
 @Composable
 internal fun SkillAutocomplete(
-package com.inspiredandroid.kai.ui.chat.composables
 private fun SkillRow(skill: SkillManifest, onClick: () -> Unit) {
 }

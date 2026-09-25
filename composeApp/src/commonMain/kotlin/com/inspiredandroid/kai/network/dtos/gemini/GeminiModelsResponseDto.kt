@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.gemini
 import kotlinx.serialization.Serializable
 
         val description: String? = null,
@@ -14,5 +15,4 @@ import kotlinx.serialization.Serializable
 ) {
 @Serializable
 data class GeminiModelsResponseDto(
-package com.inspiredandroid.kai.network.dtos.gemini
 }

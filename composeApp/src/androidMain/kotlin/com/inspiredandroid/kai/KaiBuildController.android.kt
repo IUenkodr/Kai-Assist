@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.content.Context
 import com.inspiredandroid.kai.build.KaiBuildState
 import com.inspiredandroid.kai.build.runtime.BuildEnvironmentManager
@@ -54,5 +55,4 @@ import org.koin.java.KoinJavaComponent.inject
     }
 actual fun createKaiBuildController(): KaiBuildController = AndroidKaiBuildController()
 class AndroidKaiBuildController : KaiBuildController {
-package com.inspiredandroid.kai
 }

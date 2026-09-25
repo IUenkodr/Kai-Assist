@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.splinterlands
 import com.inspiredandroid.kai.data.AppSettings
 import com.inspiredandroid.kai.data.SettingsJsonList
 import com.inspiredandroid.kai.data.SharedJson
@@ -79,5 +80,4 @@ import kotlinx.serialization.serializer
     suspend fun setPostingKey(accountId: String, key: String) {
     }
 class SplinterlandsStore(private val appSettings: AppSettings) {
-package com.inspiredandroid.kai.splinterlands
 }

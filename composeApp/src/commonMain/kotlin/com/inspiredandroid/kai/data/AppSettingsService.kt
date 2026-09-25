@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CONFIGURED_SERVICES
 import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
 import kotlinx.serialization.json.Json
@@ -97,6 +98,5 @@ fun AppSettings.setInstanceBaseUrl(instanceId: String, baseUrl: String) {
 fun AppSettings.setInstanceCustomModelId(instanceId: String, modelId: String) {
 fun AppSettings.setInstanceModelId(instanceId: String, modelId: String) {
 fun AppSettings.setInstanceUseCustomModel(instanceId: String, useCustom: Boolean) {
-package com.inspiredandroid.kai.data
 }
 } else {

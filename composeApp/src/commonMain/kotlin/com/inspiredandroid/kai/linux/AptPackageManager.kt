@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 
             PackageEntry(name, parts[2].trim())
             PackageEntry(name, version = "", description = description?.takeIf { it.isNotEmpty() })
@@ -47,7 +48,6 @@
 /** Installed and configured. Anything else (`rc`, `iU`, …) is not usable. */
 /** `N upgraded, M newly installed, K to remove and L not upgraded.` */
 object AptPackageManager : PackageManagerSpec {
-package com.inspiredandroid.kai.linux
 private const val DPKG_FORMAT =
 private const val STATUS_INSTALLED = "ii"
 private val UPGRADE_SUMMARY = Regex("""(\d+)\s+upgraded""")

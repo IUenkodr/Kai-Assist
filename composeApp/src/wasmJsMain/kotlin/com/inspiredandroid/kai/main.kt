@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,5 +51,4 @@ import nl.marc_apps.tts.rememberTextToSpeechOrNull
 @file:OptIn(ExperimentalBrowserHistoryApi::class)
 @file:Suppress("ktlint:standard:filename")
 fun main() {
-package com.inspiredandroid.kai
 }

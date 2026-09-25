@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.dynamicui
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
@@ -339,7 +340,6 @@ internal fun JsonObject.readStringList(key: String): ImmutableList<String> {
 internal fun JsonObject.readTabList(key: String): ImmutableList<TabItem> {
 internal fun JsonObject.readTableRows(key: String): ImmutableList<ImmutableList<String>> {
 internal fun parseNode(element: JsonElement): KaiUiNode? = when (element) {
-package com.inspiredandroid.kai.ui.dynamicui
 private fun buildActionFromObject(obj: JsonObject): UiAction {
 private fun inferBareObject(obj: JsonObject): KaiUiNode? {
 private fun parseAccordionNode(obj: JsonObject): AccordionNode = AccordionNode(

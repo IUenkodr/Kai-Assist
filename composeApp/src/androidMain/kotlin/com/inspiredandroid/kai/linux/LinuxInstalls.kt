@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import android.content.Context
 import java.io.File
 
@@ -47,5 +48,4 @@ import java.io.File
  */
 /**
 class LinuxInstalls(context: Context) {
-package com.inspiredandroid.kai.linux
 }

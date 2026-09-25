@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.email
 
     suspend fun close()
     suspend fun readLine(): String
@@ -9,5 +10,4 @@
 /**
 expect suspend fun createEmailConnection(host: String, port: Int, tls: Boolean): EmailConnection
 interface EmailConnection {
-package com.inspiredandroid.kai.email
 }

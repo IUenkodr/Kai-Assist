@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.anthropic
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
 
@@ -29,5 +30,4 @@ import kotlinx.serialization.json.JsonElement
 ) {
 @Serializable
 data class AnthropicChatRequestDto(
-package com.inspiredandroid.kai.network.dtos.anthropic
 }

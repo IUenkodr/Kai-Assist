@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -66,5 +67,4 @@ import com.inspiredandroid.kai.ui.kaiAdaptiveCardSurface
 ) {
 @Composable
 fun SettingsListItem(
-package com.inspiredandroid.kai.ui.components
 }

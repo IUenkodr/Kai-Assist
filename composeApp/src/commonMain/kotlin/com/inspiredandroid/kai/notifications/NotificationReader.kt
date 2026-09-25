@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.notifications
 import com.inspiredandroid.kai.data.NotificationRecord
 
      * Full-text search across `appLabel`, `title`, and `text`. Newest-first, capped at [limit].
@@ -23,5 +24,4 @@ import com.inspiredandroid.kai.data.NotificationRecord
  */
 /**
 expect class NotificationReader() {
-package com.inspiredandroid.kai.notifications
 }

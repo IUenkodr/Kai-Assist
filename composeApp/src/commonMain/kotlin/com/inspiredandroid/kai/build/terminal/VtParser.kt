@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build.terminal
 
                         // OAuth URLs can be long; keep a generous cap.
                         // Whole clipboard may be a bare URL
@@ -185,5 +186,4 @@
  */
 /**
 internal class VtParser(private val screen: TerminalScreen) {
-package com.inspiredandroid.kai.build.terminal
 }

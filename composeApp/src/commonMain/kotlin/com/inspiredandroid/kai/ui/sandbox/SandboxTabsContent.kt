@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -198,7 +199,6 @@ import org.koin.compose.viewmodel.koinViewModel
 internal enum class SandboxSubTab { Terminal, Files, Packages }
 internal fun SandboxProgressRow(progress: Float?, statusText: String, onCancel: () -> Unit) {
 internal fun SandboxTabsContent(
-package com.inspiredandroid.kai.ui.sandbox
 private fun SandboxSubTabSelector(
 private fun SessionChipRow(viewModel: SandboxSessionViewModel) {
 }

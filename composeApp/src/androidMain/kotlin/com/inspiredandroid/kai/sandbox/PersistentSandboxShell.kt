@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sandbox
 import com.inspiredandroid.kai.linux.ProotHandle
 import com.inspiredandroid.kai.smartTruncate
 import java.io.File
@@ -221,7 +222,6 @@ import kotlinx.coroutines.withTimeoutOrNull
 // escapes for portability across bash/busybox printf.
 // to signal (bashPid was null, set only from the sentinel of a completed run).
 class PersistentSandboxShell(
-package com.inspiredandroid.kai.sandbox
 private const val MAX_OUTPUT_LENGTH = 15_000
 private const val PID_PROBE_PREFIX = "${RS}KAIBASHPID$US"
 private const val RS = ""

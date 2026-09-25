@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitEachGesture
@@ -498,7 +499,6 @@ internal data class TerminalCellMetrics(
 internal fun BuildTerminalContent(
 internal fun buildTerminalText(snapshot: TerminalSnapshot): AnnotatedString = buildAnnotatedString {
 internal val AnsiPalette = listOf(
-package com.inspiredandroid.kai.ui.build
 private const val ADVANCE_SAMPLE = 64
 private const val HYPERLINK_DISPLAY_MS = 2 * 60 * 1000L
 private const val RESIZE_SETTLE_MS = 80L

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.app.ForegroundServiceStartNotAllowedException
 import android.content.Context
 import android.content.Intent
@@ -20,5 +21,4 @@ import org.koin.java.KoinJavaComponent.inject
     }
 actual fun createDaemonController(): DaemonController = AndroidDaemonController()
 class AndroidDaemonController : DaemonController {
-package com.inspiredandroid.kai
 }

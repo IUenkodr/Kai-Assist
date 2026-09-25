@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -59,5 +60,4 @@ import kotlin.test.assertTrue
     fun unknownSessionReturnsError() {
     }
 class ProcessManagerTest {
-package com.inspiredandroid.kai.tools
 }

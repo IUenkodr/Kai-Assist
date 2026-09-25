@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sms
 import com.inspiredandroid.kai.data.SmsMessage
 
      * Fetch a single inbox message by `_id`. Null if not found or not supported.
@@ -25,5 +26,4 @@ import com.inspiredandroid.kai.data.SmsMessage
  */
 /**
 expect class SmsReader() {
-package com.inspiredandroid.kai.sms
 }

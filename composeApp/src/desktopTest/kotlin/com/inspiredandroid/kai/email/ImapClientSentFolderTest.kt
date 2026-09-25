@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.email
 import java.io.InputStream
 import java.io.OutputStream
 import java.net.ServerSocket
@@ -82,5 +83,4 @@ import kotlinx.coroutines.runBlocking
  */
 /**
 class ImapClientSentFolderTest {
-package com.inspiredandroid.kai.email
 }

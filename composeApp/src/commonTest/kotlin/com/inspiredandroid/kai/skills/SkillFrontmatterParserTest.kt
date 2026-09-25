@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -41,5 +42,4 @@ import kotlin.test.assertTrue
     fun `tolerates CRLF and quoted values`() {
     }
 class SkillFrontmatterParserTest {
-package com.inspiredandroid.kai.skills
 }

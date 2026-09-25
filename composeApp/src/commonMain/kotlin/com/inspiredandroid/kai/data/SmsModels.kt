@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable
 
@@ -33,5 +34,4 @@ data class SmsDraft(
 data class SmsMessage(
 data class SmsSyncState(
 enum class SmsDraftStatus {
-package com.inspiredandroid.kai.data
 }

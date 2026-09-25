@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -25,6 +26,5 @@ import com.inspiredandroid.kai.ui.chat.composables.FullScreenImageViewerOverlay
     }
 @Composable
 fun FullScreenImageHost(content: @Composable () -> Unit) {
-package com.inspiredandroid.kai.ui.components
 val LocalShowFullScreenImage = staticCompositionLocalOf<(ImageBitmap) -> Unit> { { } }
 }

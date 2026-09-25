@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
@@ -148,6 +149,5 @@ import org.jetbrains.compose.resources.vectorResource
 /**
 @Composable
 internal fun PendingSmsBanners(
-package com.inspiredandroid.kai.ui.chat.composables
 private fun PendingSmsBanner(
 }

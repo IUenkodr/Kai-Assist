@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import app.cash.turbine.test
 import com.inspiredandroid.kai.data.Service
 import com.inspiredandroid.kai.data.ServiceEntry
@@ -79,5 +80,4 @@ import kotlinx.coroutines.test.setMain
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class ChatViewModelLiteRTTest {
-package com.inspiredandroid.kai.ui.chat
 }

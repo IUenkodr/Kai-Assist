@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import com.inspiredandroid.kai.getAppFilesDirectory
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSCachesDirectory
@@ -32,7 +33,6 @@ actual fun getTotalMemoryBytes(): Long = NSProcessInfo.processInfo.physicalMemor
 actual fun startDownloadNotificationService() {}
 actual fun stopDownloadNotificationService() {}
 actual fun updateDownloadNotificationProgress(percent: Int) {}
-package com.inspiredandroid.kai.inference
 private val modelCacheDir: String by lazy {
 private val modelStorageDir: String by lazy {
 }

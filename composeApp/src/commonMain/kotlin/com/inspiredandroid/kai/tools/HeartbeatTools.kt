@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.AppSettings
 import com.inspiredandroid.kai.data.MemoryStore
 import com.inspiredandroid.kai.network.tools.ParameterSchema
@@ -55,5 +56,4 @@ import kai.composeapp.generated.resources.tool_promote_learning_name
     val promoteLearningToolInfo = ToolInfo(
     }
 object HeartbeatTools {
-package com.inspiredandroid.kai.tools
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.KSerializer
@@ -88,5 +89,4 @@ import kotlinx.serialization.json.Json
 class SettingsJsonList<T>(
 class SettingsJsonValue<T>(
 internal fun <T> decodeJsonOr(
-package com.inspiredandroid.kai.data
 }

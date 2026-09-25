@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -80,7 +81,6 @@ import kotlinx.collections.immutable.ImmutableList
 @Composable
 @OptIn(ExperimentalLayoutApi::class)
 internal fun InlineContent(
-package com.inspiredandroid.kai.ui.markdown
 private fun AnnotatedString.flattenNewlines(): AnnotatedString = if ('\n' !in text) {
 private fun containsMath(nodes: List<InlineNode>): Boolean {
 private fun splitAroundMath(nodes: List<InlineNode>): List<InlineSegment> {

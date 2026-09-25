@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.inspiredandroid.kai.data.Conversation
@@ -389,5 +390,4 @@ import org.jetbrains.compose.resources.getString
     }.distinctUntilChanged().stateIn(
 ) : ViewModel() {
 class ChatViewModel(
-package com.inspiredandroid.kai.ui.chat
 }

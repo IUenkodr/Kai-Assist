@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.openaicompatible
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -92,6 +93,5 @@ import kotlinx.serialization.json.jsonPrimitive
 @Serializable
 data class OpenAICompatibleChatResponseDto(
 internal object FlexibleContentSerializer : KSerializer<String> {
-package com.inspiredandroid.kai.network.dtos.openaicompatible
 private val toolCallMarkerRegex = Regex("<TOOLCALL>[\\s\\S]*?</TOOLCALL>|<TOOLCALL>[\\s\\S]*$")
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.openairesponses
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -62,5 +63,4 @@ import kotlinx.serialization.json.put
  */
 /**
 class OpenAIResponsesRequestDtoTest {
-package com.inspiredandroid.kai.network.dtos.openairesponses
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.mcp
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
 import com.inspiredandroid.kai.network.tools.ToolSchema
@@ -68,5 +69,4 @@ import kotlinx.serialization.json.jsonPrimitive
     }
 ) : Tool {
 class McpTool(
-package com.inspiredandroid.kai.mcp
 }

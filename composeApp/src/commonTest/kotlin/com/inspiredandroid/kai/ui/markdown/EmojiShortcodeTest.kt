@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -16,5 +17,4 @@ import kotlin.test.assertEquals
     private fun inlines(text: String): List<InlineNode> = (parseMarkdown(text).blocks.single() as Paragraph).inlines
     }
 class EmojiShortcodeTest {
-package com.inspiredandroid.kai.ui.markdown
 }

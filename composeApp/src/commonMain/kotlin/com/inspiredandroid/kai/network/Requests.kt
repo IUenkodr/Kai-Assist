@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network
 import com.inspiredandroid.kai.Version
 import com.inspiredandroid.kai.currentPlatform
 import com.inspiredandroid.kai.data.Service
@@ -464,7 +465,6 @@ import kotlinx.serialization.json.jsonPrimitive
 class Requests {
 data class ServiceCredentials(
 internal fun sessionHeadersFor(service: Service, sessionId: String?): Map<String, String> = if (service == Service.OpenCode) {
-package com.inspiredandroid.kai.network
 private fun <T> JsonObject.toPropertySchema(dialect: SchemaDialect<T>): T {
 private fun <T> List<Tool>.toRequestTools(convert: (Tool) -> T): List<T>? = mapNotNull { runCatching { convert(it) }.getOrNull() }.ifEmpty { null }
 private fun <T> Tool.propertySchemas(dialect: SchemaDialect<T>): Map<String, T> = schema.parameters.mapValues { (_, param) ->

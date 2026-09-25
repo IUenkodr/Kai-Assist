@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.TerminalLine
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -187,5 +188,4 @@ import kotlinx.serialization.json.Json
     private val json = Json {
     }
 class ConversationSerializationTest {
-package com.inspiredandroid.kai.data
 }

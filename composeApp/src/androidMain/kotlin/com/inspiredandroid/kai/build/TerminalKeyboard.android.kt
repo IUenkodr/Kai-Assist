@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -30,5 +31,4 @@ import com.inspiredandroid.kai.build.terminal.TerminalModifiers
 @Composable
 actual fun PlatformTerminalKeyboard(
 actual val supportsRawTerminalInput: Boolean = true
-package com.inspiredandroid.kai.build
 }

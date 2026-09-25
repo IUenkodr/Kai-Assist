@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.NotificationRecord
 import com.inspiredandroid.kai.data.NotificationStore
 import com.inspiredandroid.kai.network.tools.ParameterSchema
@@ -117,5 +118,4 @@ import kai.composeapp.generated.resources.tool_search_notifications_name
     val searchNotificationsToolInfo = ToolInfo(
     }
 object NotificationTools {
-package com.inspiredandroid.kai.tools
 }

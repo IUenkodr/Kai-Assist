@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -63,5 +64,4 @@ import org.koin.android.ext.android.inject
     private val taskScheduler: TaskScheduler by inject()
     }
 class DaemonService : Service() {
-package com.inspiredandroid.kai
 }

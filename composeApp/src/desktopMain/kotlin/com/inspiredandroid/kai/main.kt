@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,5 +51,4 @@ import org.jetbrains.compose.resources.painterResource
 @file:OptIn(ExperimentalDesktopTarget::class)
 @file:Suppress("ktlint:standard:filename")
 fun main() {
-package com.inspiredandroid.kai
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileInputStream
@@ -142,7 +143,6 @@ import org.tukaani.xz.XZInputStream
 /**
 /** ustar marks a regular file with '0'; pre-ustar archives leave the flag NUL. */
 object TarExtractor {
-package com.inspiredandroid.kai.linux
 private const val BUFFER_SIZE = 8192
 private const val TAR_BLOCK_SIZE = 512
 private const val TAR_LINK_OFFSET = 157

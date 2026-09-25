@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.network.tools.Tool
 import com.inspiredandroid.kai.network.tools.ToolSchema
 import kotlin.test.Test
@@ -52,5 +53,4 @@ import kotlinx.coroutines.test.runTest
  */
 /**
 class ToolExecutorTest {
-package com.inspiredandroid.kai.data
 }

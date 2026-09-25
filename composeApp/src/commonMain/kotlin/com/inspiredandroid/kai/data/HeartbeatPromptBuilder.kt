@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlin.time.Instant
 
                 append(" (last sync: ")
@@ -139,5 +140,4 @@ internal data class HeartbeatPendingNotification(
 internal data class HeartbeatPendingSms(
 internal data class HeartbeatPromotionCandidate(
 internal fun buildHeartbeatPrompt(
-package com.inspiredandroid.kai.data
 }

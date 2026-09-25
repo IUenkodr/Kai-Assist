@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
 import com.inspiredandroid.kai.network.tools.ToolInfo
@@ -40,5 +41,4 @@ import kai.composeapp.generated.resources.tool_send_notification_name
     val toolInfo = ToolInfo(
     }
 object SendNotificationTool {
-package com.inspiredandroid.kai.tools
 }

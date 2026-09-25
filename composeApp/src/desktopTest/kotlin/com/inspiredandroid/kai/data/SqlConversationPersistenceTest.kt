@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import com.inspiredandroid.kai.TerminalLine
 import com.inspiredandroid.kai.db.KaiDatabase
@@ -114,5 +115,4 @@ import kotlinx.serialization.encodeToString
     private fun storedMessageBytes(database: KaiDatabase): List<Int> = database.conversationQueries.selectAllMessages(Long.MAX_VALUE).executeAsList()
     }
 class SqlConversationPersistenceTest {
-package com.inspiredandroid.kai.data
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build.runtime
 import android.os.StatFs
 import android.util.Log
 import com.inspiredandroid.kai.build.BuildAgent
@@ -774,7 +775,6 @@ import kotlinx.coroutines.sync.withLock
 /** Device-code pattern shown on Grok's login TUI (e.g. PNX4-ZGCX). */
 /** Floor on the gap between two terminal repaints — roughly one display frame. */
 class BuildEnvironmentManager(
-package com.inspiredandroid.kai.build.runtime
 private class BuildSession(
 private const val HYPERLINK_TTL_MS = 2 * 60 * 1000L
 private const val IDLE_PROJECT_TTL_MS = 60 * 60 * 1000L

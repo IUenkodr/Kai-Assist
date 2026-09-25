@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.screenshots
 import android.graphics.BitmapFactory
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
@@ -83,5 +84,4 @@ import org.junit.Test
 @OptIn(ExperimentalResourceApi::class)
 @file:OptIn(ExperimentalVoiceApi::class)
 class ScreenshotTest {
-package com.inspiredandroid.kai.screenshots
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.ui.draganddrop.DragAndDropEvent
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -56,6 +57,5 @@ expect val isEmailSupported: Boolean
 expect val isNotificationsSupported: Boolean
 expect val isSmsSupported: Boolean
 expect val isSplinterlandsSupported: Boolean
-package com.inspiredandroid.kai
 sealed class Platform(val displayName: String) {
 }

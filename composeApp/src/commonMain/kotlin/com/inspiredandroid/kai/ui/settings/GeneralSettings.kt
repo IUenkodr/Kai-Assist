@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -181,7 +182,6 @@ import org.jetbrains.compose.resources.vectorResource
 ) {
 @Composable
 internal fun GeneralContent(uiState: SettingsUiState, actions: SettingsActions) {
-package com.inspiredandroid.kai.ui.settings
 private fun DaemonModeToggle(
 private fun DynamicUiToggle(
 private fun ThemeModePicker(

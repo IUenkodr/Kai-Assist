@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -168,7 +169,6 @@ import kotlinx.collections.immutable.persistentListOf
 /**
 @Composable
 fun MarkdownContent(
-package com.inspiredandroid.kai.ui.markdown
 private fun BlockRenderer(
 private fun BlockquoteBlock(
 private fun BulletListBlock(

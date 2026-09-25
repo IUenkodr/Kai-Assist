@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
@@ -59,7 +60,6 @@ import com.inspiredandroid.kai.ui.handCursor
 @file:OptIn(ExperimentalMaterial3Api::class)
 fun KaiRangeSlider(
 fun KaiSlider(
-package com.inspiredandroid.kai.ui.components
 private fun KaiSliderThumb() {
 private fun kaiSliderColors() = SliderDefaults.colors(
 private fun kaiSliderTrackColors() = SliderDefaults.colors(

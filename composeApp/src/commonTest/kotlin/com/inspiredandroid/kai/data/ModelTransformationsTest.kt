@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicModelsResponseDto
 import com.inspiredandroid.kai.network.dtos.gemini.GeminiModelsResponseDto
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleModelResponseDto
@@ -256,5 +257,4 @@ import kotlin.test.assertTrue
     fun `newestFirstComparator sorts by release date then context window`() {
     }
 class ModelTransformationsTest {
-package com.inspiredandroid.kai.data
 }

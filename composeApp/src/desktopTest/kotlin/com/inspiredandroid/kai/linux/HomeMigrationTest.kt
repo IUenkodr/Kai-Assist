@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import java.io.File
 import java.nio.file.Files
 import kotlin.test.AfterTest
@@ -89,5 +90,4 @@ import kotlin.test.assertTrue
     private lateinit var target: File
     }
 class HomeMigrationTest {
-package com.inspiredandroid.kai.linux
 }

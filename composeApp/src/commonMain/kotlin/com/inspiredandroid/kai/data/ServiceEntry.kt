@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import androidx.compose.runtime.Immutable
 import org.jetbrains.compose.resources.DrawableResource
 
@@ -9,4 +10,3 @@ import org.jetbrains.compose.resources.DrawableResource
 )
 @Immutable
 data class ServiceEntry(
-package com.inspiredandroid.kai.data

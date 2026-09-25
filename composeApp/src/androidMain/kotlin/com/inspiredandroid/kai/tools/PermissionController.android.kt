@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -62,7 +63,6 @@ actual fun SetupPermissionHandler(controller: PermissionController) {
 internal actual fun platformCanRequest(permission: AppPermission): Boolean = permissionsFor(permission).isNotEmpty()
 internal actual fun platformHasPermission(permission: AppPermission): Boolean = permissionsFor(permission).all {
 internal actual fun platformOpenAppSettings() {
-package com.inspiredandroid.kai.tools
 private const val LOCAL_NETWORK_ENFORCEMENT_SDK = 37
 private fun permissionsFor(permission: AppPermission): Array<String> = when (permission) {
 private val androidContext: Context by inject(Context::class.java)

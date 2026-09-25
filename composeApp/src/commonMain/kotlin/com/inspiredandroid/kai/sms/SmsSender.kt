@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sms
 
      * Fires the message via the system's default SMS stack. Long bodies are
      * [SmsSendResult.Failure] on a precondition violation (missing permission,
@@ -17,6 +18,5 @@
  */
 /**
 expect class SmsSender() {
-package com.inspiredandroid.kai.sms
 sealed class SmsSendResult {
 }

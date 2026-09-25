@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -69,5 +70,4 @@ import kotlin.test.assertTrue
     }
 /** Markdown-level integration: how `$`/`$$`/`\(…\)`/`\[…\]` become [InlineMath]/[DisplayMath]. */
 class MathParsingTest {
-package com.inspiredandroid.kai.ui.markdown
 }

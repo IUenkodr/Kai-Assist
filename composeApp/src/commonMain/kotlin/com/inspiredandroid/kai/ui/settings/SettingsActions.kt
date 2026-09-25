@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.runtime.Immutable
 import com.inspiredandroid.kai.data.ImportSection
 import com.inspiredandroid.kai.data.Service
@@ -135,5 +136,4 @@ import io.github.vinceglb.filekit.PlatformFile
 ) {
 @Immutable
 data class SettingsActions(
-package com.inspiredandroid.kai.ui.settings
 }

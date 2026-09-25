@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -68,5 +69,4 @@ import org.koin.compose.viewmodel.koinViewModel
 ) {
 @Composable
 internal fun IntegrationsContent(
-package com.inspiredandroid.kai.ui.settings
 }

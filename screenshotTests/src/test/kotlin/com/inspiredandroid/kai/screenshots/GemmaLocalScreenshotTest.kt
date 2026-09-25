@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.screenshots
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -244,7 +245,6 @@ import org.junit.Test
 @OptIn(ExperimentalResourceApi::class)
 @file:OptIn(ExperimentalVoiceApi::class)
 class GemmaLocalScreenshotTest {
-package com.inspiredandroid.kai.screenshots
 private fun AddServiceSheetPreview(services: ImmutableList<Service>) {
 private object GemmaLocalTestData {
 private val MODEL_E2B = MODEL_CATALOG.first { it.id == "gemma-4-e2b-it" }

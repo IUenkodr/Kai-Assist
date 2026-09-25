@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -104,5 +105,4 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 @OptIn(ExperimentalEncodingApi::class, ExperimentalLayoutApi::class)
 internal fun UserMessage(
-package com.inspiredandroid.kai.ui.chat.composables
 }

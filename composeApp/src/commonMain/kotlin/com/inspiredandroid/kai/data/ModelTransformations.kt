@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicModelsResponseDto
 import com.inspiredandroid.kai.network.dtos.gemini.GeminiModelsResponseDto
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleModelResponseDto
@@ -163,7 +164,6 @@ internal fun mapAnthropicModels(
 internal fun mapGeminiModels(
 internal fun mapOpenAICompatibleModels(
 internal val newestFirstComparator: Comparator<SettingsModel> = Comparator { a, b ->
-package com.inspiredandroid.kai.data
 private fun buildSettingsModel(
 private val nonChatPatterns = listOf(
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.animateContentSize
@@ -158,5 +159,4 @@ import org.jetbrains.compose.resources.stringResource
 internal fun PulsingStatusIndicator(
 internal fun WaitingResponseRow(
 internal fun toolSummaryText(
-package com.inspiredandroid.kai.ui.chat.composables
 }

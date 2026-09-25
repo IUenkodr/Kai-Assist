@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import androidx.compose.runtime.Immutable
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
@@ -143,5 +144,4 @@ import kotlinx.serialization.serializer
 class HeartbeatManager(
 data class HeartbeatConfig(
 data class HeartbeatLogEntry(
-package com.inspiredandroid.kai.data
 }

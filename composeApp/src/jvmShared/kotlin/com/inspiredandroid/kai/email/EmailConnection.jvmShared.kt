@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.email
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
@@ -48,6 +49,5 @@ import kotlinx.coroutines.withContext
 ) : EmailConnection {
 /**
 actual suspend fun createEmailConnection(host: String, port: Int, tls: Boolean): EmailConnection = withContext(Dispatchers.IO) {
-package com.inspiredandroid.kai.email
 private class JvmEmailConnection(
 }

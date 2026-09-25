@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data.providers
 import com.inspiredandroid.kai.data.Service
 import com.inspiredandroid.kai.ui.chat.History
 import com.inspiredandroid.kai.ui.chat.ToolCallInfo
@@ -65,5 +66,4 @@ import kotlinx.collections.immutable.persistentListOf
  */
 /**
 class BuildOpenAIMessagesPairingTest {
-package com.inspiredandroid.kai.data.providers
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlin.uuid.ExperimentalUuidApi
@@ -85,5 +86,4 @@ import kotlinx.serialization.serializer
 @OptIn(ExperimentalTime::class, ExperimentalUuidApi::class)
 class TaskStore(appSettings: AppSettings) {
 data class PendingTaskPartition(
-package com.inspiredandroid.kai.data
 }

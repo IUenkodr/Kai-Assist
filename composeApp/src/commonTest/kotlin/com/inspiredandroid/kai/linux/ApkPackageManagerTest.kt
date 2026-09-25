@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -50,5 +51,4 @@ import kotlin.test.assertTrue
     fun `search output splits description off the name-version`() {
     }
 class ApkPackageManagerTest {
-package com.inspiredandroid.kai.linux
 }

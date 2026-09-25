@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown.math
 
             // Matches LaTeX default: inline renders subscript beside, display renders below.
             return LargeOp(command)
@@ -118,5 +119,4 @@
  */
 /**
 internal object MathSymbols {
-package com.inspiredandroid.kai.ui.markdown.math
 }

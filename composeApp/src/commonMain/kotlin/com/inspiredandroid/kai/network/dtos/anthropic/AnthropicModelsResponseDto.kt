@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.anthropic
 import kotlinx.serialization.Serializable
 
         val created_at: String? = null,
@@ -11,5 +12,4 @@ import kotlinx.serialization.Serializable
 ) {
 @Serializable
 data class AnthropicModelsResponseDto(
-package com.inspiredandroid.kai.network.dtos.anthropic
 }

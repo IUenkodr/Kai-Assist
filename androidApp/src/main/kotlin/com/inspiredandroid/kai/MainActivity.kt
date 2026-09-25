@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -143,6 +144,5 @@ import org.koin.android.ext.android.get
 @Preview
 class MainActivity : ComponentActivity() {
 fun AppAndroidPreview() {
-package com.inspiredandroid.kai
 private fun rememberSystemTextToSpeechOrNull(): TextToSpeechInstance? {
 }

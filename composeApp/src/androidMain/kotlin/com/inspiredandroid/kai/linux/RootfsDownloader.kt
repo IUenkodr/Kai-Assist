@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import io.ktor.client.HttpClient
 import io.ktor.client.request.prepareGet
 import io.ktor.client.statement.bodyAsChannel
@@ -66,6 +67,5 @@ import kotlinx.coroutines.ensureActive
  */
 /**
 class RootfsDownloader(private val httpClient: HttpClient) {
-package com.inspiredandroid.kai.linux
 private const val BUFFER_SIZE = 64 * 1024
 }

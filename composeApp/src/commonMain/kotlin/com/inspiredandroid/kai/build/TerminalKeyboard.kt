@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.inspiredandroid.kai.build.terminal.TerminalKey
@@ -23,4 +24,3 @@ import com.inspiredandroid.kai.build.terminal.TerminalModifiers
 @Composable
 expect fun PlatformTerminalKeyboard(
 expect val supportsRawTerminalInput: Boolean
-package com.inspiredandroid.kai.build

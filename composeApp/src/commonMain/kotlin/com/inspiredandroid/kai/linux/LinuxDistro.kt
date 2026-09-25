@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 
             "bash", "ca-certificates", "curl", "wget", "git",
             "curl", "wget", "git", "jq", "python3", "py3-pip", "nodejs",
@@ -46,5 +47,4 @@
 ) {
 /**
 enum class LinuxDistro(
-package com.inspiredandroid.kai.linux
 }

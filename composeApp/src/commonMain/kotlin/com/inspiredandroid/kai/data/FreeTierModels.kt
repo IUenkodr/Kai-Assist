@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 
                 // e.g. gpt-oss:20b-cloud → gpt-oss:20b
                 stripped
@@ -64,5 +65,4 @@
  */
 /**
 internal object FreeTierModels {
-package com.inspiredandroid.kai.data
 }

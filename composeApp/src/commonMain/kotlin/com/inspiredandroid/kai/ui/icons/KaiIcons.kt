@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.icons
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.materialIcon
 import androidx.compose.material.icons.materialPath
@@ -91,7 +92,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
     materialIcon(name = "Filled.VisibilityOff") {
     materialIcon(name = "Rounded.DragIndicator") {
     }
-package com.inspiredandroid.kai.ui.icons
 val Icons.AutoMirrored.Filled.ArrowBackIos: ImageVector by lazy {
 val Icons.Filled.Replay: ImageVector by lazy {
 val Icons.Filled.Visibility: ImageVector by lazy {

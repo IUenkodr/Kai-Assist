@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.AppSettings
 import com.inspiredandroid.kai.data.EmailStore
 import com.inspiredandroid.kai.data.MemoryStore
@@ -34,5 +35,4 @@ import com.inspiredandroid.kai.network.tools.Tool
 ): List<Tool> = buildList {
 /**
 fun buildAgentToolSet(
-package com.inspiredandroid.kai.tools
 }

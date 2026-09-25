@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sandbox
 import android.content.Context
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.inspiredandroid.kai.SandboxMigration
@@ -345,7 +346,6 @@ import kotlinx.coroutines.sync.withLock
 ) {
 /** How many copied files pass before the migration updates its progress line. */
 class LinuxSandboxManager(
-package com.inspiredandroid.kai.sandbox
 private const val MIGRATION_PROGRESS_STEP = 25
 private const val PACKAGE_TIMEOUT_SECONDS = 900L
 private val TRANSCRIPT_SAVE_DEBOUNCE = 500.milliseconds

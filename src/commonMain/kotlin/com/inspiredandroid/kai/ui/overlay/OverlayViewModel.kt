@@ -2,7 +2,6 @@ package com.inspiredandroid.kai.ui.overlay
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-package com.inspiredandroid.kai.ui.overlay
 
 
 class OverlayViewModel : ViewModel() {

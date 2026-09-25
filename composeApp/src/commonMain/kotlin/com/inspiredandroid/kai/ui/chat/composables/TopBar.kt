@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
@@ -145,7 +146,6 @@ import org.jetbrains.compose.resources.vectorResource
 ) {
 @Composable
 internal fun TopBar(
-package com.inspiredandroid.kai.ui.chat.composables
 private fun LeadingButtons(
 private fun SpeechToggleButton(
 }

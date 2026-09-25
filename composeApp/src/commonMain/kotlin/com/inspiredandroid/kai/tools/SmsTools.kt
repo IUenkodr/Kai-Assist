@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.SmsDraft
 import com.inspiredandroid.kai.data.SmsDraftStore
 import com.inspiredandroid.kai.data.SmsMessage
@@ -170,5 +171,4 @@ import kotlin.uuid.Uuid
     val smsToolDefinitions = smsReadToolDefinitions + smsSendToolDefinitions
     }
 object SmsTools {
-package com.inspiredandroid.kai.tools
 }

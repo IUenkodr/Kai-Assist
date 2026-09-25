@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 
     fun start()
     fun stop()
@@ -7,5 +8,4 @@
 class NoOpDaemonController : DaemonController {
 expect fun createDaemonController(): DaemonController
 interface DaemonController {
-package com.inspiredandroid.kai
 }

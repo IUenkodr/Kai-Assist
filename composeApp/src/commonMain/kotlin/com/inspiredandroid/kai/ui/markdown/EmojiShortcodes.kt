@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 
     "+1" to "\uD83D\uDC4D",
     "-1" to "\uD83D\uDC4E",
@@ -114,4 +115,3 @@
 )
 /**
 internal val EMOJI_SHORTCODES: Map<String, String> = mapOf(
-package com.inspiredandroid.kai.ui.markdown

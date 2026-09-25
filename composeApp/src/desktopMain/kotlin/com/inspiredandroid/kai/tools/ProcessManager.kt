@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import java.io.File
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.ConcurrentHashMap
@@ -114,6 +115,5 @@ import java.util.concurrent.atomic.AtomicInteger
 /** Desktop spawns host processes directly, so no collaborators are needed. */
 class ProcessManager {
 internal fun createProcessManager(): ProcessManager = ProcessManager()
-package com.inspiredandroid.kai.tools
 private const val MAX_OUTPUT_LENGTH = 30_000
 }

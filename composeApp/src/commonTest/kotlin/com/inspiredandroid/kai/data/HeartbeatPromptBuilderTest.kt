@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -173,5 +174,4 @@ import kotlin.test.assertTrue
  */
 /**
 class HeartbeatPromptBuilderTest {
-package com.inspiredandroid.kai.data
 }

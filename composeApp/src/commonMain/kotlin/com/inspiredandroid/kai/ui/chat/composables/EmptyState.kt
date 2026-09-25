@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -131,7 +132,6 @@ import org.jetbrains.compose.resources.stringResource
 /**
 @Composable
 internal fun EmptyState(
-package com.inspiredandroid.kai.ui.chat.composables
 private fun AnimatedBorderButton(
 private val TerminalGreenOnDark = Color(0xFF16C60C)
 private val TerminalGreenOnLight = Color(0xFF13A10E)

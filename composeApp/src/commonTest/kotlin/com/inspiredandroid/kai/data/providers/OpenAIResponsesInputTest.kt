@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data.providers
 import com.inspiredandroid.kai.data.Service
 import com.inspiredandroid.kai.data.requiresResponsesApi
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
@@ -99,5 +100,4 @@ import kotlinx.serialization.json.put
  */
 /**
 class OpenAIResponsesInputTest {
-package com.inspiredandroid.kai.data.providers
 }

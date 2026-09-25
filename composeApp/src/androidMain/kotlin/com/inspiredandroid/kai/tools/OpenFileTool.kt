@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import android.content.Context
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
@@ -54,6 +55,5 @@ import org.koin.java.KoinJavaComponent.inject
 Path is relative to /root. What the shell tool calls /root/page.html, this tool takes as path="page.html".
 Write self-contained files — for HTML, inline all CSS and JavaScript in the same file (no external <link rel="stylesheet"> or <script src=...>), since the file is opened in isolation."""
 object OpenFileTool : Tool {
-package com.inspiredandroid.kai.tools
 private const val OPEN_FILE_DESCRIPTION = """Open a file from the sandbox /root directory in the user's default Android app — browser for HTML, image viewer for PNG/JPG, PDF viewer for PDF, markdown viewer for .md, etc. This is how you show finished work to the user.
 }

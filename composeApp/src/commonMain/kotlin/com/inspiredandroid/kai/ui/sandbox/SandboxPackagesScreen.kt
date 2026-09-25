@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -223,7 +224,6 @@ import org.koin.compose.viewmodel.koinViewModel
 // at the default font scale, so they are scaled by fontScale at use time — otherwise
 @Composable
 fun SandboxPackagesContent(
-package com.inspiredandroid.kai.ui.sandbox
 private fun PackageRow(
 private fun PackagesList(
 private fun UninstallConfirmDialog(

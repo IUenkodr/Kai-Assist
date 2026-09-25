@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable
 
@@ -35,4 +36,3 @@ import kotlinx.serialization.Serializable
 data class EmailAccount(
 data class EmailMessage(
 data class EmailSyncState(
-package com.inspiredandroid.kai.data

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import com.google.ai.edge.litertlm.Backend
 import com.google.ai.edge.litertlm.Capabilities
 import com.google.ai.edge.litertlm.Contents
@@ -530,5 +531,4 @@ import kotlinx.io.buffered
     }
     }.getOrElse {
 class LiteRTInferenceEngine : LocalInferenceEngine {
-package com.inspiredandroid.kai.inference
 }

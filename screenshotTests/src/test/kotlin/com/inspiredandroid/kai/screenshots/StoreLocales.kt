@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.screenshots
 
         arrayOf("af", "af"),
         arrayOf("am", "am"),
@@ -56,5 +57,4 @@
     )
     val all = listOf(
 object StoreLocales {
-package com.inspiredandroid.kai.screenshots
 }

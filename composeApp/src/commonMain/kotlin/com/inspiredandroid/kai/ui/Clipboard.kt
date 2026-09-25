@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -17,5 +18,4 @@ import kotlinx.coroutines.launch
 @Composable
 internal expect fun clipEntryOfPlainText(text: String): ClipEntry
 internal fun rememberCopyToClipboard(): (String) -> Unit {
-package com.inspiredandroid.kai.ui
 }

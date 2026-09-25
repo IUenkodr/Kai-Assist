@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import androidx.compose.runtime.Composable
 import com.inspiredandroid.kai.SandboxStatusLabel
 import kai.composeapp.generated.resources.Res
@@ -52,5 +53,4 @@ import org.jetbrains.compose.resources.stringResource
 /**
 @Composable
 internal fun sandboxStatusText(label: SandboxStatusLabel?): String = when (label) {
-package com.inspiredandroid.kai.ui.sandbox
 }

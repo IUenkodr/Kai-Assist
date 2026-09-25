@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 
             "brand-guidelines",
             "canvas-design",
@@ -63,5 +64,4 @@
 )
 /**
 data class SkillMarketplace(
-package com.inspiredandroid.kai.skills
 val curatedSkillMarketplaces: List<SkillMarketplace> = listOf(

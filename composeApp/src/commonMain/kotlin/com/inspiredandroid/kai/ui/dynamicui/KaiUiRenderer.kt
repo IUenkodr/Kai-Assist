@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.dynamicui
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -1092,7 +1093,6 @@ import org.jetbrains.compose.resources.stringResource
 @file:OptIn(ExperimentalMaterial3Api::class)
 data class FrozenSubmission(
 fun KaiUiRenderer(
-package com.inspiredandroid.kai.ui.dynamicui
 private const val DEFAULT_IMAGE_ASPECT_RATIO = 1.91f
 private const val DEFAULT_IMAGE_HEIGHT = 220
 private const val MAX_DEPTH = 10

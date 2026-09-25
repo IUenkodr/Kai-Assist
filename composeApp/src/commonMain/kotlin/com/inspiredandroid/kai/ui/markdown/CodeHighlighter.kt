@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
@@ -126,7 +127,6 @@ import androidx.compose.ui.text.withStyle
 internal data class HighlightColors(
 internal fun codeHighlightColors(scheme: ColorScheme): HighlightColors = HighlightColors(
 internal fun highlightCode(code: String, language: String?, colors: HighlightColors): AnnotatedString {
-package com.inspiredandroid.kai.ui.markdown
 private data class Span(val range: IntRange, val color: Color)
 private fun buildKeywordRegex(keywords: Set<String>): Regex = Regex("\\b(${keywords.joinToString("|")})\\b")
 private val BASH_KEYWORDS = setOf(

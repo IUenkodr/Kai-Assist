@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.linux.LinuxDistro
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
@@ -88,6 +89,5 @@ Password-only remotes: openssh inside this sandbox can't field interactive passw
 This tool does NOT create or upload private keys. To make a key usable, the user must place it under ~/.ssh in the sandbox separately. Be aware that any key text passed through chat (including via execute_shell_command's `cat > ~/.ssh/id_x <<EOF ...`) goes to the model provider in cleartext — ask the user before doing that.
 What this writes inside the sandbox:
 object SshConfigureHostTool : Tool {
-package com.inspiredandroid.kai.tools
 private fun toolDescription(distro: LinuxDistro): String {
 }

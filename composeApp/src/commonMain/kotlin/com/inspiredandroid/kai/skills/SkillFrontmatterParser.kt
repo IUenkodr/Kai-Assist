@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 
                 "description" -> description = value
                 "name" -> name = value
@@ -44,5 +45,4 @@
  */
 /**
 object SkillFrontmatterParser {
-package com.inspiredandroid.kai.skills
 }

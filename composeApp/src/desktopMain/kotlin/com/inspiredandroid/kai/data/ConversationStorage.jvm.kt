@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.getAppFilesDirectory
 import java.io.File
 
@@ -6,6 +7,5 @@ import java.io.File
     val file = File(getAppFilesDirectory(), LEGACY_FILE_NAME)
 actual fun deleteLegacyConversationFile() {
 actual fun readLegacyConversationFile(): ByteArray? {
-package com.inspiredandroid.kai.data
 private const val LEGACY_FILE_NAME = "conversations.enc"
 }

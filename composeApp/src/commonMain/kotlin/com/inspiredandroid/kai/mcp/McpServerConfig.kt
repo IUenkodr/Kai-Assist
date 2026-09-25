@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.mcp
 import kotlinx.serialization.Serializable
 
     val headers: Map<String, String> = emptyMap(),
@@ -8,4 +9,3 @@ import kotlinx.serialization.Serializable
 )
 @Serializable
 data class McpServerConfig(
-package com.inspiredandroid.kai.mcp

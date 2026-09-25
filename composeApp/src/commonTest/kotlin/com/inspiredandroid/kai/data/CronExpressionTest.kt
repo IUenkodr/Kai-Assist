@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -130,5 +131,4 @@ import kotlinx.datetime.toInstant
     }
 @OptIn(ExperimentalTime::class)
 class CronExpressionTest {
-package com.inspiredandroid.kai.data
 }

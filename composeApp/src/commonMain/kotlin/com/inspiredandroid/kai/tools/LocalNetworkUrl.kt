@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 
             (first == 169 && second == 254)
             (first == 172 && second in 16..31) ||
@@ -33,5 +34,4 @@
  */
 /**
 fun isLocalNetworkUrl(url: String): Boolean {
-package com.inspiredandroid.kai.tools
 }

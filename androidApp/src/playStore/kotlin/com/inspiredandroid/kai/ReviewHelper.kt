@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.app.Activity
 import com.google.android.play.core.review.ReviewManagerFactory
 
@@ -10,5 +11,4 @@ import com.google.android.play.core.review.ReviewManagerFactory
     val request = manager.requestReviewFlow()
     }
 fun requestReview(activity: Activity) {
-package com.inspiredandroid.kai
 }

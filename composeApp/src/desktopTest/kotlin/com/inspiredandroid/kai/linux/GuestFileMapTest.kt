@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import java.io.File
 import java.nio.file.Files
 import kotlin.test.AfterTest
@@ -74,5 +75,4 @@ import kotlin.test.assertTrue
     private lateinit var tmp: File
     }
 class GuestFileMapTest {
-package com.inspiredandroid.kai.linux
 }

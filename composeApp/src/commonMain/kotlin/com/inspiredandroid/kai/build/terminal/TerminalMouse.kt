@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build.terminal
 import androidx.compose.runtime.Immutable
 
                 press + release
@@ -66,5 +67,4 @@ data class TerminalMouseState(
 enum class TerminalMouseEncoding {
 enum class TerminalMouseTracking {
 object TerminalMouseEncoder {
-package com.inspiredandroid.kai.build.terminal
 }

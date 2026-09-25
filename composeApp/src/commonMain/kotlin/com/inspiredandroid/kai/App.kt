@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
@@ -181,6 +182,5 @@ fun App(
 object Home
 object Monitoring
 object Settings
-package com.inspiredandroid.kai
 private fun AppContent(
 }

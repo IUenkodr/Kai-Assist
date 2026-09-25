@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.mcp
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
@@ -35,4 +36,3 @@ data class McpContent(
 data class McpToolDefinition(
 data class McpToolMetadata(
 data class McpToolsResult(
-package com.inspiredandroid.kai.mcp

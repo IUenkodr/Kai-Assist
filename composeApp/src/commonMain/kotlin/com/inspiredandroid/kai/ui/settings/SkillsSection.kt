@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -308,7 +309,6 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 internal fun SkillsSection(
-package com.inspiredandroid.kai.ui.settings
 private fun AddSkillDialog(
 private fun RegistrySkillRow(
 private fun SkillCard(

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -107,5 +108,4 @@ import org.jetbrains.compose.resources.vectorResource
 @Composable
 @OptIn(ExperimentalLayoutApi::class)
 internal fun FreeProviderSuggestionsPanel(
-package com.inspiredandroid.kai.ui.chat.composables
 }

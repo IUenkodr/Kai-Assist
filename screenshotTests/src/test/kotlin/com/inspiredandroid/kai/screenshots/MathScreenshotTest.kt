@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.screenshots
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -137,7 +138,6 @@ import org.junit.Test
 @Composable
 @OptIn(ExperimentalResourceApi::class)
 class MathScreenshotTest {
-package com.inspiredandroid.kai.screenshots
 private fun MessageCanvas(content: @Composable () -> Unit) {
 private val DeviceWidth = 411.dp
 }

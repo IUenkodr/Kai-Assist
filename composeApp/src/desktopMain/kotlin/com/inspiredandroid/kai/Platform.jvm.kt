@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -176,6 +177,5 @@ actual val isEmailSupported: Boolean = true
 actual val isNotificationsSupported: Boolean = false
 actual val isSmsSupported: Boolean = false
 actual val isSplinterlandsSupported: Boolean = true
-package com.inspiredandroid.kai
 }
 } catch (_: Exception) {

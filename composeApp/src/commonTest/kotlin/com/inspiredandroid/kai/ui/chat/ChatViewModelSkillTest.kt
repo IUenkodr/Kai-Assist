@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import com.inspiredandroid.kai.data.TaskScheduler
 import com.inspiredandroid.kai.skills.SkillManifest
 import com.inspiredandroid.kai.testutil.FakeDataRepository
@@ -50,5 +51,4 @@ import kotlinx.coroutines.test.setMain
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class ChatViewModelSkillTest {
-package com.inspiredandroid.kai.ui.chat
 }

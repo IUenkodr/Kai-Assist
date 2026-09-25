@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -838,7 +839,6 @@ import sh.calvin.reorderable.ReorderableColumn
 @file:OptIn(ExperimentalMaterial3Api::class)
 internal fun FreeSettings(
 internal fun ServicesContent(uiState: SettingsUiState, actions: SettingsActions) {
-package com.inspiredandroid.kai.ui.settings
 private fun ApiKeyField(
 private fun ConfiguredServiceCardContent(
 private fun ConnectionStatusIndicator(status: ConnectionStatus, onOpenAppPermissionSettings: () -> Unit = {}) {

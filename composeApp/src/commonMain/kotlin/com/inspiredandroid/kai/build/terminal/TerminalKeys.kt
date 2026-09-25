@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build.terminal
 import androidx.compose.runtime.Immutable
 
             else -> withAlt("\u007f", modifiers)
@@ -111,5 +112,4 @@ import androidx.compose.runtime.Immutable
 data class TerminalModifiers(
 enum class TerminalKey {
 object TerminalKeyEncoder {
-package com.inspiredandroid.kai.build.terminal
 }

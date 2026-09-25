@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.splinterlands
 
     jsonPayload: String,
     opId: String,
@@ -12,4 +13,3 @@
 /**
 expect fun signMessage(message: String, postingKeyWif: String): String
 expect suspend fun buildSignedCustomJson(
-package com.inspiredandroid.kai.splinterlands

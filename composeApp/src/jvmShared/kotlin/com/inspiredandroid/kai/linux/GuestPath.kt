@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import java.io.File
 
                 safeChild(projectsDir, parts.drop(2))
@@ -44,5 +45,4 @@ import java.io.File
 /** Blocks path traversal: the resolved child must stay under [root]. */
 class GuestFileMap(
 internal fun safeChild(root: File, parts: List<String>): File? {
-package com.inspiredandroid.kai.linux
 }

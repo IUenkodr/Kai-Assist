@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import com.inspiredandroid.kai.ui.dynamicui.collectSpeakableText
 
         LineBreak -> sb.append(' ')
@@ -44,7 +45,6 @@ import com.inspiredandroid.kai.ui.dynamicui.collectSpeakableText
  */
 /**
 fun MarkdownDocument.toSpeakableText(): String {
-package com.inspiredandroid.kai.ui.markdown
 private fun appendInline(sb: StringBuilder, node: InlineNode) {
 private fun blockToSpeakable(block: BlockNode): String = when (block) {
 private fun ensureSentenceEnd(text: String): String {

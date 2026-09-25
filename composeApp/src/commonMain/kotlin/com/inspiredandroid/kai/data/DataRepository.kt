@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.inference.DownloadError
 import com.inspiredandroid.kai.inference.DownloadedModel
 import com.inspiredandroid.kai.inference.EngineState
@@ -234,5 +235,4 @@ import kotlinx.coroutines.flow.StateFlow
     val savedConversations: StateFlow<List<Conversation>>
     val smsDrafts: StateFlow<List<SmsDraft>>
 interface DataRepository {
-package com.inspiredandroid.kai.data
 }

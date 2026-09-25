@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import app.cash.turbine.test
 import com.inspiredandroid.kai.FileBrowserSource
 import com.inspiredandroid.kai.KaiBuildController
@@ -93,5 +94,4 @@ import kotlinx.coroutines.test.setMain
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class KaiBuildViewModelTest {
-package com.inspiredandroid.kai.ui.build
 }

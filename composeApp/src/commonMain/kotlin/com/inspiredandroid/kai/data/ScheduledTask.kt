@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import androidx.compose.runtime.Immutable
 import kotlin.time.Instant
 import kotlinx.serialization.Serializable
@@ -45,5 +46,4 @@ data class ScheduledTask(
 data class TaskExecutionLogEntry(
 enum class TaskStatus { PENDING, COMPLETED }
 enum class TaskTrigger { TIME, CRON, HEARTBEAT }
-package com.inspiredandroid.kai.data
 }

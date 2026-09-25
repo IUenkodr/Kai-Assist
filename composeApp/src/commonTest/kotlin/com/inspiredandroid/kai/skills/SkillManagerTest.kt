@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.skills
 import com.inspiredandroid.kai.testutil.FakeSandboxController
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -53,5 +54,4 @@ import kotlinx.coroutines.test.runTest
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class SkillManagerTest {
-package com.inspiredandroid.kai.skills
 }

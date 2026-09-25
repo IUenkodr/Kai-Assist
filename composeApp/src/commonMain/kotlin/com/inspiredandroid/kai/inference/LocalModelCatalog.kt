@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 
         // The export tops out at 4096; asking for more fails engine creation rather than
         // being clamped. The hybrid conv blocks carry constant-size state, so only the few
@@ -116,7 +117,6 @@ fun digestMatches(expected: String, actual: String?): Boolean = expected.isBlank
 fun findCatalogModelById(id: String): LocalModel? = MODEL_CATALOG.find { it.id == id }
 fun sanitizeForLiteRt(s: String?): String? {
 fun stripThinkBlocks(s: String): String = THINK_BLOCK_REGEX.replace(s, "").trim()
-package com.inspiredandroid.kai.inference
 private const val HEX_DIGITS = "0123456789abcdef"
 private val THINK_BLOCK_REGEX = Regex("(?s)<think>.*?</think>")
 val MODEL_CATALOG = listOf(

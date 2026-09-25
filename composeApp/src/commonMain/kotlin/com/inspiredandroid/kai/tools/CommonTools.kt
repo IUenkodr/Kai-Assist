@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.AppSettings
 import com.inspiredandroid.kai.data.MemoryCategory
 import com.inspiredandroid.kai.data.MemoryStore
@@ -253,7 +254,6 @@ import kotlinx.serialization.json.Json
 /**
 @Serializable
 object CommonTools {
-package com.inspiredandroid.kai.tools
 private data class IpConnectionInfo(
 private data class IpLocationResponse(
 private data class IpTimezoneInfo(

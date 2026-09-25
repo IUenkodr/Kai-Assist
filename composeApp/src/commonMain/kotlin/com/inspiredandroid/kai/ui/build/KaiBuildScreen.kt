@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -240,7 +241,6 @@ import org.koin.compose.viewmodel.koinViewModel
 data class KaiBuildActions(
 fun KaiBuildScreen(
 internal fun KaiBuildScreenContent(
-package com.inspiredandroid.kai.ui.build
 private const val KAI_BUILD_FILES_KEY = "kaiBuildFiles"
 private const val PROJECTS_GUEST_DIR = "/root/projects"
 private fun KaiBuildTopBar(

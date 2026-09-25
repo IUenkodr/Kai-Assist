@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.splinterlands
 import com.inspiredandroid.kai.data.SharedJson
 import com.inspiredandroid.kai.httpClient
 import io.ktor.client.request.forms.submitForm
@@ -123,5 +124,4 @@ import kotlinx.serialization.json.jsonPrimitive
     suspend fun postBattleTx(signedTx: String, jwt: String): JsonObject {
     }
 class SplinterlandsApi {
-package com.inspiredandroid.kai.splinterlands
 }

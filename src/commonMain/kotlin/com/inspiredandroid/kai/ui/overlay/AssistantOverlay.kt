@@ -5,7 +5,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
 import com.inspiredandroid.kai.ui.overlay.OverlayContent
-package com.inspiredandroid.kai.ui.overlay
 
 
 @Composable

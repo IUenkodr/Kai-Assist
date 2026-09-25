@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown.math
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
@@ -346,5 +347,4 @@ import kotlinx.collections.immutable.toImmutableList
  */
 /**
 internal object MathParser {
-package com.inspiredandroid.kai.ui.markdown.math
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -457,7 +458,6 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun SandboxFilesContent(
 internal fun breadcrumbs(currentPath: String, rootPath: String): List<Pair<String, String>> {
-package com.inspiredandroid.kai.ui.sandbox
 private const val DEFAULT_INITIAL_PATH = "/root"
 private const val DEFAULT_ROOT_PATH = "/"
 private const val SANDBOX_HOME_PATH = "/root"

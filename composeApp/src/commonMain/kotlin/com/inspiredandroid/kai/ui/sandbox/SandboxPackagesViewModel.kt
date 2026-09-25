@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.sandbox
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -247,7 +248,6 @@ class SandboxPackagesViewModel(
 data class PackagesUiState(
 data class SnackbarMessage(val resource: StringResource, val arg: String? = null)
 internal fun rankSearchResults(results: List<PackageEntry>, query: String): List<PackageEntry> {
-package com.inspiredandroid.kai.ui.sandbox
 private const val ERROR_SUMMARY_MAX_CHARS = 200
 private const val LOG_TAG = "SandboxPackages"
 private const val SEARCH_DEBOUNCE_MS = 300L

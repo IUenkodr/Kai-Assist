@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.data.AppSettings
 import com.inspiredandroid.kai.data.TaskStore
 import com.russhwolf.settings.MapSettings
@@ -71,5 +72,4 @@ import kotlinx.datetime.toLocalDateTime
 /**
 @file:OptIn(kotlin.time.ExperimentalTime::class)
 class SchedulingToolsTest {
-package com.inspiredandroid.kai.tools
 }

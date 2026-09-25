@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.openaicompatible
 import com.inspiredandroid.kai.network.tools.Tool
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
@@ -95,7 +96,6 @@ import kotlinx.serialization.json.put
 internal data class InlineToolCallExtraction(
 internal data class ParsedInlineToolCall(
 internal fun extractInlineToolCalls(
-package com.inspiredandroid.kai.network.dtos.openaicompatible
 private const val CLOSE_TAG = "</tool_call>"
 private const val OPEN_TAG = "<tool_call>"
 private fun coerceParameterValue(

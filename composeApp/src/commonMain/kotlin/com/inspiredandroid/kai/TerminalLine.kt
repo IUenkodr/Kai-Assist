@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.runtime.Immutable
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -17,6 +18,5 @@ import kotlinx.serialization.Serializable
     }
 @Immutable
 @Serializable
-package com.inspiredandroid.kai
 sealed interface TerminalLine {
 }

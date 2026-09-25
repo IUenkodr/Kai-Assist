@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import android.app.NotificationManager
 import android.content.ComponentName
 import android.content.Context
@@ -47,6 +48,5 @@ import org.koin.java.KoinJavaComponent.inject
     private val supported: Boolean by lazy { context.declaresNotificationListener() }
     }
 actual class NotificationListenerController actual constructor() {
-package com.inspiredandroid.kai.tools
 private const val NOTIFICATION_LISTENER_FQN =
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat
 import androidx.compose.runtime.Immutable
 import io.github.vinceglb.filekit.PlatformFile
 
@@ -28,4 +29,3 @@ import io.github.vinceglb.filekit.PlatformFile
 )
 @Immutable
 data class ChatActions(
-package com.inspiredandroid.kai.ui.chat

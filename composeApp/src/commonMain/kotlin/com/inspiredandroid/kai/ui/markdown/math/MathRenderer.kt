@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown.math
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -389,7 +390,6 @@ import kotlinx.collections.immutable.toImmutableList
 // Typographic ratios relative to the current base font size. Picked visually; not TeX-exact.
 @Composable
 fun MathFormula(
-package com.inspiredandroid.kai.ui.markdown.math
 private const val ACCENT_GLYPH_SCALE = 0.85f
 private const val BIG_OP_SCALE_DISPLAY = 1.6f
 private const val BIG_OP_SCALE_INLINE = 1.3f

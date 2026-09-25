@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -52,5 +53,4 @@ import com.inspiredandroid.kai.ui.handCursor
 ) {
 @Composable
 fun KaiSearchField(
-package com.inspiredandroid.kai.ui.components
 }

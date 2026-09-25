@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.components
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.grid.LazyGridState
@@ -13,4 +14,3 @@ import androidx.compose.ui.Modifier
 actual fun VerticalScrollbarForGrid(
 actual fun VerticalScrollbarForList(
 actual fun VerticalScrollbarForScroll(
-package com.inspiredandroid.kai.ui.components

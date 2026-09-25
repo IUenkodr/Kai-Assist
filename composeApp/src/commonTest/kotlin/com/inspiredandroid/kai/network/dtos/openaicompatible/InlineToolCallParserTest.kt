@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.openaicompatible
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
 import com.inspiredandroid.kai.network.tools.ToolSchema
@@ -71,5 +72,4 @@ import kotlin.test.assertTrue
     private val execShell = stubTool(
     }
 class InlineToolCallParserTest {
-package com.inspiredandroid.kai.network.dtos.openaicompatible
 }

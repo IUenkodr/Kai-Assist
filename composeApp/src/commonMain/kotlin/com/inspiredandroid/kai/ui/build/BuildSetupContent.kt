@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -117,6 +118,5 @@ import org.jetbrains.compose.resources.stringResource
 /**
 @Composable
 internal fun BuildSetupContent(
-package com.inspiredandroid.kai.ui.build
 private fun stepLabel(state: BuildEnvironmentState.Installing): String = when (state.step) {
 }

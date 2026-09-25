@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network
 import com.inspiredandroid.kai.data.FreeProviderSuggestion
 import com.inspiredandroid.kai.data.Service
 import com.inspiredandroid.kai.data.freeProviderSuggestions
@@ -50,5 +51,4 @@ import kotlin.test.assertTrue
     fun `unrelated provider error does not show suggestions`() {
     }
 class FreeProviderSuggestionsTriggerTest {
-package com.inspiredandroid.kai.network
 }

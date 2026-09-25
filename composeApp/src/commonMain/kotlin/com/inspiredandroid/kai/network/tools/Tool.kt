@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.tools
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.serialization.Serializable
@@ -17,5 +18,4 @@ import kotlinx.serialization.json.JsonObject
 data class ParameterSchema(
 data class ToolSchema(
 interface Tool {
-package com.inspiredandroid.kai.network.tools
 }

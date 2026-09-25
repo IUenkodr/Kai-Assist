@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.screenshots
 import kotlinx.coroutines.flow.StateFlow
 import nl.marc_apps.tts.TextToSpeechInstance
 import nl.marc_apps.tts.Voice
@@ -31,5 +32,4 @@ import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
     }
 @file:OptIn(ExperimentalVoiceApi::class)
 class FakeTextToSpeechInstance : TextToSpeechInstance {
-package com.inspiredandroid.kai.screenshots
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.runtime.Immutable
 import com.inspiredandroid.kai.data.EmailAccount
 import com.inspiredandroid.kai.data.EmailSyncState
@@ -167,7 +168,6 @@ data class SettingsUiState(
 enum class ConnectionStatus {
 enum class McpConnectionStatus {
 enum class SettingsTab {
-package com.inspiredandroid.kai.ui.settings
 sealed interface ImportResult {
 sealed interface PendingDeletion {
 }

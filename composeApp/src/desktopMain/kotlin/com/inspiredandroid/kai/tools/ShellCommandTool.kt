@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
 import com.inspiredandroid.kai.network.tools.ToolInfo
@@ -133,7 +134,6 @@ Output is limited to ${MAX_OUTPUT_LENGTH} characters per stream; for large outpu
 Set background=true to run long-lived processes (servers, builds). Use the manage_process tool to check on them."""
 Use for file operations, system info, running scripts, installing packages, etc.
 object ShellCommandTool : Tool {
-package com.inspiredandroid.kai.tools
 private const val DEFAULT_TIMEOUT_SECONDS = 30L
 private const val MAX_OUTPUT_LENGTH = 30_000
 private const val MAX_TIMEOUT_SECONDS = 120L

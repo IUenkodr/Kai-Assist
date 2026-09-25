@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.integration
 import com.inspiredandroid.kai.data.Service
 import com.inspiredandroid.kai.network.Requests
 import com.inspiredandroid.kai.network.ServiceCredentials
@@ -484,5 +485,4 @@ import kotlinx.serialization.json.JsonPrimitive
  */
 /**
 class KaiUiValidationTest {
-package com.inspiredandroid.kai.integration
 }

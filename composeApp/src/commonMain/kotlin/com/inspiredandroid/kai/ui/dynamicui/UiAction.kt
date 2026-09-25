@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.dynamicui
 import androidx.compose.runtime.Immutable
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,6 +25,5 @@ data class CallbackAction(
 data class CopyToClipboardAction(
 data class OpenUrlAction(
 data class ToggleAction(
-package com.inspiredandroid.kai.ui.dynamicui
 sealed interface UiAction
 }

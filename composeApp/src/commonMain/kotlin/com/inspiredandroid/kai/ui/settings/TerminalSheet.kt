@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
@@ -432,7 +433,6 @@ internal data class TerminalColors(
 internal fun monoStyle(size: TextUnit, color: Color = Color.Unspecified) = TextStyle(
 internal fun terminalColors(darkBackground: Boolean = false): TerminalColors {
 internal val TerminalDarkBg = Color(0xFF1E1E1E)
-package com.inspiredandroid.kai.ui.settings
 private const val MAX_OUTPUT_LINES = 500
 private const val STREAM_BUFFER_CAPACITY = 256
 private const val STREAM_FLUSH_BATCH_MAX = 200

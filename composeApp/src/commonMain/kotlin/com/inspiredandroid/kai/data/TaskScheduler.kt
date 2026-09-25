@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.email.EmailPoller
 import com.inspiredandroid.kai.getBackgroundDispatcher
 import com.inspiredandroid.kai.isEmailSupported
@@ -285,5 +286,4 @@ import kotlinx.coroutines.launch
 ) {
 @OptIn(ExperimentalTime::class)
 class TaskScheduler(
-package com.inspiredandroid.kai.data
 }

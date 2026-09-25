@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 
     "chatglm3-6b",
     "codellama",
@@ -117,5 +118,4 @@ internal fun supportsTools(modelId: String): Boolean {
 internal val LIMITED_MODELS = listOf(
 internal val RESPONSES_API_MODELS = listOf(
 internal val TEXT_ONLY_IMAGE_MODELS: Set<String> = setOf(
-package com.inspiredandroid.kai.data
 }

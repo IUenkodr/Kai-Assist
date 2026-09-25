@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build
 import android.annotation.SuppressLint
 import android.content.Context
 import android.text.InputType
@@ -120,5 +121,4 @@ import com.inspiredandroid.kai.build.terminal.TerminalModifiers
 /**
 @SuppressLint("ViewConstructor")
 internal class TerminalInputView(context: Context) : View(context) {
-package com.inspiredandroid.kai.build
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.build.terminal
 import kotlinx.collections.immutable.toImmutableList
 
                         currentBg = map256(params[i + 2])
@@ -347,5 +348,4 @@ import kotlinx.collections.immutable.toImmutableList
 ) {
 /**
 class TerminalScreen(
-package com.inspiredandroid.kai.build.terminal
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.splinterlands
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.int
@@ -1238,7 +1239,6 @@ fun pickTeam(
 fun validateTeam(
 internal fun buildInactiveColors(inactiveStr: String): Set<String> {
 internal fun determineDragonAllyColor(summonerColor: String?, monsterUids: List<String>, monsterLookup: Map<String, CardEntry>): String? {
-package com.inspiredandroid.kai.splinterlands
 private data class RulesetContext(
 private enum class Position { TANK, BACKLINE }
 private fun atLevel(element: kotlinx.serialization.json.JsonElement?, level: Int): Int {

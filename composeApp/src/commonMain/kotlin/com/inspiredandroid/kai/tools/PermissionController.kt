@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.tools
 import androidx.compose.runtime.Composable
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -65,5 +66,4 @@ expect fun SetupPermissionHandler(controller: PermissionController)
 internal expect fun platformCanRequest(permission: AppPermission): Boolean
 internal expect fun platformHasPermission(permission: AppPermission): Boolean
 internal expect fun platformOpenAppSettings()
-package com.inspiredandroid.kai.tools
 }

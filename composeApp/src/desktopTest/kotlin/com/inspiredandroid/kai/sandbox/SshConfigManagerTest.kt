@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sandbox
 import java.io.File
 import java.nio.file.Files
 import kotlin.test.AfterTest
@@ -112,5 +113,4 @@ import kotlin.test.assertTrue
     private lateinit var mgr: SshConfigManager
     }
 class SshConfigManagerTest {
-package com.inspiredandroid.kai.sandbox
 }

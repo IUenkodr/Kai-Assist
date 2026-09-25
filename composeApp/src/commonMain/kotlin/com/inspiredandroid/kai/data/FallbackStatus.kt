@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.network.UiError
 
     val errorReason: UiError,
@@ -10,4 +11,3 @@ import com.inspiredandroid.kai.network.UiError
 )
 /**
 data class FallbackStatus(
-package com.inspiredandroid.kai.data

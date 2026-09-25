@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlinx.serialization.KSerializer
 
         if (items.isEmpty()) return
@@ -29,5 +30,4 @@ import kotlinx.serialization.KSerializer
 ) {
 /**
 class PendingQueue<T, K>(
-package com.inspiredandroid.kai.data
 }

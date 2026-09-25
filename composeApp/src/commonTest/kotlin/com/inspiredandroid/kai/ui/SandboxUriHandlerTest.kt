@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -19,5 +20,4 @@ import kotlin.test.assertNull
     fun `relative link is not a sandbox path`() {
     }
 class SandboxUriHandlerTest {
-package com.inspiredandroid.kai.ui
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -62,5 +63,4 @@ import kotlin.test.assertTrue
     fun sanitizeImportFileName_stripsPathAndUnsafeChars() {
     }
 class LocalModelImportTest {
-package com.inspiredandroid.kai.inference
 }

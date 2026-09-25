@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -449,7 +450,6 @@ internal val StatusColorChecking = Color(0xFFFF9800)
 internal val StatusColorConnected = Color(0xFF4CAF50)
 internal val StatusColorError = Color(0xFFF44336)
 internal val StatusColorUnknown = Color(0xFF9E9E9E)
-package com.inspiredandroid.kai.ui.settings
 private fun BottomInfo() {
 private fun SettingsTabSelector(
 private fun TopBar(onNavigateBack: () -> Unit) {

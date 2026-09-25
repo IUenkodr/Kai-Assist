@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CONFIGURED_SERVICES
 import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
 import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_FREE_FALLBACK_ENABLED
@@ -260,7 +261,6 @@ import kotlinx.serialization.json.jsonPrimitive
 @file:OptIn(kotlin.uuid.ExperimentalUuidApi::class, kotlin.time.ExperimentalTime::class)
 fun AppSettings.exportToJson(
 fun AppSettings.importFromJson(
-package com.inspiredandroid.kai.data
 private fun sanitizeConversations(element: JsonElement): List<Conversation> {
 private fun sanitizeMemories(element: JsonElement): String {
 private fun sanitizeScheduledTasks(element: JsonElement): String {

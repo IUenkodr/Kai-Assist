@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -145,7 +146,6 @@ fun Modifier.kaiAdaptiveCardSurface(shape: Shape = RoundedCornerShape(16.dp)): M
 fun Theme(
 fun kaiAdaptiveCardColors(): CardColors = CardDefaults.cardColors(
 fun outlineTextFieldColors() = OutlinedTextFieldDefaults.colors(
-package com.inspiredandroid.kai.ui
 val AI_Gradient = Brush.linearGradient(listOf(ElectricIndigo, DeepViolet, CyanAccent))
 val ColorScheme.isOledFlavor: Boolean get() = background == Color.Black
 val CyanAccent = Color(0xFF06B6D4)

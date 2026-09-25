@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data.providers
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.FunctionCall
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.Message
 import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.ToolCall
@@ -82,5 +83,4 @@ import kotlinx.serialization.json.JsonPrimitive
  */
 /**
 class SanitizeToolMessagesTest {
-package com.inspiredandroid.kai.data.providers
 }

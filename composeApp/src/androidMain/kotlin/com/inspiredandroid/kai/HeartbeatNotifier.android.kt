@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -52,7 +53,6 @@ import org.koin.java.KoinJavaComponent.inject
 /** Shared with the AI `send_notification` tool — ensures the channel is created once. */
 actual fun sendHeartbeatNotification(title: String, body: String) {
 const val EXTRA_OPEN_HEARTBEAT = "com.inspiredandroid.kai.OPEN_HEARTBEAT"
-package com.inspiredandroid.kai
 private const val CHANNEL_ID = "kai_ai_notifications"
 private const val HEARTBEAT_NOTIFICATION_ID = 9002
 private fun ensureChannel(manager: NotificationManager) {

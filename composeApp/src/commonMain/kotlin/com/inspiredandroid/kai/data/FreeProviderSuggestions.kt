@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 
             "FreeProviderSuggestion requires apiKeyUrl on ${service.id}"
         get() = requireNotNull(service.apiKeyUrl) {
@@ -17,6 +18,5 @@
 ) {
 /**
 data class FreeProviderSuggestion(
-package com.inspiredandroid.kai.data
 val freeProviderSuggestions: List<FreeProviderSuggestion> = listOf(
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.chat.composables
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -164,7 +165,6 @@ import org.jetbrains.compose.resources.vectorResource
 ) {
 @Composable
 internal fun ServiceSelector(
-package com.inspiredandroid.kai.ui.chat.composables
 private class AnchorAbovePositionProvider(
 private fun ServiceMenuItem(
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import androidx.compose.runtime.Immutable
 
      * Installs [names] in one call, each a separate shell argument. apt resolves
@@ -44,5 +45,4 @@ data class PackageEntry(
 interface PackageManagerSpec {
 internal fun shellQuote(s: String): String = "'" + s.replace("'", "'\\''") + "'"
 internal fun shellQuoteAll(names: List<String>): String = names.joinToString(" ") { shellQuote(it) }
-package com.inspiredandroid.kai.linux
 }

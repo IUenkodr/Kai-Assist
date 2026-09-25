@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sandbox
 import com.inspiredandroid.kai.linux.ProotHandle
 import com.inspiredandroid.kai.linux.ProotLauncher
 import java.io.BufferedReader
@@ -66,7 +67,6 @@ import java.util.concurrent.atomic.AtomicBoolean
  */
 /**
 class ProotExecutor(private val launcher: ProotLauncher) {
-package com.inspiredandroid.kai.sandbox
 private const val DEFAULT_TIMEOUT_SECONDS = 30L
 private const val MAX_OUTPUT_LENGTH = 15_000
 private const val MAX_TIMEOUT_SECONDS = 180L

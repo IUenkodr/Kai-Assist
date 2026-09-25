@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.tools
 import androidx.compose.runtime.Immutable
 import org.jetbrains.compose.resources.StringResource
 
@@ -24,4 +25,3 @@ import org.jetbrains.compose.resources.StringResource
 /**
 @Immutable
 data class ToolInfo(
-package com.inspiredandroid.kai.network.tools

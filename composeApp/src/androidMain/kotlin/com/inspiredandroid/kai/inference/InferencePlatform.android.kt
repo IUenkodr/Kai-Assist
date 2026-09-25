@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.inference
 import android.app.ActivityManager
 import android.app.NotificationManager
 import android.content.Context
@@ -36,7 +37,6 @@ actual fun getTotalMemoryBytes(): Long = getMemoryInfo().totalMem
 actual fun startDownloadNotificationService() {
 actual fun stopDownloadNotificationService() {
 actual fun updateDownloadNotificationProgress(percent: Int) {
-package com.inspiredandroid.kai.inference
 private fun getMemoryInfo(): ActivityManager.MemoryInfo {
 private val context: Context by inject(Context::class.java)
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -356,7 +357,6 @@ import org.jetbrains.compose.resources.vectorResource
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 internal fun McpServersSection(
-package com.inspiredandroid.kai.ui.settings
 private data class HeaderEntry(val key: String = "Authorization", val value: String = "")
 private fun AddMcpServerDialog(
 private fun McpServerCard(

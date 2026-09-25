@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.settings
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -105,5 +106,4 @@ import kotlinx.coroutines.launch
 @Immutable
 class SandboxViewModel(
 data class SandboxUiState(
-package com.inspiredandroid.kai.ui.settings
 }

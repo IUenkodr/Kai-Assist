@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.network.dtos.gemini
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
 
@@ -44,5 +45,4 @@ data class FunctionParameters(
 data class GeminiChatRequestDto(
 data class GeminiTool(
 data class PropertySchema(
-package com.inspiredandroid.kai.network.dtos.gemini
 }

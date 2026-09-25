@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import android.app.Application
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -27,5 +28,4 @@ import org.koin.core.context.startKoin
     private val taskScheduler: TaskScheduler by inject()
     }
 class KaiApplication : Application() {
-package com.inspiredandroid.kai
 }

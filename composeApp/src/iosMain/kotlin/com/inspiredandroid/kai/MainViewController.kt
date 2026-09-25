@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,5 +24,4 @@ import nl.marc_apps.tts.rememberTextToSpeechOrNull
     }
     } else {
 fun MainViewController() = ComposeUIViewController {
-package com.inspiredandroid.kai
 }

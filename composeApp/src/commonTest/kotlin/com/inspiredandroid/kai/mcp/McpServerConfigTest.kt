@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.mcp
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -74,5 +75,4 @@ import kotlinx.serialization.json.Json
     private val json = Json {
     }
 class McpServerConfigTest {
-package com.inspiredandroid.kai.mcp
 }

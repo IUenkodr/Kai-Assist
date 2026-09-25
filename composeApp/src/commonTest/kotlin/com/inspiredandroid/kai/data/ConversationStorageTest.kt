@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import com.inspiredandroid.kai.TerminalLine
 import com.russhwolf.settings.MapSettings
 import kotlin.test.Test
@@ -70,5 +71,4 @@ import kotlin.test.assertTrue
     private fun createStorage(settings: MapSettings = MapSettings()): ConversationStorage {
     }
 class ConversationStorageTest {
-package com.inspiredandroid.kai.data
 }

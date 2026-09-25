@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.ui.markdown
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -100,5 +101,4 @@ import kotlinx.collections.immutable.persistentListOf
     fun `unclosed fenced code is rendered with closed=false`() {
     }
 class BlockParsingTest {
-package com.inspiredandroid.kai.ui.markdown
 }

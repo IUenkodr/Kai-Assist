@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sms
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -111,6 +112,5 @@ import org.koin.java.KoinJavaComponent.inject
 // to cache for the process lifetime. Shared with Platform.android.kt's
 actual class SmsReader actual constructor() {
 internal fun Context.declaresReadSms(): Boolean = try {
-package com.inspiredandroid.kai.sms
 }
 } catch (_: Exception) {

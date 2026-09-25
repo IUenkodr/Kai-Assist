@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.sms
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -37,5 +38,4 @@ import org.koin.java.KoinJavaComponent.inject
     private val context: Context by inject(Context::class.java)
     }
 actual class SmsSender actual constructor() {
-package com.inspiredandroid.kai.sms
 }

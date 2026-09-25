@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -66,5 +67,4 @@ import kotlin.test.assertTrue
     fun `skips packages that are removed but keep their config`() {
     }
 class AptPackageManagerTest {
-package com.inspiredandroid.kai.linux
 }

@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.linux
 import android.os.Build
 import java.io.File
 import java.io.IOException
@@ -109,7 +110,6 @@ import java.net.URL
 // proot does not support, so `apk update` fails under the sandbox runtime.
 object AlpineSpec : DistroSpec {
 object DebianSpec : DistroSpec {
-package com.inspiredandroid.kai.linux
 private const val ALPINE_BRANCH = "v3.22"
 private const val ALPINE_VERSION = "3.22.5"
 private const val DEBIAN_RELEASE = "bookworm"

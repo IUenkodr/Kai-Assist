@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.data
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -33,5 +34,4 @@ import kotlinx.serialization.serializer
     val drafts: StateFlow<List<SmsDraft>> = _drafts.asStateFlow()
     }
 class SmsDraftStore(appSettings: AppSettings) {
-package com.inspiredandroid.kai.data
 }

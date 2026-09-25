@@ -1,3 +1,4 @@
+package com.inspiredandroid.kai.mcp
 import com.inspiredandroid.kai.data.AppSettings
 import com.inspiredandroid.kai.data.SettingsJsonList
 import com.inspiredandroid.kai.network.tools.Tool
@@ -136,6 +137,5 @@ import kotlinx.serialization.json.Json
     suspend fun connectEnabledServers() {
     }
 class McpServerManager(private val appSettings: AppSettings) {
-package com.inspiredandroid.kai.mcp
 private val serverIdRegex = Regex("[^a-z0-9]")
 }
