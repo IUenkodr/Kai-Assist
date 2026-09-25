@@ -37,7 +37,7 @@ jobs:
         with:
           packages: platform-tools
 
-      - name: Install required Android build‑tools versions
+      - name: Install required Android build-tools versions
         run: |
           sdkmanager "build-tools;36.0.0"
           sdkmanager "build-tools;29.0.3"
@@ -46,10 +46,11 @@ jobs:
         run: bash ./gradlew :androidApp:assembleFossRelease --stacktrace
 
       # -------------------------------------------------------------------
-      #  OPTIONAL signing – runs only when the input flag is true and the secrets exist
+      # Optional signing – runs only when the input flag is true and the
+      # required secrets are present.
       # -------------------------------------------------------------------
       - name: Sign APK (if requested)
-        if: ${{ inputs.sign_apk == 'true' && secrets.KEYSTORE_B64 != '' && secrets.KEY_ALIAS != '' && secrets.KEYSTORE_PASSWORD != '' }}
+        if: ${{ github.event.inputs.sign_apk == 'true' && secrets.KEYSTORE_B64 != '' && secrets.KEY_ALIAS != '' && secrets.KEYSTORE_PASSWORD != '' }}
         uses: r0adkll/sign-android-release@v1
         with:
           releaseDirectory: androidApp/build/outputs/apk/foss/release
