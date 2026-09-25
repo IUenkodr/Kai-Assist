@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.components
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -13,18 +14,21 @@ import androidx.compose.ui.graphics.ImageBitmap
 import com.inspiredandroid.kai.PlatformBackHandler
 import com.inspiredandroid.kai.ui.chat.composables.FullScreenImageViewerOverlay
 
-            FullScreenImageViewerOverlay(bitmap = bmp, onDismiss = dismiss)
-            PlatformBackHandler(enabled = true, onBack = dismiss)
-            content()
-        CompositionLocalProvider(LocalShowFullScreenImage provides show) {
-        image?.let { bmp ->
-        }
-    Box(Modifier.fillMaxSize()) {
-    val dismiss = remember { { image = null } }
-    val show = remember { { bitmap: ImageBitmap -> image = bitmap } }
-    var image by remember { mutableStateOf<ImageBitmap?>(null) }
-    }
+val LocalShowFullScreenImage = staticCompositionLocalOf<(ImageBitmap) -> Unit> { { } }
+
 @Composable
 fun FullScreenImageHost(content: @Composable () -> Unit) {
-val LocalShowFullScreenImage = staticCompositionLocalOf<(ImageBitmap) -> Unit> { { } }
+    var image by remember { mutableStateOf<ImageBitmap?>(null) }
+    val show = remember { { bitmap: ImageBitmap -> image = bitmap } }
+    val dismiss = remember { { image = null } }
+
+    Box(Modifier.fillMaxSize()) {
+        CompositionLocalProvider(LocalShowFullScreenImage provides show) {
+            content()
+        }
+        image?.let { bmp ->
+            FullScreenImageViewerOverlay(bitmap = bmp, onDismiss = dismiss)
+            PlatformBackHandler(enabled = true, onBack = dismiss)
+        }
+    }
 }

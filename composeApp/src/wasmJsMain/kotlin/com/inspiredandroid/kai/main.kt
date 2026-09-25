@@ -1,4 +1,8 @@
+@file:Suppress("ktlint:standard:filename")
+@file:OptIn(ExperimentalBrowserHistoryApi::class)
+
 package com.inspiredandroid.kai
+
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -14,41 +18,45 @@ import kotlinx.browser.window
 import nl.marc_apps.tts.TextToSpeechEngine
 import nl.marc_apps.tts.rememberTextToSpeechOrNull
 
-                        "#settings"
-                    else -> ""
-                    navController.navigate(Home)
-                    navController.navigate(Settings)
-                    route.startsWith(Settings.serializer().descriptor.serialName) -> {
-                    }
-                else -> {
-                initRoute.endsWith("settings") -> {
-                val route = entry.destination.route.orEmpty()
-                when {
-                }
-            navController = navController,
-            navController.bindToBrowserNavigation { entry ->
-            null
+@OptIn(ExperimentalComposeUiApi::class)
+fun main() {
+    val body = document.body ?: return
+    document.getElementById("loader")?.remove()
+    ComposeViewport(body) {
+        // Defer TTS initialization until after the first frame
+        var ttsReady by remember { mutableStateOf(false) }
+        LaunchedEffect(Unit) { ttsReady = true }
+        val textToSpeech = if (ttsReady) {
             rememberTextToSpeechOrNull(TextToSpeechEngine.Google)
+        } else {
+            null
+        }
+        val navController = rememberNavController()
+        App(
+            navController = navController,
             textToSpeech = textToSpeech,
+        )
+        LaunchedEffect(Unit) {
             val initRoute = window.location.hash.substringAfter('#', "")
             when {
+                initRoute.endsWith("settings") -> {
+                    navController.navigate(Settings)
+                }
+
+                else -> {
+                    navController.navigate(Home)
+                }
             }
-        )
-        // Defer TTS initialization until after the first frame
-        App(
-        LaunchedEffect(Unit) {
-        LaunchedEffect(Unit) { ttsReady = true }
-        val navController = rememberNavController()
-        val textToSpeech = if (ttsReady) {
-        var ttsReady by remember { mutableStateOf(false) }
+            navController.bindToBrowserNavigation { entry ->
+                val route = entry.destination.route.orEmpty()
+                when {
+                    route.startsWith(Settings.serializer().descriptor.serialName) -> {
+                        "#settings"
+                    }
+
+                    else -> ""
+                }
+            }
         }
-        } else {
-    ComposeViewport(body) {
-    document.getElementById("loader")?.remove()
-    val body = document.body ?: return
     }
-@OptIn(ExperimentalComposeUiApi::class)
-@file:OptIn(ExperimentalBrowserHistoryApi::class)
-@file:Suppress("ktlint:standard:filename")
-fun main() {
 }

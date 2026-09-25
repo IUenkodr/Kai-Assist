@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.markdown
+
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,50 +29,55 @@ import kai.composeapp.generated.resources.Res
 import kai.composeapp.generated.resources.bot_message_copy_content_description
 import org.jetbrains.compose.resources.stringResource
 
-                        contentDescription = stringResource(Res.string.bot_message_copy_content_description),
-                        imageVector = Icons.Filled.ContentCopy,
-                        modifier = Modifier.size(16.dp),
-                    )
-                    Icon(
-                    fontFamily = FontFamily.Monospace,
-                    modifier = Modifier.size(32.dp),
-                    onClick = { copyToClipboard(code) },
-                    style = MaterialTheme.typography.bodyMedium,
-                    style = MaterialTheme.typography.labelSmall,
-                    text = highlighted,
-                    text = language?.takeIf { it.isNotBlank() } ?: "",
-                )
-                ) {
-                IconButton(
-                Text(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 4.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                }
-            ) {
-            Box(Modifier.horizontalScroll(scroll).padding(12.dp)) {
-            HorizontalDivider(color = colorScheme.outline.copy(alpha = 0.2f))
-            Row(
-            val scroll = rememberScrollState()
-            }
-        Column {
-        color = colorScheme.surfaceVariant,
-        contentColor = colorScheme.onSurfaceVariant,
-        highlightCode(code, language, highlightColors)
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp),
-        }
-    ) {
-    Surface(
-    code: String,
-    language: String?,
-    modifier: Modifier = Modifier,
-    val colorScheme = MaterialTheme.colorScheme
-    val copyToClipboard = rememberCopyToClipboard()
-    val highlightColors = remember(colorScheme) { codeHighlightColors(colorScheme) }
-    val highlighted = remember(code, language, highlightColors) {
-    }
-) {
 @Composable
 internal fun CodeFenceBlock(
+    language: String?,
+    code: String,
+    modifier: Modifier = Modifier,
+) {
+    val colorScheme = MaterialTheme.colorScheme
+    val highlightColors = remember(colorScheme) { codeHighlightColors(colorScheme) }
+    val highlighted = remember(code, language, highlightColors) {
+        highlightCode(code, language, highlightColors)
+    }
+    val copyToClipboard = rememberCopyToClipboard()
+
+    Surface(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        color = colorScheme.surfaceVariant,
+        contentColor = colorScheme.onSurfaceVariant,
+    ) {
+        Column {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 4.dp),
+            ) {
+                Text(
+                    text = language?.takeIf { it.isNotBlank() } ?: "",
+                    style = MaterialTheme.typography.labelSmall,
+                )
+                IconButton(
+                    onClick = { copyToClipboard(code) },
+                    modifier = Modifier.size(32.dp),
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.ContentCopy,
+                        contentDescription = stringResource(Res.string.bot_message_copy_content_description),
+                        modifier = Modifier.size(16.dp),
+                    )
+                }
+            }
+            HorizontalDivider(color = colorScheme.outline.copy(alpha = 0.2f))
+            val scroll = rememberScrollState()
+            Box(Modifier.horizontalScroll(scroll).padding(12.dp)) {
+                Text(
+                    text = highlighted,
+                    fontFamily = FontFamily.Monospace,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+        }
+    }
 }

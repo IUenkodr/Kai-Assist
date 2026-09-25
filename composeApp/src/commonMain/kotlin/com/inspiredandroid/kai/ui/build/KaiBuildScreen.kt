@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.build
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -43,205 +44,246 @@ import kotlinx.collections.immutable.toImmutableList
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
-                                        Res.string.kai_build_new_project_content_description,
-                                    ),
-                                    contentDescription = stringResource(
-                                    imageVector = Icons.Default.Add,
-                                )
-                                Icon(
-                                key = KAI_BUILD_FILES_KEY,
-                                modifier = Modifier.handCursor(),
-                                onClick = { showCreateProject = true },
-                                qualifier = KAI_BUILD_FILES,
-                            ) {
-                            ),
-                            // Opens on the project, but browses the whole Debian tree
-                            // This surface is full-screen, so nothing else keeps the
-                            // a breadcrumb away rather than shell-only.
-                            // soft keyboard off the editor's text field.
-                            // the way the chat sandbox does — agent config and /etc are
-                            IconButton(
-                            initialPath = "$PROJECTS_GUEST_DIR/$project",
-                            modifier = Modifier.fillMaxSize().imePadding(),
-                            viewModel = koinViewModel(
-                            }
-                        )
-                        SandboxFilesContent(
-                        actions.selectSession(id)
-                        actions.startSession(agentId)
-                        filesOpen = false
-                        if (state.build.isReady) {
-                        installedAgents = installedAgents,
-                        launchAgentId = state.launchAgentId,
-                        onCancel = actions.cancel,
-                        onDeleteProject = actions.deleteProject,
-                        onInstall = actions.install,
-                        onInstallAgent = actions.installAgent,
-                        onKey = actions.sendKey,
-                        onMouse = actions.sendMouse,
-                        onOpenProject = actions.openProject,
-                        onRenameProject = actions.renameProject,
-                        onResize = actions.resizeTerminal,
-                        onSelectLaunchAgent = actions.setLaunchAgent,
-                        onSubmitLine = actions.submitLine,
-                        onText = actions.sendText,
-                        onToggleAgent = actions.toggleAgent,
-                        onUninstall = actions.uninstall,
-                        selectedAgents = state.selectedAgents,
-                        session = session,
-                        state = state.build,
-                        }
-                    )
-                    ?: sessions.firstOrNull()
-                    BuildProjectsContent(
-                    BuildSetupContent(
-                    actions = {
-                    activeSessionId = state.build.activeSessionId,
-                    filesOpen -> {
-                    filesSelected = filesOpen,
-                    installedAgents = installedAgents,
-                    onBack = actions.closeProject,
-                    onCloseSession = actions.closeSession,
-                    onExit = onExit,
-                    onNewSession = { agentId ->
-                    onSelectFiles = { filesOpen = true },
-                    onSelectSession = { id ->
-                    session != null -> BuildTerminalContent(
-                    sessions = sessions,
-                    state.build.sessions.filter { it.project == project }.toImmutableList()
-                    title = stringResource(Res.string.kai_build_title),
-                    }
-                    },
-                )
-                .fillMaxSize()
-                .navigationBarsPadding(),
-                .statusBarsPadding()
-                // Fall back to the project's first tab: the active id can briefly point
-                // elsewhere while a session is being closed.
-                BuildSessionBar(
-                KaiBuildTopBar(
-                actions.createProject(name)
-                contentDescription = stringResource(Res.string.kai_build_exit_content_description),
-                if (state.build.isReady) {
-                imageVector = Icons.Default.Close,
-                showCreateProject = false
-                val session = sessions.firstOrNull { it.id == state.build.activeSessionId }
-                val sessions = remember(state.build.sessions, project) {
-                when {
-                }
-                } else {
-            )
-            Icon(
-            cancel = viewModel::cancel,
-            closeProject = viewModel::closeProject,
-            closeSession = viewModel::closeSession,
-            color = MaterialTheme.colorScheme.onBackground,
-            createProject = viewModel::createProject,
-            deleteProject = viewModel::deleteProject,
-            else -> onExit()
-            filesOpen -> filesOpen = false
-            if (project != null) {
-            install = viewModel::install,
-            installAgent = viewModel::installAgent,
-            maxLines = 1,
-            modifier = Modifier
-            modifier = Modifier.weight(1f).padding(end = 8.dp),
-            onCreate = { name ->
-            onDismiss = { showCreateProject = false },
-            openProject = viewModel::openProject,
-            overflow = TextOverflow.Ellipsis,
-            project != null -> actions.closeProject()
-            renameProject = viewModel::renameProject,
-            resizeTerminal = viewModel::resizeTerminal,
-            selectSession = viewModel::selectSession,
-            sendKey = viewModel::sendKey,
-            sendMouse = viewModel::sendMouse,
-            sendText = viewModel::sendText,
-            setLaunchAgent = viewModel::setLaunchAgent,
-            startSession = viewModel::startSession,
-            style = MaterialTheme.typography.titleMedium,
-            submitLine = viewModel::submitLine,
-            text = title,
-            toggleAgent = viewModel::toggleAgent,
-            uninstall = viewModel::uninstall,
-            }
-            } else {
-            },
-        )
-        ) {
-        BuildAgents.all.filter { it.id in state.build.installedAgents }.toImmutableList()
-        Column(
-        CreateProjectDialog(
-        IconButton(onClick = onExit, modifier = Modifier.handCursor()) {
-        KaiBuildActions(
-        Text(
-        actions()
-        color = MaterialTheme.colorScheme.background,
-        modifier = Modifier.fillMaxWidth(),
-        modifier = modifier.fillMaxSize(),
-        verticalAlignment = Alignment.CenterVertically,
-        when {
-        }
-    ) {
-    // Files is a view of the project, not a session — it resets when the project does.
-    // Surface, not just a background modifier: it also provides the matching
-    // content color, which is what keeps the bare icons legible in dark mode.
-    KaiBuildScreenContent(state = state, actions = actions, onExit = onExit, modifier = modifier)
-    PlatformBackHandler(enabled = true) {
-    Row(
-    Surface(
-    actions: @Composable RowScope.() -> Unit = {},
-    actions: KaiBuildActions,
-    if (showCreateProject) {
-    modifier: Modifier = Modifier,
-    onExit: () -> Unit,
-    state: KaiBuildUiState,
-    title: String,
-    val actions = remember(viewModel) {
-    val cancel: () -> Unit,
-    val closeProject: () -> Unit,
-    val closeSession: (String) -> Unit,
-    val createProject: (String) -> Unit,
-    val deleteProject: (String) -> Unit,
-    val install: () -> Unit,
-    val installAgent: (String) -> Unit,
-    val installedAgents = remember(state.build.installedAgents) {
-    val openProject: (String) -> Unit,
-    val project = state.openProject
-    val renameProject: (name: String, newName: String) -> Unit,
-    val resizeTerminal: (columns: Int, rows: Int) -> Unit,
-    val selectSession: (String) -> Unit,
-    val sendKey: (TerminalKey, TerminalModifiers) -> Unit,
-    val sendMouse: (String) -> Unit,
-    val sendText: (String, TerminalModifiers) -> Unit,
-    val setLaunchAgent: (String?) -> Unit,
-    val startSession: (String?) -> Unit,
-    val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val submitLine: (String) -> Unit,
-    val toggleAgent: (String) -> Unit,
-    val uninstall: () -> Unit,
-    var filesOpen by rememberSaveable(project) { mutableStateOf(false) }
-    var showCreateProject by rememberSaveable { mutableStateOf(false) }
-    viewModel: KaiBuildViewModel = koinViewModel(),
-    }
- *
- * Full-screen Kai Build surface. Entered from the empty chat state and left via
- * Keeps Kai Build's browser out of the chat sandbox's ViewModel slot: same class,
- * One screen, three states: set up Linux, pick a project, work in its terminal.
- * same store owner, so without a distinct key they would share one instance.
- * so it never becomes a navigation destination of its own.
- * the top-bar close button or system back — same shape as Interactive UI mode,
- */
-)
-) {
-/**
 /** Where Debian mounts the project folders — the browser's root inside a project. */
-@Composable
+private const val PROJECTS_GUEST_DIR = "/root/projects"
+
+/**
+ * Keeps Kai Build's browser out of the chat sandbox's ViewModel slot: same class,
+ * same store owner, so without a distinct key they would share one instance.
+ */
+private const val KAI_BUILD_FILES_KEY = "kaiBuildFiles"
+
 @Immutable
 data class KaiBuildActions(
+    val toggleAgent: (String) -> Unit,
+    val install: () -> Unit,
+    val installAgent: (String) -> Unit,
+    val cancel: () -> Unit,
+    val uninstall: () -> Unit,
+    val setLaunchAgent: (String?) -> Unit,
+    val openProject: (String) -> Unit,
+    val createProject: (String) -> Unit,
+    val deleteProject: (String) -> Unit,
+    val renameProject: (name: String, newName: String) -> Unit,
+    val closeProject: () -> Unit,
+    val startSession: (String?) -> Unit,
+    val selectSession: (String) -> Unit,
+    val closeSession: (String) -> Unit,
+    val submitLine: (String) -> Unit,
+    val sendKey: (TerminalKey, TerminalModifiers) -> Unit,
+    val sendText: (String, TerminalModifiers) -> Unit,
+    val sendMouse: (String) -> Unit,
+    val resizeTerminal: (columns: Int, rows: Int) -> Unit,
+)
+
+/**
+ * Full-screen Kai Build surface. Entered from the empty chat state and left via
+ * the top-bar close button or system back — same shape as Interactive UI mode,
+ * so it never becomes a navigation destination of its own.
+ *
+ * One screen, three states: set up Linux, pick a project, work in its terminal.
+ */
+@Composable
 fun KaiBuildScreen(
+    onExit: () -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: KaiBuildViewModel = koinViewModel(),
+) {
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val actions = remember(viewModel) {
+        KaiBuildActions(
+            toggleAgent = viewModel::toggleAgent,
+            install = viewModel::install,
+            installAgent = viewModel::installAgent,
+            cancel = viewModel::cancel,
+            uninstall = viewModel::uninstall,
+            setLaunchAgent = viewModel::setLaunchAgent,
+            openProject = viewModel::openProject,
+            createProject = viewModel::createProject,
+            deleteProject = viewModel::deleteProject,
+            renameProject = viewModel::renameProject,
+            closeProject = viewModel::closeProject,
+            startSession = viewModel::startSession,
+            selectSession = viewModel::selectSession,
+            closeSession = viewModel::closeSession,
+            submitLine = viewModel::submitLine,
+            sendKey = viewModel::sendKey,
+            sendText = viewModel::sendText,
+            sendMouse = viewModel::sendMouse,
+            resizeTerminal = viewModel::resizeTerminal,
+        )
+    }
+
+    KaiBuildScreenContent(state = state, actions = actions, onExit = onExit, modifier = modifier)
+}
+
+@Composable
 internal fun KaiBuildScreenContent(
-private const val KAI_BUILD_FILES_KEY = "kaiBuildFiles"
-private const val PROJECTS_GUEST_DIR = "/root/projects"
+    state: KaiBuildUiState,
+    actions: KaiBuildActions,
+    onExit: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val project = state.openProject
+    var showCreateProject by rememberSaveable { mutableStateOf(false) }
+    // Files is a view of the project, not a session — it resets when the project does.
+    var filesOpen by rememberSaveable(project) { mutableStateOf(false) }
+    PlatformBackHandler(enabled = true) {
+        when {
+            filesOpen -> filesOpen = false
+            project != null -> actions.closeProject()
+            else -> onExit()
+        }
+    }
+
+    val installedAgents = remember(state.build.installedAgents) {
+        BuildAgents.all.filter { it.id in state.build.installedAgents }.toImmutableList()
+    }
+
+    // Surface, not just a background modifier: it also provides the matching
+    // content color, which is what keeps the bare icons legible in dark mode.
+    Surface(
+        modifier = modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .statusBarsPadding()
+                .navigationBarsPadding(),
+        ) {
+            if (project != null) {
+                val sessions = remember(state.build.sessions, project) {
+                    state.build.sessions.filter { it.project == project }.toImmutableList()
+                }
+                BuildSessionBar(
+                    sessions = sessions,
+                    activeSessionId = state.build.activeSessionId,
+                    installedAgents = installedAgents,
+                    filesSelected = filesOpen,
+                    onBack = actions.closeProject,
+                    onSelectSession = { id ->
+                        filesOpen = false
+                        actions.selectSession(id)
+                    },
+                    onCloseSession = actions.closeSession,
+                    onSelectFiles = { filesOpen = true },
+                    onNewSession = { agentId ->
+                        filesOpen = false
+                        actions.startSession(agentId)
+                    },
+                )
+                // Fall back to the project's first tab: the active id can briefly point
+                // elsewhere while a session is being closed.
+                val session = sessions.firstOrNull { it.id == state.build.activeSessionId }
+                    ?: sessions.firstOrNull()
+                when {
+                    filesOpen -> {
+                        SandboxFilesContent(
+                            // This surface is full-screen, so nothing else keeps the
+                            // soft keyboard off the editor's text field.
+                            modifier = Modifier.fillMaxSize().imePadding(),
+                            // Opens on the project, but browses the whole Debian tree
+                            // the way the chat sandbox does — agent config and /etc are
+                            // a breadcrumb away rather than shell-only.
+                            initialPath = "$PROJECTS_GUEST_DIR/$project",
+                            viewModel = koinViewModel(
+                                qualifier = KAI_BUILD_FILES,
+                                key = KAI_BUILD_FILES_KEY,
+                            ),
+                        )
+                    }
+
+                    session != null -> BuildTerminalContent(
+                        session = session,
+                        onSubmitLine = actions.submitLine,
+                        onKey = actions.sendKey,
+                        onText = actions.sendText,
+                        onMouse = actions.sendMouse,
+                        onResize = actions.resizeTerminal,
+                    )
+                }
+            } else {
+                KaiBuildTopBar(
+                    title = stringResource(Res.string.kai_build_title),
+                    onExit = onExit,
+                    actions = {
+                        if (state.build.isReady) {
+                            IconButton(
+                                onClick = { showCreateProject = true },
+                                modifier = Modifier.handCursor(),
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Add,
+                                    contentDescription = stringResource(
+                                        Res.string.kai_build_new_project_content_description,
+                                    ),
+                                )
+                            }
+                        }
+                    },
+                )
+
+                if (state.build.isReady) {
+                    BuildProjectsContent(
+                        state = state.build,
+                        launchAgentId = state.launchAgentId,
+                        installedAgents = installedAgents,
+                        onSelectLaunchAgent = actions.setLaunchAgent,
+                        onOpenProject = actions.openProject,
+                        onDeleteProject = actions.deleteProject,
+                        onRenameProject = actions.renameProject,
+                        onInstallAgent = actions.installAgent,
+                        onUninstall = actions.uninstall,
+                    )
+                } else {
+                    BuildSetupContent(
+                        state = state.build,
+                        selectedAgents = state.selectedAgents,
+                        onToggleAgent = actions.toggleAgent,
+                        onInstall = actions.install,
+                        onCancel = actions.cancel,
+                    )
+                }
+            }
+        }
+    }
+
+    if (showCreateProject) {
+        CreateProjectDialog(
+            onDismiss = { showCreateProject = false },
+            onCreate = { name ->
+                showCreateProject = false
+                actions.createProject(name)
+            },
+        )
+    }
+}
+
+@Composable
 private fun KaiBuildTopBar(
+    title: String,
+    onExit: () -> Unit,
+    actions: @Composable RowScope.() -> Unit = {},
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        IconButton(onClick = onExit, modifier = Modifier.handCursor()) {
+            Icon(
+                imageVector = Icons.Default.Close,
+                contentDescription = stringResource(Res.string.kai_build_exit_content_description),
+            )
+        }
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f).padding(end = 8.dp),
+        )
+        actions()
+    }
 }

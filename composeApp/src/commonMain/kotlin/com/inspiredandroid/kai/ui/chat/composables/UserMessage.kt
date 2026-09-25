@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.chat.composables
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,78 +32,86 @@ import com.inspiredandroid.kai.ui.components.LocalShowFullScreenImage
 import com.inspiredandroid.kai.ui.handCursor
 import kai.composeapp.generated.resources.Res
 import kai.composeapp.generated.resources.ic_file
-import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import org.jetbrains.compose.resources.painterResource
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
-                                        contentDescription = null,
-                                        modifier = Modifier.size(16.dp),
-                                        painter = painterResource(Res.drawable.ic_file),
-                                        tint = MaterialTheme.colorScheme.onBackground,
-                                    )
-                                    Icon(
-                                .clickable { showFullScreen(imageBitmap) },
-                                .clip(RoundedCornerShape(8.dp))
-                                .handCursor()
-                                .widthIn(max = 200.dp)
-                                icon = {
-                                label = { Text(truncateFileName(att.fileName ?: att.mimeType)) },
-                                onClick = {},
-                                },
-                            )
-                            SuggestionChip(
-                            bitmap = imageBitmap,
-                            contentDescription = null,
-                            contentScale = ContentScale.FillWidth,
-                            decodeToImageBitmap(Base64.decode(att.data))
-                            modifier = Modifier
-                            null
-                        )
-                        Image(
+@OptIn(ExperimentalEncodingApi::class, ExperimentalLayoutApi::class)
+@Composable
+internal fun UserMessage(
+    message: String,
+    attachments: ImmutableList<Attachment> = persistentListOf(),
+) {
+    val showFullScreen = LocalShowFullScreenImage.current
+    SelectionContainer {
+        Row(Modifier.padding(16.dp)) {
+            Spacer(Modifier.weight(1f))
+            Column(
+                modifier = Modifier
+                    .background(
                         MaterialTheme.colorScheme.onBackground.copy(alpha = 0.15f),
                         RoundedCornerShape(8.dp),
-                        Spacer(Modifier.height(8.dp))
-                        color = MaterialTheme.colorScheme.onBackground,
-                        for (att in others) {
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        text = message,
-                        try {
-                        verticalArrangement = Arrangement.spacedBy(4.dp),
-                        }
-                        } catch (_: Exception) {
                     )
-                    ) {
-                    .background(
                     .padding(16.dp),
-                    FlowRow(
-                    Text(
-                    if (imageBitmap != null) {
-                    if (message.isNotEmpty()) {
-                    val imageBitmap = remember(att.data) {
-                    }
-                for (att in images) {
                 horizontalAlignment = Alignment.End,
-                if (message.isNotEmpty()) {
-                if (others.isNotEmpty()) {
-                modifier = Modifier
+            ) {
                 val images = attachments.filter { it.mimeType.startsWith("image/") }
                 val others = attachments.filter { !it.mimeType.startsWith("image/") }
+                for (att in images) {
+                    val imageBitmap = remember(att.data) {
+                        try {
+                            decodeToImageBitmap(Base64.decode(att.data))
+                        } catch (_: Exception) {
+                            null
+                        }
+                    }
+                    if (imageBitmap != null) {
+                        Image(
+                            bitmap = imageBitmap,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .widthIn(max = 200.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                                .handCursor()
+                                .clickable { showFullScreen(imageBitmap) },
+                            contentScale = ContentScale.FillWidth,
+                        )
+                        Spacer(Modifier.height(8.dp))
+                    }
                 }
-            ) {
-            Column(
-            Spacer(Modifier.weight(1f))
+                if (others.isNotEmpty()) {
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        for (att in others) {
+                            SuggestionChip(
+                                onClick = {},
+                                icon = {
+                                    Icon(
+                                        modifier = Modifier.size(16.dp),
+                                        painter = painterResource(Res.drawable.ic_file),
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.onBackground,
+                                    )
+                                },
+                                label = { Text(truncateFileName(att.fileName ?: att.mimeType)) },
+                            )
+                        }
+                    }
+                    if (message.isNotEmpty()) {
+                        Spacer(Modifier.height(8.dp))
+                    }
+                }
+                if (message.isNotEmpty()) {
+                    Text(
+                        text = message,
+                        color = MaterialTheme.colorScheme.onBackground,
+                    )
+                }
             }
-        Row(Modifier.padding(16.dp)) {
         }
-    SelectionContainer {
-    attachments: ImmutableList<Attachment> = persistentListOf(),
-    message: String,
-    val showFullScreen = LocalShowFullScreenImage.current
     }
-) {
-@Composable
-@OptIn(ExperimentalEncodingApi::class, ExperimentalLayoutApi::class)
-internal fun UserMessage(
 }

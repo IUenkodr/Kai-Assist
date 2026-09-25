@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.chat.composables
+
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -81,245 +82,316 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 
-                                    modifier = Modifier.handCursor(),
-                                    selection = TextRange(start + 1),
-                                    text = newText,
-                                    text = truncateFileName(file.name),
-                                )
-                                ),
-                                Text(
-                                TextFieldValue(
-                                contentDescription = null,
-                                modifier = Modifier.size(16.dp),
-                                painter = painterResource(icon),
-                                selection = TextRange(cursor.coerceAtMost(if (rest.isEmpty()) cursor else newText.length)),
-                                text = if (rest.isEmpty()) "/${skill.id} " else newText,
-                                tint = MaterialTheme.colorScheme.onBackground,
-                            )
-                            ),
-                            // Enter without Shift -> send message and consume event
-                            // Shift+Enter -> manually insert newline
-                            DisableSelection {
-                            Icon(
-                            TextFieldValue(
-                            onSelectService = onSelectService,
-                            onTextStateChange(
-                            return@onPreviewKeyEvent true
-                            services = availableServices,
-                            submitQuestion()
-                            val currentText = textState.text
-                            val end = maxOf(selection.start, selection.end).coerceIn(0, currentText.length)
-                            val newText = currentText.replaceRange(start, end, "\n")
-                            val selection = textState.selection
-                            val start = minOf(selection.start, selection.end).coerceIn(0, currentText.length)
-                            }
-                        )
-                        Res.drawable.ic_file
-                        Res.drawable.ic_image
-                        ServiceSelector(
-                        TrailingIcon(icon = Res.drawable.ic_stop, onClick = cancel, isPulsing = true)
-                        TrailingIcon(icon = Res.drawable.ic_up, onClick = { submitQuestion() })
-                        icon = vectorResource(Res.drawable.ic_attach),
-                        icon = {
-                        if (event.isShiftPressed) {
-                        label = {
-                        modifier = Modifier.handCursor(),
-                        modifier = Modifier.padding(start = 7.dp),
-                        onClick = { filePickerLauncher.launch() },
-                        onClick = { removeFile(file) },
-                        onTextStateChange(
-                        tint = MaterialTheme.colorScheme.onBackground,
-                        val cursor = ("/" + skill.id + " ").length
-                        val firstSpace = text.indexOfFirst { it.isWhitespace() }
-                        val newText = "/${skill.id}$rest"
-                        val rest = if (firstSpace < 0) "" else text.substring(firstSpace)
-                        val text = textState.text
-                        }
-                        } else {
-                        },
-                    )
-                    .fillMaxWidth(),
-                    .padding(horizontal = 16.dp)
-                    // Only handle hardware keyboard on desktop/web platforms
-                    BorderStroke(width = 2.dp, brush = gradientBrush),
-                    CircleIconButton(
-                    SuggestionChip(
-                    color = MaterialTheme.colorScheme.onBackground,
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    if (availableServices.size > 1) {
-                    if (currentPlatform !is Platform.Mobile && event.key.keyCode == Key.Enter.keyCode && event.type == KeyEventType.KeyDown) {
-                    if (isLoading) {
-                    modifier = Modifier.padding(end = 7.dp),
-                    onSelect = { skill ->
-                    query = slashQuery,
-                    return@onPreviewKeyEvent false
-                    shape = RoundedCornerShape(28.dp),
-                    skills = installedSkills,
-                    stringResource(Res.string.prompt_ask_question),
-                    val icon = if (file.extension.lowercase() in imageExtensions) {
-                    verticalAlignment = Alignment.CenterVertically,
-                    }
-                    } else if (textState.text.isNotBlank()) {
-                    } else {
-                    },
-                )
-                ) {
-                .background(MaterialTheme.colorScheme.background)
-                .border(
-                .clip(RoundedCornerShape(28.dp))
-                .fillMaxWidth()
-                .focusRequester(focusRequester)
-                .heightIn(max = maxComposerHeight)
-                .onPreviewKeyEvent { event ->
-                .padding(16.dp)
-                KeyboardActions() // No keyboard send action on mobile
-                KeyboardActions(onSend = { submitQuestion() })
-                Row(
-                SkillAutocomplete(
-                Spacer(Modifier.padding(top = 4.dp))
-                Text(
-                animation = tween(durationMillis = 800, easing = FastOutSlowInEasing),
-                ask(text.trim())
-                detectSlashQuery(textState.text, textState.selection.start)
-                for (file in files) {
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                if (file != null) addFile(file)
-                imeAction = if (currentPlatform is Platform.Mobile) ImeAction.Default else ImeAction.Send,
-                modifier = Modifier
-                null
-                onClick()
-                onTextStateChange(TextFieldValue(""))
-                repeatMode = RepeatMode.Reverse,
-                type = FileKitType.File(extensions = supportedFileExtensions),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-                {
-                }
-                },
-            ) {
-            ) { file ->
-            ),
-            .background(brush = gradientBrush, CircleShape)
-            .clickable {
-            .clickable { onClick() }
-            .clip(CircleShape)
-            .handCursor()
-            .handCursor(),
-            .size(42.dp)
-            FlowRow(
-            alpha = pulseAlpha
-            animationSpec = infiniteRepeatable(
-            colors = outlineTextFieldColors(),
-            contentDescription = null,
-            if (!inInspection) focusRequester.requestFocus()
-            if (slashQuery != null) {
-            if (text.isNotBlank()) {
-            imageVector = icon,
-            initialValue = 0.7f,
-            initialValue = 0.92f,
-            keyboardActions = if (currentPlatform !is Platform.Mobile) {
-            keyboardOptions = KeyboardOptions(
-            leadingIcon = if (filePickerLauncher != null) {
-            modifier = Modifier
-            modifier = Modifier.size(24.dp),
-            modifier = Modifier.size(32.dp).then(pulseModifier),
-            null
-            onValueChange = onTextStateChange,
-            placeholder = {
-            rememberFilePickerLauncher(
-            scaleX = pulseScale
-            scaleY = pulseScale
-            targetValue = 1.0f,
-            tint = Color.White,
-            tint = tint,
-            trailingIcon = {
-            val slashQuery = remember(textState.text, textState.selection) {
-            val text = textState.text
-            value = textState,
-            vectorResource(icon),
-            }
-            } else {
-            },
-        "${base.take(keep)}…$ext"
-        "${name.take(maxChars - 1)}…"
-        )
-        // Slash autocomplete: shown when the user is typing the first token and it starts
-        // The cap is expressed in dp but bounds a number of text lines, so it has to
-        // grow with the font scale — otherwise the composer shows a single line of
-        // so the ViewModel can match it at send time.
-        // what the user is typing at the largest accessibility font size.
-        // with `/`. Selecting an entry rewrites the first token to the canonical skill id
-        Icon(
-        LaunchedEffect(Unit) {
-        Modifier
-        Modifier.graphicsLayer {
-        TextField(
-        contentAlignment = Alignment.Center,
-        fun submitQuestion() {
-        if (files.isNotEmpty()) {
-        if (installedSkills.isNotEmpty()) {
-        modifier = modifier
-        val allowFileAttachment = supportedFileExtensions.isNotEmpty()
-        val base = name.substring(0, dotIndex)
-        val ext = name.substring(dotIndex) // includes the dot
-        val filePickerLauncher = if (allowFileAttachment) {
-        val focusRequester = remember { FocusRequester() }
-        val inInspection = LocalInspectionMode.current
-        val infiniteTransition = rememberInfiniteTransition()
-        val keep = (maxChars - ext.length - 1).coerceAtLeast(1)
-        val maxComposerHeight = 120.dp * LocalDensity.current.fontScale
-        val pulseAlpha by infiniteTransition.animateFloat(
-        val pulseScale by infiniteTransition.animateFloat(
-        }
-        } else {
-    ) {
-    Box(
-    Column(modifier = modifier) {
-    addFile: (PlatformFile) -> Unit,
-    ask: (String) -> Unit,
-    availableServices: ImmutableList<ServiceEntry> = persistentListOf(),
-    cancel: () -> Unit = {},
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun QuestionInput(
     files: ImmutableList<PlatformFile>,
-    icon: ImageVector,
-    icon: org.jetbrains.compose.resources.DrawableResource = Res.drawable.ic_up,
-    if (!text.startsWith('/')) return null
-    if (cursor > tokenEnd) return null
-    if (name.length <= maxChars) return name
-    installedSkills: ImmutableList<SkillManifest> = persistentListOf(),
-    isLoading: Boolean = false,
-    isPulsing: Boolean = false,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    onSelectService: (String) -> Unit = {},
-    onTextStateChange: (TextFieldValue) -> Unit,
+    addFile: (PlatformFile) -> Unit,
     removeFile: (PlatformFile) -> Unit,
-    return if (dotIndex > 0 && dotIndex < name.length - 1) {
-    return text.substring(1, tokenEnd).lowercase()
+    ask: (String) -> Unit,
     supportedFileExtensions: ImmutableList<String>,
     textState: TextFieldValue,
-    tint: Color = MaterialTheme.colorScheme.onSurfaceVariant,
-    val dotIndex = name.lastIndexOf('.')
-    val firstSpace = text.indexOfFirst { it.isWhitespace() }
-    val pulseModifier = if (isPulsing) {
-    val tokenEnd = if (firstSpace < 0) text.length else firstSpace
+    onTextStateChange: (TextFieldValue) -> Unit,
+    isLoading: Boolean = false,
+    cancel: () -> Unit = {},
+    availableServices: ImmutableList<ServiceEntry> = persistentListOf(),
+    onSelectService: (String) -> Unit = {},
+    installedSkills: ImmutableList<SkillManifest> = persistentListOf(),
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier = modifier) {
+        // Slash autocomplete: shown when the user is typing the first token and it starts
+        // with `/`. Selecting an entry rewrites the first token to the canonical skill id
+        // so the ViewModel can match it at send time.
+        if (installedSkills.isNotEmpty()) {
+            val slashQuery = remember(textState.text, textState.selection) {
+                detectSlashQuery(textState.text, textState.selection.start)
+            }
+            if (slashQuery != null) {
+                SkillAutocomplete(
+                    skills = installedSkills,
+                    query = slashQuery,
+                    onSelect = { skill ->
+                        val text = textState.text
+                        val firstSpace = text.indexOfFirst { it.isWhitespace() }
+                        val rest = if (firstSpace < 0) "" else text.substring(firstSpace)
+                        val newText = "/${skill.id}$rest"
+                        val cursor = ("/" + skill.id + " ").length
+                        onTextStateChange(
+                            TextFieldValue(
+                                text = if (rest.isEmpty()) "/${skill.id} " else newText,
+                                selection = TextRange(cursor.coerceAtMost(if (rest.isEmpty()) cursor else newText.length)),
+                            ),
+                        )
+                    },
+                )
+                Spacer(Modifier.padding(top = 4.dp))
+            }
+        }
+
+        if (files.isNotEmpty()) {
+            FlowRow(
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                for (file in files) {
+                    val icon = if (file.extension.lowercase() in imageExtensions) {
+                        Res.drawable.ic_image
+                    } else {
+                        Res.drawable.ic_file
+                    }
+                    SuggestionChip(
+                        modifier = Modifier.handCursor(),
+                        onClick = { removeFile(file) },
+                        icon = {
+                            Icon(
+                                modifier = Modifier.size(16.dp),
+                                painter = painterResource(icon),
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.onBackground,
+                            )
+                        },
+                        label = {
+                            DisableSelection {
+                                Text(
+                                    modifier = Modifier.handCursor(),
+                                    text = truncateFileName(file.name),
+                                )
+                            }
+                        },
+                    )
+                }
+            }
+        }
+
+        fun submitQuestion() {
+            val text = textState.text
+            if (text.isNotBlank()) {
+                ask(text.trim())
+                onTextStateChange(TextFieldValue(""))
+            }
+        }
+
+        val allowFileAttachment = supportedFileExtensions.isNotEmpty()
+        val filePickerLauncher = if (allowFileAttachment) {
+            rememberFilePickerLauncher(
+                type = FileKitType.File(extensions = supportedFileExtensions),
+            ) { file ->
+                if (file != null) addFile(file)
+            }
+        } else {
+            null
+        }
+
+        val focusRequester = remember { FocusRequester() }
+        // The cap is expressed in dp but bounds a number of text lines, so it has to
+        // grow with the font scale — otherwise the composer shows a single line of
+        // what the user is typing at the largest accessibility font size.
+        val maxComposerHeight = 120.dp * LocalDensity.current.fontScale
+        TextField(
+            value = textState,
+            onValueChange = onTextStateChange,
+            modifier = Modifier
+                .focusRequester(focusRequester)
+                .padding(16.dp)
+                .heightIn(max = maxComposerHeight)
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(28.dp))
+                .background(MaterialTheme.colorScheme.background)
+                .border(
+                    BorderStroke(width = 2.dp, brush = gradientBrush),
+                    shape = RoundedCornerShape(28.dp),
+                )
+                .onPreviewKeyEvent { event ->
+                    // Only handle hardware keyboard on desktop/web platforms
+                    if (currentPlatform !is Platform.Mobile && event.key.keyCode == Key.Enter.keyCode && event.type == KeyEventType.KeyDown) {
+                        if (event.isShiftPressed) {
+                            // Shift+Enter -> manually insert newline
+                            val currentText = textState.text
+                            val selection = textState.selection
+                            val start = minOf(selection.start, selection.end).coerceIn(0, currentText.length)
+                            val end = maxOf(selection.start, selection.end).coerceIn(0, currentText.length)
+
+                            val newText = currentText.replaceRange(start, end, "\n")
+                            onTextStateChange(
+                                TextFieldValue(
+                                    text = newText,
+                                    selection = TextRange(start + 1),
+                                ),
+                            )
+                            return@onPreviewKeyEvent true
+                        } else {
+                            // Enter without Shift -> send message and consume event
+                            submitQuestion()
+                            return@onPreviewKeyEvent true
+                        }
+                    }
+                    return@onPreviewKeyEvent false
+                },
+            colors = outlineTextFieldColors(),
+            placeholder = {
+                Text(
+                    stringResource(Res.string.prompt_ask_question),
+                    color = MaterialTheme.colorScheme.onBackground,
+                )
+            },
+            trailingIcon = {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(end = 7.dp),
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    if (availableServices.size > 1) {
+                        ServiceSelector(
+                            services = availableServices,
+                            onSelectService = onSelectService,
+                        )
+                    }
+                    if (isLoading) {
+                        TrailingIcon(icon = Res.drawable.ic_stop, onClick = cancel, isPulsing = true)
+                    } else if (textState.text.isNotBlank()) {
+                        TrailingIcon(icon = Res.drawable.ic_up, onClick = { submitQuestion() })
+                    }
+                }
+            },
+            keyboardActions = if (currentPlatform !is Platform.Mobile) {
+                KeyboardActions(onSend = { submitQuestion() })
+            } else {
+                KeyboardActions() // No keyboard send action on mobile
+            },
+            leadingIcon = if (filePickerLauncher != null) {
+                {
+                    CircleIconButton(
+                        icon = vectorResource(Res.drawable.ic_attach),
+                        onClick = { filePickerLauncher.launch() },
+                        modifier = Modifier.padding(start = 7.dp),
+                        tint = MaterialTheme.colorScheme.onBackground,
+                    )
+                }
+            } else {
+                null
+            },
+            keyboardOptions = KeyboardOptions(
+                imeAction = if (currentPlatform is Platform.Mobile) ImeAction.Default else ImeAction.Send,
+            ),
+        )
+        val inInspection = LocalInspectionMode.current
+        LaunchedEffect(Unit) {
+            if (!inInspection) focusRequester.requestFocus()
+        }
     }
-    } else {
- *  - `"/foo bar"` cursor at 6 → `null` (cursor past first space)
+}
+
+/**
+ * Returns the slash-command query string the user is currently typing, or null if
+ * the cursor isn't inside a leading `/<token>`. Examples:
  *  - `"/su"` cursor at 3 → `"su"`
  *  - `"/summarize https://…"` cursor at 4 → `"sum"`
  *  - `"hello /foo"` (slash not at start) → `null`
- * Returns the slash-command query string the user is currently typing, or null if
+ *  - `"/foo bar"` cursor at 6 → `null` (cursor past first space)
+ */
+internal fun detectSlashQuery(text: String, cursor: Int): String? {
+    if (!text.startsWith('/')) return null
+    val firstSpace = text.indexOfFirst { it.isWhitespace() }
+    val tokenEnd = if (firstSpace < 0) text.length else firstSpace
+    if (cursor > tokenEnd) return null
+    return text.substring(1, tokenEnd).lowercase()
+}
+
+/**
  * Shortens a filename that is too long to display in a chip. Returns the first [maxChars]
  * characters of the base name followed by `…` and the original extension, so the user still
  * recognizes the file type. Short names are returned unchanged.
- * the cursor isn't inside a leading `/<token>`. Examples:
  */
-) {
-/**
-@Composable
-@OptIn(ExperimentalLayoutApi::class)
-fun QuestionInput(
-internal fun CircleIconButton(
-internal fun TrailingIcon(
-internal fun detectSlashQuery(text: String, cursor: Int): String? {
 internal fun truncateFileName(name: String, maxChars: Int = 16): String {
+    if (name.length <= maxChars) return name
+    val dotIndex = name.lastIndexOf('.')
+    return if (dotIndex > 0 && dotIndex < name.length - 1) {
+        val base = name.substring(0, dotIndex)
+        val ext = name.substring(dotIndex) // includes the dot
+        val keep = (maxChars - ext.length - 1).coerceAtLeast(1)
+        "${base.take(keep)}…$ext"
+    } else {
+        "${name.take(maxChars - 1)}…"
+    }
+}
+
+@Composable
+internal fun TrailingIcon(
+    icon: org.jetbrains.compose.resources.DrawableResource = Res.drawable.ic_up,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    isPulsing: Boolean = false,
+) {
+    val pulseModifier = if (isPulsing) {
+        val infiniteTransition = rememberInfiniteTransition()
+        val pulseScale by infiniteTransition.animateFloat(
+            initialValue = 0.92f,
+            targetValue = 1.0f,
+            animationSpec = infiniteRepeatable(
+                animation = tween(durationMillis = 800, easing = FastOutSlowInEasing),
+                repeatMode = RepeatMode.Reverse,
+            ),
+        )
+        val pulseAlpha by infiniteTransition.animateFloat(
+            initialValue = 0.7f,
+            targetValue = 1.0f,
+            animationSpec = infiniteRepeatable(
+                animation = tween(durationMillis = 800, easing = FastOutSlowInEasing),
+                repeatMode = RepeatMode.Reverse,
+            ),
+        )
+        Modifier.graphicsLayer {
+            scaleX = pulseScale
+            scaleY = pulseScale
+            alpha = pulseAlpha
+        }
+    } else {
+        Modifier
+    }
+    Box(
+        modifier = modifier
+            .size(42.dp)
+            .clip(CircleShape)
+            .background(brush = gradientBrush, CircleShape)
+            .handCursor()
+            .clickable {
+                onClick()
+            },
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            vectorResource(icon),
+            modifier = Modifier.size(32.dp).then(pulseModifier),
+            contentDescription = null,
+            tint = Color.White,
+        )
+    }
+}
+
+@Composable
+internal fun CircleIconButton(
+    icon: ImageVector,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    tint: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+) {
+    Box(
+        modifier = modifier
+            .size(42.dp)
+            .clip(CircleShape)
+            .clickable { onClick() }
+            .handCursor(),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            imageVector = icon,
+            modifier = Modifier.size(24.dp),
+            contentDescription = null,
+            tint = tint,
+        )
+    }
 }

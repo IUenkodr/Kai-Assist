@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.settings
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -59,209 +60,274 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 
-                                        expanded = false
-                                        onClick(model.id)
-                                    isSelected = currentSelectedModel?.id == model.id,
-                                    model = model,
-                                    onClick = {
-                                    },
-                                )
-                                ModelCard(
-                                else -> 2
-                                model.subtitle.contains(searchQuery, ignoreCase = true) -> 1
-                                name.contains(searchQuery, ignoreCase = true) -> 0
-                            GridCells.Adaptive(300.dp),
-                            contentPadding = PaddingValues(8.dp),
-                            gridState = gridState,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            items(sortedModels, key = { it.id }) { model ->
-                            label = { Text(stringResource(Res.string.model_filter_free)) },
-                            label = { Text(stringResource(option.labelRes)) },
-                            model.displayName?.contains(searchQuery, ignoreCase = true) == true
-                            model.id.contains(searchQuery, ignoreCase = true) ||
-                            model.subtitle.contains(searchQuery, ignoreCase = true) ||
-                            modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
-                            modifier = Modifier.handCursor(),
-                            onClick = { freeFilterOnly = !freeFilterOnly },
-                            onClick = { sortOption = option },
-                            selected = freeFilterOnly,
-                            selected = sortOption == option,
-                            state = gridState,
-                            val name = model.displayName ?: model.id
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                            when {
-                            }
-                        )
-                        ) {
-                        FilterChip(
-                        LazyVerticalGrid(
-                        VerticalScrollbarForGrid(
-                        base
-                        base.sortedBy { model ->
-                        color = MaterialTheme.colorScheme.onBackground,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        color = arenaScoreColor(score),
-                        contentDescription = null,
-                        imageVector = vectorResource(Res.drawable.ic_arrow_drop_down),
-                        matchesFree && matchesSearch
-                        modifier = Modifier.handCursor(),
-                        modifier = Modifier.padding(24.dp),
-                        onQueryChange = { searchQuery = it },
-                        placeholder = stringResource(Res.string.settings_model_search),
-                        query = searchQuery,
-                        stringResource(Res.string.settings_model_label),
-                        style = MaterialTheme.typography.bodyMedium,
-                        style = MaterialTheme.typography.labelSmall,
-                        text = "$score",
-                        text = stringResource(Res.string.model_free_empty),
-                        tint = MaterialTheme.colorScheme.onBackground,
-                        val matchesFree = !freeFilterOnly || model.isFreeTier
-                        val matchesSearch = searchQuery.isBlank() ||
-                        }
-                    )
-                    .clickable { expanded = true },
-                    .handCursor()
-                    .matchParentSize()
-                    Box {
-                    FreeTierBadge(isSelected = isSelected)
-                    Icon(
-                    KaiSearchField(
-                    ModelSortOption.entries.forEach { option ->
-                    Spacer(Modifier.width(8.dp))
-                    Text(
-                    color = primaryColor,
-                    color = secondaryColor,
-                    expanded = false
-                    gridState.requestScrollToItem(0)
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    if (!hasFreeModels) freeFilterOnly = false
-                    if (hasFreeModels) {
-                    if (searchQuery.isBlank()) {
-                    maxLines = 1,
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                    modifier = Modifier.weight(1f),
-                    overflow = TextOverflow.Ellipsis,
-                    pickerModels.filter { model ->
-                    style = MaterialTheme.typography.bodySmall,
-                    style = MaterialTheme.typography.labelSmall,
-                    style = MaterialTheme.typography.titleMedium,
-                    text = it,
-                    text = title,
-                    val base = filteredModels.sortedWith(sortOption.comparator)
-                    }
-                    } else {
-                )
-                ) {
-                // Reset free filter when the service has no free models.
-                LaunchedEffect(hasFreeModels) {
-                LaunchedEffect(sortOption, freeFilterOnly) {
-                MaterialTheme.colorScheme.primaryContainer
-                MaterialTheme.colorScheme.surfaceContainerHigh
-                Row(
-                Spacer(Modifier.height(6.dp))
-                Text(
-                if (model.isFreeTier) {
-                if (pickerModels.size > 6) {
-                if (sortedModels.isEmpty() && freeFilterOnly) {
-                label = {
-                model.arenaScore?.let { score ->
-                modifier = Modifier
-                modifier = Modifier.fillMaxWidth(),
-                onDismissRequest = {
-                onValueChange = {},
-                readOnly = true,
-                sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-                trailingIcon = {
-                val filteredModels = remember(pickerModels, searchQuery, freeFilterOnly) {
-                val gridState = rememberLazyGridState()
-                val hasFreeModels = remember(pickerModels) { pickerModels.any { it.isFreeTier } }
-                val sortedModels = remember(filteredModels, sortOption, searchQuery) {
-                value = currentSelectedModel?.let { it.displayName ?: it.id } ?: "",
-                var freeFilterOnly by remember { mutableStateOf(false) }
-                var searchQuery by remember { mutableStateOf("") }
-                var sortOption by remember { mutableStateOf(ModelSortOption.Score) }
-                }
-                } else {
-                },
-            )
-            ) {
-            // Transparent overlay to capture clicks reliably on all platforms
-            Box(
-            KaiOutlinedTextField(
-            ModalBottomSheet(
-            Row(verticalAlignment = Alignment.CenterVertically) {
-            color = content,
-            containerColor = if (isSelected) {
-            detailText?.let {
-            maxLines = 1,
-            modifier = Modifier.fillMaxWidth(),
-            modifier = Modifier.padding(16.dp),
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
-            secondary?.let {
-            style = MaterialTheme.typography.labelMedium,
-            text = stringResource(Res.string.model_free_badge),
-            }
-            } else {
-            },
-        )
-        ) {
-        ),
-        .joinToString("  ·  ").ifEmpty { null }
-        Box(
-        Color(0xFF1B5E20)
-        Color.White
-        Column(
-        MaterialTheme.colorScheme.onPrimaryContainer
-        MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
-        MaterialTheme.colorScheme.onSurface
-        MaterialTheme.colorScheme.onSurfaceVariant
-        MaterialTheme.colorScheme.primaryContainer
-        Text(
-        color = background,
-        colors = CardDefaults.cardColors(
-        if (expanded) {
-        modifier = Modifier.handCursor().clip(CardDefaults.shape).clickable { onClick() },
-        shape = CardDefaults.shape,
-        shape = RoundedCornerShape(4.dp),
-        }
-    ) {
-    // Provider list only — synthetic manual entries stay out of the picker grid.
-    Card(
-    Ctx(Res.string.model_sort_context, compareByDescending<SettingsModel> { it.contextWindow }.thenBy { it.id }),
-    Date(Res.string.model_sort_date, compareByDescending<SettingsModel> { it.releaseDate }.thenBy { it.id }),
-    Score(Res.string.model_sort_score, compareByDescending<SettingsModel> { it.arenaScore }.thenBy { it.id }),
-    Surface(
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun ModelSelection(
     currentSelectedModel: SettingsModel?,
-    else -> Color(0xFFEF6C00)
-    if (pickerModels.isNotEmpty()) {
     models: ImmutableList<SettingsModel>,
     onClick: (String) -> Unit,
-    score >= 1250 -> Color(0xFFF9A825)
-    score >= 1300 -> Color(0xFF9E9D24)
-    score >= 1350 -> Color(0xFF558B2F)
-    score >= 1400 -> Color(0xFF2E7D32)
-    val background = if (isSelected) {
-    val comparator: Comparator<SettingsModel>,
-    val content = if (isSelected) {
-    val contextText = model.contextWindow?.let { formatContextWindow(it) }
-    val detailText = listOfNotNull(releaseText, model.parameterCount, contextText)
-    val displayName = model.displayName?.takeIf { it.isNotBlank() && it != model.id }
-    val labelRes: StringResource,
-    val pickerModels = remember(models) { models.filter { !it.isManualEntry } }
-    val primaryColor = if (isSelected) {
-    val releaseText = model.releaseDate?.let { formatReleaseDate(it) }
-    val secondary = if (displayName == null && model.subtitle.isNotBlank()) model.subtitle else null
-    val secondaryColor = if (isSelected) {
-    val title = displayName ?: model.id
-    var expanded by remember { mutableStateOf(false) }
-    }
-    } else {
 ) {
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-internal fun ModelSelection(
+    var expanded by remember { mutableStateOf(false) }
+    // Provider list only — synthetic manual entries stay out of the picker grid.
+    val pickerModels = remember(models) { models.filter { !it.isManualEntry } }
+    if (pickerModels.isNotEmpty()) {
+        Box(
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            KaiOutlinedTextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = currentSelectedModel?.let { it.displayName ?: it.id } ?: "",
+                onValueChange = {},
+                readOnly = true,
+                label = {
+                    Text(
+                        stringResource(Res.string.settings_model_label),
+                        color = MaterialTheme.colorScheme.onBackground,
+                    )
+                },
+                trailingIcon = {
+                    Icon(
+                        modifier = Modifier.handCursor(),
+                        imageVector = vectorResource(Res.drawable.ic_arrow_drop_down),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onBackground,
+                    )
+                },
+            )
+            // Transparent overlay to capture clicks reliably on all platforms
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .handCursor()
+                    .clickable { expanded = true },
+            )
+        }
+        if (expanded) {
+            ModalBottomSheet(
+                sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+                onDismissRequest = {
+                    expanded = false
+                },
+            ) {
+                var searchQuery by remember { mutableStateOf("") }
+                val hasFreeModels = remember(pickerModels) { pickerModels.any { it.isFreeTier } }
+                var freeFilterOnly by remember { mutableStateOf(false) }
+                // Reset free filter when the service has no free models.
+                LaunchedEffect(hasFreeModels) {
+                    if (!hasFreeModels) freeFilterOnly = false
+                }
+                val filteredModels = remember(pickerModels, searchQuery, freeFilterOnly) {
+                    pickerModels.filter { model ->
+                        val matchesFree = !freeFilterOnly || model.isFreeTier
+                        val matchesSearch = searchQuery.isBlank() ||
+                            model.id.contains(searchQuery, ignoreCase = true) ||
+                            model.subtitle.contains(searchQuery, ignoreCase = true) ||
+                            model.displayName?.contains(searchQuery, ignoreCase = true) == true
+                        matchesFree && matchesSearch
+                    }
+                }
+                if (pickerModels.size > 6) {
+                    KaiSearchField(
+                        query = searchQuery,
+                        onQueryChange = { searchQuery = it },
+                        placeholder = stringResource(Res.string.settings_model_search),
+                    )
+                }
+                var sortOption by remember { mutableStateOf(ModelSortOption.Score) }
+                val sortedModels = remember(filteredModels, sortOption, searchQuery) {
+                    val base = filteredModels.sortedWith(sortOption.comparator)
+                    if (searchQuery.isBlank()) {
+                        base
+                    } else {
+                        base.sortedBy { model ->
+                            val name = model.displayName ?: model.id
+                            when {
+                                name.contains(searchQuery, ignoreCase = true) -> 0
+                                model.subtitle.contains(searchQuery, ignoreCase = true) -> 1
+                                else -> 2
+                            }
+                        }
+                    }
+                }
+                Row(
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    ModelSortOption.entries.forEach { option ->
+                        FilterChip(
+                            selected = sortOption == option,
+                            onClick = { sortOption = option },
+                            label = { Text(stringResource(option.labelRes)) },
+                            modifier = Modifier.handCursor(),
+                        )
+                    }
+                    if (hasFreeModels) {
+                        FilterChip(
+                            selected = freeFilterOnly,
+                            onClick = { freeFilterOnly = !freeFilterOnly },
+                            label = { Text(stringResource(Res.string.model_filter_free)) },
+                            modifier = Modifier.handCursor(),
+                        )
+                    }
+                }
+                val gridState = rememberLazyGridState()
+                LaunchedEffect(sortOption, freeFilterOnly) {
+                    gridState.requestScrollToItem(0)
+                }
+                if (sortedModels.isEmpty() && freeFilterOnly) {
+                    Text(
+                        text = stringResource(Res.string.model_free_empty),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(24.dp),
+                    )
+                } else {
+                    Box {
+                        LazyVerticalGrid(
+                            GridCells.Adaptive(300.dp),
+                            state = gridState,
+                            contentPadding = PaddingValues(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            items(sortedModels, key = { it.id }) { model ->
+                                ModelCard(
+                                    model = model,
+                                    isSelected = currentSelectedModel?.id == model.id,
+                                    onClick = {
+                                        onClick(model.id)
+                                        expanded = false
+                                    },
+                                )
+                            }
+                        }
+                        VerticalScrollbarForGrid(
+                            gridState = gridState,
+                            modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
 private enum class ModelSortOption(
-private fun FreeTierBadge(isSelected: Boolean) {
+    val labelRes: StringResource,
+    val comparator: Comparator<SettingsModel>,
+) {
+    Date(Res.string.model_sort_date, compareByDescending<SettingsModel> { it.releaseDate }.thenBy { it.id }),
+    Score(Res.string.model_sort_score, compareByDescending<SettingsModel> { it.arenaScore }.thenBy { it.id }),
+    Ctx(Res.string.model_sort_context, compareByDescending<SettingsModel> { it.contextWindow }.thenBy { it.id }),
+}
+
+@Composable
 private fun ModelCard(model: SettingsModel, isSelected: Boolean, onClick: () -> Unit) {
+    val displayName = model.displayName?.takeIf { it.isNotBlank() && it != model.id }
+    val title = displayName ?: model.id
+    val secondary = if (displayName == null && model.subtitle.isNotBlank()) model.subtitle else null
+    val contextText = model.contextWindow?.let { formatContextWindow(it) }
+    val releaseText = model.releaseDate?.let { formatReleaseDate(it) }
+    val detailText = listOfNotNull(releaseText, model.parameterCount, contextText)
+        .joinToString("  ·  ").ifEmpty { null }
+
+    val primaryColor = if (isSelected) {
+        MaterialTheme.colorScheme.onPrimaryContainer
+    } else {
+        MaterialTheme.colorScheme.onSurface
+    }
+    val secondaryColor = if (isSelected) {
+        MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+    } else {
+        MaterialTheme.colorScheme.onSurfaceVariant
+    }
+    Card(
+        modifier = Modifier.handCursor().clip(CardDefaults.shape).clickable { onClick() },
+        shape = CardDefaults.shape,
+        colors = CardDefaults.cardColors(
+            containerColor = if (isSelected) {
+                MaterialTheme.colorScheme.primaryContainer
+            } else {
+                MaterialTheme.colorScheme.surfaceContainerHigh
+            },
+        ),
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    color = primaryColor,
+                    modifier = Modifier.weight(1f),
+                )
+                if (model.isFreeTier) {
+                    Spacer(Modifier.width(8.dp))
+                    FreeTierBadge(isSelected = isSelected)
+                }
+                model.arenaScore?.let { score ->
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        text = "$score",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = arenaScoreColor(score),
+                    )
+                }
+            }
+            secondary?.let {
+                Text(
+                    text = it,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = secondaryColor,
+                )
+            }
+            detailText?.let {
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = secondaryColor,
+                )
+            }
+        }
+    }
+}
+
 private fun arenaScoreColor(score: Int): Color = when {
+    score >= 1400 -> Color(0xFF2E7D32)
+    score >= 1350 -> Color(0xFF558B2F)
+    score >= 1300 -> Color(0xFF9E9D24)
+    score >= 1250 -> Color(0xFFF9A825)
+    else -> Color(0xFFEF6C00)
+}
+
+@Composable
+private fun FreeTierBadge(isSelected: Boolean) {
+    val background = if (isSelected) {
+        MaterialTheme.colorScheme.onPrimaryContainer
+    } else {
+        Color(0xFF1B5E20)
+    }
+    val content = if (isSelected) {
+        MaterialTheme.colorScheme.primaryContainer
+    } else {
+        Color.White
+    }
+    Surface(
+        shape = RoundedCornerShape(4.dp),
+        color = background,
+    ) {
+        Text(
+            text = stringResource(Res.string.model_free_badge),
+            style = MaterialTheme.typography.labelMedium,
+            color = content,
+            maxLines = 1,
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+        )
+    }
 }

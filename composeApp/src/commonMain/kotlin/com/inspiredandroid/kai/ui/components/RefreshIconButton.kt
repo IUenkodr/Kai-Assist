@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.components
+
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
@@ -11,29 +12,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.inspiredandroid.kai.ui.handCursor
 
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                contentDescription = contentDescription,
-                imageVector = Icons.Default.Refresh,
-                modifier = Modifier.size(18.dp),
-                strokeWidth = 2.dp,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            CircularProgressIndicator(
-            Icon(
-        enabled = !isRefreshing,
-        if (isRefreshing) {
-        modifier = modifier.handCursor(),
-        onClick = onClick,
-        }
-        } else {
-    ) {
-    IconButton(
-    contentDescription: String,
-    isRefreshing: Boolean,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    }
-) {
 @Composable
 fun RefreshIconButton(
+    onClick: () -> Unit,
+    isRefreshing: Boolean,
+    contentDescription: String,
+    modifier: Modifier = Modifier,
+) {
+    IconButton(
+        onClick = onClick,
+        enabled = !isRefreshing,
+        modifier = modifier.handCursor(),
+    ) {
+        if (isRefreshing) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(18.dp),
+                strokeWidth = 2.dp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        } else {
+            Icon(
+                imageVector = Icons.Default.Refresh,
+                contentDescription = contentDescription,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+    }
 }

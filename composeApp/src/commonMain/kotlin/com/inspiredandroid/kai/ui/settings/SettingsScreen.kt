@@ -1,4 +1,7 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.inspiredandroid.kai.ui.settings
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -96,361 +99,489 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
-                                    browsableSkills = filteredUiState.browsableSkills,
-                                    browseSkillsFailed = filteredUiState.browseSkillsFailed,
-                                    isBrowsingSkills = filteredUiState.isBrowsingSkills,
-                                    isInstallingSkill = filteredUiState.isInstallingSkill,
-                                    isSandboxInstalled = sandboxState.sandboxInstalled,
-                                    mcpServers = filteredUiState.mcpServers,
-                                    onAddMcpServer = actions.onAddMcpServer,
-                                    onAddPopularMcpServer = actions.onAddPopularMcpServer,
-                                    onCancelSandbox = onCancelSandbox,
-                                    onInstallBrowsedSkill = actions.onInstallBrowsedSkill,
-                                    onInstallGitHubSkill = actions.onInstallGitHubSkill,
-                                    onInstallPackages = onInstallPackages,
-                                    onMigrateHome = onMigrateHome,
-                                    onNavigateToSandbox = { actions.onSelectTab(SettingsTab.Sandbox) },
-                                    onRefreshMcpServer = actions.onRefreshMcpServer,
-                                    onRemoveMcpServer = actions.onRemoveMcpServer,
-                                    onResetSandbox = onResetSandbox,
-                                    onSelectDistro = onSelectDistro,
-                                    onSetupSandbox = onSetupSandbox,
-                                    onShowAddMcpServerDialog = actions.onShowAddMcpServerDialog,
-                                    onShowAddSkillDialog = actions.onShowAddSkillDialog,
-                                    onToggleMcpServer = actions.onToggleMcpServer,
-                                    onToggleSandbox = onToggleSandbox,
-                                    onToggleTool = actions.onToggleTool,
-                                    onUninstallSkill = actions.onUninstallSkill,
-                                    sandboxState = sandboxState,
-                                    showAddMcpServerDialog = filteredUiState.showAddMcpServerDialog,
-                                    showAddSkillDialog = filteredUiState.showAddSkillDialog,
-                                    showSkills = sandboxState.showSandbox,
-                                    skillInstallError = filteredUiState.skillInstallError,
-                                    skills = filteredUiState.skills,
-                                    tools = filteredUiState.tools,
-                                )
-                                AgentContent(uiState = filteredUiState, actions = actions)
-                                GeneralContent(uiState = filteredUiState, actions = actions)
-                                IntegrationsContent()
-                                SandboxSettingsCard(
-                                ServicesContent(uiState = filteredUiState, actions = actions)
-                                ToolsContent(
-                            SettingsTab.Agent -> stringResource(Res.string.settings_tab_agent)
-                            SettingsTab.Agent -> {
-                            SettingsTab.General -> stringResource(Res.string.settings_tab_general)
-                            SettingsTab.General -> {
-                            SettingsTab.Integrations -> stringResource(Res.string.settings_tab_integrations)
-                            SettingsTab.Integrations -> {
-                            SettingsTab.Sandbox -> stringResource(Res.string.settings_tab_sandbox)
-                            SettingsTab.Sandbox -> {
-                            SettingsTab.Services -> stringResource(Res.string.settings_tab_services)
-                            SettingsTab.Services -> {
-                            SettingsTab.Tools -> stringResource(Res.string.settings_tab_tools)
-                            SettingsTab.Tools -> {
-                            tabBounds[tab] = start..(start + coordinates.size.width)
-                            val start = coordinates.positionInParent().x.toInt()
-                            }
-                        .clickable { onSelectTab(tab) },
-                        .clip(RoundedCornerShape(50))
-                        .handCursor()
-                        .onGloballyPositioned { coordinates ->
-                        Color.Transparent
-                        MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
-                        Modifier.widthIn(max = maxContentWidth).fillMaxWidth().padding(horizontal = 16.dp),
-                        SettingsTab.Services -> 500.dp
-                        Spacer(Modifier.height(16.dp))
-                        color = MaterialTheme.colorScheme.primary,
-                        else -> 900.dp
-                        horizontalAlignment = CenterHorizontally,
-                        maxLines = 1,
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                        style = MaterialTheme.typography.labelLarge,
-                        text = when (tab) {
-                        when (filteredUiState.currentTab) {
-                        }
-                        },
-                    )
-                    ) {
-                    BottomInfo()
-                    Column(
-                    Modifier.fillMaxWidth().verticalScroll(settingsScrollState),
-                    Spacer(Modifier.height(16.dp))
-                    Spacer(Modifier.weight(1f))
-                    Text(
-                    color = if (isSelected) {
-                    content = end,
-                    content = start,
-                    horizontalAlignment = CenterHorizontally,
-                    horizontalArrangement = Arrangement.Center,
-                    modifier = Modifier
-                    modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
-                    modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 64.dp),
-                    modifier = Modifier.weight(1f),
-                    navigationTabBar()
-                    scrollState = settingsScrollState,
-                    shape = RoundedCornerShape(50),
-                    uriHandler.openUri("https://github.com/SimonSchubert/Kai")
-                    val maxContentWidth = when (filteredUiState.currentTab) {
-                    verticalAlignment = CenterVertically,
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    }
-                    } else {
-                    },
-                )
-                ) {
-                .align(Alignment.CenterVertically)
-                .clickable { uriHandler.openUri("https://kai9000.com/docs/") }
-                .clickable(onClick = {
-                .clip(CircleShape)
-                .fillMaxWidth()
-                .handCursor(),
-                .horizontalScroll(scrollState),
-                .onSizeChanged { viewportWidth = it.width }
-                .padding(4.dp)
-                .size(24.dp)
-                .then(if (innerPadding) Modifier.padding(16.dp) else Modifier),
-                .then(if (onClick != null) Modifier.clickable(onClick = onClick).handCursor() else Modifier)
-                Column(
-                Row(
-                SettingsTab.entries.filter { it != SettingsTab.Sandbox || sandboxState.showSandbox }.toImmutableList()
-                Surface(
-                TopBar(onNavigateBack = onNavigateBack)
-                VerticalScrollbarForScroll(
-                contentDescription = null,
-                currentTab = filteredUiState.currentTab,
-                end()
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                imageVector = BackIcon,
-                indication = null,
-                interactionSource = switchInteractionSource,
-                modifier = Modifier.fillMaxWidth(),
-                onSelectTab = actions.onSelectTab,
-                start()
-                tabs = visibleTabs,
-                tint = MaterialTheme.colorScheme.onBackground,
-                val isSelected = currentTab == tab
-                viewModel.onScreenVisible()
-                }
-                })
-            )
-            ) {
-            ) { onCheckedChange(!checked) }
-            .clickable(
-            .fillMaxWidth()
-            .handCursor(),
-            Box(Modifier.weight(1f).fillMaxWidth()) {
-            Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            Icon(
-            Row(
-            SettingsTabSelector(
-            Snackbar(snackbarData = data)
-            actionLabel = undoLabel,
-            actions.onUndoDelete()
-            bounds.first < scrollState.value -> bounds.first
-            bounds.last > scrollState.value + viewportWidth -> bounds.last - viewportWidth
-            checked = checked,
-            color = MaterialTheme.colorScheme.onBackground,
-            color = MaterialTheme.colorScheme.primary,
-            configuredServices = filteredServices,
-            content()
-            contentDescription = null,
-            duration = SnackbarDuration.Short,
-            else -> return@LaunchedEffect
-            emailAccounts = filteredEmailAccounts,
-            hostState = snackbarHostState,
+internal val StatusColorConnected = Color(0xFF4CAF50)
+internal val StatusColorChecking = Color(0xFFFF9800)
+internal val StatusColorError = Color(0xFFF44336)
+internal val StatusColorUnknown = Color(0xFF9E9E9E)
+
+@Composable
+fun SettingsScreen(
+    viewModel: SettingsViewModel = koinViewModel(),
+    sandboxViewModel: SandboxViewModel = koinViewModel(),
+    onNavigateBack: () -> Unit,
+    navigationTabBar: (@Composable () -> Unit)? = null,
+) {
+    val uiState by viewModel.state.collectAsStateWithLifecycle()
+    val sandboxState by sandboxViewModel.state.collectAsStateWithLifecycle()
+
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    androidx.compose.runtime.DisposableEffect(lifecycleOwner) {
+        val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
             if (event == androidx.lifecycle.Lifecycle.Event.ON_RESUME) {
-            if (navigationTabBar != null) {
-            interactionSource = switchInteractionSource,
-            is PendingDeletion.EmailAccount -> emailRemovedMsg
-            is PendingDeletion.McpServer -> mcpServerRemovedMsg
-            is PendingDeletion.Memory -> memoryDeletedMsg
-            is PendingDeletion.Service -> serviceRemovedMsg
-            is PendingDeletion.Skill -> skillRemovedMsg
-            is PendingDeletion.Task -> taskCancelledMsg
-            mcpServers = filteredMcpServers,
-            memories = filteredMemories,
-            message = message,
-            modifier = Modifier
-            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 16.dp),
-            modifier = Modifier.align(Alignment.CenterVertically),
-            modifier = Modifier.handCursor(),
-            modifier = Modifier.weight(1f),
-            onCheckedChange = null,
-            onClick = onNavigateBack,
-            painter = painterResource(Res.drawable.github_mark),
-            scheduledTasks = filteredTasks,
-            skills = filteredSkills,
-            stringResource(Res.string.settings_version, Version.appVersion),
-            style = MaterialTheme.typography.bodyMedium,
-            style = MaterialTheme.typography.titleMedium,
-            tabs.forEach { tab ->
-            text = stringResource(Res.string.settings_documentation),
-            text = title,
-            tint = MaterialTheme.colorScheme.onBackground,
-            val settingsScrollState = rememberScrollState()
-            val visibleTabs = remember(sandboxState.showSandbox) {
+                viewModel.onScreenVisible()
             }
-            } else {
-        )
-        ) {
-        ) { data ->
-        Column(
-        Column(Modifier.fillMaxSize(), horizontalAlignment = CenterHorizontally) {
-        Icon(
-        IconButton(
-        Row(
-        SnackbarHost(
-        Spacer(Modifier.weight(1f))
-        Switch(
-        Text(
-        actions = viewModel.actions,
-        actions()
-        border = kaiAdaptiveCardBorder(),
-        color = Color.Transparent,
-        color = MaterialTheme.colorScheme.onBackground,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        colors = kaiAdaptiveCardColors(),
-        horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
-        if (maxWidth >= 600.dp) {
-        if (pendingDeletion is PendingDeletion.EmailAccount) uiState.emailAccounts.filter { it.id != pendingDeletion.id }.toImmutableList() else uiState.emailAccounts
-        if (pendingDeletion is PendingDeletion.McpServer) uiState.mcpServers.filter { it.id != pendingDeletion.serverId }.toImmutableList() else uiState.mcpServers
-        if (pendingDeletion is PendingDeletion.Memory) uiState.memories.filter { it.key != pendingDeletion.key }.toImmutableList() else uiState.memories
-        if (pendingDeletion is PendingDeletion.Service) uiState.configuredServices.filter { it.instanceId != pendingDeletion.instanceId }.toImmutableList() else uiState.configuredServices
-        if (pendingDeletion is PendingDeletion.Skill) uiState.skills.filter { it.id != pendingDeletion.id }.toImmutableList() else uiState.skills
-        if (pendingDeletion is PendingDeletion.Task) uiState.scheduledTasks.filter { it.id != pendingDeletion.id }.toImmutableList() else uiState.scheduledTasks
-        if (result == SnackbarResult.ActionPerformed) {
-        if (viewportWidth == 0) return@LaunchedEffect
+        }
         lifecycleOwner.lifecycle.addObserver(observer)
-        modifier = Modifier
-        modifier = Modifier.padding(horizontal = 16.dp),
-        modifier = Modifier.widthIn(max = 900.dp).fillMaxWidth().padding(vertical = 8.dp),
-        modifier = modifier,
-        navigationTabBar = navigationTabBar,
-        onCancelSandbox = sandboxViewModel::onCancelSandbox,
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    SettingsScreenContent(
+        uiState = uiState,
+        actions = viewModel.actions,
+        sandboxState = sandboxState,
+        onToggleSandbox = sandboxViewModel::onToggleSandbox,
+        onSelectDistro = sandboxViewModel::onSelectDistro,
+        onSetupSandbox = sandboxViewModel::onSetupSandbox,
+        onCancelSandbox = sandboxViewModel::onCancelSandbox,
+        onResetSandbox = sandboxViewModel::onResetSandbox,
         onInstallPackages = sandboxViewModel::onInstallPackages,
         onMigrateHome = sandboxViewModel::onMigrateHome,
         onNavigateBack = onNavigateBack,
-        onResetSandbox = sandboxViewModel::onResetSandbox,
-        onSelectDistro = sandboxViewModel::onSelectDistro,
-        onSetupSandbox = sandboxViewModel::onSetupSandbox,
-        onToggleSandbox = sandboxViewModel::onToggleSandbox,
-        sandboxState = sandboxState,
-        scrollState.animateScrollTo(target.coerceIn(0, scrollState.maxValue))
-        snackbarHostState.currentSnackbarData?.dismiss()
-        style = MaterialTheme.typography.bodySmall,
-        text = description,
-        text = stringResource(Res.string.settings_ai_mistakes_warning),
-        textAlign = TextAlign.Center,
-        uiState = uiState,
-        uiState.copy(
-        val bounds = tabBounds[currentTab] ?: return@LaunchedEffect
-        val deletion = uiState.pendingDeletion ?: return@LaunchedEffect
-        val message = when (deletion) {
-        val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
-        val result = snackbarHostState.showSnackbar(
-        val target = when {
-        verticalAlignment = Alignment.CenterVertically,
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        }
-        } else {
+        navigationTabBar = navigationTabBar,
     )
-    ) {
-    // (Services) sits far enough along that it opens half off the right edge. Track
-    // FlowRow, not Row: at large font scales the three items no longer fit on one
-    // The strip is wider than the screen at large font scales, and the default tab
-    // each pill's bounds so the selected one can be scrolled into view.
-    // line, and a Row would squeeze the documentation link into a column of single
-    // words that runs off the bottom of the screen.
-    Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).navigationBarsPadding().statusBarsPadding().imePadding()) {
-    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-    Card(
-    FlowRow(
-    LaunchedEffect(currentTab, viewportWidth, tabBounds[currentTab]) {
-    LaunchedEffect(uiState.pendingDeletion) {
-    Row {
-    Row(
-    SettingsScreenContent(
-    Spacer(Modifier.height(8.dp))
-    Spacer(Modifier.size(4.dp))
-    Surface(
-    Text(
-    actions: @Composable RowScope.() -> Unit = {},
+}
+
+@Composable
+fun SettingsScreenContent(
+    uiState: SettingsUiState,
     actions: SettingsActions = SettingsActions.NoOp,
-    androidx.compose.runtime.DisposableEffect(lifecycleOwner) {
-    checked: Boolean,
-    content: @Composable () -> Unit,
-    currentTab: SettingsTab,
-    description: String,
-    end: @Composable ColumnScope.() -> Unit,
-    innerPadding: Boolean = true,
-    modifier: Modifier = Modifier,
-    navigationTabBar: (@Composable () -> Unit)? = null,
+    sandboxState: SandboxUiState = SandboxUiState(),
+    onToggleSandbox: (Boolean) -> Unit = {},
+    onSelectDistro: (LinuxDistro) -> Unit = {},
+    onSetupSandbox: () -> Unit = {},
     onCancelSandbox: () -> Unit = {},
-    onCheckedChange: (Boolean) -> Unit,
-    onClick: (() -> Unit)? = null,
+    onResetSandbox: () -> Unit = {},
     onInstallPackages: () -> Unit = {},
     onMigrateHome: () -> Unit = {},
     onNavigateBack: () -> Unit = {},
-    onNavigateBack: () -> Unit,
-    onResetSandbox: () -> Unit = {},
-    onSelectDistro: (LinuxDistro) -> Unit = {},
-    onSelectTab: (SettingsTab) -> Unit,
-    onSetupSandbox: () -> Unit = {},
-    onToggleSandbox: (Boolean) -> Unit = {},
-    sandboxState: SandboxUiState = SandboxUiState(),
-    sandboxViewModel: SandboxViewModel = koinViewModel(),
-    start: @Composable ColumnScope.() -> Unit,
-    tabs: ImmutableList<SettingsTab>,
-    title: String,
-    uiState: SettingsUiState,
-    val emailRemovedMsg = stringResource(Res.string.snackbar_email_removed)
-    val filteredEmailAccounts = remember(uiState.emailAccounts, pendingDeletion) {
-    val filteredMcpServers = remember(uiState.mcpServers, pendingDeletion) {
-    val filteredMemories = remember(uiState.memories, pendingDeletion) {
-    val filteredServices = remember(uiState.configuredServices, pendingDeletion) {
-    val filteredSkills = remember(uiState.skills, pendingDeletion) {
-    val filteredTasks = remember(uiState.scheduledTasks, pendingDeletion) {
-    val filteredUiState = remember(uiState, filteredMemories, filteredTasks, filteredEmailAccounts, filteredServices, filteredMcpServers, filteredSkills) {
-    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
-    val mcpServerRemovedMsg = stringResource(Res.string.snackbar_mcp_server_removed)
-    val memoryDeletedMsg = stringResource(Res.string.snackbar_memory_deleted)
-    val pendingDeletion = uiState.pendingDeletion
-    val sandboxState by sandboxViewModel.state.collectAsStateWithLifecycle()
-    val scrollState = rememberScrollState()
-    val serviceRemovedMsg = stringResource(Res.string.snackbar_service_removed)
-    val skillRemovedMsg = stringResource(Res.string.snackbar_skill_removed)
+    navigationTabBar: (@Composable () -> Unit)? = null,
+) {
     val snackbarHostState = remember { SnackbarHostState() }
-    val switchInteractionSource = remember { MutableInteractionSource() }
-    val tabBounds = remember { mutableStateMapOf<SettingsTab, IntRange>() }
-    val taskCancelledMsg = stringResource(Res.string.snackbar_task_cancelled)
-    val uiState by viewModel.state.collectAsStateWithLifecycle()
     val undoLabel = stringResource(Res.string.snackbar_undo)
-    val uriHandler = LocalUriHandler.current
-    var viewportWidth by remember { mutableStateOf(0) }
-    viewModel: SettingsViewModel = koinViewModel(),
+    val memoryDeletedMsg = stringResource(Res.string.snackbar_memory_deleted)
+    val taskCancelledMsg = stringResource(Res.string.snackbar_task_cancelled)
+    val emailRemovedMsg = stringResource(Res.string.snackbar_email_removed)
+    val serviceRemovedMsg = stringResource(Res.string.snackbar_service_removed)
+    val mcpServerRemovedMsg = stringResource(Res.string.snackbar_mcp_server_removed)
+    val skillRemovedMsg = stringResource(Res.string.snackbar_skill_removed)
+
+    LaunchedEffect(uiState.pendingDeletion) {
+        val deletion = uiState.pendingDeletion ?: return@LaunchedEffect
+        snackbarHostState.currentSnackbarData?.dismiss()
+        val message = when (deletion) {
+            is PendingDeletion.Memory -> memoryDeletedMsg
+            is PendingDeletion.Task -> taskCancelledMsg
+            is PendingDeletion.EmailAccount -> emailRemovedMsg
+            is PendingDeletion.Service -> serviceRemovedMsg
+            is PendingDeletion.McpServer -> mcpServerRemovedMsg
+            is PendingDeletion.Skill -> skillRemovedMsg
+        }
+        val result = snackbarHostState.showSnackbar(
+            message = message,
+            actionLabel = undoLabel,
+            duration = SnackbarDuration.Short,
+        )
+        if (result == SnackbarResult.ActionPerformed) {
+            actions.onUndoDelete()
+        }
     }
+
+    val pendingDeletion = uiState.pendingDeletion
+    val filteredMemories = remember(uiState.memories, pendingDeletion) {
+        if (pendingDeletion is PendingDeletion.Memory) uiState.memories.filter { it.key != pendingDeletion.key }.toImmutableList() else uiState.memories
+    }
+    val filteredTasks = remember(uiState.scheduledTasks, pendingDeletion) {
+        if (pendingDeletion is PendingDeletion.Task) uiState.scheduledTasks.filter { it.id != pendingDeletion.id }.toImmutableList() else uiState.scheduledTasks
+    }
+    val filteredEmailAccounts = remember(uiState.emailAccounts, pendingDeletion) {
+        if (pendingDeletion is PendingDeletion.EmailAccount) uiState.emailAccounts.filter { it.id != pendingDeletion.id }.toImmutableList() else uiState.emailAccounts
+    }
+    val filteredServices = remember(uiState.configuredServices, pendingDeletion) {
+        if (pendingDeletion is PendingDeletion.Service) uiState.configuredServices.filter { it.instanceId != pendingDeletion.instanceId }.toImmutableList() else uiState.configuredServices
+    }
+    val filteredMcpServers = remember(uiState.mcpServers, pendingDeletion) {
+        if (pendingDeletion is PendingDeletion.McpServer) uiState.mcpServers.filter { it.id != pendingDeletion.serverId }.toImmutableList() else uiState.mcpServers
+    }
+    val filteredSkills = remember(uiState.skills, pendingDeletion) {
+        if (pendingDeletion is PendingDeletion.Skill) uiState.skills.filter { it.id != pendingDeletion.id }.toImmutableList() else uiState.skills
+    }
+
+    val filteredUiState = remember(uiState, filteredMemories, filteredTasks, filteredEmailAccounts, filteredServices, filteredMcpServers, filteredSkills) {
+        uiState.copy(
+            memories = filteredMemories,
+            scheduledTasks = filteredTasks,
+            emailAccounts = filteredEmailAccounts,
+            configuredServices = filteredServices,
+            mcpServers = filteredMcpServers,
+            skills = filteredSkills,
+        )
+    }
+
+    Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).navigationBarsPadding().statusBarsPadding().imePadding()) {
+        Column(Modifier.fillMaxSize(), horizontalAlignment = CenterHorizontally) {
+            if (navigationTabBar != null) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 64.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = CenterVertically,
+                ) {
+                    navigationTabBar()
+                }
+            } else {
+                TopBar(onNavigateBack = onNavigateBack)
+            }
+
+            val visibleTabs = remember(sandboxState.showSandbox) {
+                SettingsTab.entries.filter { it != SettingsTab.Sandbox || sandboxState.showSandbox }.toImmutableList()
+            }
+
+            SettingsTabSelector(
+                tabs = visibleTabs,
+                currentTab = filteredUiState.currentTab,
+                onSelectTab = actions.onSelectTab,
+            )
+
+            val settingsScrollState = rememberScrollState()
+            Box(Modifier.weight(1f).fillMaxWidth()) {
+                Column(
+                    Modifier.fillMaxWidth().verticalScroll(settingsScrollState),
+                    horizontalAlignment = CenterHorizontally,
+                ) {
+                    Spacer(Modifier.height(16.dp))
+
+                    val maxContentWidth = when (filteredUiState.currentTab) {
+                        SettingsTab.Services -> 500.dp
+                        else -> 900.dp
+                    }
+                    Column(
+                        Modifier.widthIn(max = maxContentWidth).fillMaxWidth().padding(horizontal = 16.dp),
+                        horizontalAlignment = CenterHorizontally,
+                    ) {
+                        when (filteredUiState.currentTab) {
+                            SettingsTab.General -> {
+                                GeneralContent(uiState = filteredUiState, actions = actions)
+                            }
+
+                            SettingsTab.Agent -> {
+                                AgentContent(uiState = filteredUiState, actions = actions)
+                            }
+
+                            SettingsTab.Services -> {
+                                ServicesContent(uiState = filteredUiState, actions = actions)
+                            }
+
+                            SettingsTab.Integrations -> {
+                                IntegrationsContent()
+                            }
+
+                            SettingsTab.Tools -> {
+                                ToolsContent(
+                                    tools = filteredUiState.tools,
+                                    onToggleTool = actions.onToggleTool,
+                                    mcpServers = filteredUiState.mcpServers,
+                                    onAddMcpServer = actions.onAddMcpServer,
+                                    onRemoveMcpServer = actions.onRemoveMcpServer,
+                                    onToggleMcpServer = actions.onToggleMcpServer,
+                                    onRefreshMcpServer = actions.onRefreshMcpServer,
+                                    showAddMcpServerDialog = filteredUiState.showAddMcpServerDialog,
+                                    onShowAddMcpServerDialog = actions.onShowAddMcpServerDialog,
+                                    onAddPopularMcpServer = actions.onAddPopularMcpServer,
+                                    skills = filteredUiState.skills,
+                                    onUninstallSkill = actions.onUninstallSkill,
+                                    showAddSkillDialog = filteredUiState.showAddSkillDialog,
+                                    onShowAddSkillDialog = actions.onShowAddSkillDialog,
+                                    onInstallGitHubSkill = actions.onInstallGitHubSkill,
+                                    onInstallBrowsedSkill = actions.onInstallBrowsedSkill,
+                                    isInstallingSkill = filteredUiState.isInstallingSkill,
+                                    skillInstallError = filteredUiState.skillInstallError,
+                                    browsableSkills = filteredUiState.browsableSkills,
+                                    isBrowsingSkills = filteredUiState.isBrowsingSkills,
+                                    browseSkillsFailed = filteredUiState.browseSkillsFailed,
+                                    showSkills = sandboxState.showSandbox,
+                                    isSandboxInstalled = sandboxState.sandboxInstalled,
+                                    onNavigateToSandbox = { actions.onSelectTab(SettingsTab.Sandbox) },
+                                )
+                            }
+
+                            SettingsTab.Sandbox -> {
+                                SandboxSettingsCard(
+                                    sandboxState = sandboxState,
+                                    onToggleSandbox = onToggleSandbox,
+                                    onSelectDistro = onSelectDistro,
+                                    onSetupSandbox = onSetupSandbox,
+                                    onCancelSandbox = onCancelSandbox,
+                                    onResetSandbox = onResetSandbox,
+                                    onInstallPackages = onInstallPackages,
+                                    onMigrateHome = onMigrateHome,
+                                )
+                            }
+                        }
+
+                        Spacer(Modifier.height(16.dp))
+                    }
+
+                    Spacer(Modifier.weight(1f))
+
+                    BottomInfo()
+                }
+                VerticalScrollbarForScroll(
+                    scrollState = settingsScrollState,
+                    modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
+                )
+            }
+        }
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 16.dp),
+        ) { data ->
+            Snackbar(snackbarData = data)
+        }
+    }
+}
+
+@Composable
+private fun TopBar(onNavigateBack: () -> Unit) {
+    Row {
+        IconButton(
+            modifier = Modifier.handCursor(),
+            onClick = onNavigateBack,
+        ) {
+            Icon(
+                imageVector = BackIcon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onBackground,
+            )
+        }
+        Spacer(Modifier.weight(1f))
+    }
+}
+
+@Composable
+private fun SettingsTabSelector(
+    tabs: ImmutableList<SettingsTab>,
+    currentTab: SettingsTab,
+    onSelectTab: (SettingsTab) -> Unit,
+) {
+    val scrollState = rememberScrollState()
+    // The strip is wider than the screen at large font scales, and the default tab
+    // (Services) sits far enough along that it opens half off the right edge. Track
+    // each pill's bounds so the selected one can be scrolled into view.
+    var viewportWidth by remember { mutableStateOf(0) }
+    val tabBounds = remember { mutableStateMapOf<SettingsTab, IntRange>() }
+
+    LaunchedEffect(currentTab, viewportWidth, tabBounds[currentTab]) {
+        val bounds = tabBounds[currentTab] ?: return@LaunchedEffect
+        if (viewportWidth == 0) return@LaunchedEffect
+        val target = when {
+            bounds.first < scrollState.value -> bounds.first
+            bounds.last > scrollState.value + viewportWidth -> bounds.last - viewportWidth
+            else -> return@LaunchedEffect
+        }
+        scrollState.animateScrollTo(target.coerceIn(0, scrollState.maxValue))
+    }
+
+    Surface(
+        modifier = Modifier.widthIn(max = 900.dp).fillMaxWidth().padding(vertical = 8.dp),
+        color = Color.Transparent,
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(4.dp)
+                .onSizeChanged { viewportWidth = it.width }
+                .horizontalScroll(scrollState),
+        ) {
+            tabs.forEach { tab ->
+                val isSelected = currentTab == tab
+                Surface(
+                    modifier = Modifier
+                        .onGloballyPositioned { coordinates ->
+                            val start = coordinates.positionInParent().x.toInt()
+                            tabBounds[tab] = start..(start + coordinates.size.width)
+                        }
+                        .handCursor()
+                        .clip(RoundedCornerShape(50))
+                        .clickable { onSelectTab(tab) },
+                    shape = RoundedCornerShape(50),
+                    color = if (isSelected) {
+                        MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
+                    } else {
+                        Color.Transparent
+                    },
+                ) {
+                    Text(
+                        text = when (tab) {
+                            SettingsTab.General -> stringResource(Res.string.settings_tab_general)
+                            SettingsTab.Agent -> stringResource(Res.string.settings_tab_agent)
+                            SettingsTab.Services -> stringResource(Res.string.settings_tab_services)
+                            SettingsTab.Tools -> stringResource(Res.string.settings_tab_tools)
+                            SettingsTab.Sandbox -> stringResource(Res.string.settings_tab_sandbox)
+                            SettingsTab.Integrations -> stringResource(Res.string.settings_tab_integrations)
+                        },
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                        color = MaterialTheme.colorScheme.primary,
+                        style = MaterialTheme.typography.labelLarge,
+                        maxLines = 1,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun BottomInfo() {
+    Text(
+        text = stringResource(Res.string.settings_ai_mistakes_warning),
+        style = MaterialTheme.typography.bodySmall,
+        textAlign = TextAlign.Center,
+        color = MaterialTheme.colorScheme.onBackground,
+    )
+
+    Spacer(Modifier.height(8.dp))
+
+    val uriHandler = LocalUriHandler.current
+
+    // FlowRow, not Row: at large font scales the three items no longer fit on one
+    // line, and a Row would squeeze the documentation link into a column of single
+    // words that runs off the bottom of the screen.
+    FlowRow(
+        modifier = Modifier.padding(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Text(
+            stringResource(Res.string.settings_version, Version.appVersion),
+            modifier = Modifier.align(Alignment.CenterVertically),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+
+        Icon(
+            modifier = Modifier
+                .align(Alignment.CenterVertically)
+                .clip(CircleShape)
+                .size(24.dp)
+                .clickable(onClick = {
+                    uriHandler.openUri("https://github.com/SimonSchubert/Kai")
+                })
+                .handCursor(),
+            painter = painterResource(Res.drawable.github_mark),
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onBackground,
+        )
+
+        Text(
+            text = stringResource(Res.string.settings_documentation),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .align(Alignment.CenterVertically)
+                .clickable { uriHandler.openUri("https://kai9000.com/docs/") }
+                .handCursor(),
+        )
+    }
+
+    Spacer(Modifier.height(8.dp))
+}
+
+@Composable
+internal fun SettingsCard(
+    modifier: Modifier = Modifier,
+    innerPadding: Boolean = true,
+    onClick: (() -> Unit)? = null,
+    content: @Composable () -> Unit,
+) {
+    Card(
+        modifier = modifier,
+        colors = kaiAdaptiveCardColors(),
+        border = kaiAdaptiveCardBorder(),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .then(if (onClick != null) Modifier.clickable(onClick = onClick).handCursor() else Modifier)
+                .then(if (innerPadding) Modifier.padding(16.dp) else Modifier),
+        ) {
+            content()
+        }
+    }
+}
+
+/**
+ * The two-column-on-wide, one-column-on-narrow arrangement the settings tabs share.
  *
  * Each section is declared exactly once. [start] and [end] are the two columns a window of at
- * The two-column-on-wide, one-column-on-narrow arrangement the settings tabs share.
- * argument lists, so the branch lives here and the tabs only say what goes in which column.
  * least 600.dp gets; below that they run into a single column, [start] first. Writing a tab as
  * two independent branches instead is what let the same section drift into two different
+ * argument lists, so the branch lives here and the tabs only say what goes in which column.
  */
-) {
-/**
 @Composable
-@file:OptIn(ExperimentalMaterial3Api::class)
-fun SettingsScreen(
-fun SettingsScreenContent(
-internal fun SettingsCard(
 internal fun StaggeredSettingsColumns(
+    start: @Composable ColumnScope.() -> Unit,
+    end: @Composable ColumnScope.() -> Unit,
+) {
+    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+        if (maxWidth >= 600.dp) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    content = start,
+                )
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    content = end,
+                )
+            }
+        } else {
+            Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                start()
+                end()
+            }
+        }
+    }
+}
+
+@Composable
 internal fun ToggleableHeadline(
-internal val StatusColorChecking = Color(0xFFFF9800)
-internal val StatusColorConnected = Color(0xFF4CAF50)
-internal val StatusColorError = Color(0xFFF44336)
-internal val StatusColorUnknown = Color(0xFF9E9E9E)
-private fun BottomInfo() {
-private fun SettingsTabSelector(
-private fun TopBar(onNavigateBack: () -> Unit) {
+    title: String,
+    description: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    actions: @Composable RowScope.() -> Unit = {},
+) {
+    val switchInteractionSource = remember { MutableInteractionSource() }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(
+                interactionSource = switchInteractionSource,
+                indication = null,
+            ) { onCheckedChange(!checked) }
+            .handCursor(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.weight(1f),
+        )
+        actions()
+        Switch(
+            checked = checked,
+            onCheckedChange = null,
+            interactionSource = switchInteractionSource,
+        )
+    }
+    Spacer(Modifier.size(4.dp))
+    Text(
+        text = description,
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
 }

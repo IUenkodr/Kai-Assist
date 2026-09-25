@@ -1,4 +1,7 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.inspiredandroid.kai.ui.components
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
@@ -14,53 +17,84 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.inspiredandroid.kai.ui.handCursor
 
+@Composable
+fun KaiSlider(
+    value: Float,
+    onValueChange: (Float) -> Unit,
+    onValueChangeFinished: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
+    steps: Int = 0,
+) {
+    Slider(
+        value = value,
+        onValueChange = onValueChange,
+        onValueChangeFinished = onValueChangeFinished,
+        modifier = modifier.handCursor(),
+        valueRange = valueRange,
+        steps = steps,
+        colors = kaiSliderColors(),
+        thumb = { KaiSliderThumb() },
+        track = { sliderState ->
+            SliderDefaults.Track(
+                sliderState = sliderState,
                 colors = kaiSliderTrackColors(),
                 drawStopIndicator = null,
                 drawTick = { _, _ -> },
-                rangeSliderState = rangeSliderState,
-                sliderState = sliderState,
             )
-            .background(MaterialTheme.colorScheme.primary, CircleShape),
-            .size(20.dp)
-            SliderDefaults.Track(
-        colors = kaiSliderColors(),
-        endThumb = { KaiSliderThumb() },
-        modifier = Modifier
-        modifier = modifier.handCursor(),
-        onValueChange = onValueChange,
-        onValueChangeFinished = onValueChangeFinished,
-        startThumb = { KaiSliderThumb() },
-        steps = steps,
-        thumb = { KaiSliderThumb() },
-        track = { rangeSliderState ->
-        track = { sliderState ->
-        value = value,
-        valueRange = valueRange,
         },
     )
-    Box(
-    RangeSlider(
-    Slider(
-    activeTickColor = Color.Transparent,
-    activeTrackColor = MaterialTheme.colorScheme.primary,
-    inactiveTickColor = Color.Transparent,
-    inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
-    modifier: Modifier = Modifier,
-    onValueChange: (ClosedFloatingPointRange<Float>) -> Unit,
-    onValueChange: (Float) -> Unit,
-    onValueChangeFinished: (() -> Unit)? = null,
-    steps: Int = 0,
-    thumbColor = MaterialTheme.colorScheme.primary,
-    value: ClosedFloatingPointRange<Float>,
-    value: Float,
-    valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
-)
-) {
-@Composable
-@file:OptIn(ExperimentalMaterial3Api::class)
-fun KaiRangeSlider(
-fun KaiSlider(
-private fun KaiSliderThumb() {
-private fun kaiSliderColors() = SliderDefaults.colors(
-private fun kaiSliderTrackColors() = SliderDefaults.colors(
 }
+
+@Composable
+fun KaiRangeSlider(
+    value: ClosedFloatingPointRange<Float>,
+    onValueChange: (ClosedFloatingPointRange<Float>) -> Unit,
+    onValueChangeFinished: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
+    steps: Int = 0,
+) {
+    RangeSlider(
+        value = value,
+        onValueChange = onValueChange,
+        onValueChangeFinished = onValueChangeFinished,
+        modifier = modifier.handCursor(),
+        valueRange = valueRange,
+        steps = steps,
+        startThumb = { KaiSliderThumb() },
+        endThumb = { KaiSliderThumb() },
+        track = { rangeSliderState ->
+            SliderDefaults.Track(
+                rangeSliderState = rangeSliderState,
+                colors = kaiSliderTrackColors(),
+                drawStopIndicator = null,
+                drawTick = { _, _ -> },
+            )
+        },
+    )
+}
+
+@Composable
+private fun KaiSliderThumb() {
+    Box(
+        modifier = Modifier
+            .size(20.dp)
+            .background(MaterialTheme.colorScheme.primary, CircleShape),
+    )
+}
+
+@Composable
+private fun kaiSliderColors() = SliderDefaults.colors(
+    thumbColor = MaterialTheme.colorScheme.primary,
+    activeTrackColor = MaterialTheme.colorScheme.primary,
+    inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
+    activeTickColor = Color.Transparent,
+    inactiveTickColor = Color.Transparent,
+)
+
+@Composable
+private fun kaiSliderTrackColors() = SliderDefaults.colors(
+    activeTrackColor = MaterialTheme.colorScheme.primary,
+    inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
+)

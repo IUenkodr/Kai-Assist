@@ -1,89 +1,110 @@
 package com.inspiredandroid.kai.data
+
+import kotlinx.serialization.serializer
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
-import kotlinx.serialization.serializer
 
-                    CronExpression(cron!!).nextAfter(now)?.toEpochMilliseconds() ?: now.toEpochMilliseconds()
-                    now.toEpochMilliseconds()
-                if (task.trigger == TaskTrigger.TIME && task.cron != null) task.copy(trigger = TaskTrigger.CRON) else task
-                it.scheduledAtEpochMs <= now &&
-                it.status == TaskStatus.PENDING
-                scheduledAtEpochMs
-                try {
-                }
-                } catch (_: Exception) {
-            .filter { it.status == TaskStatus.PENDING }
-            .partition { it.trigger == TaskTrigger.HEARTBEAT }
-            // heartbeat tasks are not time-gated
-            TaskTrigger.CRON -> if (scheduledAtEpochMs == 0L) {
-            TaskTrigger.HEARTBEAT -> 0L
-            TaskTrigger.TIME -> scheduledAtEpochMs
-            createdAtEpochMs = now.toEpochMilliseconds(),
-            cron = cron,
-            description = description,
-            id = Uuid.random().toString(),
-            if (current.none { it.id == task.id }) current else current.map { if (it.id == task.id) task else it }
-            if (removed) current.filterNot { it.id == id } else current
-            it.trigger != TaskTrigger.HEARTBEAT &&
-            prompt = prompt,
-            removed = current.any { it.id == id }
-            scheduledAtEpochMs = effectiveScheduledAt,
-            trigger = trigger,
-            upgraded.takeIf { it != decoded }
-            val upgraded = decoded.map { task ->
-            }
-            } else {
-        )
-        // Tasks persisted before the `trigger` field existed decode with the default (TIME).
-        // Upgrade rows that carry a cron expression to CRON so the scheduler can distinguish
-        // first time we see it, so every subsequent load is a no-op.
-        // time/cron from heartbeat additions. Returning a non-null list persists the upgrade the
-        cron: String? = null,
-        description: String,
+/** Both pending task lists produced by [TaskStore.getPendingTasksPartitioned]. */
+data class PendingTaskPartition(
+    val scheduled: List<ScheduledTask>,
+    val heartbeatAdditions: List<ScheduledTask>,
+)
+
+@OptIn(ExperimentalTime::class, ExperimentalUuidApi::class)
+class TaskStore(appSettings: AppSettings) {
+
+    private val tasks = SettingsJsonList(
+        read = appSettings::getScheduledTasksJson,
+        write = appSettings::setScheduledTasksJson,
         itemSerializer = serializer<ScheduledTask>(),
         label = "TaskStore",
+        // Tasks persisted before the `trigger` field existed decode with the default (TIME).
+        // Upgrade rows that carry a cron expression to CRON so the scheduler can distinguish
+        // time/cron from heartbeat additions. Returning a non-null list persists the upgrade the
+        // first time we see it, so every subsequent load is a no-op.
         migrate = { decoded ->
-        prompt: String,
-        read = appSettings::getScheduledTasksJson,
-        return PendingTaskPartition(scheduled = scheduled, heartbeatAdditions = additions)
-        return removed
-        return task
-        return tasks.get().filter {
-        scheduledAtEpochMs: Long,
-        tasks.update { current ->
-        tasks.update { it + task }
-        trigger: TaskTrigger = if (cron != null) TaskTrigger.CRON else TaskTrigger.TIME,
-        val (additions, scheduled) = tasks.get()
-        val effectiveScheduledAt = when (trigger) {
-        val now = Clock.System.now()
-        val now = Clock.System.now().toEpochMilliseconds()
-        val task = ScheduledTask(
-        var removed = false
-        write = appSettings::setScheduledTasksJson,
-        }
+            val upgraded = decoded.map { task ->
+                if (task.trigger == TaskTrigger.TIME && task.cron != null) task.copy(trigger = TaskTrigger.CRON) else task
+            }
+            upgraded.takeIf { it != decoded }
         },
+    )
+
+    suspend fun addTask(
+        description: String,
+        prompt: String,
+        scheduledAtEpochMs: Long,
+        cron: String? = null,
+        trigger: TaskTrigger = if (cron != null) TaskTrigger.CRON else TaskTrigger.TIME,
+    ): ScheduledTask {
+        val now = Clock.System.now()
+        val effectiveScheduledAt = when (trigger) {
+            TaskTrigger.HEARTBEAT -> 0L
+
+            // heartbeat tasks are not time-gated
+            TaskTrigger.CRON -> if (scheduledAtEpochMs == 0L) {
+                try {
+                    CronExpression(cron!!).nextAfter(now)?.toEpochMilliseconds() ?: now.toEpochMilliseconds()
+                } catch (_: Exception) {
+                    now.toEpochMilliseconds()
+                }
+            } else {
+                scheduledAtEpochMs
+            }
+
+            TaskTrigger.TIME -> scheduledAtEpochMs
+        }
+        val task = ScheduledTask(
+            id = Uuid.random().toString(),
+            description = description,
+            prompt = prompt,
+            scheduledAtEpochMs = effectiveScheduledAt,
+            createdAtEpochMs = now.toEpochMilliseconds(),
+            cron = cron,
+            trigger = trigger,
+        )
+        tasks.update { it + task }
+        return task
+    }
+
+    fun getAllTasks(): List<ScheduledTask> = tasks.get()
+
+    /**
      * Both pending scheduled tasks and heartbeat additions from a single load. Hot-path
      * callers (chat system prompt, heartbeat prompt) need both lists per invocation;
      * combining avoids re-parsing the tasks JSON twice.
      */
-    )
-    ): ScheduledTask {
-    /**
-    fun getAllTasks(): List<ScheduledTask> = tasks.get()
-    fun getDueTasks(): List<ScheduledTask> {
     fun getPendingTasksPartitioned(): PendingTaskPartition {
-    private val tasks = SettingsJsonList(
-    suspend fun addTask(
-    suspend fun removeTask(id: String): Boolean {
-    suspend fun updateTask(task: ScheduledTask): ScheduledTask {
-    val heartbeatAdditions: List<ScheduledTask>,
-    val scheduled: List<ScheduledTask>,
+        val (additions, scheduled) = tasks.get()
+            .filter { it.status == TaskStatus.PENDING }
+            .partition { it.trigger == TaskTrigger.HEARTBEAT }
+        return PendingTaskPartition(scheduled = scheduled, heartbeatAdditions = additions)
     }
-)
-/** Both pending task lists produced by [TaskStore.getPendingTasksPartitioned]. */
-@OptIn(ExperimentalTime::class, ExperimentalUuidApi::class)
-class TaskStore(appSettings: AppSettings) {
-data class PendingTaskPartition(
+
+    suspend fun updateTask(task: ScheduledTask): ScheduledTask {
+        tasks.update { current ->
+            if (current.none { it.id == task.id }) current else current.map { if (it.id == task.id) task else it }
+        }
+        return task
+    }
+
+    suspend fun removeTask(id: String): Boolean {
+        var removed = false
+        tasks.update { current ->
+            removed = current.any { it.id == id }
+            if (removed) current.filterNot { it.id == id } else current
+        }
+        return removed
+    }
+
+    fun getDueTasks(): List<ScheduledTask> {
+        val now = Clock.System.now().toEpochMilliseconds()
+        return tasks.get().filter {
+            it.trigger != TaskTrigger.HEARTBEAT &&
+                it.scheduledAtEpochMs <= now &&
+                it.status == TaskStatus.PENDING
+        }
+    }
 }

@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.settings
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -38,152 +39,208 @@ import kai.composeapp.generated.resources.settings_theme_light
 import kai.composeapp.generated.resources.settings_theme_oled
 import kai.composeapp.generated.resources.settings_theme_system
 import kai.composeapp.generated.resources.settings_ui_scale
-import kotlin.math.roundToInt
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
+import kotlin.math.roundToInt
 
+@Composable
+internal fun GeneralContent(uiState: SettingsUiState, actions: SettingsActions) {
+    StaggeredSettingsColumns(
+        start = {
+            if (uiState.showDaemonToggle) {
+                SettingsCard {
+                    DaemonModeToggle(
+                        isDaemonEnabled = uiState.isDaemonEnabled,
+                        onToggleDaemon = actions.onToggleDaemon,
+                    )
+                }
+            }
+            SettingsCard {
+                DynamicUiToggle(
+                    isDynamicUiEnabled = uiState.isDynamicUiEnabled,
+                    onToggleDynamicUi = actions.onToggleDynamicUi,
+                )
+            }
+            SettingsCard {
+                ThemeModePicker(
+                    themeMode = uiState.themeMode,
+                    onChangeThemeMode = actions.onChangeThemeMode,
+                )
+            }
+        },
+        end = {
+            if (uiState.showUiScale) {
+                SettingsCard {
+                    UiScaleSection(
+                        uiScale = uiState.uiScale,
+                        onChangeUiScale = actions.onChangeUiScale,
+                    )
+                }
+            }
+            SettingsCard {
+                ExportImportSection(
+                    onExportSettings = actions.onExportSettings,
+                    onPrepareExport = actions.onPrepareExport,
+                    onImportSettings = actions.onImportSettings,
+                )
+            }
+        },
+    )
+}
+
+@Composable
+private fun DaemonModeToggle(
+    isDaemonEnabled: Boolean,
+    onToggleDaemon: (Boolean) -> Unit,
+) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        ToggleableHeadline(
+            title = stringResource(Res.string.settings_daemon_mode),
+            description = stringResource(Res.string.settings_daemon_mode_description),
+            checked = isDaemonEnabled,
+            onCheckedChange = onToggleDaemon,
+        )
+    }
+}
+
+@Composable
+private fun DynamicUiToggle(
+    isDynamicUiEnabled: Boolean,
+    onToggleDynamicUi: (Boolean) -> Unit,
+) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        ToggleableHeadline(
+            title = stringResource(Res.string.settings_dynamic_ui),
+            description = stringResource(Res.string.settings_dynamic_ui_description),
+            checked = isDynamicUiEnabled,
+            onCheckedChange = onToggleDynamicUi,
+        )
+    }
+}
+
+@Composable
+private fun ThemeModePicker(
+    themeMode: ThemeMode,
+    onChangeThemeMode: (ThemeMode) -> Unit,
+) {
+    val options = listOf(
+        ThemeMode.System to stringResource(Res.string.settings_theme_system),
+        ThemeMode.Light to stringResource(Res.string.settings_theme_light),
+        ThemeMode.Dark to stringResource(Res.string.settings_theme_dark),
+        ThemeMode.OledBlack to stringResource(Res.string.settings_theme_oled),
+    )
+    val selectedLabel = options.first { it.first == themeMode }.second
+    var expanded by remember { mutableStateOf(false) }
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = stringResource(Res.string.settings_theme),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+        Text(
+            text = stringResource(Res.string.settings_theme_description),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 4.dp, bottom = 12.dp),
+        )
+        Box(modifier = Modifier.fillMaxWidth()) {
+            KaiOutlinedTextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = selectedLabel,
+                onValueChange = {},
+                readOnly = true,
+                trailingIcon = {
+                    Icon(
+                        modifier = Modifier.handCursor(),
+                        imageVector = vectorResource(Res.drawable.ic_arrow_drop_down),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onBackground,
+                    )
+                },
+            )
+            // Transparent overlay to capture clicks reliably on all platforms
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .handCursor()
+                    .clickable { expanded = true },
+            )
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                shape = RoundedCornerShape(16.dp),
+            ) {
+                options.forEach { (mode, label) ->
+                    val isSelected = mode == themeMode
+                    DropdownMenuItem(
+                        text = {
+                            Text(
+                                text = label,
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = if (isSelected) {
+                                    MaterialTheme.colorScheme.onPrimaryContainer
+                                } else {
+                                    MaterialTheme.colorScheme.onSurface
+                                },
+                            )
+                        },
+                        onClick = {
+                            expanded = false
+                            onChangeThemeMode(mode)
+                        },
+                        modifier = Modifier
+                            .handCursor()
+                            .then(
+                                if (isSelected) {
+                                    Modifier
+                                        .padding(horizontal = 4.dp)
+                                        .background(
                                             color = MaterialTheme.colorScheme.primaryContainer,
                                             shape = RoundedCornerShape(12.dp),
                                         )
-                                        .background(
-                                        .padding(horizontal = 4.dp)
-                                    MaterialTheme.colorScheme.onPrimaryContainer
-                                    MaterialTheme.colorScheme.onSurface
-                                    Modifier
-                                color = if (isSelected) {
-                                if (isSelected) {
-                                style = MaterialTheme.typography.bodyMedium,
-                                text = label,
                                 } else {
+                                    Modifier
                                 },
-                            )
                             ),
-                            .handCursor()
-                            .then(
-                            Text(
-                            expanded = false
-                            onChangeThemeMode(mode)
-                        contentDescription = null,
-                        imageVector = vectorResource(Res.drawable.ic_arrow_drop_down),
-                        isDaemonEnabled = uiState.isDaemonEnabled,
-                        modifier = Modifier
-                        modifier = Modifier.handCursor(),
-                        onChangeUiScale = actions.onChangeUiScale,
-                        onClick = {
-                        onToggleDaemon = actions.onToggleDaemon,
-                        text = {
-                        tint = MaterialTheme.colorScheme.onBackground,
-                        uiScale = uiState.uiScale,
-                        },
                     )
-                    .clickable { expanded = true },
-                    .handCursor()
-                    .matchParentSize()
-                    DaemonModeToggle(
-                    DropdownMenuItem(
-                    Icon(
-                    UiScaleSection(
-                    isDynamicUiEnabled = uiState.isDynamicUiEnabled,
-                    onChangeThemeMode = actions.onChangeThemeMode,
-                    onExportSettings = actions.onExportSettings,
-                    onImportSettings = actions.onImportSettings,
-                    onPrepareExport = actions.onPrepareExport,
-                    onToggleDynamicUi = actions.onToggleDynamicUi,
-                    themeMode = uiState.themeMode,
-                    val isSelected = mode == themeMode
-                )
-                DynamicUiToggle(
-                ExportImportSection(
-                SettingsCard {
-                ThemeModePicker(
-                color = MaterialTheme.colorScheme.onBackground,
-                expanded = expanded,
-                modifier = Modifier
-                modifier = Modifier.fillMaxWidth(),
-                onDismissRequest = { expanded = false },
-                onValueChange = {},
-                options.forEach { (mode, label) ->
-                readOnly = true,
-                shape = RoundedCornerShape(16.dp),
-                style = MaterialTheme.typography.labelLarge,
-                style = MaterialTheme.typography.titleMedium,
-                text = "${(sliderValue * 100).roundToInt()}%",
-                text = stringResource(Res.string.settings_ui_scale),
-                trailingIcon = {
-                value = selectedLabel,
                 }
-                },
-            )
-            ) {
-            // Transparent overlay to capture clicks reliably on all platforms
-            Box(
-            DropdownMenu(
-            KaiOutlinedTextField(
-            SettingsCard {
-            Text(
-            checked = isDaemonEnabled,
-            checked = isDynamicUiEnabled,
-            color = MaterialTheme.colorScheme.onBackground,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            description = stringResource(Res.string.settings_daemon_mode_description),
-            description = stringResource(Res.string.settings_dynamic_ui_description),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            if (uiState.showDaemonToggle) {
-            if (uiState.showUiScale) {
+            }
+        }
+    }
+}
+
+@Composable
+private fun UiScaleSection(
+    uiScale: Float,
+    onChangeUiScale: (Float) -> Unit,
+) {
+    var sliderValue by remember(uiScale) { mutableStateOf(uiScale) }
+    val steps = 14 // 16 snap points from 50% to 200% in 10% increments (14 intermediate)
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
             modifier = Modifier.fillMaxWidth(),
-            modifier = Modifier.padding(top = 4.dp, bottom = 12.dp),
-            onCheckedChange = onToggleDaemon,
-            onCheckedChange = onToggleDynamicUi,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(Res.string.settings_ui_scale),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onBackground,
+            )
+            Text(
+                text = "${(sliderValue * 100).roundToInt()}%",
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onBackground,
+            )
+        }
+        KaiSlider(
+            value = sliderValue,
             onValueChange = { sliderValue = it },
             onValueChangeFinished = { onChangeUiScale(sliderValue) },
-            steps = steps,
-            style = MaterialTheme.typography.bodyMedium,
-            style = MaterialTheme.typography.titleMedium,
-            text = stringResource(Res.string.settings_theme),
-            text = stringResource(Res.string.settings_theme_description),
-            title = stringResource(Res.string.settings_daemon_mode),
-            title = stringResource(Res.string.settings_dynamic_ui),
-            value = sliderValue,
             valueRange = 0.5f..2.0f,
-            verticalAlignment = Alignment.CenterVertically,
-            }
+            steps = steps,
         )
-        ) {
-        Box(modifier = Modifier.fillMaxWidth()) {
-        KaiSlider(
-        Row(
-        Text(
-        ThemeMode.Dark to stringResource(Res.string.settings_theme_dark),
-        ThemeMode.Light to stringResource(Res.string.settings_theme_light),
-        ThemeMode.OledBlack to stringResource(Res.string.settings_theme_oled),
-        ThemeMode.System to stringResource(Res.string.settings_theme_system),
-        ToggleableHeadline(
-        end = {
-        start = {
-        }
-        },
-    )
-    Column(modifier = Modifier.fillMaxWidth()) {
-    StaggeredSettingsColumns(
-    isDaemonEnabled: Boolean,
-    isDynamicUiEnabled: Boolean,
-    onChangeThemeMode: (ThemeMode) -> Unit,
-    onChangeUiScale: (Float) -> Unit,
-    onToggleDaemon: (Boolean) -> Unit,
-    onToggleDynamicUi: (Boolean) -> Unit,
-    themeMode: ThemeMode,
-    uiScale: Float,
-    val options = listOf(
-    val selectedLabel = options.first { it.first == themeMode }.second
-    val steps = 14 // 16 snap points from 50% to 200% in 10% increments (14 intermediate)
-    var expanded by remember { mutableStateOf(false) }
-    var sliderValue by remember(uiScale) { mutableStateOf(uiScale) }
     }
-) {
-@Composable
-internal fun GeneralContent(uiState: SettingsUiState, actions: SettingsActions) {
-private fun DaemonModeToggle(
-private fun DynamicUiToggle(
-private fun ThemeModePicker(
-private fun UiScaleSection(
 }

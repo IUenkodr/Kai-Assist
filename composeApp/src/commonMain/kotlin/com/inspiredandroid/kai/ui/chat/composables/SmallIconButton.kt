@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.chat.composables
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
@@ -15,25 +16,42 @@ import com.inspiredandroid.kai.ui.handCursor
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-            contentDescription = contentDescription,
-            imageVector = imageVector,
-            modifier = Modifier.size(20.dp),
-            painter = painterResource(iconResource),
-            tint = MaterialTheme.colorScheme.onBackground,
-        )
-        Icon(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.size(36.dp).clip(CircleShape).handCursor().clickable { onClick() },
-    ) { content() }
-    Box(
-    SmallIconButtonBox(onClick) {
-    contentDescription: String? = null,
-    iconResource: DrawableResource,
-    imageVector: ImageVector,
-    onClick: () -> Unit,
-    }
-) {
 @Composable
 internal fun SmallIconButton(
+    iconResource: DrawableResource,
+    contentDescription: String? = null,
+    onClick: () -> Unit,
+) {
+    SmallIconButtonBox(onClick) {
+        Icon(
+            modifier = Modifier.size(20.dp),
+            painter = painterResource(iconResource),
+            contentDescription = contentDescription,
+            tint = MaterialTheme.colorScheme.onBackground,
+        )
+    }
+}
+
+@Composable
+internal fun SmallIconButton(
+    imageVector: ImageVector,
+    contentDescription: String? = null,
+    onClick: () -> Unit,
+) {
+    SmallIconButtonBox(onClick) {
+        Icon(
+            modifier = Modifier.size(20.dp),
+            imageVector = imageVector,
+            contentDescription = contentDescription,
+            tint = MaterialTheme.colorScheme.onBackground,
+        )
+    }
+}
+
+@Composable
 private fun SmallIconButtonBox(onClick: () -> Unit, content: @Composable () -> Unit) {
+    Box(
+        modifier = Modifier.size(36.dp).clip(CircleShape).handCursor().clickable { onClick() },
+        contentAlignment = Alignment.Center,
+    ) { content() }
 }

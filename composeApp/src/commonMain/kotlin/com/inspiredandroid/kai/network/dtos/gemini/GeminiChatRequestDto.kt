@@ -1,48 +1,73 @@
 package com.inspiredandroid.kai.network.dtos.gemini
+
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
 
-        val args: Map<String, JsonElement>? = null,
-        val data: String,
-        val functionCall: FunctionCall? = null,
-        val functionResponse: FunctionResponse? = null,
-        val inline_data: InlineData? = null,
-        val mime_type: String,
-        val name: String,
-        val parts: List<Part>,
-        val response: Map<String, JsonElement>,
-        val role: String? = null,
-        val text: String? = null,
-        val thoughtSignature: String? = null,
-    )
+@Serializable
+data class GeminiChatRequestDto(
+    val contents: List<Content>,
+    val tools: List<GeminiTool>? = null,
+    val systemInstruction: Content? = null,
+) {
     @Serializable
     data class Content(
-    data class FunctionCall(
-    data class FunctionResponse(
-    data class InlineData(
+        val parts: List<Part>,
+        val role: String? = null,
+    )
+
+    @Serializable
     data class Part(
-    val contents: List<Content>,
-    val description: String,
-    val description: String? = null,
-    val enum: List<String>? = null,
+        val text: String? = null,
+        val inline_data: InlineData? = null,
+        val functionCall: FunctionCall? = null,
+        val functionResponse: FunctionResponse? = null,
+        val thoughtSignature: String? = null,
+    )
+
+    @Serializable
+    data class InlineData(
+        val mime_type: String,
+        val data: String,
+    )
+
+    @Serializable
+    data class FunctionCall(
+        val name: String,
+        val args: Map<String, JsonElement>? = null,
+    )
+
+    @Serializable
+    data class FunctionResponse(
+        val name: String,
+        val response: Map<String, JsonElement>,
+    )
+}
+
+@Serializable
+data class GeminiTool(
     val functionDeclarations: List<FunctionDeclaration>,
-    val items: PropertySchema? = null,
-    val name: String,
-    val parameters: FunctionParameters,
-    val properties: Map<String, PropertySchema>,
-    val properties: Map<String, PropertySchema>? = null,
-    val required: List<String> = emptyList(),
-    val required: List<String>? = null,
-    val systemInstruction: Content? = null,
-    val tools: List<GeminiTool>? = null,
-    val type: String = "object",
-    val type: String,
 )
-) {
+
 @Serializable
 data class FunctionDeclaration(
+    val name: String,
+    val description: String,
+    val parameters: FunctionParameters,
+)
+
+@Serializable
 data class FunctionParameters(
-data class GeminiChatRequestDto(
-data class GeminiTool(
+    val type: String = "object",
+    val properties: Map<String, PropertySchema>,
+    val required: List<String> = emptyList(),
+)
+
+@Serializable
 data class PropertySchema(
-}
+    val type: String,
+    val description: String? = null,
+    val enum: List<String>? = null,
+    val items: PropertySchema? = null,
+    val properties: Map<String, PropertySchema>? = null,
+    val required: List<String>? = null,
+)

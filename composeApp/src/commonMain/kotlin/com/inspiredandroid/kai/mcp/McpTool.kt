@@ -1,9 +1,8 @@
 package com.inspiredandroid.kai.mcp
+
 import com.inspiredandroid.kai.network.tools.ParameterSchema
 import com.inspiredandroid.kai.network.tools.Tool
 import com.inspiredandroid.kai.network.tools.ToolSchema
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
@@ -13,60 +12,84 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 
-                        // Skip malformed properties
-                        put(name, ParameterSchema(type, description, name in required, rawSchema = propObj))
-                        val description = propObj["description"]?.jsonPrimitive?.content ?: ""
-                        val propObj = prop.jsonObject
-                        val type = propObj["type"]?.jsonPrimitive?.content ?: "string"
-                    try {
-                    }
-                    } catch (_: Exception) {
-                emptySet()
-                for ((name, prop) in properties) {
-                inputSchema["required"]?.jsonArray?.map { it.jsonPrimitive.content }?.toSet() ?: emptySet()
-                put(key, anyToJsonElement(value))
-                }
-            for ((key, value) in args) {
-            if (inputSchema == null) return emptyMap()
-            mapOf("success" to false, "error" to (e.message ?: "MCP tool call failed"))
-            mapOf("success" to true, "result" to result)
-            return buildMap {
-            val properties = inputSchema["properties"]?.jsonObject ?: return emptyMap()
-            val required = try {
-            val result = client.callTool(metadata.name, jsonArgs)
-            value.entries.associate { (k, v) -> k.toString() to anyToJsonElement(v) },
-            }
-            } catch (_: Exception) {
-        )
-        description = metadata.description,
-        else -> JsonPrimitive(value.toString())
-        fun convertInputSchema(inputSchema: JsonObject?): Map<String, ParameterSchema> {
-        fun toolId(serverId: String, toolName: String): String = "mcp_${serverId}_$toolName"
-        is Boolean -> JsonPrimitive(value)
-        is Double -> JsonPrimitive(value)
-        is Int -> JsonPrimitive(value)
-        is List<*> -> JsonArray(value.map { anyToJsonElement(it) })
-        is Long -> JsonPrimitive(value)
-        is Map<*, *> -> JsonObject(
-        is Number -> JsonPrimitive(value)
-        is String -> JsonPrimitive(value)
-        name = metadata.name,
-        null -> JsonNull
-        parameters = convertInputSchema(metadata.inputSchema),
-        return try {
-        val jsonArgs = buildJsonObject {
-        }
-        } catch (e: Exception) {
-    )
-    companion object {
-    override suspend fun execute(args: Map<String, Any>): Any {
-    override val schema: ToolSchema = ToolSchema(
-    override val timeout: Duration = 60.seconds
-    private fun anyToJsonElement(value: Any?): JsonElement = when (value) {
+class McpTool(
     private val client: McpClient,
     private val metadata: McpToolMetadata,
-    }
 ) : Tool {
-class McpTool(
+
+    override val schema: ToolSchema = ToolSchema(
+        name = metadata.name,
+        description = metadata.description,
+        parameters = convertInputSchema(metadata.inputSchema),
+    )
+
+    override val timeout: Duration = 60.seconds
+
+    override suspend fun execute(args: Map<String, Any>): Any {
+        val jsonArgs = buildJsonObject {
+            for ((key, value) in args) {
+                put(key, anyToJsonElement(value))
+            }
+        }
+        return try {
+            val result = client.callTool(metadata.name, jsonArgs)
+            mapOf("success" to true, "result" to result)
+        } catch (e: Exception) {
+            mapOf("success" to false, "error" to (e.message ?: "MCP tool call failed"))
+        }
+    }
+
+    private fun anyToJsonElement(value: Any?): JsonElement = when (value) {
+        null -> JsonNull
+
+        is String -> JsonPrimitive(value)
+
+        is Boolean -> JsonPrimitive(value)
+
+        is Int -> JsonPrimitive(value)
+
+        is Long -> JsonPrimitive(value)
+
+        is Double -> JsonPrimitive(value)
+
+        is Number -> JsonPrimitive(value)
+
+        is Map<*, *> -> JsonObject(
+            value.entries.associate { (k, v) -> k.toString() to anyToJsonElement(v) },
+        )
+
+        is List<*> -> JsonArray(value.map { anyToJsonElement(it) })
+
+        else -> JsonPrimitive(value.toString())
+    }
+
+    companion object {
+        fun toolId(serverId: String, toolName: String): String = "mcp_${serverId}_$toolName"
+
+        fun convertInputSchema(inputSchema: JsonObject?): Map<String, ParameterSchema> {
+            if (inputSchema == null) return emptyMap()
+            val properties = inputSchema["properties"]?.jsonObject ?: return emptyMap()
+            val required = try {
+                inputSchema["required"]?.jsonArray?.map { it.jsonPrimitive.content }?.toSet() ?: emptySet()
+            } catch (_: Exception) {
+                emptySet()
+            }
+
+            return buildMap {
+                for ((name, prop) in properties) {
+                    try {
+                        val propObj = prop.jsonObject
+                        val type = propObj["type"]?.jsonPrimitive?.content ?: "string"
+                        val description = propObj["description"]?.jsonPrimitive?.content ?: ""
+                        put(name, ParameterSchema(type, description, name in required, rawSchema = propObj))
+                    } catch (_: Exception) {
+                        // Skip malformed properties
+                    }
+                }
+            }
+        }
+    }
 }

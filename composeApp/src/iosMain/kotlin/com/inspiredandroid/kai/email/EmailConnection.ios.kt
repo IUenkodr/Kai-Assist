@@ -1,4 +1,7 @@
+@file:Suppress("DEPRECATION")
+
 package com.inspiredandroid.kai.email
+
 import io.ktor.network.selector.SelectorManager
 import io.ktor.network.sockets.aSocket
 import io.ktor.network.sockets.openReadChannel
@@ -11,44 +14,55 @@ import io.ktor.utils.io.writeStringUtf8
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 
-            closeable.close()
-            selectorManager.close()
-            serverName = host
-        // For STARTTLS: upgrade existing connection to TLS
-        builder
+actual suspend fun createEmailConnection(host: String, port: Int, tls: Boolean): EmailConnection {
+    val selectorManager = SelectorManager(Dispatchers.IO)
+    val builder = aSocket(selectorManager).tcp().connect(host, port)
+    val socket = if (tls) {
         builder.tls(Dispatchers.IO) {
-        closeable = socket,
-        closeable = tlsSocket
-        host = host,
-        readChannel = socket.openReadChannel(),
-        readChannel = tlsSocket.openReadChannel()
-        selectorManager = selectorManager,
-        try {
-        val tlsSocket = closeable.tls(Dispatchers.IO) {
-        writeChannel = socket.openWriteChannel(autoFlush = false),
-        writeChannel = tlsSocket.openWriteChannel(autoFlush = false)
-        writeChannel.flush()
-        writeChannel.writeStringUtf8("$line\r\n")
+            serverName = host
         }
-        } catch (_: Exception) {
+    } else {
+        builder
+    }
+    return KtorEmailConnection(
+        readChannel = socket.openReadChannel(),
+        writeChannel = socket.openWriteChannel(autoFlush = false),
+        closeable = socket,
+        selectorManager = selectorManager,
+        host = host,
     )
-    override suspend fun close() {
-    override suspend fun readLine(): String = readChannel.readUTF8Line() ?: throw Exception("Connection closed")
-    override suspend fun upgradeToTls(host: String) {
-    override suspend fun writeLine(line: String) {
-    private val host: String,
-    private val selectorManager: SelectorManager,
-    private var closeable: io.ktor.network.sockets.Socket,
+}
+
+private class KtorEmailConnection(
     private var readChannel: ByteReadChannel,
     private var writeChannel: ByteWriteChannel,
-    return KtorEmailConnection(
-    val builder = aSocket(selectorManager).tcp().connect(host, port)
-    val selectorManager = SelectorManager(Dispatchers.IO)
-    val socket = if (tls) {
-    }
-    } else {
+    private var closeable: io.ktor.network.sockets.Socket,
+    private val selectorManager: SelectorManager,
+    private val host: String,
 ) : EmailConnection {
-@file:Suppress("DEPRECATION")
-actual suspend fun createEmailConnection(host: String, port: Int, tls: Boolean): EmailConnection {
-private class KtorEmailConnection(
+
+    override suspend fun readLine(): String = readChannel.readUTF8Line() ?: throw Exception("Connection closed")
+
+    override suspend fun writeLine(line: String) {
+        writeChannel.writeStringUtf8("$line\r\n")
+        writeChannel.flush()
+    }
+
+    override suspend fun upgradeToTls(host: String) {
+        // For STARTTLS: upgrade existing connection to TLS
+        val tlsSocket = closeable.tls(Dispatchers.IO) {
+            serverName = host
+        }
+        readChannel = tlsSocket.openReadChannel()
+        writeChannel = tlsSocket.openWriteChannel(autoFlush = false)
+        closeable = tlsSocket
+    }
+
+    override suspend fun close() {
+        try {
+            closeable.close()
+            selectorManager.close()
+        } catch (_: Exception) {
+        }
+    }
 }

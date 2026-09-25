@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.sandbox
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -52,153 +53,214 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
-                                .padding(bottom = 6.dp).weight(1f),
-                                darkBackground = true,
-                                initialLines = previewLines,
-                                modifier = Modifier.fillMaxSize(),
-                                sandboxController = sandboxController,
-                                sessionViewModel = sessionViewModel,
-                            )
-                            Res.string.sandbox_session_chip_session
-                            Res.string.sandbox_session_chip_temporary
+internal enum class SandboxSubTab { Terminal, Files, Packages }
+
+@Composable
+internal fun SandboxTabsContent(
+    sandboxState: SandboxUiState,
+    onSetupSandbox: () -> Unit = {},
+    onCancelSandbox: () -> Unit = {},
+    previewLines: ImmutableList<TerminalLine> = persistentListOf(),
+    modifier: Modifier = Modifier,
+) {
+    val statusText = sandboxStatusText(sandboxState.sandboxStatusLabel)
+    if (sandboxState.sandboxReady) {
+        val isPreview = LocalInspectionMode.current
+        val sandboxController: SandboxController? = if (!isPreview) koinInject() else null
+        val sessionViewModel: SandboxSessionViewModel? = if (!isPreview) koinViewModel() else null
+        var localSubTab by remember { mutableStateOf(SandboxSubTab.Terminal) }
+        val subTab = sessionViewModel?.selectedTab?.collectAsStateWithLifecycle()?.value ?: localSubTab
+        val onSelectTab: (SandboxSubTab) -> Unit = sessionViewModel?.let { vm ->
+            { vm.selectTab(it) }
+        } ?: { localSubTab = it }
+        Column(
+            modifier = modifier,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            SandboxSubTabSelector(currentTab = subTab, onSelectTab = onSelectTab)
+
+            Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
+                when (subTab) {
+                    SandboxSubTab.Terminal -> Column(modifier = Modifier.fillMaxSize()) {
+                        if (sessionViewModel != null) {
                             SessionChipRow(viewModel = sessionViewModel)
-                            TerminalContent(
-                            color = TerminalDarkBg,
+                        }
+                        Surface(
                             modifier = Modifier.fillMaxWidth()
+                                .padding(bottom = 6.dp).weight(1f),
                             shape = RoundedCornerShape(12.dp),
+                            color = TerminalDarkBg,
                             tonalElevation = 2.dp,
                         ) {
-                        MaterialTheme.colorScheme.onSurfaceVariant
-                        MaterialTheme.colorScheme.primary
-                        SandboxSubTab.Files -> stringResource(Res.string.settings_sandbox_subtab_files)
-                        SandboxSubTab.Packages -> stringResource(Res.string.settings_sandbox_subtab_packages)
-                        SandboxSubTab.Terminal -> stringResource(Res.string.settings_sandbox_subtab_terminal)
-                        Surface(
-                        Text(stringResource(Res.string.settings_sandbox_install))
-                        color = MaterialTheme.colorScheme.error,
-                        if (sessionViewModel != null) {
-                        if (tab.isTerminal) {
-                        modifier = Modifier.fillMaxSize(),
-                        style = MaterialTheme.typography.bodySmall,
-                        text = statusText,
+                            TerminalContent(
+                                sandboxController = sandboxController,
+                                modifier = Modifier.fillMaxSize(),
+                                darkBackground = true,
+                                initialLines = previewLines,
+                                sessionViewModel = sessionViewModel,
+                            )
                         }
-                        } else {
-                        },
-                    )
-                    ),
-                    .clickable { onSelectTab(tab) },
-                    .clickable { viewModel.selectSession(tab.id) },
-                    .clip(RoundedCornerShape(50))
-                    .handCursor()
-                    Button(onClick = onSetupSandbox, modifier = Modifier.handCursor()) {
-                    Color.Transparent
-                    MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
-                    SandboxProgressRow(null, statusText, onCancelSandbox)
-                    SandboxProgressRow(sandboxState.sandboxProgress, statusText, onCancelSandbox)
+                    }
+
                     SandboxSubTab.Files -> SandboxFilesContent(
+                        modifier = Modifier.fillMaxSize(),
+                    )
+
                     SandboxSubTab.Packages -> SandboxPackagesContent(
-                    SandboxSubTab.Terminal -> Column(modifier = Modifier.fillMaxSize()) {
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                }
+            }
+        }
+    } else {
+        Column(modifier = modifier.fillMaxWidth()) {
+            SettingsCard {
+                Text(
+                    text = "Alpine Linux",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onBackground,
+                )
+
+                Spacer(Modifier.height(4.dp))
+
+                Text(
+                    text = stringResource(Res.string.settings_sandbox_description),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+
+                if (sandboxState.sandboxProgress != null) {
+                    SandboxProgressRow(sandboxState.sandboxProgress, statusText, onCancelSandbox)
+                } else if (sandboxState.isWorking) {
+                    SandboxProgressRow(null, statusText, onCancelSandbox)
+                } else if (sandboxState.hasError) {
                     Spacer(Modifier.height(8.dp))
                     Text(
-                    color = MaterialTheme.colorScheme.onBackground,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    color = MaterialTheme.colorScheme.primary,
-                    color = if (isSelected) {
-                    maxLines = 1,
-                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                    style = MaterialTheme.typography.bodySmall,
-                    style = MaterialTheme.typography.labelLarge,
-                    style = MaterialTheme.typography.labelMedium,
-                    style = MaterialTheme.typography.titleMedium,
-                    text = "Alpine Linux",
-                    text = stringResource(
-                    text = stringResource(Res.string.settings_sandbox_description),
-                    text = when (tab) {
-                    }
-                    } else {
-                    },
-                )
-                Spacer(Modifier.height(4.dp))
-                Text(
-                color = if (isSelected) {
-                if (!sandboxState.isWorking) {
-                if (sandboxState.sandboxProgress != null) {
-                modifier = Modifier
-                shape = RoundedCornerShape(50),
-                when (subTab) {
+                        text = statusText,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error,
+                    )
                 }
-                } else if (sandboxState.hasError) {
-                } else if (sandboxState.isWorking) {
-                } else {
-                },
-            ) {
+
+                if (!sandboxState.isWorking) {
+                    Spacer(Modifier.height(8.dp))
+                    Button(onClick = onSetupSandbox, modifier = Modifier.handCursor()) {
+                        Text(stringResource(Res.string.settings_sandbox_install))
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SessionChipRow(viewModel: SandboxSessionViewModel) {
+    val tabs = viewModel.visibleSessions.collectAsStateWithLifecycle().value
+    val selectedId = viewModel.selectedSessionId.collectAsStateWithLifecycle().value
+    if (tabs.size <= 1) return // Nothing to switch between — keep the UI quiet.
+    Row(
+        modifier = Modifier
             .fillMaxWidth()
             .horizontalScroll(rememberScrollState())
             .padding(horizontal = 4.dp, vertical = 4.dp),
-            Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
-            SandboxSubTabSelector(currentTab = subTab, onSelectTab = onSelectTab)
-            SettingsCard {
-            Surface(
-            Text(stringResource(Res.string.settings_sandbox_cancel))
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.weight(1f),
-            modifier = modifier,
-            style = MaterialTheme.typography.bodySmall,
-            text = statusText,
-            val isSelected = currentTab == tab
-            val isSelected = tab.id == selectedId
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            { vm.selectTab(it) }
-            }
-        )
-        ) {
-        Column(
-        Column(modifier = modifier.fillMaxWidth()) {
-        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
-        LinearProgressIndicator(progress = { progress }, modifier = Modifier.fillMaxWidth())
-        SandboxSubTab.entries.forEach { tab ->
-        Text(
-        TextButton(onClick = onCancel, modifier = Modifier.handCursor()) {
-        horizontalArrangement = Arrangement.SpaceBetween,
         horizontalArrangement = Arrangement.spacedBy(6.dp),
-        modifier = Modifier
-        modifier = Modifier.fillMaxWidth(),
-        modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(4.dp),
-        tabs.forEach { tab ->
-        val isPreview = LocalInspectionMode.current
-        val onSelectTab: (SandboxSubTab) -> Unit = sessionViewModel?.let { vm ->
-        val sandboxController: SandboxController? = if (!isPreview) koinInject() else null
-        val sessionViewModel: SandboxSessionViewModel? = if (!isPreview) koinViewModel() else null
-        val subTab = sessionViewModel?.selectedTab?.collectAsStateWithLifecycle()?.value ?: localSubTab
-        var localSubTab by remember { mutableStateOf(SandboxSubTab.Terminal) }
-        verticalAlignment = Alignment.CenterVertically,
-        }
-        } ?: { localSubTab = it }
     ) {
-    Row(
-    Spacer(Modifier.height(4.dp))
-    Spacer(Modifier.height(8.dp))
-    currentTab: SandboxSubTab,
-    if (progress != null) {
-    if (sandboxState.sandboxReady) {
-    if (tabs.size <= 1) return // Nothing to switch between — keep the UI quiet.
-    modifier: Modifier = Modifier,
-    onCancelSandbox: () -> Unit = {},
-    onSelectTab: (SandboxSubTab) -> Unit,
-    onSetupSandbox: () -> Unit = {},
-    previewLines: ImmutableList<TerminalLine> = persistentListOf(),
-    sandboxState: SandboxUiState,
-    val selectedId = viewModel.selectedSessionId.collectAsStateWithLifecycle().value
-    val statusText = sandboxStatusText(sandboxState.sandboxStatusLabel)
-    val tabs = viewModel.visibleSessions.collectAsStateWithLifecycle().value
+        tabs.forEach { tab ->
+            val isSelected = tab.id == selectedId
+            Surface(
+                modifier = Modifier
+                    .handCursor()
+                    .clip(RoundedCornerShape(50))
+                    .clickable { viewModel.selectSession(tab.id) },
+                shape = RoundedCornerShape(50),
+                color = if (isSelected) {
+                    MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
+                } else {
+                    Color.Transparent
+                },
+            ) {
+                Text(
+                    text = stringResource(
+                        if (tab.isTerminal) {
+                            Res.string.sandbox_session_chip_temporary
+                        } else {
+                            Res.string.sandbox_session_chip_session
+                        },
+                    ),
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                    color = if (isSelected) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    },
+                    style = MaterialTheme.typography.labelMedium,
+                    maxLines = 1,
+                )
+            }
+        }
     }
-    } else {
-) {
+}
+
 @Composable
-internal enum class SandboxSubTab { Terminal, Files, Packages }
-internal fun SandboxProgressRow(progress: Float?, statusText: String, onCancel: () -> Unit) {
-internal fun SandboxTabsContent(
 private fun SandboxSubTabSelector(
-private fun SessionChipRow(viewModel: SandboxSessionViewModel) {
+    currentTab: SandboxSubTab,
+    onSelectTab: (SandboxSubTab) -> Unit,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(4.dp),
+    ) {
+        SandboxSubTab.entries.forEach { tab ->
+            val isSelected = currentTab == tab
+            Surface(
+                modifier = Modifier
+                    .handCursor()
+                    .clip(RoundedCornerShape(50))
+                    .clickable { onSelectTab(tab) },
+                shape = RoundedCornerShape(50),
+                color = if (isSelected) {
+                    MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
+                } else {
+                    Color.Transparent
+                },
+            ) {
+                Text(
+                    text = when (tab) {
+                        SandboxSubTab.Terminal -> stringResource(Res.string.settings_sandbox_subtab_terminal)
+                        SandboxSubTab.Files -> stringResource(Res.string.settings_sandbox_subtab_files)
+                        SandboxSubTab.Packages -> stringResource(Res.string.settings_sandbox_subtab_packages)
+                    },
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                    color = MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.labelLarge,
+                    maxLines = 1,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+internal fun SandboxProgressRow(progress: Float?, statusText: String, onCancel: () -> Unit) {
+    Spacer(Modifier.height(8.dp))
+    if (progress != null) {
+        LinearProgressIndicator(progress = { progress }, modifier = Modifier.fillMaxWidth())
+    } else {
+        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+    }
+    Spacer(Modifier.height(4.dp))
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = statusText,
+            modifier = Modifier.weight(1f),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        TextButton(onClick = onCancel, modifier = Modifier.handCursor()) {
+            Text(stringResource(Res.string.settings_sandbox_cancel))
+        }
+    }
 }

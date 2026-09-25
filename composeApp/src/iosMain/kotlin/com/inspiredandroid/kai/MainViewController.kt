@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai
+
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,18 +11,19 @@ import nl.marc_apps.tts.TextToSpeechEngine
 import nl.marc_apps.tts.TextToSpeechInstance
 import nl.marc_apps.tts.rememberTextToSpeechOrNull
 
-        navController = navController,
-        null
+fun MainViewController() = ComposeUIViewController {
+    // Defer TTS initialization until after the first frame
+    var ttsReady by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { ttsReady = true }
+    val textToSpeech: TextToSpeechInstance? = if (ttsReady) {
         rememberTextToSpeechOrNull(TextToSpeechEngine.SystemDefault)
+    } else {
+        null
+    }
+
+    val navController = rememberNavController()
+    App(
+        navController = navController,
         textToSpeech = textToSpeech,
     )
-    // Defer TTS initialization until after the first frame
-    App(
-    LaunchedEffect(Unit) { ttsReady = true }
-    val navController = rememberNavController()
-    val textToSpeech: TextToSpeechInstance? = if (ttsReady) {
-    var ttsReady by remember { mutableStateOf(false) }
-    }
-    } else {
-fun MainViewController() = ComposeUIViewController {
 }

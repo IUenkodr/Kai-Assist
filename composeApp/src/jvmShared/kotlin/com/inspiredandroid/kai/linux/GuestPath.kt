@@ -1,48 +1,57 @@
 package com.inspiredandroid.kai.linux
+
 import java.io.File
 
-                safeChild(projectsDir, parts.drop(2))
-            canonical == homeDir.canonicalPath ||
-            canonical == projectsDir?.canonicalPath
-            canonical == tmpDir.canonicalPath ||
-            else -> safeChild(rootfsDir, parts)
-            parts.firstOrNull() == "root" -> safeChild(homeDir, parts.drop(1))
-            parts.firstOrNull() == "tmp" -> safeChild(tmpDir, parts.drop(1))
-            projectsDir != null && parts.size >= 2 && parts[0] == "root" && parts[1] == "projects" ->
-        if (!normalized.startsWith("/")) return null
-        if (parts.any { it == ".." }) return null
-        return canonical == rootfsDir.canonicalPath ||
-        return when {
-        val canonical = file.canonicalPath
-        val normalized = guestPath.trim().ifEmpty { "/" }
-        val parts = normalized.split("/").filter { it.isNotEmpty() }
-        }
-    /** Host directory bound to `/root/projects`, or null when nothing is bound there. */
-    /** Host directory bound to `/root`. */
-    /** Host directory bound to `/tmp`. */
-    /** The bind roots themselves are structure, not content: never renamed or deleted. */
-    fun isRoot(file: File): Boolean {
-    fun resolve(guestPath: String): File? {
-    if (candidateCanon != rootCanon && !candidateCanon.startsWith(rootCanon + File.separator)) return null
-    private val homeDir: File,
-    private val projectsDir: File?,
-    private val rootfsDir: File,
-    private val tmpDir: File,
-    return candidate
+/** Blocks path traversal: the resolved child must stay under [root]. */
+internal fun safeChild(root: File, parts: List<String>): File? {
     val candidate = if (parts.isEmpty()) root else File(root, parts.joinToString(File.separator))
-    val candidateCanon = candidate.canonicalPath
     val rootCanon = root.canonicalPath
-    }
- *
- * Branches are ordered most-specific first, which is what makes `/root/projects`
+    val candidateCanon = candidate.canonicalPath
+    if (candidateCanon != rootCanon && !candidateCanon.startsWith(rootCanon + File.separator)) return null
+    return candidate
+}
+
+/**
  * Translates a guest absolute path to the host file behind it, following the
- * resolve to the bind rather than to the empty mount point inside the rootfs.
  * same binds proot is started with. Both file browsers use this, so what the
  * user sees in the Files tab always matches what a shell in that environment sees.
+ *
+ * Branches are ordered most-specific first, which is what makes `/root/projects`
+ * resolve to the bind rather than to the empty mount point inside the rootfs.
  */
-) {
-/**
-/** Blocks path traversal: the resolved child must stay under [root]. */
 class GuestFileMap(
-internal fun safeChild(root: File, parts: List<String>): File? {
+    private val rootfsDir: File,
+    /** Host directory bound to `/root`. */
+    private val homeDir: File,
+    /** Host directory bound to `/root/projects`, or null when nothing is bound there. */
+    private val projectsDir: File?,
+    /** Host directory bound to `/tmp`. */
+    private val tmpDir: File,
+) {
+
+    fun resolve(guestPath: String): File? {
+        val normalized = guestPath.trim().ifEmpty { "/" }
+        if (!normalized.startsWith("/")) return null
+        val parts = normalized.split("/").filter { it.isNotEmpty() }
+        if (parts.any { it == ".." }) return null
+        return when {
+            projectsDir != null && parts.size >= 2 && parts[0] == "root" && parts[1] == "projects" ->
+                safeChild(projectsDir, parts.drop(2))
+
+            parts.firstOrNull() == "tmp" -> safeChild(tmpDir, parts.drop(1))
+
+            parts.firstOrNull() == "root" -> safeChild(homeDir, parts.drop(1))
+
+            else -> safeChild(rootfsDir, parts)
+        }
+    }
+
+    /** The bind roots themselves are structure, not content: never renamed or deleted. */
+    fun isRoot(file: File): Boolean {
+        val canonical = file.canonicalPath
+        return canonical == rootfsDir.canonicalPath ||
+            canonical == homeDir.canonicalPath ||
+            canonical == tmpDir.canonicalPath ||
+            canonical == projectsDir?.canonicalPath
+    }
 }

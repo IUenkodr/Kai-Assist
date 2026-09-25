@@ -1,23 +1,31 @@
 package com.inspiredandroid.kai.data
+
 import kotlinx.serialization.serializer
 
-        default = { SmsSyncState() },
-        keyOf = { it.id },
-        label = "SmsStore.pending",
-        label = "SmsStore.syncState",
-        read = appSettings::getSmsSyncStateJson,
-        readJson = appSettings::getSmsPendingJson,
-        serializer = serializer<SmsMessage>(),
-        serializer = serializer<SmsSyncState>(),
-        write = appSettings::setSmsSyncStateJson,
-        writeJson = appSettings::setSmsPendingJson,
-    )
-    fun getPending(): List<SmsMessage> = pendingQueue.get()
-    fun getSyncState(): SmsSyncState = syncState.get()
-    private val pendingQueue = PendingQueue<SmsMessage, Long>(
-    private val syncState = SettingsJsonValue(
-    suspend fun addPending(messages: List<SmsMessage>) = pendingQueue.add(messages)
-    suspend fun removePending(messages: List<SmsMessage>) = pendingQueue.remove(messages)
-    suspend fun updateSyncState(state: SmsSyncState) = syncState.set(state)
 class SmsStore(appSettings: AppSettings) {
+
+    private val syncState = SettingsJsonValue(
+        read = appSettings::getSmsSyncStateJson,
+        write = appSettings::setSmsSyncStateJson,
+        serializer = serializer<SmsSyncState>(),
+        label = "SmsStore.syncState",
+        default = { SmsSyncState() },
+    )
+    private val pendingQueue = PendingQueue<SmsMessage, Long>(
+        readJson = appSettings::getSmsPendingJson,
+        writeJson = appSettings::setSmsPendingJson,
+        serializer = serializer<SmsMessage>(),
+        label = "SmsStore.pending",
+        keyOf = { it.id },
+    )
+
+    fun getSyncState(): SmsSyncState = syncState.get()
+
+    suspend fun updateSyncState(state: SmsSyncState) = syncState.set(state)
+
+    fun getPending(): List<SmsMessage> = pendingQueue.get()
+
+    suspend fun addPending(messages: List<SmsMessage>) = pendingQueue.add(messages)
+
+    suspend fun removePending(messages: List<SmsMessage>) = pendingQueue.remove(messages)
 }

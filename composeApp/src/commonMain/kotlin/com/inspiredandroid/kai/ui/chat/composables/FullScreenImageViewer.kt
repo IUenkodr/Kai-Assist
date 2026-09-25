@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.chat.composables
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -32,72 +33,75 @@ import kai.composeapp.generated.resources.Res
 import kai.composeapp.generated.resources.image_viewer_close
 import org.jetbrains.compose.resources.stringResource
 
-                                offset = Offset.Zero
-                                scale = 1f
-                                scale = 2.5f
-                            if (scale > 1f) {
-                            }
-                            } else {
-                        offset = if (scale > 1f) offset + pan else Offset.Zero
-                        onDoubleTap = {
-                        scale = (scale * zoom).coerceIn(1f, 5f)
-                        },
-                    )
-                    detectTapGestures(
-                    detectTransformGestures { _, pan, zoom, _ ->
-                    scaleX = scale,
-                    scaleY = scale,
-                    translationX = offset.x,
-                    translationY = offset.y,
-                    }
-                )
-                .align(Alignment.TopEnd)
-                .background(Color.Black.copy(alpha = 0.4f))
-                .clip(CircleShape)
-                .fillMaxSize()
-                .graphicsLayer(
-                .handCursor(),
-                .padding(8.dp)
-                .pointerInput(Unit) {
-                .statusBarsPadding()
-                // Single-tap on the backdrop dismisses, matching the old Dialog UX.
-                contentDescription = stringResource(Res.string.image_viewer_close),
-                detectTapGestures(onTap = { onDismiss() })
-                imageVector = Icons.Default.Close,
-                tint = Color.White,
-                }
-                },
-            )
-            .background(Color.Black.copy(alpha = 0.95f))
+/**
+ * Fullscreen image overlay. Rendered at the App root (not in a Dialog) so it
+ * covers the entire Activity content including status / navigation bar areas.
+ * Use via [com.inspiredandroid.kai.ui.components.FullScreenImageHost] +
+ * [com.inspiredandroid.kai.ui.components.LocalShowFullScreenImage].
+ */
+@Composable
+internal fun FullScreenImageViewerOverlay(
+    bitmap: ImageBitmap,
+    onDismiss: () -> Unit,
+) {
+    var scale by remember { mutableStateOf(1f) }
+    var offset by remember { mutableStateOf(Offset.Zero) }
+
+    Box(
+        modifier = Modifier
             .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.95f))
             .pointerInput(Unit) {
-            Icon(
+                // Single-tap on the backdrop dismisses, matching the old Dialog UX.
+                detectTapGestures(onTap = { onDismiss() })
+            },
+    ) {
+        Image(
             bitmap = bitmap,
             contentDescription = null,
             contentScale = ContentScale.Fit,
             modifier = Modifier
-            onClick = onDismiss,
-            },
+                .fillMaxSize()
+                .graphicsLayer(
+                    scaleX = scale,
+                    scaleY = scale,
+                    translationX = offset.x,
+                    translationY = offset.y,
+                )
+                .pointerInput(Unit) {
+                    detectTransformGestures { _, pan, zoom, _ ->
+                        scale = (scale * zoom).coerceIn(1f, 5f)
+                        offset = if (scale > 1f) offset + pan else Offset.Zero
+                    }
+                }
+                .pointerInput(Unit) {
+                    detectTapGestures(
+                        onDoubleTap = {
+                            if (scale > 1f) {
+                                scale = 1f
+                                offset = Offset.Zero
+                            } else {
+                                scale = 2.5f
+                            }
+                        },
+                    )
+                },
         )
-        ) {
         IconButton(
-        Image(
-        modifier = Modifier
+            onClick = onDismiss,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .statusBarsPadding()
+                .padding(8.dp)
+                .clip(CircleShape)
+                .background(Color.Black.copy(alpha = 0.4f))
+                .handCursor(),
+        ) {
+            Icon(
+                imageVector = Icons.Default.Close,
+                contentDescription = stringResource(Res.string.image_viewer_close),
+                tint = Color.White,
+            )
         }
-    ) {
-    Box(
-    bitmap: ImageBitmap,
-    onDismiss: () -> Unit,
-    var offset by remember { mutableStateOf(Offset.Zero) }
-    var scale by remember { mutableStateOf(1f) }
     }
- * Fullscreen image overlay. Rendered at the App root (not in a Dialog) so it
- * Use via [com.inspiredandroid.kai.ui.components.FullScreenImageHost] +
- * [com.inspiredandroid.kai.ui.components.LocalShowFullScreenImage].
- * covers the entire Activity content including status / navigation bar areas.
- */
-) {
-/**
-@Composable
-internal fun FullScreenImageViewerOverlay(
 }

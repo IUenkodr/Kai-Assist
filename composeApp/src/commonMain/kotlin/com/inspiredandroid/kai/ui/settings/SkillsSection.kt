@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.settings
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -68,248 +69,383 @@ import kai.composeapp.generated.resources.settings_skills_setup_sandbox
 import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
 
-                                        installingId = entry.id
-                                        it.description.lowercase().contains(q) ||
-                                        it.sourceName.lowercase().contains(q)
-                                        onInstallBrowsed(entry)
-                                    alreadyInstalled = entry.id in installedIds,
-                                    enabled = !isInstalling,
-                                    entry = entry,
-                                    installing = isInstalling && installingId == entry.id,
-                                    it.id.lowercase().contains(q) ||
-                                    onInstall = {
-                                    },
-                                )
-                                RegistrySkillRow(
-                                Spacer(Modifier.height(4.dp))
-                                browsableSkills
-                                browsableSkills.filter {
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                style = MaterialTheme.typography.bodySmall,
-                                text = stringResource(Res.string.settings_skills_browse_loading),
-                                text = stringResource(Res.string.settings_skills_search_empty),
-                                }
-                            )
+@Composable
+internal fun SkillsSection(
+    skills: ImmutableList<SkillManifest>,
+    onUninstallSkill: (String) -> Unit,
+    showAddDialog: Boolean,
+    onShowAddDialog: (Boolean) -> Unit,
+    onInstallGitHub: (String) -> Unit,
+    onInstallBrowsed: (RegistrySkillEntry) -> Unit,
+    isInstalling: Boolean,
+    installError: String?,
+    browsableSkills: ImmutableList<RegistrySkillEntry>,
+    isBrowsing: Boolean,
+    browseFailed: Boolean,
+    isSandboxInstalled: Boolean,
+    onNavigateToSandbox: () -> Unit,
+) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = stringResource(Res.string.settings_skills),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = stringResource(Res.string.settings_skills_description),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+
+        Spacer(Modifier.height(12.dp))
+
+        if (!isSandboxInstalled) {
+            // Skills live in the Linux sandbox, so it must be installed first.
+            Text(
+                text = stringResource(Res.string.settings_skills_needs_sandbox),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(8.dp))
+            OutlinedButton(
+                onClick = onNavigateToSandbox,
+                modifier = Modifier.align(Alignment.CenterHorizontally).handCursor(),
+            ) {
+                Text(stringResource(Res.string.settings_skills_setup_sandbox))
+            }
+        } else {
+            if (skills.isEmpty()) {
+                Text(
+                    text = stringResource(Res.string.settings_skills_none),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            } else {
+                for (skill in skills) {
+                    SkillCard(
+                        skill = skill,
+                        onRemove = { onUninstallSkill(skill.id) },
+                    )
+                    Spacer(Modifier.height(8.dp))
+                }
+            }
+
+            Spacer(Modifier.height(8.dp))
+
+            OutlinedButton(
+                onClick = { onShowAddDialog(true) },
+                modifier = Modifier.align(Alignment.CenterHorizontally).handCursor(),
+            ) {
+                Text(stringResource(Res.string.settings_skills_add))
+            }
+        }
+    }
+
+    if (showAddDialog && isSandboxInstalled) {
+        AddSkillDialog(
+            onDismiss = { onShowAddDialog(false) },
+            onInstallGitHub = onInstallGitHub,
+            onInstallBrowsed = onInstallBrowsed,
+            isInstalling = isInstalling,
+            installError = installError,
+            browsableSkills = browsableSkills,
+            isBrowsing = isBrowsing,
+            browseFailed = browseFailed,
+            installedIds = remember(skills) { skills.map { it.id }.toSet() },
+        )
+    }
+}
+
+@Composable
+private fun SkillCard(
+    skill: SkillManifest,
+    onRemove: () -> Unit,
+) {
+    var expanded by remember { mutableStateOf(false) }
+
+    Card(
+        onClick = { expanded = !expanded },
+        modifier = Modifier.fillMaxWidth().handCursor(),
+        colors = kaiAdaptiveCardColors(),
+        border = kaiAdaptiveCardBorder(),
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "/${skill.id}",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.weight(1f, fill = false),
+                    )
+                    if (skill.isBuiltIn) {
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            text = stringResource(Res.string.settings_skills_builtin),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+                Text(
+                    text = skill.description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = if (expanded) Int.MAX_VALUE else 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+
+            // Built-in skills ship in the app and cannot be uninstalled — hide the remove action for them.
+            if (expanded && !skill.isBuiltIn) {
+                Spacer(Modifier.height(8.dp))
+
+                TextButton(onClick = onRemove, modifier = Modifier.handCursor()) {
+                    Text(
+                        text = stringResource(Res.string.settings_skills_remove),
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun AddSkillDialog(
+    onDismiss: () -> Unit,
+    onInstallGitHub: (String) -> Unit,
+    onInstallBrowsed: (RegistrySkillEntry) -> Unit,
+    isInstalling: Boolean,
+    installError: String?,
+    browsableSkills: ImmutableList<RegistrySkillEntry>,
+    isBrowsing: Boolean,
+    browseFailed: Boolean,
+    installedIds: Set<String>,
+) {
+    var url by remember { mutableStateOf("") }
+    var search by remember { mutableStateOf("") }
+    // Which browse row the user tapped, so we can show a spinner on just that row.
+    var installingId by remember { mutableStateOf<String?>(null) }
+    LaunchedEffect(isInstalling) {
+        if (!isInstalling) installingId = null
+    }
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+    ) {
+        val scrollState = rememberScrollState()
+        Box {
+            Column(
+                modifier = Modifier
+                    .verticalScroll(scrollState)
+                    .padding(16.dp),
+            ) {
+                Text(
+                    text = stringResource(Res.string.settings_skills_add),
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+                Spacer(Modifier.height(16.dp))
+
+                Text(
+                    text = stringResource(Res.string.settings_skills_add_github),
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+                Spacer(Modifier.height(8.dp))
+                KaiOutlinedTextField(
+                    value = url,
+                    onValueChange = { url = it },
+                    label = { Text(stringResource(Res.string.settings_skills_github_url)) },
+                    singleLine = true,
+                    enabled = !isInstalling,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(Res.string.settings_skills_github_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+
+                if (installError != null) {
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        text = installError,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                }
+
+                Spacer(Modifier.height(8.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    if (isInstalling) {
+                        CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            text = stringResource(Res.string.settings_skills_installing),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(Modifier.width(8.dp))
+                    }
+                    TextButton(onClick = onDismiss, modifier = Modifier.handCursor()) {
+                        Text(stringResource(Res.string.settings_skills_cancel))
+                    }
+                    TextButton(
+                        onClick = { onInstallGitHub(url) },
+                        enabled = url.isNotBlank() && !isInstalling,
+                        modifier = Modifier.handCursor(),
+                    ) {
+                        Text(stringResource(Res.string.settings_skills_install))
+                    }
+                }
+
+                Spacer(Modifier.height(16.dp))
+                Text(
+                    text = stringResource(Res.string.settings_skills_browse),
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+                Spacer(Modifier.height(8.dp))
+
+                when {
+                    isBrowsing -> {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
                             Spacer(Modifier.width(8.dp))
                             Text(
-                            color = MaterialTheme.colorScheme.error,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            for (entry in filtered) {
-                            if (q.isEmpty()) {
-                            label = { Text(stringResource(Res.string.settings_skills_search)) },
-                            modifier = Modifier.fillMaxWidth(),
-                            onValueChange = { search = it },
-                            singleLine = true,
-                            style = MaterialTheme.typography.bodySmall,
-                            style = MaterialTheme.typography.labelSmall,
-                            text = stringResource(Res.string.settings_skills_browse_failed),
-                            text = stringResource(Res.string.settings_skills_builtin),
-                            text = stringResource(Res.string.settings_skills_installing),
-                            val q = search.trim().lowercase()
-                            value = search,
-                            }
-                            } else {
-                        )
-                        CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
-                        KaiOutlinedTextField(
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                        Spacer(Modifier.height(8.dp))
-                        Spacer(Modifier.width(8.dp))
-                        Text(
-                        Text(stringResource(Res.string.settings_skills_cancel))
-                        Text(stringResource(Res.string.settings_skills_install))
-                        color = MaterialTheme.colorScheme.error,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        enabled = url.isNotBlank() && !isInstalling,
-                        if (filtered.isEmpty()) {
-                        modifier = Modifier.handCursor(),
-                        modifier = Modifier.weight(1f, fill = false),
-                        onClick = { onInstallGitHub(url) },
-                        onRemove = { onUninstallSkill(skill.id) },
-                        skill = skill,
-                        style = MaterialTheme.typography.bodySmall,
-                        style = MaterialTheme.typography.titleMedium,
-                        text = "/${skill.id}",
-                        text = installError,
-                        text = stringResource(Res.string.settings_skills_remove),
-                        val filtered = remember(browsableSkills, search) {
+                                text = stringResource(Res.string.settings_skills_browse_loading),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
                         }
-                        } else {
-                    )
-                    ) {
-                    .padding(16.dp),
-                    .verticalScroll(scrollState)
-                    SkillCard(
-                    Spacer(Modifier.height(8.dp))
-                    Text(
-                    TextButton(
-                    TextButton(onClick = onDismiss, modifier = Modifier.handCursor()) {
-                    browseFailed -> {
-                    color = MaterialTheme.colorScheme.onSurface,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    contentDescription = null,
-                    else -> {
-                    enabled = !isInstalling,
-                    fontWeight = FontWeight.Medium,
-                    horizontalArrangement = Arrangement.End,
-                    if (isInstalling) {
-                    if (skill.isBuiltIn) {
-                    imageVector = Icons.Default.Check,
-                    isBrowsing -> {
-                    label = { Text(stringResource(Res.string.settings_skills_github_url)) },
-                    maxLines = 2,
-                    maxLines = if (expanded) Int.MAX_VALUE else 2,
-                    modifier = Modifier.fillMaxWidth(),
-                    modifier = Modifier.size(20.dp),
-                    onValueChange = { url = it },
-                    overflow = TextOverflow.Ellipsis,
-                    singleLine = true,
-                    style = MaterialTheme.typography.bodyMedium,
-                    style = MaterialTheme.typography.bodySmall,
-                    style = MaterialTheme.typography.headlineSmall,
-                    style = MaterialTheme.typography.labelSmall,
-                    style = MaterialTheme.typography.titleSmall,
-                    text = "/${entry.id}",
-                    text = entry.description,
-                    text = entry.sourceName,
-                    text = skill.description,
-                    text = stringResource(Res.string.settings_skills_add),
-                    text = stringResource(Res.string.settings_skills_add_github),
-                    text = stringResource(Res.string.settings_skills_browse),
-                    text = stringResource(Res.string.settings_skills_github_hint),
-                    text = stringResource(Res.string.settings_skills_none),
-                    tint = MaterialTheme.colorScheme.primary,
-                    value = url,
-                    verticalAlignment = Alignment.CenterVertically,
                     }
-                )
-                ) {
-                CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
-                Icon(
-                KaiOutlinedTextField(
-                Row(
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                Spacer(Modifier.height(16.dp))
-                Spacer(Modifier.height(4.dp))
-                Spacer(Modifier.height(8.dp))
-                Text(
-                Text(stringResource(Res.string.settings_skills_add))
-                Text(stringResource(Res.string.settings_skills_setup_sandbox))
-                TextButton(onClick = onRemove, modifier = Modifier.handCursor()) {
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                for (skill in skills) {
-                if (installError != null) {
-                modifier = Modifier
-                modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
-                modifier = Modifier.align(Alignment.CenterHorizontally).handCursor(),
-                onClick = onNavigateToSandbox,
-                onClick = { onShowAddDialog(true) },
-                scrollState = scrollState,
-                style = MaterialTheme.typography.bodyMedium,
-                text = stringResource(Res.string.settings_skills_needs_sandbox),
-                when {
+
+                    browseFailed -> {
+                        Text(
+                            text = stringResource(Res.string.settings_skills_browse_failed),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.error,
+                        )
+                    }
+
+                    else -> {
+                        KaiOutlinedTextField(
+                            value = search,
+                            onValueChange = { search = it },
+                            label = { Text(stringResource(Res.string.settings_skills_search)) },
+                            singleLine = true,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                        Spacer(Modifier.height(8.dp))
+
+                        val filtered = remember(browsableSkills, search) {
+                            val q = search.trim().lowercase()
+                            if (q.isEmpty()) {
+                                browsableSkills
+                            } else {
+                                browsableSkills.filter {
+                                    it.id.lowercase().contains(q) ||
+                                        it.description.lowercase().contains(q) ||
+                                        it.sourceName.lowercase().contains(q)
+                                }
+                            }
+                        }
+
+                        if (filtered.isEmpty()) {
+                            Text(
+                                text = stringResource(Res.string.settings_skills_search_empty),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        } else {
+                            for (entry in filtered) {
+                                RegistrySkillRow(
+                                    entry = entry,
+                                    alreadyInstalled = entry.id in installedIds,
+                                    enabled = !isInstalling,
+                                    installing = isInstalling && installingId == entry.id,
+                                    onInstall = {
+                                        installingId = entry.id
+                                        onInstallBrowsed(entry)
+                                    },
+                                )
+                                Spacer(Modifier.height(4.dp))
+                            }
+                        }
+                    }
                 }
-            )
-            ) {
-            .clip(CardDefaults.shape)
-            .fillMaxWidth()
-            .then(if (enabled && !alreadyInstalled) Modifier.clickable { onInstall() }.handCursor() else Modifier),
-            // Built-in skills ship in the app and cannot be uninstalled — hide the remove action for them.
-            // Skills live in the Linux sandbox, so it must be installed first.
-            Column(
-            Column(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.weight(1f)) {
-            OutlinedButton(
-            Spacer(Modifier.height(8.dp))
-            Text(
-            VerticalScrollbarForScroll(
-            browsableSkills = browsableSkills,
-            browseFailed = browseFailed,
-            color = MaterialTheme.colorScheme.onBackground,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
-            if (expanded && !skill.isBuiltIn) {
-            if (installing) {
-            if (skills.isEmpty()) {
-            installError = installError,
-            installedIds = remember(skills) { skills.map { it.id }.toSet() },
-            isBrowsing = isBrowsing,
-            isInstalling = isInstalling,
-            modifier = Modifier.fillMaxWidth().padding(12.dp),
-            onDismiss = { onShowAddDialog(false) },
-            onInstallBrowsed = onInstallBrowsed,
-            onInstallGitHub = onInstallGitHub,
-            style = MaterialTheme.typography.bodySmall,
-            style = MaterialTheme.typography.titleMedium,
-            text = stringResource(Res.string.settings_skills),
-            text = stringResource(Res.string.settings_skills_description),
-            verticalAlignment = Alignment.CenterVertically,
+
+                Spacer(Modifier.height(16.dp))
             }
-            } else if (alreadyInstalled) {
-            } else {
-        )
-        ) {
-        ),
-        AddSkillDialog(
-        Box {
-        Column(modifier = Modifier.padding(16.dp)) {
-        Row(
-        Spacer(Modifier.height(12.dp))
-        Spacer(Modifier.height(4.dp))
-        Text(
-        border = kaiAdaptiveCardBorder(),
-        colors = CardDefaults.cardColors(
-        colors = kaiAdaptiveCardColors(),
-        if (!isInstalling) installingId = null
-        if (!isSandboxInstalled) {
-        modifier = Modifier
-        modifier = Modifier.fillMaxWidth().handCursor(),
-        onClick = { expanded = !expanded },
-        onDismissRequest = onDismiss,
-        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-        val scrollState = rememberScrollState()
+            VerticalScrollbarForScroll(
+                scrollState = scrollState,
+                modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
+            )
         }
-        } else {
-    ) {
-    // Which browse row the user tapped, so we can show a spinner on just that row.
-    Card(
-    Column(modifier = Modifier.fillMaxWidth()) {
-    LaunchedEffect(isInstalling) {
-    ModalBottomSheet(
-    alreadyInstalled: Boolean,
-    browsableSkills: ImmutableList<RegistrySkillEntry>,
-    browseFailed: Boolean,
-    enabled: Boolean,
-    entry: RegistrySkillEntry,
-    if (showAddDialog && isSandboxInstalled) {
-    installError: String?,
-    installedIds: Set<String>,
-    installing: Boolean,
-    isBrowsing: Boolean,
-    isInstalling: Boolean,
-    isSandboxInstalled: Boolean,
-    onDismiss: () -> Unit,
-    onInstall: () -> Unit,
-    onInstallBrowsed: (RegistrySkillEntry) -> Unit,
-    onInstallGitHub: (String) -> Unit,
-    onNavigateToSandbox: () -> Unit,
-    onRemove: () -> Unit,
-    onShowAddDialog: (Boolean) -> Unit,
-    onUninstallSkill: (String) -> Unit,
-    showAddDialog: Boolean,
-    skill: SkillManifest,
-    skills: ImmutableList<SkillManifest>,
-    var expanded by remember { mutableStateOf(false) }
-    var installingId by remember { mutableStateOf<String?>(null) }
-    var search by remember { mutableStateOf("") }
-    var url by remember { mutableStateOf("") }
     }
-) {
+}
+
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
-internal fun SkillsSection(
-private fun AddSkillDialog(
 private fun RegistrySkillRow(
-private fun SkillCard(
+    entry: RegistrySkillEntry,
+    alreadyInstalled: Boolean,
+    enabled: Boolean,
+    installing: Boolean,
+    onInstall: () -> Unit,
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(CardDefaults.shape)
+            .then(if (enabled && !alreadyInstalled) Modifier.clickable { onInstall() }.handCursor() else Modifier),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
+        ),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = "/${entry.id}",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontWeight = FontWeight.Medium,
+                )
+                Text(
+                    text = entry.description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    text = entry.sourceName,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            if (installing) {
+                CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
+            } else if (alreadyInstalled) {
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+        }
+    }
 }

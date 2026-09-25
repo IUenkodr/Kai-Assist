@@ -1,4 +1,7 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.inspiredandroid.kai.ui.settings
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -138,7 +141,6 @@ import kai.composeapp.generated.resources.settings_status_error_invalid_key
 import kai.composeapp.generated.resources.settings_status_error_local_network
 import kai.composeapp.generated.resources.settings_status_error_quota_exhausted
 import kai.composeapp.generated.resources.settings_status_error_rate_limited
-import kotlin.math.roundToInt
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.ImmutableMap
 import kotlinx.collections.immutable.persistentListOf
@@ -147,705 +149,1178 @@ import kotlinx.collections.immutable.toImmutableList
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 import sh.calvin.reorderable.ReorderableColumn
+import kotlin.math.roundToInt
 
+@Composable
+internal fun FreeSettings(
+    showFallbackToggle: Boolean = false,
+    isFreeFallbackEnabled: Boolean = true,
+    onToggleFreeFallback: (Boolean) -> Unit = {},
+    currentSponsors: ImmutableList<SponsorsResponseDto.Sponsor> = persistentListOf(),
+    pastSponsors: ImmutableList<SponsorsResponseDto.Sponsor> = persistentListOf(),
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = kaiAdaptiveCardColors(),
+        border = kaiAdaptiveCardBorder(),
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = stringResource(Res.string.settings_free_tier_title),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary,
+            )
+
+            if (showFallbackToggle) {
+                Spacer(Modifier.height(6.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth()
+                        .clip(RoundedCornerShape(8.dp))
+                        .clickable { onToggleFreeFallback(!isFreeFallbackEnabled) }
+                        .handCursor(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = stringResource(Res.string.settings_free_fallback),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.weight(1f),
+                    )
+                    Switch(
+                        checked = isFreeFallbackEnabled,
+                        onCheckedChange = onToggleFreeFallback,
+                    )
+                }
+                Spacer(Modifier.height(6.dp))
+            }
+
+            Spacer(Modifier.height(6.dp))
+
+            Text(
+                text = stringResource(Res.string.settings_free_tier_description),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+
+            Spacer(Modifier.height(12.dp))
+
+            val uriHandler = LocalUriHandler.current
+            Button(
+                onClick = {
+                    uriHandler.openUri("https://github.com/sponsors/SimonSchubert")
+                },
+                Modifier
+                    .align(CenterHorizontally)
+                    .handCursor(),
+            ) {
+                Icon(Icons.Default.Favorite, contentDescription = null)
+                Spacer(Modifier.width(8.dp))
+                Text(stringResource(Res.string.settings_become_sponsor))
+            }
+
+            val allSponsors = remember(currentSponsors, pastSponsors) {
+                val activeUsernames = currentSponsors.map { it.username }.toSet()
+                (currentSponsors + pastSponsors.filter { it.username !in activeUsernames })
+                    .toImmutableList()
+            }
+
+            if (allSponsors.isNotEmpty()) {
+                Spacer(Modifier.height(16.dp))
+                HorizontalDivider(thickness = 0.5.dp)
+                Spacer(Modifier.height(16.dp))
+                SponsorList(
+                    title = stringResource(Res.string.settings_sponsors),
+                    sponsors = allSponsors,
+                )
+            }
+
+            Spacer(Modifier.height(16.dp))
+            HorizontalDivider(thickness = 0.5.dp)
+            Spacer(Modifier.height(16.dp))
+
+            Text(
+                text = stringResource(Res.string.settings_business_partnerships),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(6.dp))
+            Text(
+                text = stringResource(Res.string.settings_business_partnerships_description),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+
+            TextButton(
+                onClick = {
+                    uriHandler.openUri("https://schubert-simon.de")
+                },
+                Modifier
+                    .handCursor(),
+            ) {
+                Text(stringResource(Res.string.settings_contact_sponsorship))
+            }
+        }
+    }
+}
+
+@Composable
+private fun SponsorList(
+    title: String,
+    sponsors: ImmutableList<SponsorsResponseDto.Sponsor>,
+) {
+    val uriHandler = LocalUriHandler.current
+    Text(
+        text = title,
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+    Spacer(Modifier.height(8.dp))
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        // The tile width is sized for the username at the default font scale; without
+        // scaling it, names are cut to three characters at the largest one.
+        val tileWidth = 72.dp * LocalDensity.current.fontScale
+        sponsors.forEach { sponsor ->
+            Column(
+                horizontalAlignment = CenterHorizontally,
+                modifier = Modifier
+                    .width(tileWidth)
+                    .clip(RoundedCornerShape(8.dp))
+                    .clickable { uriHandler.openUri("https://github.com/${sponsor.username}") }
+                    .handCursor()
+                    .padding(4.dp),
+            ) {
+                coil3.compose.AsyncImage(
+                    model = sponsor.avatar,
+                    contentDescription = sponsor.username,
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop,
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = sponsor.username,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+internal fun ServicesContent(uiState: SettingsUiState, actions: SettingsActions) {
+    var showAddServiceSheet by remember { mutableStateOf(false) }
+
+    // Configured services list
+    val entries = uiState.configuredServices
+    ReorderableColumn(
+        list = entries,
+        onSettle = { fromIndex, toIndex ->
+            val ids = entries.map { it.instanceId }.toMutableList()
+            ids.add(toIndex, ids.removeAt(fromIndex))
+            actions.onReorderServices(ids)
+        },
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) { _, entry, isDragging ->
+        key(entry.instanceId) {
+            ReorderableItem {
+                ConfiguredServiceCardContent(
+                    entry = entry,
+                    isExpanded = uiState.expandedServiceId == entry.instanceId,
+                    onExpand = { actions.onExpandService(if (uiState.expandedServiceId == entry.instanceId) null else entry.instanceId) },
+                    onChangeApiKey = { apiKey -> actions.onChangeApiKey(entry.instanceId, apiKey) },
+                    onChangeBaseUrl = { baseUrl -> actions.onChangeBaseUrl(entry.instanceId, baseUrl) },
+                    onSelectModel = { modelId -> actions.onSelectModel(entry.instanceId, modelId) },
+                    onToggleUseCustomModel = { use -> actions.onToggleUseCustomModel(entry.instanceId, use) },
+                    onChangeCustomModelId = { id -> actions.onChangeCustomModelId(entry.instanceId, id) },
+                    onRemove = { actions.onRemoveService(entry.instanceId) },
+                    isDragging = isDragging,
+                    dragHandleModifier = if (entries.size >= 2) Modifier.draggableHandle() else null,
+                    localAvailableModels = uiState.localAvailableModels,
+                    localImportedModels = uiState.localImportedModels,
+                    totalDeviceMemoryBytes = uiState.totalDeviceMemoryBytes,
+                    localFreeSpaceBytes = uiState.localFreeSpaceBytes,
+                    localDownloadingModelId = uiState.localDownloadingModelId,
+                    localDownloadProgress = uiState.localDownloadProgress,
+                    localDownloadError = uiState.localDownloadError,
+                    localImportingFileName = uiState.localImportingFileName,
+                    localImportProgress = uiState.localImportProgress,
+                    localImportError = uiState.localImportError,
+                    onDownloadLocalModel = actions.onDownloadLocalModel,
+                    onCancelLocalModelDownload = actions.onCancelLocalModelDownload,
+                    onImportLocalModel = actions.onImportLocalModel,
+                    onCancelLocalModelImport = actions.onCancelLocalModelImport,
+                    onDeleteLocalModel = actions.onDeleteLocalModel,
+                    onChangeModelContextTokens = actions.onChangeModelContextTokens,
+                    modelContextTokens = uiState.modelContextTokens,
+                    onOpenAppPermissionSettings = actions.onOpenAppPermissionSettings,
+                    onRecheckLocalNetworkPermission = { actions.onRecheckLocalNetworkPermission(entry.instanceId) },
+                )
+            }
+        }
+    }
+
+    if (uiState.availableServicesToAdd.isNotEmpty()) {
+        Spacer(Modifier.height(12.dp))
+        OutlinedButton(onClick = { showAddServiceSheet = true }, modifier = Modifier.handCursor()) {
+            Text(stringResource(Res.string.settings_add_service))
+        }
+    }
+
+    // Free tier card (always at bottom)
+    Spacer(Modifier.height(16.dp))
+    FreeSettings(
+        showFallbackToggle = entries.isNotEmpty(),
+        isFreeFallbackEnabled = uiState.isFreeFallbackEnabled,
+        onToggleFreeFallback = actions.onToggleFreeFallback,
+        currentSponsors = uiState.currentSponsors,
+        pastSponsors = uiState.pastSponsors,
+    )
+
+    // Add service bottom sheet
+    if (showAddServiceSheet) {
+        ModalBottomSheet(
+            onDismissRequest = { showAddServiceSheet = false },
+            sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        ) {
+            val addServiceScrollState = rememberScrollState()
+            Box {
+                Column(modifier = Modifier.verticalScroll(addServiceScrollState).padding(16.dp)) {
+                    val services = uiState.availableServicesToAdd
+                    services.forEachIndexed { index, service ->
+                        val isFirst = index == 0
+                        val isLast = index == services.lastIndex
+                        val itemShape = RoundedCornerShape(
+                            topStart = if (isFirst) 12.dp else 0.dp,
+                            topEnd = if (isFirst) 12.dp else 0.dp,
+                            bottomStart = if (isLast) 12.dp else 0.dp,
+                            bottomEnd = if (isLast) 12.dp else 0.dp,
+                        )
+                        val isSpecial = service.isOnDevice || service is Service.OpenAICompatible || service is Service.AtlasCloud
+                        Surface(
+                            onClick = {
+                                actions.onAddService(service)
+                                showAddServiceSheet = false
+                            },
+                            modifier = Modifier.fillMaxWidth().handCursor(),
+                            shape = itemShape,
+                            color = MaterialTheme.colorScheme.surfaceContainer,
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .then(
+                                            if (isSpecial) {
+                                                Modifier.background(
                                                     color = MaterialTheme.colorScheme.surfaceContainerHighest,
                                                     shape = RoundedCornerShape(8.dp),
                                                 )
-                                                Modifier
-                                                Modifier.background(
-                                            if (isSpecial) {
                                             } else {
+                                                Modifier
                                             },
                                         ),
-                                        .size(36.dp)
-                                        .then(
-                                        contentDescription = null,
+                                    contentAlignment = Alignment.Center,
+                                ) {
+                                    Icon(
                                         imageVector = vectorResource(service.icon),
+                                        contentDescription = null,
                                         modifier = Modifier.size(20.dp),
                                         tint = MaterialTheme.colorScheme.onBackground,
                                     )
-                                    Icon(
-                                    color = MaterialTheme.colorScheme.onBackground,
-                                    contentAlignment = Alignment.Center,
-                                    modifier = Modifier
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    text = service.displayName,
-                                "${model.displayName} (${stringResource(Res.string.litert_imported)})"
-                                "${model.displayName} (${stringResource(Res.string.litert_recommended)})"
-                                )
-                                ) {
-                                Box(
+                                }
                                 Spacer(Modifier.width(12.dp))
                                 Text(
-                                actions.onAddService(service)
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-                                showAddServiceSheet = false
-                                verticalAlignment = Alignment.CenterVertically,
-                                }
-                            ) {
-                            Row(
-                            bottomEnd = if (isLast) 12.dp else 0.dp,
-                            bottomStart = if (isLast) 12.dp else 0.dp,
-                            color = MaterialTheme.colorScheme.error,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            color = MaterialTheme.colorScheme.surfaceContainer,
-                            contentDescription = null,
-                            else -> model.displayName
-                            imageVector = Icons.Default.Delete,
-                            maxLines = 1,
-                            model.isRecommended ->
-                            modifier = Modifier.fillMaxWidth().handCursor(),
-                            onClick = {
-                            overflow = TextOverflow.Ellipsis,
-                            shape = itemShape,
-                            showImportedBadge ->
-                            style = MaterialTheme.typography.bodySmall,
-                            style = MaterialTheme.typography.labelSmall,
-                            text = displayModelId,
-                            text = formatFileSize(model.sizeBytes),
-                            text = stringResource(Res.string.litert_cancel),
-                            text = stringResource(Res.string.settings_remove_service),
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                            topEnd = if (isFirst) 12.dp else 0.dp,
-                            topStart = if (isFirst) 12.dp else 0.dp,
+                                    text = service.displayName,
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    color = MaterialTheme.colorScheme.onBackground,
+                                )
                             }
-                            },
-                        )
-                        ) {
-                        .background(dotColor),
-                        .clickable { onToggleFreeFallback(!isFreeFallbackEnabled) }
-                        .clip(CircleShape)
-                        .clip(CircleShape),
-                        .clip(RoundedCornerShape(8.dp))
-                        .handCursor(),
-                        .size(10.dp)
-                        .size(40.dp)
-                        DevicePerformanceLabel(performance)
-                        Icon(
-                        Spacer(Modifier.width(8.dp))
-                        Surface(
-                        Text(
-                        Text(stringResource(Res.string.litert_download))
-                        apiKey = entry.apiKey,
-                        apiKeyUrl = entry.service.apiKeyUrl ?: "",
-                        apiKeyUrlDisplay = entry.service.apiKeyUrlDisplay ?: "",
-                        availableModels = localAvailableModels,
-                        baseUrl = entry.baseUrl,
-                        checked = isFreeFallbackEnabled,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        connectionStatus = entry.connectionStatus,
-                        contentDescription = stringResource(Res.string.settings_reorder_content_description),
-                        customModelId = entry.customModelId,
-                        downloadError = localDownloadError,
-                        downloadProgress = localDownloadProgress,
-                        downloadedModels = entry.models,
-                        downloadingModelId = localDownloadingModelId,
-                        else -> null
-                        enabled = !isBusy,
-                        entry.selectedModel != null -> entry.selectedModel.id
-                        entry.useCustomModel && entry.customModelId.isNotBlank() -> entry.customModelId
-                        freeSpaceBytes = localFreeSpaceBytes,
-                        imageVector = Icons.Rounded.DragIndicator,
-                        importError = localImportError,
-                        importProgress = localImportProgress,
-                        importedModels = localImportedModels,
-                        importingFileName = localImportingFileName,
-                        modelContextTokens = modelContextTokens,
-                        models = entry.models,
-                        modifier = Modifier.handCursor(),
-                        modifier = Modifier.size(20.dp),
-                        modifier = Modifier.weight(1f),
-                        modifier = dragHandleModifier.handCursor(),
-                        onCancelDownload = onCancelLocalModelDownload,
-                        onCancelImport = onCancelLocalModelImport,
-                        onChangeApiKey = onChangeApiKey,
-                        onChangeBaseUrl = onChangeBaseUrl,
-                        onChangeCustomModelId = onChangeCustomModelId,
-                        onChangeModelContextTokens = onChangeModelContextTokens,
-                        onChangeModelContextTokens(model.id, contextTokens)
-                        onCheckedChange = onToggleFreeFallback,
-                        onClick = onCancelDownload,
-                        onClick = onRemove,
-                        onClick = { onDeleteModel(model.id) },
-                        onClick = { onDownloadModel(model) },
-                        onClick = { onSelectModel(model.id) },
-                        onDeleteModel = onDeleteLocalModel,
-                        onDownloadModel = onDownloadLocalModel,
-                        onImportModel = onImportLocalModel,
-                        onOpenAppPermissionSettings = onOpenAppPermissionSettings,
-                        onSelectModel = onSelectModel,
-                        onToggleUseCustomModel = onToggleUseCustomModel,
-                        selected = isSelected,
-                        selectedModel = entry.selectedModel,
-                        style = MaterialTheme.typography.bodyLarge,
-                        style = MaterialTheme.typography.bodyMedium,
-                        style = MaterialTheme.typography.labelSmall,
-                        style = MaterialTheme.typography.titleMedium,
-                        text = "${(downloadProgress * 100).toInt()}%",
-                        text = entry.service.displayName,
-                        text = stringResource(Res.string.litert_cancel),
-                        text = stringResource(Res.string.settings_free_fallback),
-                        text = when {
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        totalDeviceMemoryBytes = totalDeviceMemoryBytes,
-                        useCustomModel = entry.useCustomModel,
-                        val isFirst = index == 0
-                        val isLast = index == services.lastIndex
-                        val isSpecial = service.isOnDevice || service is Service.OpenAICompatible || service is Service.AtlasCloud
-                        val itemShape = RoundedCornerShape(
-                        verticalAlignment = Alignment.CenterVertically,
                         }
-                        },
-                    )
-                    ) {
-                    .align(CenterHorizontally)
-                    .clickable { uriHandler.openUri("https://github.com/${sponsor.username}") }
-                    .clip(RoundedCornerShape(8.dp))
-                    .handCursor()
-                    .handCursor(),
-                    .padding(4.dp),
-                    .toImmutableList()
-                    .width(tileWidth)
-                    ConnectionStatus.Checking -> StatusColorChecking
-                    ConnectionStatus.Connected -> StatusColorConnected
-                    ConnectionStatus.Unknown -> StatusColorUnknown
-                    DownloadError.CHECKSUM_MISMATCH -> Res.string.litert_error_checksum_mismatch
-                    DownloadError.DOWNLOAD_INCOMPLETE -> Res.string.litert_error_download_incomplete
-                    DownloadError.NETWORK_ERROR -> Res.string.litert_error_network
-                    DownloadError.NOT_ENOUGH_DISK_SPACE -> Res.string.litert_error_not_enough_disk_space
-                    Icon(
-                    IconButton(
-                    LiteRTSettings(
-                    ModelImportError.CANCELLED -> Res.string.litert_error_import_failed
-                    ModelImportError.COPY_FAILED -> Res.string.litert_error_import_failed
-                    ModelImportError.FILE_TOO_SMALL -> Res.string.litert_error_import_too_small
-                    ModelImportError.INVALID_EXTENSION -> Res.string.litert_error_import_invalid
-                    ModelImportError.NOT_ENOUGH_DISK_SPACE -> Res.string.litert_error_not_enough_disk_space
-                    OpenAICompatibleSettings(
-                    RadioButton(
-                    Row(
-                    ServiceSettings(
-                    Spacer(Modifier.height(16.dp))
-                    Spacer(Modifier.width(8.dp))
-                    Switch(
-                    Text(
-                    Text(stringResource(Res.string.settings_open_app_settings))
-                    TextButton(
-                    append("github.com/ollama/ollama")
-                    append(apiKeyUrlDisplay)
-                    append(providersText)
-                    color = MaterialTheme.colorScheme.error,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    color = MaterialTheme.colorScheme.primary,
-                    color = warningColor,
-                    contentDescription = null,
-                    contentDescription = sponsor.username,
-                    contentScale = ContentScale.Crop,
-                    dragHandleModifier = if (entries.size >= 2) Modifier.draggableHandle() else null,
-                    else -> StatusColorError
-                    entry = entry,
-                    horizontalArrangement = Arrangement.End,
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    if (displayModelId != null) {
-                    imageVector = Icons.Default.CheckCircle,
-                    imageVector = Icons.Default.Warning,
-                    imageVector = vectorResource(Res.drawable.ic_arrow_drop_down),
-                    isDragging = isDragging,
-                    isExpanded = uiState.expandedServiceId == entry.instanceId,
-                    localAvailableModels = uiState.localAvailableModels,
-                    localDownloadError = uiState.localDownloadError,
-                    localDownloadProgress = uiState.localDownloadProgress,
-                    localDownloadingModelId = uiState.localDownloadingModelId,
-                    localFreeSpaceBytes = uiState.localFreeSpaceBytes,
-                    localImportError = uiState.localImportError,
-                    localImportProgress = uiState.localImportProgress,
-                    localImportedModels = uiState.localImportedModels,
-                    localImportingFileName = uiState.localImportingFileName,
-                    maxLines = 2,
-                    model = sponsor.avatar,
-                    modelContextTokens = uiState.modelContextTokens,
-                    modifier = Modifier
-                    modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
-                    modifier = Modifier.fillMaxWidth()
-                    modifier = Modifier.fillMaxWidth(),
-                    modifier = Modifier.handCursor(),
-                    modifier = Modifier.size(16.dp),
-                    onCancelLocalModelDownload = actions.onCancelLocalModelDownload,
-                    onCancelLocalModelImport = actions.onCancelLocalModelImport,
-                    onChangeApiKey = { apiKey -> actions.onChangeApiKey(entry.instanceId, apiKey) },
-                    onChangeBaseUrl = { baseUrl -> actions.onChangeBaseUrl(entry.instanceId, baseUrl) },
-                    onChangeCustomModelId = { id -> actions.onChangeCustomModelId(entry.instanceId, id) },
-                    onChangeModelContextTokens = actions.onChangeModelContextTokens,
-                    onClick = onCancelImport,
-                    onClick = onOpenAppPermissionSettings,
-                    onDeleteLocalModel = actions.onDeleteLocalModel,
-                    onDownloadLocalModel = actions.onDownloadLocalModel,
-                    onExpand = { actions.onExpandService(if (uiState.expandedServiceId == entry.instanceId) null else entry.instanceId) },
-                    onImportLocalModel = actions.onImportLocalModel,
-                    onOpenAppPermissionSettings = actions.onOpenAppPermissionSettings,
-                    onRecheckLocalNetworkPermission = { actions.onRecheckLocalNetworkPermission(entry.instanceId) },
-                    onRemove = { actions.onRemoveService(entry.instanceId) },
-                    onSelectModel = { modelId -> actions.onSelectModel(entry.instanceId, modelId) },
-                    onToggleUseCustomModel = { use -> actions.onToggleUseCustomModel(entry.instanceId, use) },
-                    onValueChange = { contextSliderValue = it },
-                    onValueChangeFinished = {
-                    overflow = TextOverflow.Ellipsis,
-                    progress = { downloadProgress },
-                    scrollState = addServiceScrollState,
-                    services.forEachIndexed { index, service ->
-                    sponsors = allSponsors,
-                    steps = (steps - 1).coerceAtLeast(0),
-                    stringResource(Res.string.settings_model_label),
-                    strokeWidth = 2.dp,
-                    style = MaterialTheme.typography.bodySmall,
-                    style = MaterialTheme.typography.labelSmall,
-                    text = "${(importProgress * 100).toInt()}%",
-                    text = errorMessage,
-                    text = sponsor.username,
-                    text = stringResource(Res.string.settings_status_checking),
-                    text = stringResource(Res.string.settings_status_connected),
-                    text = stringResource(Res.string.settings_status_error_quota_exhausted),
-                    textAlign = TextAlign.Center,
-                    tint = MaterialTheme.colorScheme.error,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    tint = MaterialTheme.colorScheme.primary,
-                    tint = warningColor,
-                    title = stringResource(Res.string.settings_sponsors),
-                    totalDeviceMemoryBytes = uiState.totalDeviceMemoryBytes,
-                    uriHandler.openUri("https://github.com/sponsors/SimonSchubert")
-                    uriHandler.openUri("https://schubert-simon.de")
-                    val displayModelId = when {
-                    val services = uiState.availableServicesToAdd
-                    value = contextSliderValue,
-                    valueRange = 0f..steps.toFloat(),
-                    verticalAlignment = Alignment.CenterVertically,
                     }
-                    },
-                (currentSponsors + pastSponsors.filter { it.username !in activeUsernames })
-                )
-                ) {
-                // Connection status dot
-                // Drag handle
-                // Expand/collapse chevron
-                // Remove action
-                // Service name and model
-                Box(
-                CircularProgressIndicator(
-                Column(modifier = Modifier.verticalScroll(addServiceScrollState).padding(16.dp)) {
-                Column(modifier = Modifier.weight(1f)) {
-                ConfiguredServiceCardContent(
-                ConnectionStatus.ErrorConnectionFailed -> stringResource(Res.string.settings_status_error_connection_failed)
-                ConnectionStatus.ErrorInvalidKey -> stringResource(Res.string.settings_status_error_invalid_key)
-                ConnectionStatus.ErrorLocalNetworkDenied -> stringResource(Res.string.settings_status_error_local_network)
-                ConnectionStatus.ErrorRateLimited -> stringResource(Res.string.settings_status_error_rate_limited)
-                HorizontalDivider(thickness = 0.5.dp)
-                Icon(
-                Icon(Icons.Default.Favorite, contentDescription = null)
-                KaiSlider(
-                LinearProgressIndicator(
-                Modifier
-                Row(
-                Spacer(Modifier.height(12.dp))
-                Spacer(Modifier.height(16.dp))
-                Spacer(Modifier.height(4.dp))
-                Spacer(Modifier.height(6.dp))
-                Spacer(Modifier.height(8.dp))
-                Spacer(Modifier.width(12.dp))
-                Spacer(Modifier.width(8.dp))
-                SponsorList(
-                Text(
-                Text(stringResource(Res.string.settings_become_sponsor))
-                Text(stringResource(Res.string.settings_contact_sponsorship))
-                TextButton(
-                VerticalScrollbarForScroll(
-                coil3.compose.AsyncImage(
-                color = MaterialTheme.colorScheme.onBackground,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                color = MaterialTheme.colorScheme.primary,
-                downloadProgress = null,
-                else -> stringResource(Res.string.settings_status_error)
-                horizontalAlignment = CenterHorizontally,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                if (dragHandleModifier != null) {
-                if (entry.service.isOnDevice) {
-                if (isDownloaded) {
-                isBusy = isBusy,
-                isDownloaded = true,
-                isDownloading = false,
-                isSelected = selectedModel?.id == model.id,
-                labelText,
-                model = model,
-                modelContextTokens = modelContextTokens,
-                modifier = Modifier
-                modifier = Modifier.fillMaxWidth(),
-                onCancelDownload = onCancelDownload,
-                onChangeModelContextTokens = onChangeModelContextTokens,
-                onClick = {
-                onDeleteModel = onDeleteModel,
-                onDownloadModel = onDownloadModel,
-                onSelectModel = onSelectModel,
-                progress = { importProgress },
-                showImportedBadge = true,
-                stringResource(Res.string.settings_base_url_label),
-                style = MaterialTheme.typography.bodySmall,
-                style = MaterialTheme.typography.labelLarge,
-                style = MaterialTheme.typography.labelSmall,
-                style = MaterialTheme.typography.titleMedium,
-                text = stringResource(Res.string.litert_context_size, "${contextTokens / 1024}K"),
-                text = stringResource(Res.string.settings_business_partnerships),
-                text = stringResource(Res.string.settings_business_partnerships_description),
-                text = stringResource(Res.string.settings_free_tier_description),
-                text = stringResource(Res.string.settings_free_tier_title),
-                totalDeviceMemoryBytes = totalDeviceMemoryBytes,
-                val activeUsernames = currentSponsors.map { it.username }.toSet()
-                val dotColor = when (entry.connectionStatus) {
-                verticalAlignment = Alignment.CenterVertically,
-                when (downloadError) {
-                when (importError) {
-                withStyle(style = SpanStyle(color = linkColor)) {
+                    Spacer(Modifier.height(16.dp))
                 }
-                } else if (!isDownloading) {
-                } else if (entry.service is Service.OpenAICompatible) {
-                } else {
-                },
-            )
-            ) {
-            ),
-            .clickable { onExpand() }
-            .clickable { onToggleUseCustomModel(!useCustomModel) }
-            .fillMaxWidth()
-            .handCursor(),
-            .kaiAdaptiveCardSurface()
-            // A model whose export tops out at its own default (LFM2.5) has nothing to
-            // Header row
-            // drag: a 0f..0f range divides by zero working out the thumb fraction. Show
-            // the fixed size as a label and leave the slider out.
-            Box {
-            Button(
-            Column(
-            Column(modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp)) {
-            HorizontalDivider(thickness = 0.5.dp)
-            LinearProgressIndicator(
-            LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
-            LocalModelCard(
-            ReorderableItem {
-            Row(
-            Spacer(Modifier.height(12.dp))
-            Spacer(Modifier.height(16.dp))
-            Spacer(Modifier.height(4.dp))
-            Spacer(Modifier.height(6.dp))
-            Spacer(Modifier.height(8.dp))
-            Text(
-            Text(stringResource(Res.string.settings_add_service))
-            TextButton(
-            actions.onReorderServices(ids)
-            append(" ")
-            append(copyApiKeyPromptString)
-            append(orOtherServiceText)
-            append(setupOllamaText)
-            checked = useCustomModel,
-            color = MaterialTheme.colorScheme.error,
-            color = MaterialTheme.colorScheme.onBackground,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            color = StatusColorChecking,
-            color = StatusColorConnected,
-            color = StatusColorError,
-            downloadProgress = downloadProgress,
-            ids.add(toIndex, ids.removeAt(fromIndex))
-            if (allSponsors.isNotEmpty()) {
-            if (file != null) onImportModel(file)
-            if (isDownloading && downloadProgress != null) {
-            if (showFallbackToggle) {
-            if (status == ConnectionStatus.ErrorLocalNetworkDenied) {
-            if (steps > 0) {
-            isBusy = isBusy,
-            isDownloaded = model.id in downloadedIds,
-            isDownloading = downloadingModelId == model.id,
-            isSelected = selectedModel?.id == model.id,
-            label = {
-            model = model,
-            modelContextTokens = modelContextTokens,
-            modifier = Modifier.fillMaxWidth().padding(start = 16.dp, top = 4.dp),
-            onCancelDownload = onCancelDownload,
-            onChangeModelContextTokens = onChangeModelContextTokens,
-            onCheckedChange = onToggleUseCustomModel,
-            onDeleteModel = onDeleteModel,
-            onDismissRequest = { showAddServiceSheet = false },
-            onDownloadModel = onDownloadModel,
-            onPauseOrDispose { }
-            onRecheckLocalNetworkPermission()
-            onSelectModel = onSelectModel,
-            onValueChange = onChangeCustomModelId,
-            sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-            showImportedBadge = false,
-            singleLine = true,
-            style = MaterialTheme.typography.bodyMedium,
-            style = MaterialTheme.typography.bodySmall,
-            style = MaterialTheme.typography.labelSmall,
-            style = MaterialTheme.typography.titleSmall,
-            text = "${baseUrl.trimEnd('/')}${Service.OpenAICompatible.chatUrl}",
-            text = stringResource(
-            text = stringResource(Res.string.litert_imported),
-            text = stringResource(Res.string.litert_importing) + " $importingFileName",
-            text = stringResource(Res.string.litert_performance_good),
-            text = stringResource(Res.string.litert_performance_ok),
-            text = stringResource(Res.string.litert_performance_poor),
-            text = stringResource(Res.string.settings_custom_model_hint),
-            text = stringResource(Res.string.settings_custom_model_label),
-            totalDeviceMemoryBytes = totalDeviceMemoryBytes,
-            type = FileKitType.File(extensions = listOf("litertlm")),
-            val addServiceScrollState = rememberScrollState()
-            val allSponsors = remember(currentSponsors, pastSponsors) {
-            val errorMessage = when (status) {
-            val ids = entries.map { it.instanceId }.toMutableList()
-            val uriHandler = LocalUriHandler.current
-            val warningColor = Color(0xFFFF9800)
-            value = customModelId,
-            withLink(LinkAnnotation.Url(url = "https://docs.litellm.ai/docs/providers")) {
-            withLink(LinkAnnotation.Url(url = "https://github.com/ollama/ollama")) {
-            withLink(LinkAnnotation.Url(url = apiKeyUrl)) {
+                VerticalScrollbarForScroll(
+                    scrollState = addServiceScrollState,
+                    modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight(),
+                )
             }
-            },
-        )
-        ) {
-        ) { file ->
-        -> {
-        // Expanded content
-        // The tile width is sized for the username at the default font scale; without
-        // scaling it, names are cut to three characters at the largest one.
-        Checkbox(
-        Column(modifier = Modifier.padding(12.dp)) {
-        Column(modifier = Modifier.padding(16.dp)) {
-        ConnectionStatus.Checking -> {
-        ConnectionStatus.Connected -> {
-        ConnectionStatus.Error,
-        ConnectionStatus.ErrorConnectionFailed,
-        ConnectionStatus.ErrorInvalidKey,
-        ConnectionStatus.ErrorLocalNetworkDenied,
-        ConnectionStatus.ErrorQuotaExhausted -> {
-        ConnectionStatus.ErrorRateLimited,
-        ConnectionStatus.Unknown -> return
-        DevicePerformance.GOOD -> Text(
-        DevicePerformance.OK -> Text(
-        DevicePerformance.POOR -> Text(
-        KaiClearableTextField(
-        LifecycleResumeEffect(entry.instanceId) {
-        LocalModelCard(
-        ModalBottomSheet(
-        ModelSelection(selectedModel, models, onSelectModel)
-        OutlinedButton(onClick = { showAddServiceSheet = true }, modifier = Modifier.handCursor()) {
-        Spacer(Modifier.height(12.dp))
-        Spacer(Modifier.height(4.dp))
-        Spacer(Modifier.height(8.dp))
-        Spacer(Modifier.width(8.dp))
-        Text(
-        Text(stringResource(Res.string.litert_import))
-        annotatedString,
-        apiKey = apiKey,
-        border = kaiAdaptiveCardBorder(),
-        buildAnnotatedString {
-        color = MaterialTheme.colorScheme.onBackground,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        colors = kaiAdaptiveCardColors(),
-        currentSponsors = uiState.currentSponsors,
-        enabled = !isBusy && filePickerLauncher != null,
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        if (importProgress != null) {
-        if (isExpanded) {
-        importedModels.forEach { model ->
-        isFreeFallbackEnabled = uiState.isFreeFallbackEnabled,
-        key(entry.instanceId) {
-        label = {
-        labelText = stringResource(Res.string.settings_api_key_label),
-        labelText = stringResource(Res.string.settings_api_key_optional_label),
-        list = entries,
-        modifier = Modifier
-        modifier = Modifier.fillMaxWidth(),
-        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-        modifier = Modifier.handCursor(),
-        modifier = if (testTag != null) Modifier.testTag(testTag) else Modifier,
-        mutableStateOf(((storedContextTokens - model.defaultContextTokens) / 1024).toFloat())
-        null
-        onChangeApiKey = onChangeApiKey,
-        onClick = { filePickerLauncher?.launch() },
-        onSettle = { fromIndex, toIndex ->
-        onToggleFreeFallback = actions.onToggleFreeFallback,
-        onValueChange = onChangeApiKey,
-        onValueChange = onChangeBaseUrl,
-        pastSponsors = uiState.pastSponsors,
-        rememberFilePickerLauncher(
-        shape = RoundedCornerShape(8.dp),
-        showFallbackToggle = entries.isNotEmpty(),
-        singleLine = singleLine,
-        singleLine = true,
-        sponsors.forEach { sponsor ->
-        style = MaterialTheme.typography.bodyMedium,
-        style = MaterialTheme.typography.bodySmall,
-        style = MaterialTheme.typography.labelLarge,
-        testTag = testTag,
-        text = stringResource(Res.string.litert_free_space, formatFileSize(freeSpaceBytes)),
-        text = stringResource(Res.string.litert_import_description),
-        text = stringResource(Res.string.litert_on_device_description),
-        text = stringResource(Res.string.litert_tool_support),
-        text = title,
-        tonalElevation = if (isSelected) 3.dp else 1.dp,
-        val tileWidth = 72.dp * LocalDensity.current.fontScale
-        value = apiKey,
-        value = baseUrl,
-        verticalAlignment = Alignment.CenterVertically,
-        verticalArrangement = Arrangement.spacedBy(8.dp),
         }
-        } else {
-        },
-    )
-    ) {
-    ) { _, entry, isDragging ->
-    // Add service bottom sheet
-    // Clear a stale denied status when the user returns from granting the permission in
-    // Configured services list
-    // Free tier card (always at bottom)
-    // system settings; the recheck never re-prompts, so this is a no-op while still denied.
-    ApiKeyField(
-    Card(
-    Column(
-    ConnectionStatusIndicator(connectionStatus, onOpenAppPermissionSettings)
-    FlowRow(
-    FreeSettings(
-    KaiClearableTextField(
-    OutlinedButton(
-    ReorderableColumn(
-    Row(
-    Spacer(Modifier.height(12.dp))
-    Spacer(Modifier.height(16.dp))
-    Spacer(Modifier.height(4.dp))
-    Spacer(Modifier.height(8.dp))
-    Surface(
-    Text(
-    apiKey: String,
-    apiKeyUrl: String,
-    apiKeyUrlDisplay: String,
-    availableModels.forEach { model ->
-    availableModels: ImmutableList<LocalModel>,
-    baseUrl: String,
-    connectionStatus: ConnectionStatus,
-    currentSponsors: ImmutableList<SponsorsResponseDto.Sponsor> = persistentListOf(),
-    customModelId: String,
-    downloadError: DownloadError?,
-    downloadProgress: Float?,
-    downloadedModels: ImmutableList<SettingsModel>,
-    downloadingModelId: String?,
-    dragHandleModifier: Modifier? = null,
+    }
+}
+
+@Composable
+private fun ConfiguredServiceCardContent(
     entry: ConfiguredServiceEntry,
-    freeSpaceBytes: Long,
-    if (baseUrl.isNotBlank()) {
-    if (connectionStatus == ConnectionStatus.Connected || models.isNotEmpty()) {
-    if (downloadError != null) {
-    if (entry.connectionStatus == ConnectionStatus.ErrorLocalNetworkDenied) {
-    if (importError != null && importingFileName == null) {
-    if (importedModels.isNotEmpty()) {
-    if (importingFileName != null) {
-    if (showAddServiceSheet) {
-    if (uiState.availableServicesToAdd.isNotEmpty()) {
-    if (useCustomModel) {
-    importError: ModelImportError?,
-    importProgress: Float?,
-    importedModels: ImmutableList<LocalModel>,
-    importingFileName: String?,
-    isBusy: Boolean,
-    isDownloaded: Boolean,
-    isDownloading: Boolean,
-    isDragging: Boolean = false,
     isExpanded: Boolean,
-    isFreeFallbackEnabled: Boolean = true,
-    isSelected: Boolean,
-    labelText: String,
-    localAvailableModels: ImmutableList<LocalModel> = persistentListOf(),
-    localDownloadError: DownloadError? = null,
-    localDownloadProgress: Float? = null,
-    localDownloadingModelId: String? = null,
-    localFreeSpaceBytes: Long = 0L,
-    localImportError: ModelImportError? = null,
-    localImportProgress: Float? = null,
-    localImportedModels: ImmutableList<LocalModel> = persistentListOf(),
-    localImportingFileName: String? = null,
-    model: LocalModel,
-    modelContextTokens: ImmutableMap<String, Int> = persistentMapOf(),
-    modelContextTokens: ImmutableMap<String, Int>,
-    models: ImmutableList<SettingsModel>,
-    onCancelDownload: () -> Unit,
-    onCancelImport: () -> Unit,
-    onCancelLocalModelDownload: () -> Unit = {},
-    onCancelLocalModelImport: () -> Unit = {},
+    onExpand: () -> Unit,
     onChangeApiKey: (String) -> Unit,
     onChangeBaseUrl: (String) -> Unit,
+    onSelectModel: (String) -> Unit,
+    onToggleUseCustomModel: (Boolean) -> Unit = {},
     onChangeCustomModelId: (String) -> Unit = {},
-    onChangeCustomModelId: (String) -> Unit,
-    onChangeModelContextTokens: (String, Int) -> Unit = { _, _ -> },
-    onChangeModelContextTokens: (String, Int) -> Unit,
-    onDeleteLocalModel: (String) -> Unit = {},
-    onDeleteModel: (String) -> Unit,
+    onRemove: () -> Unit,
+    isDragging: Boolean = false,
+    dragHandleModifier: Modifier? = null,
+    localAvailableModels: ImmutableList<LocalModel> = persistentListOf(),
+    localImportedModels: ImmutableList<LocalModel> = persistentListOf(),
+    totalDeviceMemoryBytes: Long = Long.MAX_VALUE,
+    localFreeSpaceBytes: Long = 0L,
+    localDownloadingModelId: String? = null,
+    localDownloadProgress: Float? = null,
+    localDownloadError: DownloadError? = null,
+    localImportingFileName: String? = null,
+    localImportProgress: Float? = null,
+    localImportError: ModelImportError? = null,
     onDownloadLocalModel: (LocalModel) -> Unit = {},
-    onDownloadModel: (LocalModel) -> Unit,
-    onExpand: () -> Unit,
+    onCancelLocalModelDownload: () -> Unit = {},
     onImportLocalModel: (PlatformFile) -> Unit = {},
-    onImportModel: (PlatformFile) -> Unit,
+    onCancelLocalModelImport: () -> Unit = {},
+    onDeleteLocalModel: (String) -> Unit = {},
+    onChangeModelContextTokens: (String, Int) -> Unit = { _, _ -> },
+    modelContextTokens: ImmutableMap<String, Int> = persistentMapOf(),
     onOpenAppPermissionSettings: () -> Unit = {},
     onRecheckLocalNetworkPermission: () -> Unit = {},
-    onRemove: () -> Unit,
-    onSelectModel: (String) -> Unit,
-    onToggleFreeFallback: (Boolean) -> Unit = {},
-    onToggleUseCustomModel: (Boolean) -> Unit = {},
-    onToggleUseCustomModel: (Boolean) -> Unit,
-    pastSponsors: ImmutableList<SponsorsResponseDto.Sponsor> = persistentListOf(),
+) {
+    // Clear a stale denied status when the user returns from granting the permission in
+    // system settings; the recheck never re-prompts, so this is a no-op while still denied.
+    if (entry.connectionStatus == ConnectionStatus.ErrorLocalNetworkDenied) {
+        LifecycleResumeEffect(entry.instanceId) {
+            onRecheckLocalNetworkPermission()
+            onPauseOrDispose { }
+        }
+    }
+    Column(
+        modifier = Modifier
+            .kaiAdaptiveCardSurface()
+            .fillMaxWidth()
+            .clickable { onExpand() }
+            .handCursor(),
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            // Header row
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                // Drag handle
+                if (dragHandleModifier != null) {
+                    Icon(
+                        imageVector = Icons.Rounded.DragIndicator,
+                        contentDescription = stringResource(Res.string.settings_reorder_content_description),
+                        modifier = dragHandleModifier.handCursor(),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Spacer(Modifier.width(8.dp))
+                }
+
+                // Connection status dot
+                val dotColor = when (entry.connectionStatus) {
+                    ConnectionStatus.Connected -> StatusColorConnected
+                    ConnectionStatus.Checking -> StatusColorChecking
+                    ConnectionStatus.Unknown -> StatusColorUnknown
+                    else -> StatusColorError
+                }
+                Box(
+                    modifier = Modifier
+                        .size(10.dp)
+                        .clip(CircleShape)
+                        .background(dotColor),
+                )
+
+                Spacer(Modifier.width(12.dp))
+
+                // Service name and model
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = entry.service.displayName,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onBackground,
+                    )
+                    val displayModelId = when {
+                        entry.useCustomModel && entry.customModelId.isNotBlank() -> entry.customModelId
+                        entry.selectedModel != null -> entry.selectedModel.id
+                        else -> null
+                    }
+                    if (displayModelId != null) {
+                        Text(
+                            text = displayModelId,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
+                }
+
+                // Expand/collapse chevron
+                Icon(
+                    imageVector = vectorResource(Res.drawable.ic_arrow_drop_down),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+        }
+
+        // Expanded content
+        if (isExpanded) {
+            Column(modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp)) {
+                if (entry.service.isOnDevice) {
+                    LiteRTSettings(
+                        selectedModel = entry.selectedModel,
+                        downloadedModels = entry.models,
+                        availableModels = localAvailableModels,
+                        importedModels = localImportedModels,
+                        totalDeviceMemoryBytes = totalDeviceMemoryBytes,
+                        freeSpaceBytes = localFreeSpaceBytes,
+                        downloadingModelId = localDownloadingModelId,
+                        downloadProgress = localDownloadProgress,
+                        downloadError = localDownloadError,
+                        importingFileName = localImportingFileName,
+                        importProgress = localImportProgress,
+                        importError = localImportError,
+                        onSelectModel = onSelectModel,
+                        onDownloadModel = onDownloadLocalModel,
+                        onCancelDownload = onCancelLocalModelDownload,
+                        onImportModel = onImportLocalModel,
+                        onCancelImport = onCancelLocalModelImport,
+                        onDeleteModel = onDeleteLocalModel,
+                        onChangeModelContextTokens = onChangeModelContextTokens,
+                        modelContextTokens = modelContextTokens,
+                    )
+                } else if (entry.service is Service.OpenAICompatible) {
+                    OpenAICompatibleSettings(
+                        baseUrl = entry.baseUrl,
+                        onChangeBaseUrl = onChangeBaseUrl,
+                        apiKey = entry.apiKey,
+                        onChangeApiKey = onChangeApiKey,
+                        selectedModel = entry.selectedModel,
+                        models = entry.models,
+                        onSelectModel = onSelectModel,
+                        useCustomModel = entry.useCustomModel,
+                        customModelId = entry.customModelId,
+                        onToggleUseCustomModel = onToggleUseCustomModel,
+                        onChangeCustomModelId = onChangeCustomModelId,
+                        connectionStatus = entry.connectionStatus,
+                        onOpenAppPermissionSettings = onOpenAppPermissionSettings,
+                    )
+                } else {
+                    ServiceSettings(
+                        apiKey = entry.apiKey,
+                        onChangeApiKey = onChangeApiKey,
+                        apiKeyUrl = entry.service.apiKeyUrl ?: "",
+                        apiKeyUrlDisplay = entry.service.apiKeyUrlDisplay ?: "",
+                        selectedModel = entry.selectedModel,
+                        models = entry.models,
+                        onSelectModel = onSelectModel,
+                        connectionStatus = entry.connectionStatus,
+                        onOpenAppPermissionSettings = onOpenAppPermissionSettings,
+                    )
+                }
+
+                Spacer(Modifier.height(12.dp))
+
+                // Remove action
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    TextButton(
+                        onClick = onRemove,
+                        modifier = Modifier.handCursor(),
+                    ) {
+                        Text(
+                            text = stringResource(Res.string.settings_remove_service),
+                            color = MaterialTheme.colorScheme.error,
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ServiceSettings(
+    apiKey: String,
+    onChangeApiKey: (String) -> Unit,
+    apiKeyUrl: String,
+    apiKeyUrlDisplay: String,
     selectedModel: SettingsModel?,
-    showFallbackToggle: Boolean = false,
-    showImportedBadge: Boolean,
-    singleLine: Boolean = false,
-    sponsors: ImmutableList<SponsorsResponseDto.Sponsor>,
+    models: ImmutableList<SettingsModel>,
+    onSelectModel: (String) -> Unit,
+    connectionStatus: ConnectionStatus,
     testTag: String? = null,
-    title: String,
-    totalDeviceMemoryBytes: Long = Long.MAX_VALUE,
-    totalDeviceMemoryBytes: Long,
-    useCustomModel: Boolean,
-    val annotatedString = remember(apiKeyUrl, apiKeyUrlDisplay) {
-    val annotatedString = remember(setupOllamaText, orOtherServiceText, providersText, linkColor) {
-    val contextTokens = model.defaultContextTokens + (contextSliderValue.roundToInt() * 1024)
+    onOpenAppPermissionSettings: () -> Unit = {},
+) {
+    ApiKeyField(
+        apiKey = apiKey,
+        onChangeApiKey = onChangeApiKey,
+        labelText = stringResource(Res.string.settings_api_key_label),
+        testTag = testTag,
+    )
+
+    Spacer(Modifier.height(8.dp))
+
+    ConnectionStatusIndicator(connectionStatus, onOpenAppPermissionSettings)
+
+    Spacer(Modifier.height(8.dp))
+
+    val linkColor = MaterialTheme.colorScheme.primary
+
     val copyApiKeyPromptString = stringResource(Res.string.settings_sign_in_copy_api_key_from)
+    val annotatedString = remember(apiKeyUrl, apiKeyUrlDisplay) {
+        buildAnnotatedString {
+            append(copyApiKeyPromptString)
+            append(" ")
+            withLink(LinkAnnotation.Url(url = apiKeyUrl)) {
+                withStyle(style = SpanStyle(color = linkColor)) {
+                    append(apiKeyUrlDisplay)
+                }
+            }
+        }
+    }
+    Text(
+        annotatedString,
+        modifier = Modifier.fillMaxWidth(),
+        color = MaterialTheme.colorScheme.onBackground,
+    )
+
+    Spacer(Modifier.height(16.dp))
+
+    if (connectionStatus == ConnectionStatus.Connected || models.isNotEmpty()) {
+        ModelSelection(selectedModel, models, onSelectModel)
+    }
+}
+
+@Composable
+private fun OpenAICompatibleSettings(
+    baseUrl: String,
+    onChangeBaseUrl: (String) -> Unit,
+    apiKey: String,
+    onChangeApiKey: (String) -> Unit,
+    selectedModel: SettingsModel?,
+    models: ImmutableList<SettingsModel>,
+    onSelectModel: (String) -> Unit,
+    useCustomModel: Boolean,
+    customModelId: String,
+    onToggleUseCustomModel: (Boolean) -> Unit,
+    onChangeCustomModelId: (String) -> Unit,
+    connectionStatus: ConnectionStatus,
+    onOpenAppPermissionSettings: () -> Unit = {},
+) {
+    KaiClearableTextField(
+        value = baseUrl,
+        onValueChange = onChangeBaseUrl,
+        label = {
+            Text(
+                stringResource(Res.string.settings_base_url_label),
+                color = MaterialTheme.colorScheme.onBackground,
+            )
+        },
+        singleLine = true,
+    )
+    if (baseUrl.isNotBlank()) {
+        Text(
+            text = "${baseUrl.trimEnd('/')}${Service.OpenAICompatible.chatUrl}",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.fillMaxWidth().padding(start = 16.dp, top = 4.dp),
+        )
+    }
+
+    Spacer(Modifier.height(8.dp))
+
+    ApiKeyField(
+        apiKey = apiKey,
+        onChangeApiKey = onChangeApiKey,
+        labelText = stringResource(Res.string.settings_api_key_optional_label),
+        singleLine = true,
+    )
+
+    Spacer(Modifier.height(8.dp))
+
+    ConnectionStatusIndicator(connectionStatus, onOpenAppPermissionSettings)
+
+    Spacer(Modifier.height(8.dp))
+
+    val linkColor = MaterialTheme.colorScheme.primary
+    val setupOllamaText = stringResource(Res.string.settings_openai_compatible_setup_ollama)
+    val orOtherServiceText = stringResource(Res.string.settings_openai_compatible_or_other_service)
+    val providersText = stringResource(Res.string.settings_openai_compatible_providers)
+    val annotatedString = remember(setupOllamaText, orOtherServiceText, providersText, linkColor) {
+        buildAnnotatedString {
+            append(setupOllamaText)
+            append(" ")
+            withLink(LinkAnnotation.Url(url = "https://github.com/ollama/ollama")) {
+                withStyle(style = SpanStyle(color = linkColor)) {
+                    append("github.com/ollama/ollama")
+                }
+            }
+            append(" ")
+            append(orOtherServiceText)
+            append(" ")
+            withLink(LinkAnnotation.Url(url = "https://docs.litellm.ai/docs/providers")) {
+                withStyle(style = SpanStyle(color = linkColor)) {
+                    append(providersText)
+                }
+            }
+        }
+    }
+    Text(
+        annotatedString,
+        modifier = Modifier.fillMaxWidth(),
+        color = MaterialTheme.colorScheme.onBackground,
+    )
+
+    Spacer(Modifier.height(16.dp))
+
+    if (connectionStatus == ConnectionStatus.Connected || models.isNotEmpty()) {
+        ModelSelection(selectedModel, models, onSelectModel)
+        Spacer(Modifier.height(8.dp))
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onToggleUseCustomModel(!useCustomModel) }
+            .handCursor(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Checkbox(
+            checked = useCustomModel,
+            onCheckedChange = onToggleUseCustomModel,
+        )
+        Spacer(Modifier.width(8.dp))
+        Text(
+            text = stringResource(Res.string.settings_custom_model_label),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+    }
+
+    if (useCustomModel) {
+        Spacer(Modifier.height(8.dp))
+        KaiClearableTextField(
+            value = customModelId,
+            onValueChange = onChangeCustomModelId,
+            label = {
+                Text(
+                    stringResource(Res.string.settings_model_label),
+                    color = MaterialTheme.colorScheme.onBackground,
+                )
+            },
+            singleLine = true,
+        )
+        Text(
+            text = stringResource(Res.string.settings_custom_model_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.fillMaxWidth().padding(start = 16.dp, top = 4.dp),
+        )
+    }
+}
+
+@Composable
+private fun LiteRTSettings(
+    selectedModel: SettingsModel?,
+    downloadedModels: ImmutableList<SettingsModel>,
+    availableModels: ImmutableList<LocalModel>,
+    importedModels: ImmutableList<LocalModel>,
+    totalDeviceMemoryBytes: Long,
+    freeSpaceBytes: Long,
+    downloadingModelId: String?,
+    downloadProgress: Float?,
+    downloadError: DownloadError?,
+    importingFileName: String?,
+    importProgress: Float?,
+    importError: ModelImportError?,
+    onSelectModel: (String) -> Unit,
+    onDownloadModel: (LocalModel) -> Unit,
+    onCancelDownload: () -> Unit,
+    onImportModel: (PlatformFile) -> Unit,
+    onCancelImport: () -> Unit,
+    onDeleteModel: (String) -> Unit,
+    onChangeModelContextTokens: (String, Int) -> Unit,
+    modelContextTokens: ImmutableMap<String, Int>,
+) {
     val downloadedIds = remember(downloadedModels) { downloadedModels.map { it.id }.toSet() }
-    val entries = uiState.configuredServices
-    val estimatedMemoryMb = estimateGpuMemoryMb(model, contextTokens)
-    val filePickerLauncher = if (!isPreview) {
     val isBusy = downloadingModelId != null || importingFileName != null
     val isPreview = LocalInspectionMode.current
-    val linkColor = MaterialTheme.colorScheme.primary
-    val orOtherServiceText = stringResource(Res.string.settings_openai_compatible_or_other_service)
-    val performance = calculateDevicePerformance(totalDeviceMemoryBytes, estimatedMemoryMb)
-    val providersText = stringResource(Res.string.settings_openai_compatible_providers)
-    val setupOllamaText = stringResource(Res.string.settings_openai_compatible_setup_ollama)
+
+    val filePickerLauncher = if (!isPreview) {
+        rememberFilePickerLauncher(
+            type = FileKitType.File(extensions = listOf("litertlm")),
+        ) { file ->
+            if (file != null) onImportModel(file)
+        }
+    } else {
+        null
+    }
+
+    Text(
+        text = stringResource(Res.string.litert_on_device_description),
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+
+    Spacer(Modifier.height(4.dp))
+
+    Text(
+        text = stringResource(Res.string.litert_tool_support),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+
+    Spacer(Modifier.height(12.dp))
+
+    Text(
+        text = stringResource(Res.string.litert_import_description),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+    Spacer(Modifier.height(8.dp))
+    OutlinedButton(
+        onClick = { filePickerLauncher?.launch() },
+        modifier = Modifier.handCursor(),
+        enabled = !isBusy && filePickerLauncher != null,
+    ) {
+        Text(stringResource(Res.string.litert_import))
+    }
+
+    if (importingFileName != null) {
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = stringResource(Res.string.litert_importing) + " $importingFileName",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        if (importProgress != null) {
+            Spacer(Modifier.height(4.dp))
+            LinearProgressIndicator(
+                progress = { importProgress },
+                modifier = Modifier.fillMaxWidth(),
+            )
+            Spacer(Modifier.height(4.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = "${(importProgress * 100).toInt()}%",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                TextButton(
+                    onClick = onCancelImport,
+                    modifier = Modifier.handCursor(),
+                ) {
+                    Text(
+                        text = stringResource(Res.string.litert_cancel),
+                        style = MaterialTheme.typography.labelSmall,
+                    )
+                }
+            }
+        } else {
+            Spacer(Modifier.height(4.dp))
+            LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+        }
+    }
+
+    if (importError != null && importingFileName == null) {
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = stringResource(
+                when (importError) {
+                    ModelImportError.INVALID_EXTENSION -> Res.string.litert_error_import_invalid
+                    ModelImportError.NOT_ENOUGH_DISK_SPACE -> Res.string.litert_error_not_enough_disk_space
+                    ModelImportError.FILE_TOO_SMALL -> Res.string.litert_error_import_too_small
+                    ModelImportError.COPY_FAILED -> Res.string.litert_error_import_failed
+                    ModelImportError.CANCELLED -> Res.string.litert_error_import_failed
+                },
+            ),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.error,
+        )
+    }
+
+    Spacer(Modifier.height(12.dp))
+
+    availableModels.forEach { model ->
+        LocalModelCard(
+            model = model,
+            isDownloaded = model.id in downloadedIds,
+            isSelected = selectedModel?.id == model.id,
+            isDownloading = downloadingModelId == model.id,
+            downloadProgress = downloadProgress,
+            isBusy = isBusy,
+            totalDeviceMemoryBytes = totalDeviceMemoryBytes,
+            modelContextTokens = modelContextTokens,
+            onSelectModel = onSelectModel,
+            onDownloadModel = onDownloadModel,
+            onCancelDownload = onCancelDownload,
+            onDeleteModel = onDeleteModel,
+            onChangeModelContextTokens = onChangeModelContextTokens,
+            showImportedBadge = false,
+        )
+    }
+
+    if (importedModels.isNotEmpty()) {
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = stringResource(Res.string.litert_imported),
+            style = MaterialTheme.typography.titleSmall,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+        Spacer(Modifier.height(4.dp))
+        importedModels.forEach { model ->
+            LocalModelCard(
+                model = model,
+                isDownloaded = true,
+                isSelected = selectedModel?.id == model.id,
+                isDownloading = false,
+                downloadProgress = null,
+                isBusy = isBusy,
+                totalDeviceMemoryBytes = totalDeviceMemoryBytes,
+                modelContextTokens = modelContextTokens,
+                onSelectModel = onSelectModel,
+                onDownloadModel = onDownloadModel,
+                onCancelDownload = onCancelDownload,
+                onDeleteModel = onDeleteModel,
+                onChangeModelContextTokens = onChangeModelContextTokens,
+                showImportedBadge = true,
+            )
+        }
+    }
+
+    if (downloadError != null) {
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = stringResource(
+                when (downloadError) {
+                    DownloadError.NOT_ENOUGH_DISK_SPACE -> Res.string.litert_error_not_enough_disk_space
+                    DownloadError.NETWORK_ERROR -> Res.string.litert_error_network
+                    DownloadError.DOWNLOAD_INCOMPLETE -> Res.string.litert_error_download_incomplete
+                    DownloadError.CHECKSUM_MISMATCH -> Res.string.litert_error_checksum_mismatch
+                },
+            ),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.error,
+        )
+    }
+
+    Spacer(Modifier.height(8.dp))
+
+    Text(
+        text = stringResource(Res.string.litert_free_space, formatFileSize(freeSpaceBytes)),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+}
+
+@Composable
+private fun LocalModelCard(
+    model: LocalModel,
+    isDownloaded: Boolean,
+    isSelected: Boolean,
+    isDownloading: Boolean,
+    downloadProgress: Float?,
+    isBusy: Boolean,
+    totalDeviceMemoryBytes: Long,
+    modelContextTokens: ImmutableMap<String, Int>,
+    onSelectModel: (String) -> Unit,
+    onDownloadModel: (LocalModel) -> Unit,
+    onCancelDownload: () -> Unit,
+    onDeleteModel: (String) -> Unit,
+    onChangeModelContextTokens: (String, Int) -> Unit,
+    showImportedBadge: Boolean,
+) {
     val steps = (model.maxContextTokens - model.defaultContextTokens) / 1024
     val storedContextTokens = modelContextTokens[model.id] ?: model.defaultContextTokens
-    val uriHandler = LocalUriHandler.current
     var contextSliderValue by remember(storedContextTokens) {
-    var showAddServiceSheet by remember { mutableStateOf(false) }
-    when (performance) {
-    when (status) {
+        mutableStateOf(((storedContextTokens - model.defaultContextTokens) / 1024).toFloat())
     }
-    } else {
-) {
+    val contextTokens = model.defaultContextTokens + (contextSliderValue.roundToInt() * 1024)
+    val estimatedMemoryMb = estimateGpuMemoryMb(model, contextTokens)
+    val performance = calculateDevicePerformance(totalDeviceMemoryBytes, estimatedMemoryMb)
+
+    Surface(
+        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+        shape = RoundedCornerShape(8.dp),
+        tonalElevation = if (isSelected) 3.dp else 1.dp,
+    ) {
+        Column(modifier = Modifier.padding(12.dp)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                if (isDownloaded) {
+                    RadioButton(
+                        selected = isSelected,
+                        onClick = { onSelectModel(model.id) },
+                        modifier = Modifier.size(20.dp),
+                    )
+                    Spacer(Modifier.width(8.dp))
+                }
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = when {
+                            model.isRecommended ->
+                                "${model.displayName} (${stringResource(Res.string.litert_recommended)})"
+
+                            showImportedBadge ->
+                                "${model.displayName} (${stringResource(Res.string.litert_imported)})"
+
+                            else -> model.displayName
+                        },
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onBackground,
+                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = formatFileSize(model.sizeBytes),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(Modifier.width(8.dp))
+                        DevicePerformanceLabel(performance)
+                    }
+                }
+                if (isDownloaded) {
+                    IconButton(
+                        onClick = { onDeleteModel(model.id) },
+                        modifier = Modifier.handCursor(),
+                        enabled = !isBusy,
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                } else if (!isDownloading) {
+                    TextButton(
+                        onClick = { onDownloadModel(model) },
+                        modifier = Modifier.handCursor(),
+                        enabled = !isBusy,
+                    ) {
+                        Text(stringResource(Res.string.litert_download))
+                    }
+                }
+            }
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = stringResource(Res.string.litert_context_size, "${contextTokens / 1024}K"),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            // A model whose export tops out at its own default (LFM2.5) has nothing to
+            // drag: a 0f..0f range divides by zero working out the thumb fraction. Show
+            // the fixed size as a label and leave the slider out.
+            if (steps > 0) {
+                KaiSlider(
+                    value = contextSliderValue,
+                    onValueChange = { contextSliderValue = it },
+                    onValueChangeFinished = {
+                        onChangeModelContextTokens(model.id, contextTokens)
+                    },
+                    valueRange = 0f..steps.toFloat(),
+                    steps = (steps - 1).coerceAtLeast(0),
+                )
+            }
+            if (isDownloading && downloadProgress != null) {
+                Spacer(Modifier.height(8.dp))
+                LinearProgressIndicator(
+                    progress = { downloadProgress },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(4.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = "${(downloadProgress * 100).toInt()}%",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    TextButton(
+                        onClick = onCancelDownload,
+                        modifier = Modifier.handCursor(),
+                    ) {
+                        Text(
+                            text = stringResource(Res.string.litert_cancel),
+                            style = MaterialTheme.typography.labelSmall,
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
 @Composable
-@file:OptIn(ExperimentalMaterial3Api::class)
-internal fun FreeSettings(
-internal fun ServicesContent(uiState: SettingsUiState, actions: SettingsActions) {
-private fun ApiKeyField(
-private fun ConfiguredServiceCardContent(
-private fun ConnectionStatusIndicator(status: ConnectionStatus, onOpenAppPermissionSettings: () -> Unit = {}) {
 private fun DevicePerformanceLabel(performance: DevicePerformance) {
-private fun LiteRTSettings(
-private fun LocalModelCard(
-private fun OpenAICompatibleSettings(
-private fun ServiceSettings(
-private fun SponsorList(
+    when (performance) {
+        DevicePerformance.GOOD -> Text(
+            text = stringResource(Res.string.litert_performance_good),
+            style = MaterialTheme.typography.labelSmall,
+            color = StatusColorConnected,
+        )
+
+        DevicePerformance.OK -> Text(
+            text = stringResource(Res.string.litert_performance_ok),
+            style = MaterialTheme.typography.labelSmall,
+            color = StatusColorChecking,
+        )
+
+        DevicePerformance.POOR -> Text(
+            text = stringResource(Res.string.litert_performance_poor),
+            style = MaterialTheme.typography.labelSmall,
+            color = StatusColorError,
+        )
+    }
+}
+
+@Composable
+private fun ConnectionStatusIndicator(status: ConnectionStatus, onOpenAppPermissionSettings: () -> Unit = {}) {
+    when (status) {
+        ConnectionStatus.Unknown -> return
+
+        ConnectionStatus.Checking -> {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(16.dp),
+                    strokeWidth = 2.dp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = stringResource(Res.string.settings_status_checking),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+        }
+
+        ConnectionStatus.Connected -> {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.CheckCircle,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
+                    tint = MaterialTheme.colorScheme.primary,
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = stringResource(Res.string.settings_status_connected),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
+        }
+
+        ConnectionStatus.ErrorQuotaExhausted -> {
+            val warningColor = Color(0xFFFF9800)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Warning,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
+                    tint = warningColor,
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = stringResource(Res.string.settings_status_error_quota_exhausted),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = warningColor,
+                )
+            }
+        }
+
+        ConnectionStatus.ErrorInvalidKey,
+        ConnectionStatus.ErrorRateLimited,
+        ConnectionStatus.ErrorConnectionFailed,
+        ConnectionStatus.ErrorLocalNetworkDenied,
+        ConnectionStatus.Error,
+        -> {
+            val errorMessage = when (status) {
+                ConnectionStatus.ErrorInvalidKey -> stringResource(Res.string.settings_status_error_invalid_key)
+                ConnectionStatus.ErrorRateLimited -> stringResource(Res.string.settings_status_error_rate_limited)
+                ConnectionStatus.ErrorConnectionFailed -> stringResource(Res.string.settings_status_error_connection_failed)
+                ConnectionStatus.ErrorLocalNetworkDenied -> stringResource(Res.string.settings_status_error_local_network)
+                else -> stringResource(Res.string.settings_status_error)
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Warning,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
+                    tint = MaterialTheme.colorScheme.error,
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = errorMessage,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                )
+            }
+            if (status == ConnectionStatus.ErrorLocalNetworkDenied) {
+                TextButton(
+                    onClick = onOpenAppPermissionSettings,
+                    modifier = Modifier.handCursor(),
+                ) {
+                    Text(stringResource(Res.string.settings_open_app_settings))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ApiKeyField(
+    apiKey: String,
+    onChangeApiKey: (String) -> Unit,
+    labelText: String,
+    testTag: String? = null,
+    singleLine: Boolean = false,
+) {
+    KaiClearableTextField(
+        modifier = if (testTag != null) Modifier.testTag(testTag) else Modifier,
+        value = apiKey,
+        onValueChange = onChangeApiKey,
+        label = {
+            Text(
+                labelText,
+                color = MaterialTheme.colorScheme.onBackground,
+            )
+        },
+        singleLine = singleLine,
+    )
 }

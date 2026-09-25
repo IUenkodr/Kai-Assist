@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.build
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,86 +38,106 @@ import kai.composeapp.generated.resources.kai_build_step_install_agent
 import kotlinx.collections.immutable.ImmutableSet
 import org.jetbrains.compose.resources.stringResource
 
-                        .clickable(enabled = installing == null) { onToggleAgent(agent.id) }
-                        .fillMaxWidth()
-                        .handCursor(),
-                        checked = agent.id in selectedAgents || agent.id in state.installedAgents,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        enabled = installing == null && agent.id !in state.installedAgents,
-                        onCheckedChange = { onToggleAgent(agent.id) },
-                        style = MaterialTheme.typography.bodyLarge,
-                        text = agent.title,
-                    )
-                    Checkbox(
-                    Text(
-                    modifier = Modifier
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                Row(
-                Text(stringResource(Res.string.kai_build_setup_install))
-                color = MaterialTheme.colorScheme.error,
-                color = MaterialTheme.colorScheme.onSurface,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(bottom = 8.dp),
-                onCancel = onCancel,
-                progress = installing.progress,
-                statusText = stepLabel(installing),
-                style = MaterialTheme.typography.bodySmall,
-                style = MaterialTheme.typography.titleMedium,
-                text = error,
-                text = stringResource(Res.string.kai_build_setup_agents_description),
-                text = stringResource(Res.string.kai_build_setup_agents_title),
-                }
-            )
-            .fillMaxSize()
-            .padding(16.dp),
-            .verticalScroll(rememberScrollState())
-            BuildAgents.all.forEach { agent ->
-            Button(onClick = onInstall, modifier = Modifier.handCursor()) {
-            SandboxProgressRow(
-            Text(
-            color = MaterialTheme.colorScheme.onBackground,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            style = MaterialTheme.typography.bodyMedium,
-            style = MaterialTheme.typography.headlineSmall,
-            text = stringResource(Res.string.kai_build_setup_description),
-            text = stringResource(Res.string.kai_build_setup_title),
-            }
-        ((state.progress ?: 0f) * 100).toInt(),
-        )
-        BuildAgents.get(state.agentId)?.title.orEmpty(),
-        Res.string.kai_build_step_download,
-        Res.string.kai_build_step_install_agent,
-        SettingsCard(modifier = Modifier.fillMaxWidth()) {
-        Text(
-        if (installing != null) {
-        modifier = modifier
-        state.lastError?.let { error ->
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-        }
-        } else {
-    )
-    ) {
-    BuildStep.Agent -> stringResource(
-    BuildStep.BasePackages -> stringResource(Res.string.kai_build_step_base_packages)
-    BuildStep.Configure -> stringResource(Res.string.kai_build_step_configure)
-    BuildStep.Download -> stringResource(
-    BuildStep.Extract -> stringResource(Res.string.kai_build_step_extract)
-    Column(
-    modifier: Modifier = Modifier,
-    onCancel: () -> Unit,
-    onInstall: () -> Unit,
-    onToggleAgent: (String) -> Unit,
-    selectedAgents: ImmutableSet<String>,
-    state: KaiBuildState,
-    val installing = state.environment as? BuildEnvironmentState.Installing
-    }
- * Doubles as the progress surface for later agent installs.
- * First screen a user lands on: install Debian, optionally with coding agents.
- */
-) {
 /**
+ * First screen a user lands on: install Debian, optionally with coding agents.
+ * Doubles as the progress surface for later agent installs.
+ */
 @Composable
 internal fun BuildSetupContent(
+    state: KaiBuildState,
+    selectedAgents: ImmutableSet<String>,
+    onToggleAgent: (String) -> Unit,
+    onInstall: () -> Unit,
+    onCancel: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val installing = state.environment as? BuildEnvironmentState.Installing
+
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        Text(
+            text = stringResource(Res.string.kai_build_setup_title),
+            style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+        Text(
+            text = stringResource(Res.string.kai_build_setup_description),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+
+        SettingsCard(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = stringResource(Res.string.kai_build_setup_agents_title),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+            Text(
+                text = stringResource(Res.string.kai_build_setup_agents_description),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 8.dp),
+            )
+            BuildAgents.all.forEach { agent ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable(enabled = installing == null) { onToggleAgent(agent.id) }
+                        .handCursor(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Checkbox(
+                        checked = agent.id in selectedAgents || agent.id in state.installedAgents,
+                        onCheckedChange = { onToggleAgent(agent.id) },
+                        enabled = installing == null && agent.id !in state.installedAgents,
+                    )
+                    Text(
+                        text = agent.title,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+                }
+            }
+        }
+
+        if (installing != null) {
+            SandboxProgressRow(
+                progress = installing.progress,
+                statusText = stepLabel(installing),
+                onCancel = onCancel,
+            )
+        } else {
+            Button(onClick = onInstall, modifier = Modifier.handCursor()) {
+                Text(stringResource(Res.string.kai_build_setup_install))
+            }
+        }
+
+        state.lastError?.let { error ->
+            Text(
+                text = error,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.error,
+            )
+        }
+    }
+}
+
+@Composable
 private fun stepLabel(state: BuildEnvironmentState.Installing): String = when (state.step) {
+    BuildStep.Download -> stringResource(
+        Res.string.kai_build_step_download,
+        ((state.progress ?: 0f) * 100).toInt(),
+    )
+    BuildStep.Extract -> stringResource(Res.string.kai_build_step_extract)
+    BuildStep.Configure -> stringResource(Res.string.kai_build_step_configure)
+    BuildStep.BasePackages -> stringResource(Res.string.kai_build_step_base_packages)
+    BuildStep.Agent -> stringResource(
+        Res.string.kai_build_step_install_agent,
+        BuildAgents.get(state.agentId)?.title.orEmpty(),
+    )
 }

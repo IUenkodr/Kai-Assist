@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.settings
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -34,132 +35,154 @@ import kai.composeapp.generated.resources.settings_tools_none_available
 import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
 
-                                    modifier = Modifier.weight(1f).fillMaxHeight(),
-                                    onToggle = { enabled -> onToggleTool(tool.id, enabled) },
-                                    tool = tool,
-                                )
-                                Spacer(modifier = Modifier.weight(1f))
-                                ToolItem(
-                            // Fill empty slots so last row items don't stretch
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
-                            repeat(columns - rowTools.size) {
-                            rowTools.forEach { tool ->
-                            }
-                        ) {
-                        Row(
-                        }
-                    color = MaterialTheme.colorScheme.onBackground,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    else -> 1
-                    maxWidth >= 500.dp -> 2
-                    maxWidth >= 800.dp -> 3
-                    rows.forEach { rowTools ->
-                    style = MaterialTheme.typography.bodySmall,
-                    style = MaterialTheme.typography.titleSmall,
-                    text = tool.descriptionRes?.let { stringResource(it) } ?: tool.description,
-                    text = tool.nameRes?.let { stringResource(it) } ?: tool.name,
-                    }
-                )
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(
-                browsableSkills = browsableSkills,
-                browseFailed = browseSkillsFailed,
-                checked = tool.isEnabled,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                installError = skillInstallError,
-                isBrowsing = isBrowsingSkills,
-                isInstalling = isInstallingSkill,
-                isSandboxInstalled = isSandboxInstalled,
-                onCheckedChange = onToggle,
-                onInstallBrowsed = onInstallBrowsedSkill,
-                onInstallGitHub = onInstallGitHubSkill,
-                onNavigateToSandbox = onNavigateToSandbox,
-                onShowAddDialog = onShowAddSkillDialog,
-                onUninstallSkill = onUninstallSkill,
-                showAddDialog = showAddSkillDialog,
-                skills = skills,
-                style = MaterialTheme.typography.bodyMedium,
-                text = stringResource(Res.string.settings_tools_none_available),
-                val columns = when {
-                val rows = tools.chunked(columns)
-                }
-            )
-            .clickable { onToggle(!tool.isEnabled) }
-            .clip(CardDefaults.shape)
-            .handCursor(),
-            BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.weight(1f)) {
-            SkillsSection(
-            Spacer(Modifier.height(24.dp))
-            Spacer(Modifier.width(16.dp))
-            Switch(
-            Text(
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            mcpServers = mcpServers,
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
-            onAddMcpServer = onAddMcpServer,
-            onAddPopularMcpServer = onAddPopularMcpServer,
-            onRefreshMcpServer = onRefreshMcpServer,
-            onRemoveMcpServer = onRemoveMcpServer,
-            onShowAddDialog = onShowAddMcpServerDialog,
-            onToggleMcpServer = onToggleMcpServer,
-            onToggleTool = onToggleTool,
-            showAddDialog = showAddMcpServerDialog,
-            style = MaterialTheme.typography.bodySmall,
-            text = stringResource(Res.string.settings_tools_description),
-            verticalAlignment = Alignment.CenterVertically,
-            }
-        )
-        ) {
-        // MCP Servers section
-        // Native tools section
-        // Skills section — sandbox-backed, so Android only.
-        McpServersSection(
-        Row(
-        Spacer(Modifier.height(16.dp))
-        Spacer(Modifier.height(24.dp))
-        Text(
-        border = kaiAdaptiveCardBorder(),
-        colors = kaiAdaptiveCardColors(),
-        if (showSkills) {
-        if (tools.isEmpty()) {
-        modifier = modifier
-        }
-        } else {
-    ) {
-    Card(
-    Column(modifier = Modifier.fillMaxWidth()) {
-    browsableSkills: ImmutableList<RegistrySkillEntry>,
-    browseSkillsFailed: Boolean,
-    isBrowsingSkills: Boolean,
-    isInstallingSkill: Boolean,
-    isSandboxInstalled: Boolean,
-    mcpServers: ImmutableList<McpServerUiState>,
-    modifier: Modifier = Modifier,
-    onAddMcpServer: (String, String, Map<String, String>) -> Unit,
-    onAddPopularMcpServer: (PopularMcpServer) -> Unit,
-    onInstallBrowsedSkill: (RegistrySkillEntry) -> Unit,
-    onInstallGitHubSkill: (String) -> Unit,
-    onNavigateToSandbox: () -> Unit,
-    onRefreshMcpServer: (String) -> Unit,
-    onRemoveMcpServer: (String) -> Unit,
-    onShowAddMcpServerDialog: (Boolean) -> Unit,
-    onShowAddSkillDialog: (Boolean) -> Unit,
-    onToggle: (Boolean) -> Unit,
-    onToggleMcpServer: (String, Boolean) -> Unit,
-    onToggleTool: (String, Boolean) -> Unit,
-    onUninstallSkill: (String) -> Unit,
-    showAddMcpServerDialog: Boolean,
-    showAddSkillDialog: Boolean,
-    showSkills: Boolean,
-    skillInstallError: String?,
-    skills: ImmutableList<SkillManifest>,
-    tool: ToolInfo,
-    tools: ImmutableList<ToolInfo>,
-    }
-) {
 @Composable
 internal fun ToolsContent(
+    tools: ImmutableList<ToolInfo>,
+    onToggleTool: (String, Boolean) -> Unit,
+    mcpServers: ImmutableList<McpServerUiState>,
+    onAddMcpServer: (String, String, Map<String, String>) -> Unit,
+    onRemoveMcpServer: (String) -> Unit,
+    onToggleMcpServer: (String, Boolean) -> Unit,
+    onRefreshMcpServer: (String) -> Unit,
+    showAddMcpServerDialog: Boolean,
+    onShowAddMcpServerDialog: (Boolean) -> Unit,
+    onAddPopularMcpServer: (PopularMcpServer) -> Unit,
+    skills: ImmutableList<SkillManifest>,
+    onUninstallSkill: (String) -> Unit,
+    showAddSkillDialog: Boolean,
+    onShowAddSkillDialog: (Boolean) -> Unit,
+    onInstallGitHubSkill: (String) -> Unit,
+    onInstallBrowsedSkill: (RegistrySkillEntry) -> Unit,
+    isInstallingSkill: Boolean,
+    skillInstallError: String?,
+    browsableSkills: ImmutableList<RegistrySkillEntry>,
+    isBrowsingSkills: Boolean,
+    browseSkillsFailed: Boolean,
+    showSkills: Boolean,
+    isSandboxInstalled: Boolean,
+    onNavigateToSandbox: () -> Unit,
+) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        // MCP Servers section
+        McpServersSection(
+            mcpServers = mcpServers,
+            onAddMcpServer = onAddMcpServer,
+            onRemoveMcpServer = onRemoveMcpServer,
+            onToggleMcpServer = onToggleMcpServer,
+            onRefreshMcpServer = onRefreshMcpServer,
+            onToggleTool = onToggleTool,
+            showAddDialog = showAddMcpServerDialog,
+            onShowAddDialog = onShowAddMcpServerDialog,
+            onAddPopularMcpServer = onAddPopularMcpServer,
+        )
+
+        // Skills section — sandbox-backed, so Android only.
+        if (showSkills) {
+            Spacer(Modifier.height(24.dp))
+            SkillsSection(
+                skills = skills,
+                onUninstallSkill = onUninstallSkill,
+                showAddDialog = showAddSkillDialog,
+                onShowAddDialog = onShowAddSkillDialog,
+                onInstallGitHub = onInstallGitHubSkill,
+                onInstallBrowsed = onInstallBrowsedSkill,
+                isInstalling = isInstallingSkill,
+                installError = skillInstallError,
+                browsableSkills = browsableSkills,
+                isBrowsing = isBrowsingSkills,
+                browseFailed = browseSkillsFailed,
+                isSandboxInstalled = isSandboxInstalled,
+                onNavigateToSandbox = onNavigateToSandbox,
+            )
+        }
+
+        Spacer(Modifier.height(24.dp))
+
+        // Native tools section
+        Text(
+            text = stringResource(Res.string.settings_tools_description),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+
+        Spacer(Modifier.height(16.dp))
+
+        if (tools.isEmpty()) {
+            Text(
+                text = stringResource(Res.string.settings_tools_none_available),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        } else {
+            BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+                val columns = when {
+                    maxWidth >= 800.dp -> 3
+                    maxWidth >= 500.dp -> 2
+                    else -> 1
+                }
+                val rows = tools.chunked(columns)
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    rows.forEach { rowTools ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            rowTools.forEach { tool ->
+                                ToolItem(
+                                    modifier = Modifier.weight(1f).fillMaxHeight(),
+                                    tool = tool,
+                                    onToggle = { enabled -> onToggleTool(tool.id, enabled) },
+                                )
+                            }
+                            // Fill empty slots so last row items don't stretch
+                            repeat(columns - rowTools.size) {
+                                Spacer(modifier = Modifier.weight(1f))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
 private fun ToolItem(
+    tool: ToolInfo,
+    onToggle: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier
+            .clip(CardDefaults.shape)
+            .clickable { onToggle(!tool.isEnabled) }
+            .handCursor(),
+        colors = kaiAdaptiveCardColors(),
+        border = kaiAdaptiveCardBorder(),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = tool.nameRes?.let { stringResource(it) } ?: tool.name,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onBackground,
+                )
+                Text(
+                    text = tool.descriptionRes?.let { stringResource(it) } ?: tool.description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+
+            Spacer(Modifier.width(16.dp))
+
+            Switch(
+                checked = tool.isEnabled,
+                onCheckedChange = onToggle,
+            )
+        }
+    }
 }

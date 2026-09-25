@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.ui.chat
+
 import app.cash.turbine.test
 import com.inspiredandroid.kai.data.Service
 import com.inspiredandroid.kai.data.TaskScheduler
@@ -12,6 +13,13 @@ import com.inspiredandroid.kai.network.GenericNetworkException
 import com.inspiredandroid.kai.network.OpenAICompatibleInvalidApiKeyException
 import com.inspiredandroid.kai.network.OpenAICompatibleRateLimitExceededException
 import com.inspiredandroid.kai.testutil.FakeDataRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -20,178 +28,499 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 
-                cleared = awaitItem()
-                clearedState = awaitItem()
-                errorState = awaitItem()
-                finalState = awaitItem()
-                loadingState = awaitItem()
-                ready = awaitItem()
-                shared = awaitItem()
-                state = awaitItem()
-            // Clear exception and ask again
-            // Clear history
-            // Content ID should be preserved when stopping
-            // Error should be cleared when loading starts
-            // First call - will fail
-            // Restore hasn't run yet — initial state still has isRestoring=true.
-            // Trigger an error first
-            // Verify ask was called with null
-            // Wait for completion
-            // Wait for completion - collect all states until we get a non-loading state with history
-            // Wait for error
-            // Wait for history to be populated
-            // Wait for loading state which should have cleared error
-            History(role = History.Role.ASSISTANT, content = "reply"),
-            History(role = History.Role.USER, content = "old"),
-            assertEquals("Hello", finalState.history[0].content)
-            assertEquals("content-123", notSpeakingState.isSpeakingContentId)
-            assertEquals("content-123", speakingState.isSpeakingContentId)
-            assertEquals(0, fakeRepository.askCalls.size)
-            assertEquals(1, fakeRepository.clearHistoryCalls)
-            assertEquals(1, fakeRepository.restoreCurrentConversationCalls)
-            assertEquals(2, finalState.history.size)
-            assertEquals(History.Role.ASSISTANT, finalState.history[1].role)
-            assertEquals(History.Role.USER, finalState.history[0].role)
-            assertFalse(awaitItem().isRestoring)
-            assertFalse(disabledState.isSpeechOutputEnabled)
-            assertFalse(errorState.isLoading)
-            assertFalse(finalState.isLoading)
-            assertFalse(initialState.isLoading)
-            assertFalse(initialState.isSpeaking)
-            assertFalse(initialState.isSpeechOutputEnabled)
-            assertFalse(notSpeakingState.isSpeaking)
-            assertFalse(state.isInteractiveMode)
-            assertNotNull(errorState.error)
-            assertNull(cleared.composerPrefill)
-            assertNull(clearedState.error)
-            assertNull(fakeRepository.pendingShareText.value)
-            assertNull(loadingState.error)
-            assertTrue(awaitItem().isRestoring)
-            assertTrue(clearedState.history.isEmpty())
-            assertTrue(enabledState.isSpeechOutputEnabled)
-            assertTrue(fakeRepository.askCalls.any { it.first == null })
-            assertTrue(finalState.history.isNotEmpty())
-            assertTrue(initialState.history.isEmpty())
-            assertTrue(shared.history.isEmpty())
-            assertTrue(speakingState.isSpeaking)
-            assertTrue(state.history.isEmpty())
-            assertTrue(state.showPrivacyInfo)
-            assertTrue(state.supportedFileExtensions.isEmpty())
-            assertTrue(state.supportedFileExtensions.isNotEmpty())
-            backgroundDispatcher.scheduler.advanceUntilIdle()
-            cancelAndIgnoreRemainingEvents()
-            do {
-            enabledState.actions.toggleSpeechOutput()
-            errorState.actions.ask("Second")
-            errorState.actions.clearHistory()
-            fakeRepository.askException = null
-            fakeRepository.requestOpenShare("Translate this")
-            initialState.actions.ask("First")
-            initialState.actions.ask("Hello")
-            initialState.actions.retry()
-            initialState.actions.setIsSpeaking(true, "content-123")
-            initialState.actions.toggleSpeechOutput()
-            skipItems(1)
-            speakingState.actions.setIsSpeaking(false, "")
-            state.actions.consumeComposerPrefill()
-            testDispatcher.scheduler.advanceUntilIdle()
-            val disabledState = awaitItem()
-            val enabledState = awaitItem()
-            val initialState = awaitItem()
-            val notSpeakingState = awaitItem()
-            val speakingState = awaitItem()
-            val state = awaitItem()
-            var cleared: ChatUiState
-            var clearedState: ChatUiState
-            var errorState: ChatUiState
-            var finalState: ChatUiState
-            var loadingState: ChatUiState
-            var ready: ChatUiState
-            var shared: ChatUiState
-            var state: ChatUiState
-            } while (!loadingState.isLoading && loadingState.error != null)
-            } while (cleared.composerPrefill != null)
-            } while (clearedState.error != null || clearedState.history.isNotEmpty())
-            } while (errorState.error == null)
-            } while (finalState.history.isEmpty() || finalState.isLoading)
-            } while (finalState.isLoading || finalState.history.isEmpty())
-            } while (finalState.isLoading)
-            } while (ready.isRestoring || ready.history.size < 2)
-            } while (shared.composerPrefill != "Translate this")
-            } while (state.composerPrefill != "Summarize this article")
-        )
-        // Isolated paused dispatcher so the launched restore coroutine doesn't run synchronously.
-        Dispatchers.resetMain()
+@OptIn(ExperimentalCoroutinesApi::class)
+class ChatViewModelTest {
+
+    private val testDispatcher = StandardTestDispatcher()
+    private val unconfinedDispatcher = UnconfinedTestDispatcher()
+    private lateinit var fakeRepository: FakeDataRepository
+
+    @BeforeTest
+    fun setup() {
         Dispatchers.setMain(testDispatcher)
-        assertEquals(0, fakeRepository.restoreCurrentConversationCalls)
-        assertEquals(1, fakeRepository.restoreCurrentConversationCalls)
-        createViewModel()
         fakeRepository = FakeDataRepository()
-        fakeRepository.askException = AnthropicInsufficientCreditsException()
-        fakeRepository.askException = AnthropicInvalidApiKeyException()
-        fakeRepository.askException = AnthropicOverloadedException()
-        fakeRepository.askException = AnthropicRateLimitExceededException()
-        fakeRepository.askException = GeminiInvalidApiKeyException()
-        fakeRepository.askException = GeminiRateLimitExceededException()
-        fakeRepository.askException = GenericNetworkException("Error")
-        fakeRepository.askException = GenericNetworkException("First error")
-        fakeRepository.askException = OpenAICompatibleInvalidApiKeyException()
-        fakeRepository.askException = OpenAICompatibleRateLimitExceededException()
-        fakeRepository.chatHistory.value = listOf(
-        fakeRepository.fileAttachmentSupported = false
-        fakeRepository.fileAttachmentSupported = true
-        fakeRepository.requestOpenShare("Summarize this article")
-        fakeRepository.requestOpenShare("shared article")
-        fakeRepository.setCurrentService(Service.Free)
+    }
+
+    @AfterTest
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
+
+    private fun createViewModel(): ChatViewModel {
+        val noOpScheduler = TaskScheduler(fakeRepository, enabled = false)
         return ChatViewModel(fakeRepository, noOpScheduler, unconfinedDispatcher)
-        testDispatcher.scheduler.advanceUntilIdle()
+    }
+
+    @Test
+    fun `restore runs off the main thread and flips isRestoring`() = runTest {
+        // Isolated paused dispatcher so the launched restore coroutine doesn't run synchronously.
         val backgroundDispatcher = StandardTestDispatcher()
         val noOpScheduler = TaskScheduler(fakeRepository, enabled = false)
         val viewModel = ChatViewModel(fakeRepository, noOpScheduler, backgroundDispatcher)
-        val viewModel = createViewModel()
+
         viewModel.state.test {
+            // Restore hasn't run yet — initial state still has isRestoring=true.
+            assertTrue(awaitItem().isRestoring)
+
+            backgroundDispatcher.scheduler.advanceUntilIdle()
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            assertFalse(awaitItem().isRestoring)
+            cancelAndIgnoreRemainingEvents()
         }
-    @AfterTest
-    @BeforeTest
+    }
+
+    @Test
+    fun `restore still runs when nothing is shared`() = runTest {
+        createViewModel()
+        testDispatcher.scheduler.advanceUntilIdle()
+        assertEquals(1, fakeRepository.restoreCurrentConversationCalls)
+    }
+
+    @Test
+    fun `pending share skips restoring the last conversation`() = runTest {
+        fakeRepository.requestOpenShare("shared article")
+        createViewModel()
+        testDispatcher.scheduler.advanceUntilIdle()
+        assertEquals(0, fakeRepository.restoreCurrentConversationCalls)
+    }
+
+    @Test
+    fun `shared text starts a new chat and prefills the composer without sending`() = runTest {
+        fakeRepository.chatHistory.value = listOf(
+            History(role = History.Role.USER, content = "old"),
+            History(role = History.Role.ASSISTANT, content = "reply"),
+        )
+        fakeRepository.requestOpenShare("Summarize this article")
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            testDispatcher.scheduler.advanceUntilIdle()
+            var state: ChatUiState
+            do {
+                state = awaitItem()
+            } while (state.composerPrefill != "Summarize this article")
+            assertTrue(state.history.isEmpty())
+            assertFalse(state.isInteractiveMode)
+            assertEquals(0, fakeRepository.askCalls.size)
+            assertNull(fakeRepository.pendingShareText.value)
+
+            state.actions.consumeComposerPrefill()
+            testDispatcher.scheduler.advanceUntilIdle()
+            var cleared: ChatUiState
+            do {
+                cleared = awaitItem()
+            } while (cleared.composerPrefill != null)
+            assertNull(cleared.composerPrefill)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `share while already running starts a new chat and prefills`() = runTest {
+        fakeRepository.chatHistory.value = listOf(
+            History(role = History.Role.USER, content = "old"),
+            History(role = History.Role.ASSISTANT, content = "reply"),
+        )
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            testDispatcher.scheduler.advanceUntilIdle()
+            var ready: ChatUiState
+            do {
+                ready = awaitItem()
+            } while (ready.isRestoring || ready.history.size < 2)
+            assertEquals(1, fakeRepository.restoreCurrentConversationCalls)
+
+            fakeRepository.requestOpenShare("Translate this")
+            testDispatcher.scheduler.advanceUntilIdle()
+            var shared: ChatUiState
+            do {
+                shared = awaitItem()
+            } while (shared.composerPrefill != "Translate this")
+            assertTrue(shared.history.isEmpty())
+            assertEquals(0, fakeRepository.askCalls.size)
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `initial state reflects isUsingSharedKey from repository`() = runTest {
+        fakeRepository.setCurrentService(Service.Free)
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val state = awaitItem()
+            assertTrue(state.showPrivacyInfo)
+        }
+    }
+
+    @Test
+    fun `ask completes successfully and updates history`() = runTest {
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            assertFalse(initialState.isLoading)
+            assertTrue(initialState.history.isEmpty())
+
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            // Wait for completion - collect all states until we get a non-loading state with history
+            var finalState: ChatUiState
+            do {
+                finalState = awaitItem()
+            } while (finalState.isLoading || finalState.history.isEmpty())
+
+            assertFalse(finalState.isLoading)
+            assertTrue(finalState.history.isNotEmpty())
+        }
+    }
+
+    @Test
+    fun `successful ask adds messages to history`() = runTest {
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            assertTrue(initialState.history.isEmpty())
+
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            // Wait for history to be populated
+            var finalState: ChatUiState
+            do {
+                finalState = awaitItem()
+            } while (finalState.history.isEmpty() || finalState.isLoading)
+
+            assertEquals(2, finalState.history.size)
+            assertEquals(History.Role.USER, finalState.history[0].role)
+            assertEquals("Hello", finalState.history[0].content)
+            assertEquals(History.Role.ASSISTANT, finalState.history[1].role)
+        }
+    }
+
+    @Test
+    fun `ask clears previous error`() = runTest {
+        fakeRepository.askException = GenericNetworkException("First error")
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+
+            // First call - will fail
+            initialState.actions.ask("First")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            // Wait for error
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+            assertNotNull(errorState.error)
+
+            // Clear exception and ask again
+            fakeRepository.askException = null
+            errorState.actions.ask("Second")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            // Wait for loading state which should have cleared error
+            var loadingState: ChatUiState
+            do {
+                loadingState = awaitItem()
+            } while (!loadingState.isLoading && loadingState.error != null)
+
+            // Error should be cleared when loading starts
+            assertNull(loadingState.error)
+
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `failed ask with GeminiInvalidApiKeyException sets error`() = runTest {
+        fakeRepository.askException = GeminiInvalidApiKeyException()
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+
+            assertNotNull(errorState.error)
+            assertFalse(errorState.isLoading)
+        }
+    }
+
+    @Test
+    fun `failed ask with GroqInvalidApiKeyException sets error`() = runTest {
+        fakeRepository.askException = OpenAICompatibleInvalidApiKeyException()
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+
+            assertNotNull(errorState.error)
+            assertFalse(errorState.isLoading)
+        }
+    }
+
+    @Test
+    fun `failed ask with GeminiRateLimitExceededException sets error`() = runTest {
+        fakeRepository.askException = GeminiRateLimitExceededException()
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+
+            assertNotNull(errorState.error)
+            assertFalse(errorState.isLoading)
+        }
+    }
+
+    @Test
+    fun `failed ask with GroqRateLimitExceededException sets error`() = runTest {
+        fakeRepository.askException = OpenAICompatibleRateLimitExceededException()
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+
+            assertNotNull(errorState.error)
+            assertFalse(errorState.isLoading)
+        }
+    }
+
+    @Test
+    fun `failed ask with AnthropicInvalidApiKeyException sets error`() = runTest {
+        fakeRepository.askException = AnthropicInvalidApiKeyException()
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+
+            assertNotNull(errorState.error)
+            assertFalse(errorState.isLoading)
+        }
+    }
+
+    @Test
+    fun `failed ask with AnthropicRateLimitExceededException sets error`() = runTest {
+        fakeRepository.askException = AnthropicRateLimitExceededException()
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+
+            assertNotNull(errorState.error)
+            assertFalse(errorState.isLoading)
+        }
+    }
+
+    @Test
+    fun `failed ask with AnthropicOverloadedException sets error`() = runTest {
+        fakeRepository.askException = AnthropicOverloadedException()
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+
+            assertNotNull(errorState.error)
+            assertFalse(errorState.isLoading)
+        }
+    }
+
+    @Test
+    fun `failed ask with AnthropicInsufficientCreditsException sets error`() = runTest {
+        fakeRepository.askException = AnthropicInsufficientCreditsException()
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+
+            assertNotNull(errorState.error)
+            assertFalse(errorState.isLoading)
+        }
+    }
+
+    @Test
+    fun `clearHistory clears history and error`() = runTest {
+        fakeRepository.askException = GenericNetworkException("Error")
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+
+            // Trigger an error first
+            initialState.actions.ask("Hello")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var errorState: ChatUiState
+            do {
+                errorState = awaitItem()
+            } while (errorState.error == null)
+            assertNotNull(errorState.error)
+
+            // Clear history
+            errorState.actions.clearHistory()
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            var clearedState: ChatUiState
+            do {
+                clearedState = awaitItem()
+            } while (clearedState.error != null || clearedState.history.isNotEmpty())
+
+            assertNull(clearedState.error)
+            assertTrue(clearedState.history.isEmpty())
+            assertEquals(1, fakeRepository.clearHistoryCalls)
+        }
+    }
+
+    @Test
+    fun `toggleSpeechOutput toggles isSpeechOutputEnabled`() = runTest {
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            assertFalse(initialState.isSpeechOutputEnabled)
+
+            initialState.actions.toggleSpeechOutput()
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            val enabledState = awaitItem()
+            assertTrue(enabledState.isSpeechOutputEnabled)
+
+            enabledState.actions.toggleSpeechOutput()
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            val disabledState = awaitItem()
+            assertFalse(disabledState.isSpeechOutputEnabled)
+        }
+    }
+
+    @Test
+    fun `setIsSpeaking updates speaking state`() = runTest {
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+            assertFalse(initialState.isSpeaking)
+
+            initialState.actions.setIsSpeaking(true, "content-123")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            val speakingState = awaitItem()
+            assertTrue(speakingState.isSpeaking)
+            assertEquals("content-123", speakingState.isSpeakingContentId)
+
+            speakingState.actions.setIsSpeaking(false, "")
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            val notSpeakingState = awaitItem()
+            assertFalse(notSpeakingState.isSpeaking)
+            // Content ID should be preserved when stopping
+            assertEquals("content-123", notSpeakingState.isSpeakingContentId)
+        }
+    }
+
+    @Test
+    fun `retry calls ask with null`() = runTest {
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val initialState = awaitItem()
+
+            initialState.actions.retry()
+            testDispatcher.scheduler.advanceUntilIdle()
+
+            // Wait for completion
+            var finalState: ChatUiState
+            do {
+                finalState = awaitItem()
+            } while (finalState.isLoading)
+
+            // Verify ask was called with null
+            assertTrue(fakeRepository.askCalls.any { it.first == null })
+        }
+    }
+
+    @Test
+    fun `allowFileAttachment is true when repository supports it`() = runTest {
+        fakeRepository.fileAttachmentSupported = true
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            skipItems(1)
+            val state = awaitItem()
+            assertTrue(state.supportedFileExtensions.isNotEmpty())
+        }
+    }
+
     @Test
     fun `allowFileAttachment is false when repository does not support it`() = runTest {
-    fun `allowFileAttachment is true when repository supports it`() = runTest {
-    fun `ask clears previous error`() = runTest {
-    fun `ask completes successfully and updates history`() = runTest {
-    fun `clearHistory clears history and error`() = runTest {
-    fun `failed ask with AnthropicInsufficientCreditsException sets error`() = runTest {
-    fun `failed ask with AnthropicInvalidApiKeyException sets error`() = runTest {
-    fun `failed ask with AnthropicOverloadedException sets error`() = runTest {
-    fun `failed ask with AnthropicRateLimitExceededException sets error`() = runTest {
-    fun `failed ask with GeminiInvalidApiKeyException sets error`() = runTest {
-    fun `failed ask with GeminiRateLimitExceededException sets error`() = runTest {
-    fun `failed ask with GroqInvalidApiKeyException sets error`() = runTest {
-    fun `failed ask with GroqRateLimitExceededException sets error`() = runTest {
-    fun `initial state reflects isUsingSharedKey from repository`() = runTest {
-    fun `pending share skips restoring the last conversation`() = runTest {
-    fun `restore runs off the main thread and flips isRestoring`() = runTest {
-    fun `restore still runs when nothing is shared`() = runTest {
-    fun `retry calls ask with null`() = runTest {
-    fun `setIsSpeaking updates speaking state`() = runTest {
-    fun `share while already running starts a new chat and prefills`() = runTest {
-    fun `shared text starts a new chat and prefills the composer without sending`() = runTest {
-    fun `successful ask adds messages to history`() = runTest {
-    fun `toggleSpeechOutput toggles isSpeechOutputEnabled`() = runTest {
-    fun setup() {
-    fun tearDown() {
-    private fun createViewModel(): ChatViewModel {
-    private lateinit var fakeRepository: FakeDataRepository
-    private val testDispatcher = StandardTestDispatcher()
-    private val unconfinedDispatcher = UnconfinedTestDispatcher()
+        fakeRepository.fileAttachmentSupported = false
+        val viewModel = createViewModel()
+
+        viewModel.state.test {
+            val state = awaitItem()
+            assertTrue(state.supportedFileExtensions.isEmpty())
+        }
     }
-@OptIn(ExperimentalCoroutinesApi::class)
-class ChatViewModelTest {
 }

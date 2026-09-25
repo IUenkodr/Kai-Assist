@@ -1,4 +1,5 @@
 package com.inspiredandroid.kai.data
+
 import com.inspiredandroid.kai.getAvailableTools
 import com.inspiredandroid.kai.getPlatformToolDefinitions
 import com.inspiredandroid.kai.network.tools.Tool
@@ -22,78 +23,110 @@ import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonObject
 import org.jetbrains.compose.resources.getString
 
-                            k.toString() to anyToJsonElement(v)
+private const val MAX_TOOL_RESULT_LENGTH = 20_000
+
+class ToolExecutor(
+    private val toolsProvider: () -> List<Tool> = { getAvailableTools() },
+) {
+
+    private val jsonParser = Json { ignoreUnknownKeys = true }
+
+    suspend fun executeTool(
+        name: String,
+        arguments: String,
+        conversationId: String? = null,
+    ): String {
+        val tools = toolsProvider()
+        val tool = tools.find { it.schema.name == name }
+            ?: return """{"success": false, "error": "Unknown tool: $name"}"""
+
+        val args = try {
+            parseJsonToMap(arguments)
+        } catch (e: Exception) {
+            return """{"success": false, "error": "Failed to parse arguments: ${e.message}"}"""
+        }
+
+        return try {
+            val result = withTimeout(tool.timeout) {
+                if (conversationId != null) {
+                    withContext(ConversationIdElement(conversationId)) { tool.execute(args) }
+                } else {
+                    tool.execute(args)
+                }
+            }
+            val resultString = when (result) {
+                is Map<*, *> -> {
+                    val jsonObject = JsonObject(
                         result.entries.associate { (k, v) ->
+                            k.toString() to anyToJsonElement(v)
                         },
                     )
                     jsonParser.encodeToString(JsonElement.serializer(), jsonObject)
-                    tool.execute(args)
-                    val jsonObject = JsonObject(
-                    withContext(ConversationIdElement(conversationId)) { tool.execute(args) }
-                else -> """{"result": "$result"}"""
-                if (conversationId != null) {
-                is Map<*, *> -> {
-                is String -> result
                 }
-                } else {
+
+                is String -> result
+
+                else -> """{"result": "$result"}"""
+            }
+            truncateResult(resultString)
+        } catch (e: TimeoutCancellationException) {
             """{"success": false, "error": "Tool '$name' timed out after ${tool.timeout}"}"""
-            """{"success": false, "error": "Tool execution failed: ${e.message}"}"""
+        } catch (e: CancellationException) {
             // Cooperative cancellation (user pressed stop) must propagate, not become a
             // fake tool result the loop would keep reasoning about.
-            ?: return """{"success": false, "error": "Unknown tool: $name"}"""
-            element.booleanOrNull != null -> element.boolean
-            element.doubleOrNull != null -> element.double
-            element.intOrNull != null -> element.int
-            element.isString -> element.content
-            else -> element.content
-            parseJsonToMap(arguments)
-            return """{"success": false, "error": "Failed to parse arguments: ${e.message}"}"""
             throw e
-            truncateResult(resultString)
-            val result = withTimeout(tool.timeout) {
-            val resultString = when (result) {
-            value.entries.associate { (k, v) -> k.toString() to anyToJsonElement(v) },
-            }
-        )
-        JsonNull -> "null"
-        arguments: String,
-        conversationId: String? = null,
-        else -> JsonPrimitive(value.toString())
-        is Boolean -> JsonPrimitive(value)
-        is JsonArray -> element.map { jsonElementToAny(it) }
-        is JsonObject -> element.entries.associate { (k, v) -> k to jsonElementToAny(v) }
-        is JsonPrimitive -> when {
-        is List<*> -> JsonArray(value.map { anyToJsonElement(it) })
-        is Map<*, *> -> JsonObject(
-        is Number -> JsonPrimitive(value)
-        is String -> JsonPrimitive(value)
-        key to jsonElementToAny(value)
-        name: String,
-        null -> JsonNull
-        return jsonObject.toMap()
-        return toolInfo.nameRes?.let { getString(it) } ?: toolInfo.name
-        return try {
-        val args = try {
-        val jsonObject = jsonParser.parseToJsonElement(json).jsonObject
-        val tool = tools.find { it.schema.name == name }
-        val toolInfo = getPlatformToolDefinitions().find { it.id == toolId } ?: return toolId
-        val tools = toolsProvider()
-        }
-        } catch (e: CancellationException) {
         } catch (e: Exception) {
-        } catch (e: TimeoutCancellationException) {
-    ): String {
-    private fun JsonObject.toMap(): Map<String, Any> = entries.associate { (key, value) ->
-    private fun anyToJsonElement(value: Any?): JsonElement = when (value) {
-    private fun jsonElementToAny(element: JsonElement): Any = when (element) {
-    private fun parseJsonToMap(json: String): Map<String, Any> {
-    private fun truncateResult(result: String): String = result.smartTruncate(MAX_TOOL_RESULT_LENGTH)
-    private val jsonParser = Json { ignoreUnknownKeys = true }
-    private val toolsProvider: () -> List<Tool> = { getAvailableTools() },
-    suspend fun executeTool(
-    suspend fun getToolDisplayName(toolId: String): String {
+            """{"success": false, "error": "Tool execution failed: ${e.message}"}"""
+        }
     }
-) {
-class ToolExecutor(
-private const val MAX_TOOL_RESULT_LENGTH = 20_000
+
+    private fun truncateResult(result: String): String = result.smartTruncate(MAX_TOOL_RESULT_LENGTH)
+
+    private fun anyToJsonElement(value: Any?): JsonElement = when (value) {
+        null -> JsonNull
+
+        is String -> JsonPrimitive(value)
+
+        is Boolean -> JsonPrimitive(value)
+
+        is Number -> JsonPrimitive(value)
+
+        is Map<*, *> -> JsonObject(
+            value.entries.associate { (k, v) -> k.toString() to anyToJsonElement(v) },
+        )
+
+        is List<*> -> JsonArray(value.map { anyToJsonElement(it) })
+
+        else -> JsonPrimitive(value.toString())
+    }
+
+    private fun parseJsonToMap(json: String): Map<String, Any> {
+        val jsonObject = jsonParser.parseToJsonElement(json).jsonObject
+        return jsonObject.toMap()
+    }
+
+    private fun JsonObject.toMap(): Map<String, Any> = entries.associate { (key, value) ->
+        key to jsonElementToAny(value)
+    }
+
+    private fun jsonElementToAny(element: JsonElement): Any = when (element) {
+        JsonNull -> "null"
+
+        is JsonPrimitive -> when {
+            element.isString -> element.content
+            element.booleanOrNull != null -> element.boolean
+            element.intOrNull != null -> element.int
+            element.doubleOrNull != null -> element.double
+            else -> element.content
+        }
+
+        is JsonObject -> element.entries.associate { (k, v) -> k to jsonElementToAny(v) }
+
+        is JsonArray -> element.map { jsonElementToAny(it) }
+    }
+
+    suspend fun getToolDisplayName(toolId: String): String {
+        val toolInfo = getPlatformToolDefinitions().find { it.id == toolId } ?: return toolId
+        return toolInfo.nameRes?.let { getString(it) } ?: toolInfo.name
+    }
 }

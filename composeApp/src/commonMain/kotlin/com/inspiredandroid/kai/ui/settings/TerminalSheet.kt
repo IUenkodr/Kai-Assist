@@ -1,4 +1,7 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.inspiredandroid.kai.ui.settings
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
@@ -66,7 +69,6 @@ import kai.composeapp.generated.resources.terminal_input_placeholder
 import kai.composeapp.generated.resources.terminal_run_content_description
 import kai.composeapp.generated.resources.terminal_stop_content_description
 import kai.composeapp.generated.resources.terminal_title
-import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.CancellationException
@@ -78,366 +80,467 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
+import kotlin.time.Duration.Companion.milliseconds
 
-                                if (event.changes.none { it.pressed }) break
-                                style = monoStyle(13.sp),
-                                style = monoStyle(13.sp, colors.prompt),
-                                text = "$ ${line.text}",
-                                text = parseAnsiToAnnotatedString(line.text, colors.error),
-                                text = parseAnsiToAnnotatedString(line.text, colors.text),
-                                val event = awaitPointerEvent()
-                            )
-                            // Can't use waitForUpOrCancellation(): it treats
-                            // consumption as cancellation, and SelectionContainer's
-                            // flip the flag back to false mid-drag. Loop on raw
-                            // long-press drag observer consumes move events — we'd
-                            // pointer events until no pointer is pressed.
-                            Res.string.terminal_run_content_description
-                            Res.string.terminal_stop_content_description
-                            Spacer(Modifier.height(4.dp))
-                            Text(
-                            color = colors.prompt,
-                            command = line.trim(),
-                            isInteractingWithOutput.value = false
-                            modifier = Modifier.size(14.dp),
-                            outputLines = outputLines,
-                            sandboxController = controller,
-                            setHandle = { localActiveHandle = it },
-                            setRunning = { localIsRunning = it },
-                            shouldPrune = { !isInteractingWithOutput.value },
-                            strokeWidth = 2.dp,
-                            style = monoStyle(13.sp, colors.dimText),
-                            text = stringResource(Res.string.terminal_help_text),
-                            while (true) {
-                            }
-                        )
-                        // own long-press detector. We never consume the change so
-                        // requireUnconsumed=false: don't fight SelectionContainer's
-                        // the inner gesture detectors still receive everything.
-                        CircularProgressIndicator(
-                        Spacer(Modifier.height(4.dp))
-                        Text(
-                        awaitFirstDown(requireUnconsumed = false)
-                        canCancel -> cancelRunning()
-                        canSubmit -> submitInput()
-                        if (canCancel) {
-                        is TerminalLine.Command -> {
-                        is TerminalLine.Error -> {
-                        is TerminalLine.Output -> {
-                        isInteractingWithOutput.value = true
-                        runCommand(
-                        style = monoStyle(14.sp, colors.dimText),
-                        text = stringResource(Res.string.terminal_input_placeholder),
-                        try {
-                        }
-                        } else {
-                        } finally {
-                        },
-                    )
-                    ),
-                    .background(colors.inputBg)
-                    .fillMaxSize()
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                    .statusBarsPadding()
-                    // The transcript is committed from a background thread (proot
-                    // list's item count with the data. It also doesn't suspend,
-                    // measure time — clamping alone can't close that window.
-                    // requestScrollToItem (unlike scrollToItem) doesn't force a
-                    // so heavy bursts no longer queue blocking scrolls.
-                    // stdio reader), so any index computed here can be stale by
-                    // synchronous remeasure with the raw index pinned; it defers
-                    // to the next frame, after composition has re-synced the
-                    Text(
-                    awaitEachGesture {
-                    contentDescription = stringResource(
-                    contentType = { it::class },
-                    cursorColor = colors.prompt,
-                    disabledContainerColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent,
-                    focusedContainerColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    if (sandboxController != null) Modifier.focusRequester(focusRequester) else Modifier,
-                    imageVector = if (canCancel) Icons.Filled.Stop else Icons.AutoMirrored.Filled.Send,
-                    item {
-                    items = outputLines,
-                    listState.requestScrollToItem(minOf(size, total) - 1)
-                    modifier = Modifier.size(20.dp),
-                    onGo = { submitInput() },
-                    outputLines.add(TerminalLine.Output(line))
-                    scope.launch {
-                    scope.launch { handle.writeInput(line) }
-                    style = monoStyle(12.sp, colors.text.copy(alpha = 0.5f)),
-                    style = monoStyle(16.sp, colors.prompt),
-                    text = distroName,
-                    text = stringResource(Res.string.terminal_title),
-                    tint = if (canSubmit || canCancel) colors.prompt else colors.dimText,
-                    unfocusedContainerColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    when (line) {
-                    when {
-                    }
-                )
-                ) { line ->
-                ),
-                .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 4.dp),
-                .pointerInput(Unit) {
-                .weight(1f)
-                // Don't yank the user back if they've scrolled up to read older output.
-                // While the user is dragging to select, scrolling to the tail
-                // crashing SelectionManager mid-drag.
-                // disposes off-screen Texts and unregisters their selectables,
-                Icon(
-                Spacer(Modifier.weight(1f))
-                Text(
-                batch.add(result.getOrThrow())
-                break
-                channel.close()
-                colors = TextFieldDefaults.colors(
-                command = command,
-                drainJob.join()
-                enabled = canSubmit || canCancel,
-                enabled = isInputEnabled,
-                h.awaitExit()
-                if (isInteractingWithOutput.value) return@collect
-                if (isRunning) {
-                if (lastVisible >= total - 2) {
-                if (outputLines.isEmpty()) {
-                if (result.isClosed) closed = true
-                if (running && handle != null) {
-                if (size == 0) return@collect
-                if (total == 0) return@collect
-                items(
-                keyboardActions = KeyboardActions(
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
-                localInputText = ""
-                modifier = Modifier
-                modifier = Modifier.handCursor(),
-                modifier = Modifier.padding(start = 8.dp),
-                modifier = Modifier.weight(1f).then(
-                onClick = {
-                onStderr = { line -> channel.trySend(TerminalLine.Error(line)) },
-                onStdout = { line -> channel.trySend(TerminalLine.Output(line)) },
-                onValueChange = setInputText,
-                placeholder = {
-                sessionId = SandboxSessions.TERMINAL,
-                singleLine = true,
-                state = listState,
-                style = monoStyle(14.sp, colors.prompt),
-                text = "$",
-                textStyle = monoStyle(14.sp, colors.text),
-                val lastVisible = layout.visibleItemsInfo.lastOrNull()?.index ?: -1
-                val layout = listState.layoutInfo
-                val line = localInputText
-                val total = layout.totalItemsCount
-                value = inputText,
-                verticalAlignment = Alignment.CenterVertically,
-                }
-                } else if (!running) {
-                },
-            )
-            ) {
-            .imePadding(),
-            .then(if (showHeader) Modifier.background(colors.bg) else Modifier)
-            IconButton(
-            LazyColumn(
-            Row(
-            Spacer(Modifier.width(8.dp))
-            Text(
-            TextField(
-            bg = TerminalDarkBg,
-            color = colors.dimText.copy(alpha = 0.2f),
-            dimText = Color(0xFF666666),
-            error = Color(0xFFF48771),
-            focusRequester.requestFocus()
-            handle = h
-            if (controller != null && localInputText.isNotBlank()) {
-            if (excess > 0) outputLines.subList(0, excess).clear()
-            if (result.isSuccess) {
-            if (shouldPrune()) pruneOutput(outputLines)
-            inputBg = Color(0xFF252525),
-            localActiveHandle?.cancel()
-            modifier = Modifier
-            outputLines.add(TerminalLine.Output("^C"))
-            outputLines.addAll(batch)
-            prompt = Color(0xFF6CB6FF),
-            sandboxController.setTranscriptInteractive(sid, isInteractingWithOutput.value)
-            sessionViewModel.cancelRunning()
-            sessionViewModel.submit()
-            setHandle(h)
-            snapshotFlow { outputLines.size }.conflate().collect { size ->
-            text = Color(0xFFD4D4D4),
-            try {
-            val controller = sandboxController
-            val drainJob = launch { drainStreamedLines(channel, outputLines, shouldPrune) }
-            val excess = outputLines.size - MAX_OUTPUT_LINES
-            val h = sandboxController.executeCommandStreaming(
-            val handle = localActiveHandle
-            val result = channel.tryReceive()
-            val running = localIsRunning
-            verticalAlignment = Alignment.CenterVertically,
-            }
-            } else {
-            } finally {
-        )
-        ) {
-        // Re-key the auto-scroll on outputLines so switching sessions detaches
-        // from the previous session's list and starts following the new one.
-        ?: LinuxDistro.DEFAULT.displayName
-        @Suppress("UNUSED_EXPRESSION")
-        LaunchedEffect(listState, isRunning, outputLines) {
-        Row(
-        SelectionContainer(
-        androidx.compose.material3.HorizontalDivider(
-        bg = colorScheme.background,
-        capacity = STREAM_BUFFER_CAPACITY,
-        coroutineScope {
-        delay(STREAM_FLUSH_INTERVAL_MS.milliseconds)
-        dimText = colorScheme.onBackground.copy(alpha = 0.4f),
-        error = colorScheme.error,
-        if (!isInteractingWithOutput.value && sessionViewModel == null) {
-        if (batch.isNotEmpty()) {
-        if (closed) break
-        if (handle?.isCancelled() == true) {
-        if (sandboxController != null && sid != null) {
-        if (sandboxController != null) {
-        if (sessionViewModel != null) {
-        if (shouldPrune()) pruneOutput(outputLines)
-        if (showHeader) {
-        if (size > 0) listState.requestScrollToItem(size - 1)
-        inputBg = colorScheme.surfaceContainer,
-        modifier = modifier
-        onBufferOverflow = BufferOverflow.DROP_OLDEST,
-        outputLines.add(TerminalLine.Error(e.message ?: getString(Res.string.terminal_command_failed)))
-        outputLines.clear()
-        outputLines.subList(0, excess).clear()
-        prompt = colorScheme.primary,
-        remember { mutableStateListOf<TerminalLine>().apply { addAll(initialLines) } }
-        return
-        return TerminalColors(
-        selectedSessionId
-        sessionViewModel.outputLines
-        setHandle(null)
-        setRunning(false)
-        text = colorScheme.onBackground,
-        throw e
-        val batch = ArrayList<TerminalLine>(STREAM_FLUSH_BATCH_MAX)
-        val sid = selectedSessionId
-        val size = outputLines.size
-        var closed = false
-        while (batch.size < STREAM_FLUSH_BATCH_MAX) {
-        { vm.setInputText(it) }
-        }
-        } else {
-    )
-    ) {
-    // "Alpine Linux" unconditionally.
-    // ("NoSuchElementException: Cannot find value for key …" inside
-    // Appends to the end are safe because they don't invalidate existing ids.
-    // Buffered channel with DROP_OLDEST so a runaway producer (e.g. `yes`)
-    // Jump to the tail whenever the session changes. The size-based auto-scroll
-    // Mirror the touch flag onto the session shell so streaming-side
-    // Reading selectedSessionId here — even though we don't use the value
-    // Which Linux the user is actually typing into — the header used to say
-    // While the user is touching the output area we pause two things that
-    // below covers per-append scrolling — keying this effect on outputLines too
-    // bounded-trim pauses too (the rendered list IS the shell's transcript in
-    // can't starve the UI or grow memory without bound. The drain loop
-    // change inputText/isRunning/activeHandle, so Compose wouldn't re-evaluate
-    // different chip. Without it, switching between two idle sessions doesn't
-    // directly — forces this composable to recompose when the user picks a
-    // flushes on a fixed cadence and prunes to MAX_OUTPUT_LINES each tick.
-    // getSelectionLayout's LongIntMap): bounded-trim pruning and the
-    // non-session list since drainStreamedLines's prune was suppressed.
-    // scroll-to-tail effect (off-screen items get disposed by LazyColumn).
-    // session mode). On release, run a catch-up prune for the local
-    // session's transcript.
-    // the outputLines property getter and we'd keep rendering the previous
-    // would otherwise unregister selectables mid-drag and crash SelectionManager
-    // would re-fire on every line and thrash listState during heavy bursts.
-    Column(
-    LaunchedEffect(Unit) {
-    LaunchedEffect(isInteractingWithOutput.value, selectedSessionId, sandboxController) {
-    LaunchedEffect(scrollPulse) {
-    channel: Channel<TerminalLine>,
-    color = color,
-    command: String,
-    darkBackground: Boolean = false,
+internal val TerminalDarkBg = Color(0xFF1E1E1E)
+
+internal data class TerminalColors(
+    val bg: Color,
+    val inputBg: Color,
+    val text: Color,
+    val prompt: Color,
+    val error: Color,
+    val dimText: Color,
+)
+
+internal fun monoStyle(size: TextUnit, color: Color = Color.Unspecified) = TextStyle(
     fontFamily = FontFamily.Monospace,
     fontSize = size,
-    if (command == "clear") {
+    color = color,
+)
+
+@Composable
+internal fun terminalColors(darkBackground: Boolean = false): TerminalColors {
     if (darkBackground) {
-    if (excess > 0) {
-    initialLines: ImmutableList<TerminalLine> = persistentListOf(),
-    modifier: Modifier = Modifier,
-    outputLines.add(TerminalLine.Command(command))
-    outputLines: MutableList<TerminalLine>,
-    return TerminalColors(
-    sandboxController: SandboxController,
-    sandboxController: SandboxController?,
-    sessionViewModel: SandboxSessionViewModel? = null,
-    setHandle: (CommandHandle?) -> Unit,
-    setRunning(true)
-    setRunning: (Boolean) -> Unit,
-    shouldPrune: () -> Boolean = { true },
-    showHeader: Boolean = false,
-    try {
-    val activeHandle: CommandHandle? = sessionActiveHandle ?: localActiveHandle
-    val bg: Color,
-    val canCancel = isRunning && activeHandle != null && inputText.isBlank()
-    val canSubmit = sandboxController != null && inputText.isNotBlank()
-    val cancelRunning: () -> Unit = {
-    val channel = Channel<TerminalLine>(
+        return TerminalColors(
+            bg = TerminalDarkBg,
+            inputBg = Color(0xFF252525),
+            text = Color(0xFFD4D4D4),
+            prompt = Color(0xFF6CB6FF),
+            error = Color(0xFFF48771),
+            dimText = Color(0xFF666666),
+        )
+    }
     val colorScheme = MaterialTheme.colorScheme
-    val colors = terminalColors(darkBackground)
-    val dimText: Color,
-    val distroName = sandboxController?.status?.collectAsStateWithLifecycle()?.value?.distro?.displayName
-    val error: Color,
-    val excess = outputLines.size - MAX_OUTPUT_LINES
-    val focusRequester = remember { FocusRequester() }
-    val inputBg: Color,
-    val inputText: String = sessionInputText ?: localInputText
-    val isInputEnabled = sandboxController != null
-    val isInteractingWithOutput = remember { mutableStateOf(false) }
-    val isRunning: Boolean = sessionIsRunning ?: localIsRunning
-    val listState = rememberLazyListState()
-    val outputLines = if (sessionViewModel != null) {
-    val prompt: Color,
+    return TerminalColors(
+        bg = colorScheme.background,
+        inputBg = colorScheme.surfaceContainer,
+        text = colorScheme.onBackground,
+        prompt = colorScheme.primary,
+        error = colorScheme.error,
+        dimText = colorScheme.onBackground.copy(alpha = 0.4f),
+    )
+}
+
+@Composable
+fun TerminalContent(
+    sandboxController: SandboxController?,
+    modifier: Modifier = Modifier,
+    showHeader: Boolean = false,
+    darkBackground: Boolean = false,
+    initialLines: ImmutableList<TerminalLine> = persistentListOf(),
+    sessionViewModel: SandboxSessionViewModel? = null,
+) {
     val scope = rememberCoroutineScope()
-    val scrollPulse = sessionViewModel?.scrollToEndPulse?.collectAsStateWithLifecycle()?.value
-    val selectedSessionId = sessionViewModel?.selectedSessionId?.collectAsStateWithLifecycle()?.value
-    val sessionActiveHandle = sessionViewModel?.activeHandle?.collectAsStateWithLifecycle()?.value
+    val listState = rememberLazyListState()
+
     val sessionInputText = sessionViewModel?.inputText?.collectAsStateWithLifecycle()?.value
     val sessionIsRunning = sessionViewModel?.isRunning?.collectAsStateWithLifecycle()?.value
-    val setInputText: (String) -> Unit = sessionViewModel?.let { vm ->
-    val submitInput = {
-    val text: Color,
-    var handle: CommandHandle? = null
-    var localActiveHandle by remember { mutableStateOf<CommandHandle?>(null) }
-    var localInputText by remember { mutableStateOf("") }
-    var localIsRunning by remember { mutableStateOf(false) }
-    while (true) {
-    }
-    } ?: { localInputText = it }
-    } catch (e: CancellationException) {
-    } catch (e: Exception) {
+    val sessionActiveHandle = sessionViewModel?.activeHandle?.collectAsStateWithLifecycle()?.value
+    // Reading selectedSessionId here — even though we don't use the value
+    // directly — forces this composable to recompose when the user picks a
+    // different chip. Without it, switching between two idle sessions doesn't
+    // change inputText/isRunning/activeHandle, so Compose wouldn't re-evaluate
+    // the outputLines property getter and we'd keep rendering the previous
+    // session's transcript.
+    val selectedSessionId = sessionViewModel?.selectedSessionId?.collectAsStateWithLifecycle()?.value
+
+    val outputLines = if (sessionViewModel != null) {
+        @Suppress("UNUSED_EXPRESSION")
+        selectedSessionId
+        sessionViewModel.outputLines
     } else {
-    } finally {
-)
-) {
-@Composable
-@file:OptIn(ExperimentalMaterial3Api::class)
-fun TerminalContent(
-internal data class TerminalColors(
-internal fun monoStyle(size: TextUnit, color: Color = Color.Unspecified) = TextStyle(
-internal fun terminalColors(darkBackground: Boolean = false): TerminalColors {
-internal val TerminalDarkBg = Color(0xFF1E1E1E)
+        remember { mutableStateListOf<TerminalLine>().apply { addAll(initialLines) } }
+    }
+    var localInputText by remember { mutableStateOf("") }
+    val inputText: String = sessionInputText ?: localInputText
+    val setInputText: (String) -> Unit = sessionViewModel?.let { vm ->
+        { vm.setInputText(it) }
+    } ?: { localInputText = it }
+    var localIsRunning by remember { mutableStateOf(false) }
+    val isRunning: Boolean = sessionIsRunning ?: localIsRunning
+    var localActiveHandle by remember { mutableStateOf<CommandHandle?>(null) }
+    val activeHandle: CommandHandle? = sessionActiveHandle ?: localActiveHandle
+
+    // While the user is touching the output area we pause two things that
+    // would otherwise unregister selectables mid-drag and crash SelectionManager
+    // ("NoSuchElementException: Cannot find value for key …" inside
+    // getSelectionLayout's LongIntMap): bounded-trim pruning and the
+    // scroll-to-tail effect (off-screen items get disposed by LazyColumn).
+    // Appends to the end are safe because they don't invalidate existing ids.
+    val isInteractingWithOutput = remember { mutableStateOf(false) }
+
+    val colors = terminalColors(darkBackground)
+    // Which Linux the user is actually typing into — the header used to say
+    // "Alpine Linux" unconditionally.
+    val distroName = sandboxController?.status?.collectAsStateWithLifecycle()?.value?.distro?.displayName
+        ?: LinuxDistro.DEFAULT.displayName
+    val focusRequester = remember { FocusRequester() }
+    val canSubmit = sandboxController != null && inputText.isNotBlank()
+    val canCancel = isRunning && activeHandle != null && inputText.isBlank()
+    val isInputEnabled = sandboxController != null
+    val submitInput = {
+        if (sessionViewModel != null) {
+            sessionViewModel.submit()
+        } else {
+            val controller = sandboxController
+            val running = localIsRunning
+            val handle = localActiveHandle
+            if (controller != null && localInputText.isNotBlank()) {
+                val line = localInputText
+                localInputText = ""
+                if (running && handle != null) {
+                    outputLines.add(TerminalLine.Output(line))
+                    scope.launch { handle.writeInput(line) }
+                } else if (!running) {
+                    scope.launch {
+                        runCommand(
+                            command = line.trim(),
+                            outputLines = outputLines,
+                            sandboxController = controller,
+                            setRunning = { localIsRunning = it },
+                            setHandle = { localActiveHandle = it },
+                            shouldPrune = { !isInteractingWithOutput.value },
+                        )
+                    }
+                }
+            }
+        }
+    }
+    val cancelRunning: () -> Unit = {
+        if (sessionViewModel != null) {
+            sessionViewModel.cancelRunning()
+        } else {
+            localActiveHandle?.cancel()
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        if (sandboxController != null) {
+            focusRequester.requestFocus()
+        }
+    }
+
+    // Jump to the tail whenever the session changes. The size-based auto-scroll
+    // below covers per-append scrolling — keying this effect on outputLines too
+    // would re-fire on every line and thrash listState during heavy bursts.
+    val scrollPulse = sessionViewModel?.scrollToEndPulse?.collectAsStateWithLifecycle()?.value
+    LaunchedEffect(scrollPulse) {
+        val size = outputLines.size
+        if (size > 0) listState.requestScrollToItem(size - 1)
+    }
+
+    // Mirror the touch flag onto the session shell so streaming-side
+    // bounded-trim pauses too (the rendered list IS the shell's transcript in
+    // session mode). On release, run a catch-up prune for the local
+    // non-session list since drainStreamedLines's prune was suppressed.
+    LaunchedEffect(isInteractingWithOutput.value, selectedSessionId, sandboxController) {
+        val sid = selectedSessionId
+        if (sandboxController != null && sid != null) {
+            sandboxController.setTranscriptInteractive(sid, isInteractingWithOutput.value)
+        }
+        if (!isInteractingWithOutput.value && sessionViewModel == null) {
+            val excess = outputLines.size - MAX_OUTPUT_LINES
+            if (excess > 0) outputLines.subList(0, excess).clear()
+        }
+    }
+
+    Column(
+        modifier = modifier
+            .then(if (showHeader) Modifier.background(colors.bg) else Modifier)
+            .imePadding(),
+    ) {
+        if (showHeader) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(colors.inputBg)
+                    .statusBarsPadding()
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = stringResource(Res.string.terminal_title),
+                    style = monoStyle(16.sp, colors.prompt),
+                )
+                Spacer(Modifier.weight(1f))
+                Text(
+                    text = distroName,
+                    style = monoStyle(12.sp, colors.text.copy(alpha = 0.5f)),
+                )
+            }
+        }
+
+        SelectionContainer(
+            modifier = Modifier
+                .weight(1f)
+                .pointerInput(Unit) {
+                    awaitEachGesture {
+                        // requireUnconsumed=false: don't fight SelectionContainer's
+                        // own long-press detector. We never consume the change so
+                        // the inner gesture detectors still receive everything.
+                        awaitFirstDown(requireUnconsumed = false)
+                        isInteractingWithOutput.value = true
+                        try {
+                            // Can't use waitForUpOrCancellation(): it treats
+                            // consumption as cancellation, and SelectionContainer's
+                            // long-press drag observer consumes move events — we'd
+                            // flip the flag back to false mid-drag. Loop on raw
+                            // pointer events until no pointer is pressed.
+                            while (true) {
+                                val event = awaitPointerEvent()
+                                if (event.changes.none { it.pressed }) break
+                            }
+                        } finally {
+                            isInteractingWithOutput.value = false
+                        }
+                    }
+                },
+        ) {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                state = listState,
+            ) {
+                if (outputLines.isEmpty()) {
+                    item {
+                        Text(
+                            text = stringResource(Res.string.terminal_help_text),
+                            style = monoStyle(13.sp, colors.dimText),
+                        )
+                    }
+                }
+                items(
+                    items = outputLines,
+                    contentType = { it::class },
+                ) { line ->
+                    when (line) {
+                        is TerminalLine.Command -> {
+                            Spacer(Modifier.height(4.dp))
+                            Text(
+                                text = "$ ${line.text}",
+                                style = monoStyle(13.sp, colors.prompt),
+                            )
+                        }
+
+                        is TerminalLine.Output -> {
+                            Text(
+                                text = parseAnsiToAnnotatedString(line.text, colors.text),
+                                style = monoStyle(13.sp),
+                            )
+                        }
+
+                        is TerminalLine.Error -> {
+                            Text(
+                                text = parseAnsiToAnnotatedString(line.text, colors.error),
+                                style = monoStyle(13.sp),
+                            )
+                        }
+                    }
+                }
+                if (isRunning) {
+                    item {
+                        Spacer(Modifier.height(4.dp))
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(14.dp),
+                            strokeWidth = 2.dp,
+                            color = colors.prompt,
+                        )
+                    }
+                }
+            }
+        }
+
+        // Re-key the auto-scroll on outputLines so switching sessions detaches
+        // from the previous session's list and starts following the new one.
+        LaunchedEffect(listState, isRunning, outputLines) {
+            snapshotFlow { outputLines.size }.conflate().collect { size ->
+                if (size == 0) return@collect
+                // While the user is dragging to select, scrolling to the tail
+                // disposes off-screen Texts and unregisters their selectables,
+                // crashing SelectionManager mid-drag.
+                if (isInteractingWithOutput.value) return@collect
+                val layout = listState.layoutInfo
+                val total = layout.totalItemsCount
+                if (total == 0) return@collect
+                val lastVisible = layout.visibleItemsInfo.lastOrNull()?.index ?: -1
+                // Don't yank the user back if they've scrolled up to read older output.
+                if (lastVisible >= total - 2) {
+                    // The transcript is committed from a background thread (proot
+                    // stdio reader), so any index computed here can be stale by
+                    // measure time — clamping alone can't close that window.
+                    // requestScrollToItem (unlike scrollToItem) doesn't force a
+                    // synchronous remeasure with the raw index pinned; it defers
+                    // to the next frame, after composition has re-synced the
+                    // list's item count with the data. It also doesn't suspend,
+                    // so heavy bursts no longer queue blocking scrolls.
+                    listState.requestScrollToItem(minOf(size, total) - 1)
+                }
+            }
+        }
+
+        androidx.compose.material3.HorizontalDivider(
+            color = colors.dimText.copy(alpha = 0.2f),
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = "$",
+                style = monoStyle(14.sp, colors.prompt),
+                modifier = Modifier.padding(start = 8.dp),
+            )
+            Spacer(Modifier.width(8.dp))
+            TextField(
+                value = inputText,
+                onValueChange = setInputText,
+                modifier = Modifier.weight(1f).then(
+                    if (sandboxController != null) Modifier.focusRequester(focusRequester) else Modifier,
+                ),
+                enabled = isInputEnabled,
+                textStyle = monoStyle(14.sp, colors.text),
+                placeholder = {
+                    Text(
+                        text = stringResource(Res.string.terminal_input_placeholder),
+                        style = monoStyle(14.sp, colors.dimText),
+                    )
+                },
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent,
+                    disabledContainerColor = Color.Transparent,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent,
+                    cursorColor = colors.prompt,
+                ),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
+                keyboardActions = KeyboardActions(
+                    onGo = { submitInput() },
+                ),
+                singleLine = true,
+            )
+            IconButton(
+                onClick = {
+                    when {
+                        canSubmit -> submitInput()
+                        canCancel -> cancelRunning()
+                    }
+                },
+                enabled = canSubmit || canCancel,
+                modifier = Modifier.handCursor(),
+            ) {
+                Icon(
+                    imageVector = if (canCancel) Icons.Filled.Stop else Icons.AutoMirrored.Filled.Send,
+                    contentDescription = stringResource(
+                        if (canCancel) {
+                            Res.string.terminal_stop_content_description
+                        } else {
+                            Res.string.terminal_run_content_description
+                        },
+                    ),
+                    tint = if (canSubmit || canCancel) colors.prompt else colors.dimText,
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+        }
+    }
+}
+
 private const val MAX_OUTPUT_LINES = 500
 private const val STREAM_BUFFER_CAPACITY = 256
-private const val STREAM_FLUSH_BATCH_MAX = 200
 private const val STREAM_FLUSH_INTERVAL_MS = 32L
-private fun pruneOutput(outputLines: MutableList<TerminalLine>) {
-private suspend fun drainStreamedLines(
+private const val STREAM_FLUSH_BATCH_MAX = 200
+
 private suspend fun runCommand(
+    command: String,
+    outputLines: MutableList<TerminalLine>,
+    sandboxController: SandboxController,
+    setRunning: (Boolean) -> Unit,
+    setHandle: (CommandHandle?) -> Unit,
+    shouldPrune: () -> Boolean = { true },
+) {
+    if (command == "clear") {
+        outputLines.clear()
+        return
+    }
+    outputLines.add(TerminalLine.Command(command))
+    setRunning(true)
+
+    // Buffered channel with DROP_OLDEST so a runaway producer (e.g. `yes`)
+    // can't starve the UI or grow memory without bound. The drain loop
+    // flushes on a fixed cadence and prunes to MAX_OUTPUT_LINES each tick.
+    val channel = Channel<TerminalLine>(
+        capacity = STREAM_BUFFER_CAPACITY,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    )
+
+    var handle: CommandHandle? = null
+    try {
+        coroutineScope {
+            val drainJob = launch { drainStreamedLines(channel, outputLines, shouldPrune) }
+            val h = sandboxController.executeCommandStreaming(
+                command = command,
+                onStdout = { line -> channel.trySend(TerminalLine.Output(line)) },
+                onStderr = { line -> channel.trySend(TerminalLine.Error(line)) },
+                sessionId = SandboxSessions.TERMINAL,
+            )
+            handle = h
+            setHandle(h)
+            try {
+                h.awaitExit()
+            } finally {
+                channel.close()
+                drainJob.join()
+            }
+        }
+        if (handle?.isCancelled() == true) {
+            outputLines.add(TerminalLine.Output("^C"))
+        }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        outputLines.add(TerminalLine.Error(e.message ?: getString(Res.string.terminal_command_failed)))
+    } finally {
+        setHandle(null)
+        if (shouldPrune()) pruneOutput(outputLines)
+        setRunning(false)
+    }
+}
+
+private suspend fun drainStreamedLines(
+    channel: Channel<TerminalLine>,
+    outputLines: MutableList<TerminalLine>,
+    shouldPrune: () -> Boolean = { true },
+) {
+    while (true) {
+        val batch = ArrayList<TerminalLine>(STREAM_FLUSH_BATCH_MAX)
+        var closed = false
+        while (batch.size < STREAM_FLUSH_BATCH_MAX) {
+            val result = channel.tryReceive()
+            if (result.isSuccess) {
+                batch.add(result.getOrThrow())
+            } else {
+                if (result.isClosed) closed = true
+                break
+            }
+        }
+        if (batch.isNotEmpty()) {
+            outputLines.addAll(batch)
+            if (shouldPrune()) pruneOutput(outputLines)
+        }
+        if (closed) break
+        delay(STREAM_FLUSH_INTERVAL_MS.milliseconds)
+    }
+}
+
+private fun pruneOutput(outputLines: MutableList<TerminalLine>) {
+    val excess = outputLines.size - MAX_OUTPUT_LINES
+    if (excess > 0) {
+        outputLines.subList(0, excess).clear()
+    }
 }
