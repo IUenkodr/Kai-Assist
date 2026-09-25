@@ -1,7 +1,7 @@
-name: Build and Release
-
 on:
   workflow_dispatch: {}
+name: Build and Release
+
   push:
     tags:
       - 'v*'
@@ -13,7 +13,6 @@ jobs:
   apk:
     name: Generate APK
     runs-on: ubuntu-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,9 +23,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-  workflow_dispatch: {}
           java-version: "21"
-  workflow_dispatch: {}
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
       - name: Setup Android SDK
@@ -56,7 +53,6 @@ jobs:
   dmg:
     name: Generate DMG
     runs-on: macos-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -67,9 +63,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-  workflow_dispatch: {}
           java-version: "21"
-  workflow_dispatch: {}
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
       - name: Build DMG
@@ -83,7 +77,6 @@ jobs:
   msi:
     name: Generate MSI
     runs-on: windows-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -94,9 +87,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-  workflow_dispatch: {}
           java-version: "21"
-  workflow_dispatch: {}
       - name: Build MSI
         run: ./gradlew packageReleaseMsi --stacktrace
       - name: Upload MSI Artifact
@@ -108,7 +99,6 @@ jobs:
   deb:
     name: Generate DEB
     runs-on: ubuntu-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -119,9 +109,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-  workflow_dispatch: {}
           java-version: "21"
-  workflow_dispatch: {}
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
       - name: Build DEB
@@ -135,7 +123,6 @@ jobs:
   rpm:
     name: Generate RPM
     runs-on: ubuntu-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -146,9 +133,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-  workflow_dispatch: {}
           java-version: "21"
-  workflow_dispatch: {}
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
       - name: Install RPM build tools
@@ -164,7 +149,6 @@ jobs:
   linux-tar:
     name: Generate Linux Tarball
     runs-on: ubuntu-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -175,9 +159,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-  workflow_dispatch: {}
           java-version: "21"
-  workflow_dispatch: {}
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
       - name: Build application distribution
@@ -195,7 +177,6 @@ jobs:
   appimage:
     name: Generate AppImage
     runs-on: ubuntu-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -206,9 +187,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-  workflow_dispatch: {}
           java-version: "21"
-  workflow_dispatch: {}
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
       - name: Install AppImage tools
@@ -269,7 +248,6 @@ jobs:
     name: Generate Flatpak
     needs: [linux-tar]
     runs-on: ubuntu-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -317,7 +295,6 @@ jobs:
     name: Release APK, DMG, MSI, DEB, RPM, AppImage, Flatpak and Tarball
     needs: [apk, dmg, msi, deb, rpm, appimage, linux-tar, flatpak]
     runs-on: ubuntu-latest
-  workflow_dispatch: {}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
