@@ -1,13 +1,15 @@
 name: Build and Release
 
-# ---------------------------------------------------------
-#  USER‑SELECTABLE INPUTS (checkbox‑style toggles)
-# ---------------------------------------------------------
 on:
   workflow_dispatch:
     inputs:
       build_apk:
-        description: 'Generate Android APK (FOSS Release)'
+        description: 'Generate Android APK (FOSS)'
+        type: boolean
+        required: true
+        default: true
+      build_dmg:
+        description: 'Generate macOS DMG'
         type: boolean
         required: true
         default: true
@@ -22,7 +24,12 @@ on:
         required: true
         default: true
       build_rpm:
-        description: 'Generate Red‑Hat .rpm package'
+        description: 'Generate RPM package'
+        type: boolean
+        required: true
+        default: true
+      build_tarball:
+        description: 'Generate Linux tarball (Kai-linux-x86_64.tar.gz)'
         type: boolean
         required: true
         default: true
@@ -31,34 +38,19 @@ on:
         type: boolean
         required: true
         default: true
-      build_tarball:
-        description: 'Generate generic Linux tarball (Kai‑linux‑x86_64.tar.gz)'
-        type: boolean
-        required: true
-        default: true
-      build_dmg:
-        description: 'Generate macOS DMG'
-        type: boolean
-        required: true
-        default: true
   push:
     tags:
-      - 'v*'        # automatic run on new version tags
+      - 'v*'
 
 permissions:
   contents: write
 
-# ---------------------------------------------------------
-#  JOB DEFINITIONS – each guarded by its input flag
-# ---------------------------------------------------------
 jobs:
-
   # -------------------------------------------------------
   #  APK
   # -------------------------------------------------------
   apk:
-    # Only run when the checkbox is true
-    if: ${{ github.event_name == 'push' || inputs.build_apk == 'true' }}
+    if: ${{ github.event_name == 'push' || (github.event.inputs.build_apk == 'true') }}
     name: Generate APK
     runs-on: ubuntu-latest
     steps:
@@ -67,29 +59,23 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
-
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
         with:
           packages: platform-tools
-
       - name: Install Android Build Tools
         run: |
           sdkmanager "build-tools;36.0.0"
           sdkmanager "build-tools;29.0.3"
-
       - name: Build APK
         run: bash ./gradlew :androidApp:assembleFossRelease --stacktrace
-
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
         with:
@@ -98,7 +84,6 @@ jobs:
           alias: ${{ secrets.KEY_ALIAS }}
           keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.KEYSTORE_PASSWORD }}
-
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -109,7 +94,7 @@ jobs:
   #  DMG (macOS)
   # -------------------------------------------------------
   dmg:
-    if: ${{ github.event_name == 'push' || inputs.build_dmg == 'true' }}
+    if: ${{ github.event_name == 'push' || (github.event.inputs.build_dmg == 'true') }}
     name: Generate DMG
     runs-on: macos-latest
     steps:
@@ -118,19 +103,15 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
-
       - name: Build DMG
         run: bash ./gradlew packageReleaseDmg --stacktrace
-
       - name: Upload DMG Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -141,7 +122,7 @@ jobs:
   #  MSI (Windows)
   # -------------------------------------------------------
   msi:
-    if: ${{ github.event_name == 'push' || inputs.build_msi == 'true' }}
+    if: ${{ github.event_name == 'push' || (github.event.inputs.build_msi == 'true') }}
     name: Generate MSI
     runs-on: windows-latest
     steps:
@@ -150,16 +131,13 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
       - name: Build MSI
         run: ./gradlew packageReleaseMsi --stacktrace
-
       - name: Upload MSI Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -170,7 +148,7 @@ jobs:
   #  DEB (Debian/Ubuntu)
   # -------------------------------------------------------
   deb:
-    if: ${{ github.event_name == 'push' || inputs.build_deb == 'true' }}
+    if: ${{ github.event_name == 'push' || (github.event.inputs.build_deb == 'true') }}
     name: Generate DEB
     runs-on: ubuntu-latest
     steps:
@@ -179,19 +157,15 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
-
       - name: Build DEB
         run: ./gradlew packageReleaseDeb --stacktrace
-
       - name: Upload DEB Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -202,7 +176,7 @@ jobs:
   #  RPM (Red‑Hat/Fedora)
   # -------------------------------------------------------
   rpm:
-    if: ${{ github.event_name == 'push' || inputs.build_rpm == 'true' }}
+    if: ${{ github.event_name == 'push' || (github.event.inputs.build_rpm == 'true') }}
     name: Generate RPM
     runs-on: ubuntu-latest
     steps:
@@ -211,22 +185,17 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
-
       - name: Install RPM build tools
         run: sudo apt-get update && sudo apt-get install -y rpm
-
       - name: Build RPM
         run: ./gradlew packageReleaseRpm --stacktrace
-
       - name: Upload RPM Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -234,10 +203,10 @@ jobs:
           path: composeApp/build/compose/binaries/main-release/rpm/*.rpm
 
   # -------------------------------------------------------
-  #  Linux Tarball (generic .tar.gz)
+  #  Linux Tarball
   # -------------------------------------------------------
   linux-tar:
-    if: ${{ github.event_name == 'push' || inputs.build_tarball == 'true' }}
+    if: ${{ github.event_name == 'push' || (github.event.inputs.build_tarball == 'true') }}
     name: Generate Linux Tarball
     runs-on: ubuntu-latest
     steps:
@@ -246,24 +215,19 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
-
       - name: Build application distribution
         run: ./gradlew createReleaseDistributable --stacktrace
-
       - name: Create tarball
         run: |
           cd composeApp/build/compose/binaries/main-release/app
           tar czf "$GITHUB_WORKSPACE/Kai-linux-x86_64.tar.gz" Kai
-
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -274,7 +238,7 @@ jobs:
   #  AppImage (Linux)
   # -------------------------------------------------------
   appimage:
-    if: ${{ github.event_name == 'push' || inputs.build_appimage == 'true' }}
+    if: ${{ github.event_name == 'push' || (github.event.inputs.build_appimage == 'true') }}
     name: Generate AppImage
     runs-on: ubuntu-latest
     steps:
@@ -283,32 +247,24 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
-
       - name: Install AppImage tools
         run: |
           sudo apt-get update
           sudo apt-get install -y libfuse2 file
           wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool-x86_64.AppImage
-
       - name: Build application distribution
         run: ./gradlew createReleaseDistributable --stacktrace
-
       - name: Pack AppImage
         run: |
-          # The Gradle `packageReleaseAppimage` task is hidden;
-          # we call the underlying script that produces the AppImage.
           ./gradlew packageReleaseAppimage --stacktrace
-
       - name: Upload AppImage Artifact
         uses: actions/upload-artifact@v4
         with:
