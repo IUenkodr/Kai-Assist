@@ -72,7 +72,13 @@ fun MonitoringScreen(
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                     contentPadding = PaddingValues(bottom = 80.dp)
                 ) {
-                    items(tasks.toList()) { (id, task) ->
+                    items(
+                        items = tasks.entries.toList(),
+                        key = { it.key }
+                    ) { entry ->
+                        val id = entry.key
+                        val task = entry.value
+
                         TaskCard(
                             task = task,
                             modifier = Modifier.fillMaxWidth(),
