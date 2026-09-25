@@ -1,0 +1,65 @@
+name: Build APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      sign_apk:
+        description: "Sign the generated APK (requires keystore secrets)"
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    name: Build Android APK (FOSS)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Setup JDK (Temurin 21)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: platform-tools
+
+      - name: Install required Android build‑tools versions
+        run: |
+          sdkmanager "build-tools;36.0.0"
+          sdkmanager "build-tools;29.0.3"
+
+      - name: Build the APK (FOSS release)
+        run: bash ./gradlew :androidApp:assembleFossRelease --stacktrace
+
+      # -------------------------------------------------------------------
+      #  OPTIONAL signing – runs only when the input flag is true and the secrets exist
+      # -------------------------------------------------------------------
+      - name: Sign APK (if requested)
+        if: ${{ inputs.sign_apk == 'true' && secrets.KEYSTORE_B64 != '' && secrets.KEY_ALIAS != '' && secrets.KEYSTORE_PASSWORD != '' }}
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: androidApp/build/outputs/apk/foss/release
+          signingKeyBase64: ${{ secrets.KEYSTORE_B64 }}
+          alias: ${{ secrets.KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEYSTORE_PASSWORD }}
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-apk
+          path: androidApp/build/outputs/apk/foss/release/*.apk
