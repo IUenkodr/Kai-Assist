@@ -6,28 +6,26 @@ import android.content.Intent
 import com.inspiredandroid.kai.data.AppSettings
 import org.koin.java.KoinJavaComponent.inject
 
-/** Android implementation of the DaemonController. */
-private class AndroidDaemonController : DaemonController {
+actual fun createDaemonController(): DaemonController = AndroidDaemonController()
+
+class AndroidDaemonController : DaemonController {
+
     private val context: Context by inject(Context::class.java)
     private val appSettings: AppSettings by inject(AppSettings::class.java)
-    private val daemonIntent = Intent(context, DaemonService::class.java)
+
+    fun shouldAutoStart(): Boolean = appSettings.isDaemonEnabled()
 
     override fun start() {
         try {
-            context.startForegroundService(daemonIntent)
+            val intent = Intent(context, DaemonService::class.java)
+            context.startForegroundService(intent)
         } catch (_: ForegroundServiceStartNotAllowedException) {
-            // Android 12+ fallback when starting a foreground service is not allowed
-            context.startService(daemonIntent)
+            // App is not in a foreground state — cannot start foreground service (Android 12+)
         }
     }
 
     override fun stop() {
-        context.stopService(Intent(context, DaemonService::class.java))
+        val intent = Intent(context, DaemonService::class.java)
+        context.stopService(intent)
     }
-
-    /** Returns true when the user enabled the daemon in the settings UI. */
-    fun shouldAutoStart(): Boolean = appSettings.isDaemonEnabled()
 }
-
-/** Platform‑specific factory used by the common code. */
-actual fun createDaemonController(): DaemonController = AndroidDaemonController()
