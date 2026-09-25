@@ -1,3 +1,24 @@
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.inspiredandroid.kai.data.DataRepository
+import com.inspiredandroid.kai.getBackgroundDispatcher
+import com.inspiredandroid.kai.isSplinterlandsSupported
+import com.inspiredandroid.kai.splinterlands.BattleStatus
+import com.inspiredandroid.kai.splinterlands.SplinterlandsAccount
+import com.inspiredandroid.kai.splinterlands.SplinterlandsApi
+import com.inspiredandroid.kai.splinterlands.SplinterlandsBattleRunner
+import com.inspiredandroid.kai.splinterlands.SplinterlandsStore
+import kotlin.coroutines.CoroutineContext
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
                         splinterlandsAccounts = accounts.toImmutableList(),
                         splinterlandsAccounts = buildSplinterlandsAccountStates().toImmutableList(),
@@ -128,26 +149,5 @@
     }
 ) : ViewModel() {
 class SplinterlandsViewModel(
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.inspiredandroid.kai.data.DataRepository
-import com.inspiredandroid.kai.getBackgroundDispatcher
-import com.inspiredandroid.kai.isSplinterlandsSupported
-import com.inspiredandroid.kai.splinterlands.BattleStatus
-import com.inspiredandroid.kai.splinterlands.SplinterlandsAccount
-import com.inspiredandroid.kai.splinterlands.SplinterlandsApi
-import com.inspiredandroid.kai.splinterlands.SplinterlandsBattleRunner
-import com.inspiredandroid.kai.splinterlands.SplinterlandsStore
-import kotlin.coroutines.CoroutineContext
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 package com.inspiredandroid.kai.ui.settings
 }

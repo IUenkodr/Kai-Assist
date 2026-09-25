@@ -1,3 +1,12 @@
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import kotlin.test.Test
+import kotlin.test.assertContains
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
                 deco.toString().contains("Underline") && deco.toString().contains("LineThrough")
             deco != null && deco != TextDecoration.None &&
@@ -177,14 +186,5 @@
     private val esc = '\u001B'
     }
 class AnsiParserTest {
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
-import kotlin.test.Test
-import kotlin.test.assertContains
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.ui.settings
 }

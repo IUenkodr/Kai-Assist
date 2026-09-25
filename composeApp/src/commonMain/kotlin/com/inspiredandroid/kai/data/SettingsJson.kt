@@ -1,3 +1,8 @@
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.json.Json
 
                     emptyList()
                     println("$label: failed to decode persisted JSON: ${e.message}")
@@ -82,11 +87,6 @@
 /**
 class SettingsJsonList<T>(
 class SettingsJsonValue<T>(
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.json.Json
 internal fun <T> decodeJsonOr(
 package com.inspiredandroid.kai.data
 }

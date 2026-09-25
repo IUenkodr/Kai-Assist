@@ -1,3 +1,7 @@
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.serialization.serializer
 
             current.map { draft -> if (draft.id == id) draft.copy(status = status, lastError = error) else draft }
             if (existing.status == status && existing.lastError == error) return@update current
@@ -29,9 +33,5 @@
     val drafts: StateFlow<List<SmsDraft>> = _drafts.asStateFlow()
     }
 class SmsDraftStore(appSettings: AppSettings) {
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.serialization.serializer
 package com.inspiredandroid.kai.data
 }

@@ -1,3 +1,4 @@
+import java.io.File
 
                 safeChild(projectsDir, parts.drop(2))
             canonical == homeDir.canonicalPath ||
@@ -42,7 +43,6 @@
 /**
 /** Blocks path traversal: the resolved child must stay under [root]. */
 class GuestFileMap(
-import java.io.File
 internal fun safeChild(root: File, parts: List<String>): File? {
 package com.inspiredandroid.kai.linux
 }

@@ -1,3 +1,6 @@
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
         // Echoed back on assistant turns that produced tool_calls for providers
         // Moonshot/Kimi thinking, Venice, Z.AI/GLM thinking, OpenCode Zen,
@@ -43,8 +46,5 @@
 ) {
 @Serializable
 data class OpenAICompatibleChatRequestDto(
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonElement
 package com.inspiredandroid.kai.network.dtos.openaicompatible
 }

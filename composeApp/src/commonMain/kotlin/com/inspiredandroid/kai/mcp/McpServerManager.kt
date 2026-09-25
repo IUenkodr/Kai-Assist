@@ -1,3 +1,13 @@
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.SettingsJsonList
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.serialization.json.Json
 
                             // Individual server failures shouldn't block others
                             connectAndDiscoverTools(server.id)
@@ -126,16 +136,6 @@
     suspend fun connectEnabledServers() {
     }
 class McpServerManager(private val appSettings: AppSettings) {
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.SettingsJsonList
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.serialization.json.Json
 package com.inspiredandroid.kai.mcp
 private val serverIdRegex = Regex("[^a-z0-9]")
 }

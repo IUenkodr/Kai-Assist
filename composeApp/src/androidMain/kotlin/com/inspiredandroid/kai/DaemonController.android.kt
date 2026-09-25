@@ -1,3 +1,8 @@
+import android.app.ForegroundServiceStartNotAllowedException
+import android.content.Context
+import android.content.Intent
+import com.inspiredandroid.kai.data.AppSettings
+import org.koin.java.KoinJavaComponent.inject
 
             // App is not in a foreground state — cannot start foreground service (Android 12+)
             context.startForegroundService(intent)
@@ -15,10 +20,5 @@
     }
 actual fun createDaemonController(): DaemonController = AndroidDaemonController()
 class AndroidDaemonController : DaemonController {
-import android.app.ForegroundServiceStartNotAllowedException
-import android.content.Context
-import android.content.Intent
-import com.inspiredandroid.kai.data.AppSettings
-import org.koin.java.KoinJavaComponent.inject
 package com.inspiredandroid.kai
 }

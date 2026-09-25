@@ -1,3 +1,12 @@
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.MemoryStore
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_promote_learning_description
+import kai.composeapp.generated.resources.tool_promote_learning_name
 
                 "$currentSoul\n\n$soulAddition"
                 "hit_count" to memory.hitCount,
@@ -45,15 +54,6 @@
     val heartbeatToolDefinitions = listOf(promoteLearningToolInfo)
     val promoteLearningToolInfo = ToolInfo(
     }
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.MemoryStore
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_promote_learning_description
-import kai.composeapp.generated.resources.tool_promote_learning_name
 object HeartbeatTools {
 package com.inspiredandroid.kai.tools
 }

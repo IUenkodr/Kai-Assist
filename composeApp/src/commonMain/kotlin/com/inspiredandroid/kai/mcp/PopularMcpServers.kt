@@ -1,3 +1,4 @@
+import androidx.compose.runtime.Immutable
 
             .firstOrNull { matchesPopularMcpUrl(server.url, it.url) && it.headers.isNotEmpty() }
             ?.headers
@@ -113,7 +114,6 @@
 /** Normalize a pasted API key into an Authorization header value. */
 @Immutable
 data class PopularMcpServer(
-import androidx.compose.runtime.Immutable
 internal fun applyPopularDefaultHeaders(
 internal fun authorizationHeaderValue(apiKey: String): String {
 internal fun matchesPopularMcpUrl(savedUrl: String, popularUrl: String): Boolean {

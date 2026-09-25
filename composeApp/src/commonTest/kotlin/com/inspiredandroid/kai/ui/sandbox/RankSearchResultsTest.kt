@@ -1,3 +1,6 @@
+import com.inspiredandroid.kai.linux.PackageEntry
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
                 "abseil-cpp-dev",
                 "afl++",
@@ -44,8 +47,5 @@
     private fun pkg(name: String, description: String? = null) = PackageEntry(name = name, version = "1.0.0-r0", description = description)
     }
 class RankSearchResultsTest {
-import com.inspiredandroid.kai.linux.PackageEntry
-import kotlin.test.Test
-import kotlin.test.assertEquals
 package com.inspiredandroid.kai.ui.sandbox
 }

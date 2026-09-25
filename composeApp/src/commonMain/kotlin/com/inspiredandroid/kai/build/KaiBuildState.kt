@@ -1,3 +1,9 @@
+import androidx.compose.runtime.Immutable
+import com.inspiredandroid.kai.build.terminal.TerminalSnapshot
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableSet
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.persistentSetOf
 
         val agentId: String? = null,
         val progress: Float? = null,
@@ -56,12 +62,6 @@ data class BuildSystemInfo(
 data class BuildTerminalSession(
 data class KaiBuildState(
 enum class BuildStep {
-import androidx.compose.runtime.Immutable
-import com.inspiredandroid.kai.build.terminal.TerminalSnapshot
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.persistentSetOf
 package com.inspiredandroid.kai.build
 sealed interface BuildEnvironmentState {
 }

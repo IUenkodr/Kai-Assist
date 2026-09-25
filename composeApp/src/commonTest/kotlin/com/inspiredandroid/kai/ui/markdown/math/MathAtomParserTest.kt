@@ -1,3 +1,8 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
+import kotlinx.collections.immutable.persistentListOf
 
         // From the GitHub issue's example.
         // Should degrade without crashing.
@@ -179,10 +184,5 @@
     }
 /** Tests for [MathParser] — LaTeX fragments → [MathAtom] tree. */
 class MathAtomParserTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.ui.markdown.math
 }

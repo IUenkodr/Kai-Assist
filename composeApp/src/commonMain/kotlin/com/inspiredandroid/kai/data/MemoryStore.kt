@@ -1,3 +1,8 @@
+import androidx.compose.runtime.Immutable
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.serializer
 
                 ?: MemoryEntry(key = key, content = content, createdAt = now, updatedAt = now, category = category, source = source)
             current.map { if (it.key == key) next else it }
@@ -57,10 +62,5 @@
 class MemoryStore(appSettings: AppSettings) {
 data class MemoryEntry(
 enum class MemoryCategory {
-import androidx.compose.runtime.Immutable
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.serializer
 package com.inspiredandroid.kai.data
 }

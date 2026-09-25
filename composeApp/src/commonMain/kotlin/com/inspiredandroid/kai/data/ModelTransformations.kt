@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicModelsResponseDto
+import com.inspiredandroid.kai.network.dtos.gemini.GeminiModelsResponseDto
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleModelResponseDto
+import com.inspiredandroid.kai.toIsoDate
+import com.inspiredandroid.kai.ui.settings.SettingsModel
 
                 id = selectedModelId,
                 isManualEntry = true,
@@ -152,11 +157,6 @@
 ): List<SettingsModel> {
 ): SettingsModel {
 /**
-import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicModelsResponseDto
-import com.inspiredandroid.kai.network.dtos.gemini.GeminiModelsResponseDto
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleModelResponseDto
-import com.inspiredandroid.kai.toIsoDate
-import com.inspiredandroid.kai.ui.settings.SettingsModel
 internal fun ensureSelectedModelPresent(
 internal fun isChatModel(modelId: String): Boolean {
 internal fun mapAnthropicModels(

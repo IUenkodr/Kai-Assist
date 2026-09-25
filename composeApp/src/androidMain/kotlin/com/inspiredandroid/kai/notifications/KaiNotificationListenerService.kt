@@ -1,3 +1,19 @@
+import android.app.Notification
+import android.content.pm.PackageManager
+import android.service.notification.NotificationListenerService
+import android.service.notification.StatusBarNotification
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.NotificationRecord
+import com.inspiredandroid.kai.data.NotificationStore
+import com.inspiredandroid.kai.data.NotificationSyncState
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import org.koin.java.KoinJavaComponent.inject
 
                     lastBoundEpochMs = Clock.System.now().toEpochMilliseconds(),
                     lastError = null,
@@ -82,21 +98,5 @@
 /**
 @OptIn(ExperimentalTime::class)
 class KaiNotificationListenerService : NotificationListenerService() {
-import android.app.Notification
-import android.content.pm.PackageManager
-import android.service.notification.NotificationListenerService
-import android.service.notification.StatusBarNotification
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.NotificationRecord
-import com.inspiredandroid.kai.data.NotificationStore
-import com.inspiredandroid.kai.data.NotificationSyncState
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
-import org.koin.java.KoinJavaComponent.inject
 package com.inspiredandroid.kai.notifications
 }

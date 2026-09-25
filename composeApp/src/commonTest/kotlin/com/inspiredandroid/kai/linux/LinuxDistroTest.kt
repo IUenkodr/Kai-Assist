@@ -1,3 +1,8 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertSame
+import kotlin.test.assertTrue
 
                 assertFalse(pkg in distro.protectedPackages, "${distro.id} protects optional $pkg")
                 assertTrue(pkg in distro.optionalPackages, "${distro.id} is missing $pkg")
@@ -36,10 +41,5 @@
     fun `unknown or missing id falls back to the default rather than throwing`() {
     }
 class LinuxDistroTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertSame
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.linux
 }

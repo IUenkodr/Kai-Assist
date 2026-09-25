@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
+import kotlin.test.assertTrue
 
                 "${model.id} default context ${model.defaultContextTokens} must fit in ${model.maxContextTokens}",
                 "${model.id} must not pin a moving branch",
@@ -42,9 +46,5 @@
     private val hfResolve =
     }
 class LocalModelCatalogTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.inference
 }

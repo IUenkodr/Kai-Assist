@@ -1,3 +1,18 @@
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.network.Requests
+import com.inspiredandroid.kai.network.ServiceCredentials
+import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicChatRequestDto
+import com.inspiredandroid.kai.network.dtos.anthropic.extractText
+import com.inspiredandroid.kai.network.dtos.gemini.GeminiChatRequestDto
+import com.inspiredandroid.kai.network.dtos.gemini.extractText
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
+import com.inspiredandroid.kai.ui.markdown.KaiUiBlock
+import com.inspiredandroid.kai.ui.markdown.KaiUiError
+import com.inspiredandroid.kai.ui.markdown.parseMarkdown
+import java.io.File
+import kotlin.test.Test
+import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.json.JsonPrimitive
 
                             appendLine("### [$i]")
                             appendLine(seg.rawJson)
@@ -469,20 +484,5 @@
  */
 /**
 class KaiUiValidationTest {
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.network.Requests
-import com.inspiredandroid.kai.network.ServiceCredentials
-import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicChatRequestDto
-import com.inspiredandroid.kai.network.dtos.anthropic.extractText
-import com.inspiredandroid.kai.network.dtos.gemini.GeminiChatRequestDto
-import com.inspiredandroid.kai.network.dtos.gemini.extractText
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
-import com.inspiredandroid.kai.ui.markdown.KaiUiBlock
-import com.inspiredandroid.kai.ui.markdown.KaiUiError
-import com.inspiredandroid.kai.ui.markdown.parseMarkdown
-import java.io.File
-import kotlin.test.Test
-import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.json.JsonPrimitive
 package com.inspiredandroid.kai.integration
 }

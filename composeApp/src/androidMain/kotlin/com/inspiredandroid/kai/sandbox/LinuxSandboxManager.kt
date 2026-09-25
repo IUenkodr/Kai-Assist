@@ -1,3 +1,34 @@
+import android.content.Context
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import com.inspiredandroid.kai.SandboxMigration
+import com.inspiredandroid.kai.SandboxSessions
+import com.inspiredandroid.kai.SandboxStatusLabel
+import com.inspiredandroid.kai.TerminalLine
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.ConversationStorage
+import com.inspiredandroid.kai.linux.DistroSpec
+import com.inspiredandroid.kai.linux.GuestFileMap
+import com.inspiredandroid.kai.linux.HomeMigration
+import com.inspiredandroid.kai.linux.InstallMarker
+import com.inspiredandroid.kai.linux.InstallStep
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.linux.LinuxInstaller
+import com.inspiredandroid.kai.linux.LinuxInstalls
+import com.inspiredandroid.kai.linux.LinuxPaths
+import com.inspiredandroid.kai.linux.ProotLauncher
+import java.io.File
+import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.withLock
 
                         .firstNotNullOfOrNull { (result[it] as? String)?.takeIf(String::isNotBlank) }
                         .orEmpty()
@@ -314,37 +345,6 @@
 ) {
 /** How many copied files pass before the migration updates its progress line. */
 class LinuxSandboxManager(
-import android.content.Context
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import com.inspiredandroid.kai.SandboxMigration
-import com.inspiredandroid.kai.SandboxSessions
-import com.inspiredandroid.kai.SandboxStatusLabel
-import com.inspiredandroid.kai.TerminalLine
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.ConversationStorage
-import com.inspiredandroid.kai.linux.DistroSpec
-import com.inspiredandroid.kai.linux.GuestFileMap
-import com.inspiredandroid.kai.linux.HomeMigration
-import com.inspiredandroid.kai.linux.InstallMarker
-import com.inspiredandroid.kai.linux.InstallStep
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.linux.LinuxInstaller
-import com.inspiredandroid.kai.linux.LinuxInstalls
-import com.inspiredandroid.kai.linux.LinuxPaths
-import com.inspiredandroid.kai.linux.ProotLauncher
-import java.io.File
-import kotlin.time.Duration.Companion.milliseconds
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.ensureActive
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.withLock
 package com.inspiredandroid.kai.sandbox
 private const val MIGRATION_PROGRESS_STEP = 25
 private const val PACKAGE_TIMEOUT_SECONDS = 900L

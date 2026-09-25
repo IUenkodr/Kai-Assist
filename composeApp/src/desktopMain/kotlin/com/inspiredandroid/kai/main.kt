@@ -1,3 +1,21 @@
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberWindowState
+import androidx.navigation.compose.rememberNavController
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.logo
+import nl.marc_apps.tts.TextToSpeechEngine
+import nl.marc_apps.tts.TextToSpeechInstance
+import nl.marc_apps.tts.experimental.ExperimentalDesktopTarget
+import nl.marc_apps.tts.rememberTextToSpeechOrNull
+import org.jetbrains.compose.resources.painterResource
 
                 navController = navController,
                 null
@@ -32,23 +50,5 @@
 @file:OptIn(ExperimentalDesktopTarget::class)
 @file:Suppress("ktlint:standard:filename")
 fun main() {
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.unit.DpSize
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.application
-import androidx.compose.ui.window.rememberWindowState
-import androidx.navigation.compose.rememberNavController
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.logo
-import nl.marc_apps.tts.TextToSpeechEngine
-import nl.marc_apps.tts.TextToSpeechInstance
-import nl.marc_apps.tts.experimental.ExperimentalDesktopTarget
-import nl.marc_apps.tts.rememberTextToSpeechOrNull
-import org.jetbrains.compose.resources.painterResource
 package com.inspiredandroid.kai
 }

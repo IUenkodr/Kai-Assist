@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
                     createdAtEpochMs = 0L,
                     description = "Greeting",
@@ -343,9 +347,5 @@
  */
 /**
 class ChatSystemPromptBuilderTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.data
 }

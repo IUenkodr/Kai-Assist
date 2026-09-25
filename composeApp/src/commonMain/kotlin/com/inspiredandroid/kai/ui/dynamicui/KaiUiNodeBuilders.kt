@@ -1,3 +1,15 @@
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.booleanOrNull
+import kotlinx.serialization.json.doubleOrNull
+import kotlinx.serialization.json.intOrNull
+import kotlinx.serialization.json.longOrNull
 
                 ChipItem(label = item.content, value = item.content)
                 ChipItem(label = label, value = value)
@@ -310,18 +322,6 @@
 // its data-class default and the node still builds. Unknown node `type` discriminators
 // return null and are filtered out of `children`/`items` by readNodeList.
 // right one. Readers never throw — if a value can't be coerced, the field falls back to
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonNull
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.booleanOrNull
-import kotlinx.serialization.json.doubleOrNull
-import kotlinx.serialization.json.intOrNull
-import kotlinx.serialization.json.longOrNull
 internal fun JsonElement.toStringLike(): String = when (this) {
 internal fun JsonObject.readAction(key: String): UiAction? {
 internal fun JsonObject.readCallbackDataMap(key: String = "data"): Map<String, JsonPrimitive>? {

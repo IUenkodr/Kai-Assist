@@ -1,3 +1,8 @@
+import java.io.File
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicInteger
 
                         session.stderrBuffer.appendLine(line)
                         session.stdoutBuffer.appendLine(line)
@@ -108,11 +113,6 @@
     }
 /** Desktop spawns host processes directly, so no collaborators are needed. */
 class ProcessManager {
-import java.io.File
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.AtomicInteger
 internal fun createProcessManager(): ProcessManager = ProcessManager()
 package com.inspiredandroid.kai.tools
 private const val MAX_OUTPUT_LENGTH = 30_000

@@ -1,3 +1,22 @@
+import app.cash.turbine.test
+import com.inspiredandroid.kai.DaemonController
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.splinterlands.SplinterlandsApi
+import com.inspiredandroid.kai.splinterlands.SplinterlandsBattleRunner
+import com.inspiredandroid.kai.splinterlands.SplinterlandsStore
+import com.inspiredandroid.kai.testutil.FakeDataRepository
+import com.russhwolf.settings.MapSettings
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
                 override fun start() {}
                 override fun stop() {}
@@ -49,24 +68,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class SplinterlandsViewModelTest {
-import app.cash.turbine.test
-import com.inspiredandroid.kai.DaemonController
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.splinterlands.SplinterlandsApi
-import com.inspiredandroid.kai.splinterlands.SplinterlandsBattleRunner
-import com.inspiredandroid.kai.splinterlands.SplinterlandsStore
-import com.inspiredandroid.kai.testutil.FakeDataRepository
-import com.russhwolf.settings.MapSettings
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.settings
 }

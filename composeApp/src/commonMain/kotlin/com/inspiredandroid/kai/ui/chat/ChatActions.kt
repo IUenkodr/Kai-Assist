@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import io.github.vinceglb.filekit.PlatformFile
 
     val addFile: (PlatformFile) -> Unit,
     val ask: (String) -> Unit,
@@ -26,6 +28,4 @@
 )
 @Immutable
 data class ChatActions(
-import androidx.compose.runtime.Immutable
-import io.github.vinceglb.filekit.PlatformFile
 package com.inspiredandroid.kai.ui.chat

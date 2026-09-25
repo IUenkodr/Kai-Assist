@@ -1,3 +1,31 @@
+import android.content.Context
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
+import com.inspiredandroid.kai.sandbox.SandboxState
+import com.inspiredandroid.kai.sandbox.SessionShell
+import com.inspiredandroid.kai.sandbox.importFileInto
+import com.inspiredandroid.kai.sandbox.openFileWithIntent
+import com.inspiredandroid.kai.sandbox.readFileAsText
+import com.inspiredandroid.kai.sandbox.toFileEntry
+import io.github.vinceglb.filekit.PlatformFile
+import java.io.File
+import java.io.IOException
+import java.util.concurrent.atomic.AtomicBoolean
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.terminal_sandbox_not_ready
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.jetbrains.compose.resources.getString
+import org.koin.java.KoinJavaComponent.inject
 
                         distro = sandboxManager.distro,
                         error = true,
@@ -287,34 +315,6 @@
 /** Returned to the agent as a tool result, so it stays English like the rest of the tool surface. */
 actual fun createSandboxController(): SandboxController = AndroidSandboxController()
 class AndroidSandboxController : SandboxController {
-import android.content.Context
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
-import com.inspiredandroid.kai.sandbox.SandboxState
-import com.inspiredandroid.kai.sandbox.SessionShell
-import com.inspiredandroid.kai.sandbox.importFileInto
-import com.inspiredandroid.kai.sandbox.openFileWithIntent
-import com.inspiredandroid.kai.sandbox.readFileAsText
-import com.inspiredandroid.kai.sandbox.toFileEntry
-import io.github.vinceglb.filekit.PlatformFile
-import java.io.File
-import java.io.IOException
-import java.util.concurrent.atomic.AtomicBoolean
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.terminal_sandbox_not_ready
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.jetbrains.compose.resources.getString
-import org.koin.java.KoinJavaComponent.inject
 package com.inspiredandroid.kai
 private class PersistentCommandHandle(
 private const val SANDBOX_NOT_READY = "Sandbox is not ready"

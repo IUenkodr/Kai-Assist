@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
         // 100 char long
         // 1700000000 = 2023-11-14T22:13:20Z
@@ -47,8 +50,5 @@
     fun `toIsoDate returns null for zero or negative epoch`() {
     }
 class ExtensionFunctionsTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
 package com.inspiredandroid.kai
 }

@@ -1,3 +1,10 @@
+import androidx.compose.runtime.Immutable
+import com.inspiredandroid.kai.data.ImportSection
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.ThemeMode
+import com.inspiredandroid.kai.inference.LocalModel
+import com.inspiredandroid.kai.mcp.PopularMcpServer
+import io.github.vinceglb.filekit.PlatformFile
 
             onAddMcpServer = { _, _, _ -> },
             onAddPopularMcpServer = {},
@@ -128,12 +135,5 @@
 ) {
 @Immutable
 data class SettingsActions(
-import androidx.compose.runtime.Immutable
-import com.inspiredandroid.kai.data.ImportSection
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.ThemeMode
-import com.inspiredandroid.kai.inference.LocalModel
-import com.inspiredandroid.kai.mcp.PopularMcpServer
-import io.github.vinceglb.filekit.PlatformFile
 package com.inspiredandroid.kai.ui.settings
 }

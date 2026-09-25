@@ -1,3 +1,19 @@
+import com.inspiredandroid.kai.linux.ProotHandle
+import com.inspiredandroid.kai.smartTruncate
+import java.io.File
+import java.util.concurrent.atomic.AtomicReference
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withTimeoutOrNull
 
                 // (sentinel arrived) or there's no in-flight command anymore.
                 // Stop escalating as soon as the in-flight command finishes
@@ -205,22 +221,6 @@
 // escapes for portability across bash/busybox printf.
 // to signal (bashPid was null, set only from the sentinel of a completed run).
 class PersistentSandboxShell(
-import com.inspiredandroid.kai.linux.ProotHandle
-import com.inspiredandroid.kai.smartTruncate
-import java.io.File
-import java.util.concurrent.atomic.AtomicReference
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withTimeoutOrNull
 package com.inspiredandroid.kai.sandbox
 private const val MAX_OUTPUT_LENGTH = 15_000
 private const val PID_PROBE_PREFIX = "${RS}KAIBASHPID$US"

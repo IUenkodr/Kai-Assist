@@ -1,3 +1,10 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 
                 card(uid = "c1", name = "Fire Card", color = "Red"),
                 card(uid = "c1", name = "Fire Demon"),
@@ -110,12 +117,5 @@
  */
 /**
 class SplinterlandsTeamPickerPromptTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
 package com.inspiredandroid.kai.splinterlands
 }

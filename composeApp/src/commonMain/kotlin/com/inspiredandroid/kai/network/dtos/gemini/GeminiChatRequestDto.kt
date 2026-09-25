@@ -1,3 +1,5 @@
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
         val args: Map<String, JsonElement>? = null,
         val data: String,
@@ -42,7 +44,5 @@ data class FunctionParameters(
 data class GeminiChatRequestDto(
 data class GeminiTool(
 data class PropertySchema(
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonElement
 package com.inspiredandroid.kai.network.dtos.gemini
 }

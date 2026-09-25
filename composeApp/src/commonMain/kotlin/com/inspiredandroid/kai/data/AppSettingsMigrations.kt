@@ -1,3 +1,11 @@
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_APP_OPENS
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_BASE_URL_V1_MIGRATION_COMPLETE
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CUSTOM_MODEL_MIGRATION_COMPLETE
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_INSTANCE_MIGRATION_COMPLETE
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_MIGRATION_COMPLETE
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_SERVICES_MIGRATION_COMPLETE
+import com.russhwolf.settings.Settings
 
                 setInstanceBaseUrl(instance.instanceId, legacyBaseUrl)
             if (legacyBaseUrl.isNotBlank() && getInstanceBaseUrl(instance.instanceId).isBlank()) {
@@ -93,14 +101,6 @@ fun AppSettings.migrateCustomModelSettingsIfNeeded() {
 fun AppSettings.migrateFromLegacyIfNeeded(legacySettings: Settings?) {
 fun AppSettings.migrateInstanceSettingsIfNeeded() {
 fun AppSettings.runMigrations(legacySettings: Settings?) {
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_APP_OPENS
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_BASE_URL_V1_MIGRATION_COMPLETE
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CUSTOM_MODEL_MIGRATION_COMPLETE
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_INSTANCE_MIGRATION_COMPLETE
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_MIGRATION_COMPLETE
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_SERVICES_MIGRATION_COMPLETE
-import com.russhwolf.settings.Settings
 internal fun ensureBaseUrlHasVersionPath(url: String): String {
 internal val versionPathRegex = Regex("/v\\d+$")
 package com.inspiredandroid.kai.data

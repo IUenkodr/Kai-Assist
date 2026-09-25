@@ -1,3 +1,5 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
         // A touch anywhere inside the last cell that fits reports that cell, not
         // The last row has to be fully inside: 28 rows would want 1008px.
@@ -34,7 +36,5 @@
  */
 /**
 class TerminalCellMetricsTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
 package com.inspiredandroid.kai.ui.build
 }

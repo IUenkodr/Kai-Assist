@@ -1,3 +1,5 @@
+import com.inspiredandroid.kai.data.SharedJson
+import kotlinx.collections.immutable.toImmutableList
 
                             result.insert(commaIdx, '}')
                             stack.removeAt(stack.lastIndex)
@@ -139,8 +141,6 @@
  * everything downstream of that returns a best-effort node or a null that callers filter out.
  */
 /**
-import com.inspiredandroid.kai.data.SharedJson
-import kotlinx.collections.immutable.toImmutableList
 object KaiUiParser {
 package com.inspiredandroid.kai.ui.dynamicui
 }

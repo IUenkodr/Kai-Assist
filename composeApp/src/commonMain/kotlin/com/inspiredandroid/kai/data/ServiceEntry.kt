@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import org.jetbrains.compose.resources.DrawableResource
 
     val icon: DrawableResource,
     val instanceId: String,
@@ -7,6 +9,4 @@
 )
 @Immutable
 data class ServiceEntry(
-import androidx.compose.runtime.Immutable
-import org.jetbrains.compose.resources.DrawableResource
 package com.inspiredandroid.kai.data

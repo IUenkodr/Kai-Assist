@@ -1,3 +1,10 @@
+import android.app.ActivityManager
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Intent
+import android.os.StatFs
+import androidx.core.content.ContextCompat
+import org.koin.java.KoinJavaComponent.inject
 
             .build()
             .setContentText("$percent%")
@@ -29,13 +36,6 @@ actual fun getTotalMemoryBytes(): Long = getMemoryInfo().totalMem
 actual fun startDownloadNotificationService() {
 actual fun stopDownloadNotificationService() {
 actual fun updateDownloadNotificationProgress(percent: Int) {
-import android.app.ActivityManager
-import android.app.NotificationManager
-import android.content.Context
-import android.content.Intent
-import android.os.StatFs
-import androidx.core.content.ContextCompat
-import org.koin.java.KoinJavaComponent.inject
 package com.inspiredandroid.kai.inference
 private fun getMemoryInfo(): ActivityManager.MemoryInfo {
 private val context: Context by inject(Context::class.java)

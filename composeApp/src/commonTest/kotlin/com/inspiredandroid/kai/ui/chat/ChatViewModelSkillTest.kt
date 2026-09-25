@@ -1,3 +1,19 @@
+import com.inspiredandroid.kai.data.TaskScheduler
+import com.inspiredandroid.kai.skills.SkillManifest
+import com.inspiredandroid.kai.testutil.FakeDataRepository
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
         Dispatchers.resetMain()
         Dispatchers.setMain(testDispatcher)
@@ -34,21 +50,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class ChatViewModelSkillTest {
-import com.inspiredandroid.kai.data.TaskScheduler
-import com.inspiredandroid.kai.skills.SkillManifest
-import com.inspiredandroid.kai.testutil.FakeDataRepository
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.chat
 }

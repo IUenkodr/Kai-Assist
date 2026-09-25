@@ -1,3 +1,7 @@
+import kotlinx.coroutines.flow.StateFlow
+import nl.marc_apps.tts.TextToSpeechInstance
+import nl.marc_apps.tts.Voice
+import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
 
         TODO("Not yet implemented")
         callback: (Result<Unit>) -> Unit,
@@ -27,9 +31,5 @@
     }
 @file:OptIn(ExperimentalVoiceApi::class)
 class FakeTextToSpeechInstance : TextToSpeechInstance {
-import kotlinx.coroutines.flow.StateFlow
-import nl.marc_apps.tts.TextToSpeechInstance
-import nl.marc_apps.tts.Voice
-import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
 package com.inspiredandroid.kai.screenshots
 }

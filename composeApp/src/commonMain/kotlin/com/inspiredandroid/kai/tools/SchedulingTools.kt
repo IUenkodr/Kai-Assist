@@ -1,3 +1,23 @@
+import com.inspiredandroid.kai.data.TaskStatus
+import com.inspiredandroid.kai.data.TaskStore
+import com.inspiredandroid.kai.data.TaskTrigger
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_cancel_task_description
+import kai.composeapp.generated.resources.tool_cancel_task_name
+import kai.composeapp.generated.resources.tool_list_tasks_description
+import kai.composeapp.generated.resources.tool_list_tasks_name
+import kai.composeapp.generated.resources.tool_schedule_task_description
+import kai.composeapp.generated.resources.tool_schedule_task_name
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
 
                         "created_at_epoch_ms" to task.createdAtEpochMs,
                         "cron" to (task.cron ?: "none"),
@@ -136,26 +156,6 @@
     val schedulingToolDefinitions = listOf(scheduleTaskToolInfo, cancelTaskToolInfo, listTasksToolInfo)
     }
 @OptIn(ExperimentalTime::class)
-import com.inspiredandroid.kai.data.TaskStatus
-import com.inspiredandroid.kai.data.TaskStore
-import com.inspiredandroid.kai.data.TaskTrigger
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_cancel_task_description
-import kai.composeapp.generated.resources.tool_cancel_task_name
-import kai.composeapp.generated.resources.tool_list_tasks_description
-import kai.composeapp.generated.resources.tool_list_tasks_name
-import kai.composeapp.generated.resources.tool_schedule_task_description
-import kai.composeapp.generated.resources.tool_schedule_task_name
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
-import kotlin.time.Instant
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
 object SchedulingTools {
 package com.inspiredandroid.kai.tools
 }

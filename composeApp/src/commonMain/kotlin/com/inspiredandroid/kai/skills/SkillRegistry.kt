@@ -1,3 +1,19 @@
+import com.inspiredandroid.kai.data.SharedJson
+import com.inspiredandroid.kai.httpClient
+import io.ktor.client.HttpClient
+import io.ktor.client.request.get
+import io.ktor.client.request.header
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.HttpStatusCode
+import io.ktor.http.isSuccess
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
                         .distinct()
                         .filter { it.removePrefix(prefix).none { ch -> ch == '/' } }
@@ -179,21 +195,5 @@
 ) {
 /**
 class SkillRegistry(
-import com.inspiredandroid.kai.data.SharedJson
-import com.inspiredandroid.kai.httpClient
-import io.ktor.client.HttpClient
-import io.ktor.client.request.get
-import io.ktor.client.request.header
-import io.ktor.client.statement.bodyAsText
-import io.ktor.http.HttpStatusCode
-import io.ktor.http.isSuccess
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.coroutineScope
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 package com.inspiredandroid.kai.skills
 }

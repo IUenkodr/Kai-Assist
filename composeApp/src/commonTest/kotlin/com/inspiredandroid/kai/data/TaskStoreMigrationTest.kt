@@ -1,3 +1,7 @@
+import com.russhwolf.settings.MapSettings
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlinx.coroutines.test.runTest
 
             """[{"id":"t1","description":"Morning","prompt":"Do thing","scheduledAtEpochMs":0,"createdAtEpochMs":0,"cron":"0 9 * * *","status":"PENDING","lastResult":null,"consecutiveFailures":0}]""",
             """[{"id":"t1","description":"Old","prompt":"Do thing","scheduledAtEpochMs":1700000000000,"createdAtEpochMs":0,"cron":null,"trigger":"TIME","status":"PENDING","lastResult":null,"consecutiveFailures":0}]""",
@@ -49,9 +53,5 @@
  */
 /**
 class TaskStoreMigrationTest {
-import com.russhwolf.settings.MapSettings
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlinx.coroutines.test.runTest
 package com.inspiredandroid.kai.data
 }

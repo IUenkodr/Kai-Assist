@@ -1,3 +1,11 @@
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.FunctionCall
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.Message
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.ToolCall
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.serialization.json.JsonPrimitive
 
             Message(role = "assistant", content = JsonPrimitive("answer")),
             Message(role = "assistant", content = JsonPrimitive("done")),
@@ -74,13 +82,5 @@
  */
 /**
 class SanitizeToolMessagesTest {
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.FunctionCall
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.Message
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto.ToolCall
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.serialization.json.JsonPrimitive
 package com.inspiredandroid.kai.data.providers
 }

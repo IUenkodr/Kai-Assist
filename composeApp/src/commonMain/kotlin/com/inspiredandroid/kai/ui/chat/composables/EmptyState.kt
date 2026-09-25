@@ -1,3 +1,46 @@
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Terminal
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withLink
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.dp
+import com.inspiredandroid.kai.ui.components.LogoAnimation
+import com.inspiredandroid.kai.ui.components.animatedGradientBorder
+import com.inspiredandroid.kai.ui.handCursor
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.kai_build_open
+import kai.composeapp.generated.resources.privacy_agree_prefix
+import kai.composeapp.generated.resources.privacy_policy
+import kai.composeapp.generated.resources.start_interactive_ui
+import kai.composeapp.generated.resources.welcome_message
+import org.jetbrains.compose.resources.stringResource
 
                             append(policyText)
                         withStyle(style = SpanStyle(color = linkColor)) {
@@ -87,49 +130,6 @@
 ) {
 /**
 @Composable
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Terminal
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
-import androidx.compose.ui.text.LinkAnnotation
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withLink
-import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.unit.dp
-import com.inspiredandroid.kai.ui.components.LogoAnimation
-import com.inspiredandroid.kai.ui.components.animatedGradientBorder
-import com.inspiredandroid.kai.ui.handCursor
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.kai_build_open
-import kai.composeapp.generated.resources.privacy_agree_prefix
-import kai.composeapp.generated.resources.privacy_policy
-import kai.composeapp.generated.resources.start_interactive_ui
-import kai.composeapp.generated.resources.welcome_message
-import org.jetbrains.compose.resources.stringResource
 internal fun EmptyState(
 package com.inspiredandroid.kai.ui.chat.composables
 private fun AnimatedBorderButton(

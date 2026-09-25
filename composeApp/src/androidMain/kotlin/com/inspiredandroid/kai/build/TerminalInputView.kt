@@ -1,3 +1,16 @@
+import android.annotation.SuppressLint
+import android.content.Context
+import android.text.InputType
+import android.view.KeyCharacterMap
+import android.view.KeyEvent
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.BaseInputConnection
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputConnection
+import android.view.inputmethod.InputMethodManager
+import com.inspiredandroid.kai.build.terminal.TerminalKey
+import com.inspiredandroid.kai.build.terminal.TerminalModifiers
 
             EditorInfo.IME_FLAG_NO_EXTRACT_UI or
             EditorInfo.IME_FLAG_NO_FULLSCREEN
@@ -106,19 +119,6 @@
  */
 /**
 @SuppressLint("ViewConstructor")
-import android.annotation.SuppressLint
-import android.content.Context
-import android.text.InputType
-import android.view.KeyCharacterMap
-import android.view.KeyEvent
-import android.view.MotionEvent
-import android.view.View
-import android.view.inputmethod.BaseInputConnection
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputConnection
-import android.view.inputmethod.InputMethodManager
-import com.inspiredandroid.kai.build.terminal.TerminalKey
-import com.inspiredandroid.kai.build.terminal.TerminalModifiers
 internal class TerminalInputView(context: Context) : View(context) {
 package com.inspiredandroid.kai.build
 }

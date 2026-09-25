@@ -1,3 +1,7 @@
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
 
     suspend fun execute(args: Map<String, Any>): Any // Return result as JSON-serializable
     val description: String,
@@ -12,10 +16,6 @@
 @Serializable
 data class ParameterSchema(
 data class ToolSchema(
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonObject
 interface Tool {
 package com.inspiredandroid.kai.network.tools
 }

@@ -1,3 +1,9 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
     /** "single" (default), "multi", or "none" for display-only tags. */
     @Contextual val children: ImmutableList<KaiUiNode> = persistentListOf(),
@@ -152,12 +158,6 @@ data class TextNode(
 enum class AlertSeverity {
 enum class ButtonVariant {
 enum class TextNodeStyle {
-import androidx.compose.runtime.Immutable
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.serialization.Contextual
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.ui.dynamicui
 sealed interface KaiUiNode {
 }

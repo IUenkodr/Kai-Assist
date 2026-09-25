@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
                     accountEmail = "me@example.com",
                     category = MemoryCategory.LEARNING,
@@ -169,9 +173,5 @@
  */
 /**
 class HeartbeatPromptBuilderTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.data
 }

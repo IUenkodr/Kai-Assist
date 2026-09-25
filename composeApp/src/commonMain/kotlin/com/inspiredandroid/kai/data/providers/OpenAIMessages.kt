@@ -1,3 +1,9 @@
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.modelSupportsImages
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
+import com.inspiredandroid.kai.ui.chat.History
+import com.inspiredandroid.kai.ui.chat.toGroqMessageDto
+import kotlinx.serialization.json.JsonPrimitive
 
                     // Nothing answered the calls: strip them, keeping the turn only if it still
                     // carries text. An assistant message with neither content nor tool_calls is
@@ -90,12 +96,6 @@
 ): List<OpenAICompatibleChatRequestDto.Message> = buildList {
 ): List<OpenAICompatibleChatRequestDto.Message> {
 /**
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.modelSupportsImages
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
-import com.inspiredandroid.kai.ui.chat.History
-import com.inspiredandroid.kai.ui.chat.toGroqMessageDto
-import kotlinx.serialization.json.JsonPrimitive
 internal fun buildOpenAIMessages(
 internal fun sanitizeToolMessages(
 package com.inspiredandroid.kai.data.providers

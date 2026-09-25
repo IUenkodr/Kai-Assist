@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
         val avatar: String = "",
         val current: List<Sponsor> = emptyList(),
@@ -12,7 +14,5 @@
 ) {
 @Serializable
 data class SponsorsResponseDto(
-import androidx.compose.runtime.Immutable
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.network.dtos
 }

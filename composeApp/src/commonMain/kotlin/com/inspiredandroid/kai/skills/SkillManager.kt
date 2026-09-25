@@ -1,3 +1,15 @@
+import com.inspiredandroid.kai.SandboxController
+import com.inspiredandroid.kai.TextFileResult
+import com.inspiredandroid.kai.getBackgroundDispatcher
+import kai.composeapp.generated.resources.Res
+import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
                         .filter { !it.isDirectory && it.name != "SKILL.md" }
                         .map { it.name }
@@ -130,17 +142,5 @@
 /**
 class SkillManager(
 fun parseGitHubSkillUrl(input: String): SkillSource.GitHub? {
-import com.inspiredandroid.kai.SandboxController
-import com.inspiredandroid.kai.TextFileResult
-import com.inspiredandroid.kai.getBackgroundDispatcher
-import kai.composeapp.generated.resources.Res
-import kotlin.coroutines.CoroutineContext
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 package com.inspiredandroid.kai.skills
 }

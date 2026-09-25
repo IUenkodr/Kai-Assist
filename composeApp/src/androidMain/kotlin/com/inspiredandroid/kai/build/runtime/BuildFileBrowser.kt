@@ -1,3 +1,19 @@
+import android.content.Context
+import com.inspiredandroid.kai.FileBrowserSource
+import com.inspiredandroid.kai.SandboxFileEntry
+import com.inspiredandroid.kai.TextFileResult
+import com.inspiredandroid.kai.linux.GuestFileMap
+import com.inspiredandroid.kai.linux.LinuxPaths
+import com.inspiredandroid.kai.sandbox.importFileInto
+import com.inspiredandroid.kai.sandbox.openFileWithIntent
+import com.inspiredandroid.kai.sandbox.readFileAsText
+import com.inspiredandroid.kai.sandbox.toFileEntry
+import io.github.vinceglb.filekit.PlatformFile
+import java.io.File
+import java.io.IOException
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
                     .thenBy { it.name.lowercase() },
                 compareByDescending<SandboxFileEntry> { it.isDirectory }
@@ -91,21 +107,5 @@
 ) : FileBrowserSource {
 /**
 class BuildFileBrowser(
-import android.content.Context
-import com.inspiredandroid.kai.FileBrowserSource
-import com.inspiredandroid.kai.SandboxFileEntry
-import com.inspiredandroid.kai.TextFileResult
-import com.inspiredandroid.kai.linux.GuestFileMap
-import com.inspiredandroid.kai.linux.LinuxPaths
-import com.inspiredandroid.kai.sandbox.importFileInto
-import com.inspiredandroid.kai.sandbox.openFileWithIntent
-import com.inspiredandroid.kai.sandbox.readFileAsText
-import com.inspiredandroid.kai.sandbox.toFileEntry
-import io.github.vinceglb.filekit.PlatformFile
-import java.io.File
-import java.io.IOException
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 package com.inspiredandroid.kai.build.runtime
 }

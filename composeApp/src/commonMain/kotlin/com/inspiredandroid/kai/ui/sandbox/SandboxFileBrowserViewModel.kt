@@ -1,3 +1,28 @@
+import androidx.compose.runtime.Immutable
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.inspiredandroid.kai.FileBrowserSource
+import com.inspiredandroid.kai.SandboxFileEntry
+import com.inspiredandroid.kai.TextFileResult
+import io.github.vinceglb.filekit.PlatformFile
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.sandbox_files_delete_failed
+import kai.composeapp.generated.resources.sandbox_files_delete_success
+import kai.composeapp.generated.resources.sandbox_files_editor_closed_after_delete
+import kai.composeapp.generated.resources.sandbox_files_import_failed
+import kai.composeapp.generated.resources.sandbox_files_import_success
+import kai.composeapp.generated.resources.sandbox_files_open_failed
+import kai.composeapp.generated.resources.sandbox_files_rename_error_collision
+import kai.composeapp.generated.resources.sandbox_files_rename_error_invalid
+import kai.composeapp.generated.resources.sandbox_files_rename_failed
+import kai.composeapp.generated.resources.sandbox_files_rename_success
+import kai.composeapp.generated.resources.sandbox_files_save_failed
+import kai.composeapp.generated.resources.sandbox_files_save_success
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.StringResource
 
                                 renaming = null,
                                 snackbarMessage = Res.string.sandbox_files_rename_failed,
@@ -269,31 +294,6 @@
 class SandboxFileBrowserViewModel(
 data class FileBrowserUiState(
 data class RenameState(
-import androidx.compose.runtime.Immutable
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.inspiredandroid.kai.FileBrowserSource
-import com.inspiredandroid.kai.SandboxFileEntry
-import com.inspiredandroid.kai.TextFileResult
-import io.github.vinceglb.filekit.PlatformFile
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.sandbox_files_delete_failed
-import kai.composeapp.generated.resources.sandbox_files_delete_success
-import kai.composeapp.generated.resources.sandbox_files_editor_closed_after_delete
-import kai.composeapp.generated.resources.sandbox_files_import_failed
-import kai.composeapp.generated.resources.sandbox_files_import_success
-import kai.composeapp.generated.resources.sandbox_files_open_failed
-import kai.composeapp.generated.resources.sandbox_files_rename_error_collision
-import kai.composeapp.generated.resources.sandbox_files_rename_error_invalid
-import kai.composeapp.generated.resources.sandbox_files_rename_failed
-import kai.composeapp.generated.resources.sandbox_files_rename_success
-import kai.composeapp.generated.resources.sandbox_files_save_failed
-import kai.composeapp.generated.resources.sandbox_files_save_success
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.StringResource
 package com.inspiredandroid.kai.ui.sandbox
 private val EXTERNAL_EXTENSIONS = setOf(
 sealed interface EditorState {

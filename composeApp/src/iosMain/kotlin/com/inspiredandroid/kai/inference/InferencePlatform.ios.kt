@@ -1,3 +1,12 @@
+import com.inspiredandroid.kai.getAppFilesDirectory
+import kotlinx.cinterop.ExperimentalForeignApi
+import platform.Foundation.NSCachesDirectory
+import platform.Foundation.NSFileManager
+import platform.Foundation.NSFileSystemFreeSize
+import platform.Foundation.NSNumber
+import platform.Foundation.NSProcessInfo
+import platform.Foundation.NSSearchPathForDirectoriesInDomains
+import platform.Foundation.NSUserDomainMask
 
     NSFileManager.defaultManager.createDirectoryAtPath(dir, true, null, null)
     dir
@@ -23,15 +32,6 @@ actual fun getTotalMemoryBytes(): Long = NSProcessInfo.processInfo.physicalMemor
 actual fun startDownloadNotificationService() {}
 actual fun stopDownloadNotificationService() {}
 actual fun updateDownloadNotificationProgress(percent: Int) {}
-import com.inspiredandroid.kai.getAppFilesDirectory
-import kotlinx.cinterop.ExperimentalForeignApi
-import platform.Foundation.NSCachesDirectory
-import platform.Foundation.NSFileManager
-import platform.Foundation.NSFileSystemFreeSize
-import platform.Foundation.NSNumber
-import platform.Foundation.NSProcessInfo
-import platform.Foundation.NSSearchPathForDirectoriesInDomains
-import platform.Foundation.NSUserDomainMask
 package com.inspiredandroid.kai.inference
 private val modelCacheDir: String by lazy {
 private val modelStorageDir: String by lazy {

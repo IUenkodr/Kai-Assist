@@ -1,3 +1,12 @@
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.provider.Telephony
+import androidx.core.content.ContextCompat
+import com.inspiredandroid.kai.data.SmsMessage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.koin.java.KoinJavaComponent.inject
 
                             address = cursor.getString(addressCol).orEmpty(),
                             body = body,
@@ -101,15 +110,6 @@
 // it, `playStore` does not — so this is a compile-time property per flavor, safe
 // to cache for the process lifetime. Shared with Platform.android.kt's
 actual class SmsReader actual constructor() {
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
-import android.provider.Telephony
-import androidx.core.content.ContextCompat
-import com.inspiredandroid.kai.data.SmsMessage
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import org.koin.java.KoinJavaComponent.inject
 internal fun Context.declaresReadSms(): Boolean = try {
 package com.inspiredandroid.kai.sms
 }

@@ -1,3 +1,25 @@
+import com.inspiredandroid.kai.getAvailableTools
+import com.inspiredandroid.kai.getPlatformToolDefinitions
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.smartTruncate
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.boolean
+import kotlinx.serialization.json.booleanOrNull
+import kotlinx.serialization.json.double
+import kotlinx.serialization.json.doubleOrNull
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.intOrNull
+import kotlinx.serialization.json.jsonObject
+import org.jetbrains.compose.resources.getString
 
                             k.toString() to anyToJsonElement(v)
                         result.entries.associate { (k, v) ->
@@ -72,28 +94,6 @@
     }
 ) {
 class ToolExecutor(
-import com.inspiredandroid.kai.getAvailableTools
-import com.inspiredandroid.kai.getPlatformToolDefinitions
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.smartTruncate
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.TimeoutCancellationException
-import kotlinx.coroutines.withContext
-import kotlinx.coroutines.withTimeout
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonNull
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.boolean
-import kotlinx.serialization.json.booleanOrNull
-import kotlinx.serialization.json.double
-import kotlinx.serialization.json.doubleOrNull
-import kotlinx.serialization.json.int
-import kotlinx.serialization.json.intOrNull
-import kotlinx.serialization.json.jsonObject
-import org.jetbrains.compose.resources.getString
 package com.inspiredandroid.kai.data
 private const val MAX_TOOL_RESULT_LENGTH = 20_000
 }

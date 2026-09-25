@@ -1,3 +1,6 @@
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlinx.serialization.serializer
 
             .filter { it.postedAtEpochMs >= ageCutoff }
             .flatMap { (_, msgs) -> msgs.sortedByDescending { it.postedAtEpochMs }.take(MAX_PER_PACKAGE) }
@@ -55,8 +58,5 @@
 /**
 @OptIn(ExperimentalTime::class)
 class NotificationStore(appSettings: AppSettings) {
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
-import kotlinx.serialization.serializer
 package com.inspiredandroid.kai.data
 }

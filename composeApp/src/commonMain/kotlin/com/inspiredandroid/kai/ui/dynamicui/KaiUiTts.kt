@@ -1,3 +1,5 @@
+import com.inspiredandroid.kai.ui.markdown.parseMarkdown
+import com.inspiredandroid.kai.ui.markdown.toSpeakableText
 
             children.forEach { it.walk(parts) }
             description?.let { parts += it }
@@ -55,8 +57,6 @@
  */
 /**
 fun String.toSpeakableText(): String = parseMarkdown(this).toSpeakableText()
-import com.inspiredandroid.kai.ui.markdown.parseMarkdown
-import com.inspiredandroid.kai.ui.markdown.toSpeakableText
 internal fun KaiUiNode.collectSpeakableText(): String {
 package com.inspiredandroid.kai.ui.dynamicui
 private fun KaiUiNode.walk(parts: MutableList<String>) {

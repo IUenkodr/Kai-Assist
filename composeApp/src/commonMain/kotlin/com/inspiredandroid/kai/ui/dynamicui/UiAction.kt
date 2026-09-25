@@ -1,3 +1,7 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonPrimitive
 
         get() = data?.mapValues { it.value.content }
     /** Returns data values coerced to strings (handles booleans/numbers from LLMs). */
@@ -20,10 +24,6 @@ data class CallbackAction(
 data class CopyToClipboardAction(
 data class OpenUrlAction(
 data class ToggleAction(
-import androidx.compose.runtime.Immutable
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonPrimitive
 package com.inspiredandroid.kai.ui.dynamicui
 sealed interface UiAction
 }

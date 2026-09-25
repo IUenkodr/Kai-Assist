@@ -1,3 +1,10 @@
+import androidx.compose.runtime.Immutable
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.serializer
 
                         appLabel = record.appLabel,
                         id = record.id,
@@ -136,12 +143,5 @@
 class HeartbeatManager(
 data class HeartbeatConfig(
 data class HeartbeatLogEntry(
-import androidx.compose.runtime.Immutable
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.serializer
 package com.inspiredandroid.kai.data
 }

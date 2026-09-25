@@ -1,3 +1,23 @@
+import app.cash.turbine.test
+import com.inspiredandroid.kai.FileBrowserSource
+import com.inspiredandroid.kai.KaiBuildController
+import com.inspiredandroid.kai.NoOpFileBrowserSource
+import com.inspiredandroid.kai.build.BuildEnvironmentState
+import com.inspiredandroid.kai.build.KaiBuildState
+import com.inspiredandroid.kai.testutil.FakeDataRepository
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlinx.collections.immutable.persistentSetOf
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
                 environment = BuildEnvironmentState.Ready,
                 installedAgents = persistentSetOf("claude-code", "grok"),
@@ -73,25 +93,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class KaiBuildViewModelTest {
-import app.cash.turbine.test
-import com.inspiredandroid.kai.FileBrowserSource
-import com.inspiredandroid.kai.KaiBuildController
-import com.inspiredandroid.kai.NoOpFileBrowserSource
-import com.inspiredandroid.kai.build.BuildEnvironmentState
-import com.inspiredandroid.kai.build.KaiBuildState
-import com.inspiredandroid.kai.testutil.FakeDataRepository
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlinx.collections.immutable.persistentSetOf
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.build
 }

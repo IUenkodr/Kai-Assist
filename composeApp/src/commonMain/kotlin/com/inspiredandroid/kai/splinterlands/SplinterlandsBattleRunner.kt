@@ -1,3 +1,29 @@
+import com.inspiredandroid.kai.DaemonController
+import com.inspiredandroid.kai.data.DataRepository
+import kotlin.time.Clock
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
+import kotlin.time.ExperimentalTime
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.intOrNull
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
                             it.copy(phase = BattlePhase.Error, isRunning = false, errorMessage = result.errorMessage)
                             llmPickedTeam = true,
@@ -448,32 +474,6 @@
 )
 ) {
 class SplinterlandsBattleRunner(
-import com.inspiredandroid.kai.DaemonController
-import com.inspiredandroid.kai.data.DataRepository
-import kotlin.time.Clock
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
-import kotlin.time.ExperimentalTime
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeoutOrNull
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.int
-import kotlinx.serialization.json.intOrNull
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 package com.inspiredandroid.kai.splinterlands
 private const val APP_VERSION = "splinterlands/0.7.176"
 private const val MAX_CONSECUTIVE_ERRORS = 5

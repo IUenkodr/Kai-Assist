@@ -1,3 +1,10 @@
+import com.russhwolf.settings.MapSettings
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.serializer
 
                 default = { Config() },
                 label = "test",
@@ -108,12 +115,5 @@
  */
 /**
 class SettingsJsonTest {
-import com.russhwolf.settings.MapSettings
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlinx.coroutines.test.runTest
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.serializer
 package com.inspiredandroid.kai.data
 }

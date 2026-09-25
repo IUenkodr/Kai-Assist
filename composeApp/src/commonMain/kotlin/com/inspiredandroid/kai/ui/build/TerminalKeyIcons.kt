@@ -1,3 +1,11 @@
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.group
+import androidx.compose.ui.graphics.vector.path
+import androidx.compose.ui.unit.dp
 
                 lineTo(13.5f, 18.5f)
                 lineTo(19f, 12f)
@@ -56,14 +64,6 @@
 // terminal itself draws with. Those are text, not icons: they come out
 // the Material icons in the input bar below they read as stray characters
 // the app's other hand-drawn icons use, heavy enough to stay legible at arm's
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.group
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
 internal val TerminalArrowDown: ImageVector by lazy { arrowIcon("TerminalArrowDown", 270f) }
 internal val TerminalArrowLeft: ImageVector by lazy { arrowIcon("TerminalArrowLeft", 0f) }
 internal val TerminalArrowRight: ImageVector by lazy { arrowIcon("TerminalArrowRight", 180f) }

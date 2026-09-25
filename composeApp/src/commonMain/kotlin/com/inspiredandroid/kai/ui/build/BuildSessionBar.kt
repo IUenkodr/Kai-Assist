@@ -1,3 +1,47 @@
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import com.inspiredandroid.kai.build.BuildAgent
+import com.inspiredandroid.kai.build.BuildAgents
+import com.inspiredandroid.kai.build.BuildTerminalSession
+import com.inspiredandroid.kai.ui.handCursor
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.kai_build_back_content_description
+import kai.composeapp.generated.resources.kai_build_files_tab
+import kai.composeapp.generated.resources.kai_build_session_close_content_description
+import kai.composeapp.generated.resources.kai_build_session_new_content_description
+import kai.composeapp.generated.resources.kai_build_session_shell
+import kotlinx.collections.immutable.ImmutableList
+import org.jetbrains.compose.resources.stringResource
 
                             onNewSession(agent.id)
                             showNewMenu = false
@@ -122,50 +166,6 @@
 /**
 /** The strip's pill shape. [trailing] is shown only while selected — that is where a tab's close button goes. */
 @Composable
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import com.inspiredandroid.kai.build.BuildAgent
-import com.inspiredandroid.kai.build.BuildAgents
-import com.inspiredandroid.kai.build.BuildTerminalSession
-import com.inspiredandroid.kai.ui.handCursor
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.kai_build_back_content_description
-import kai.composeapp.generated.resources.kai_build_files_tab
-import kai.composeapp.generated.resources.kai_build_session_close_content_description
-import kai.composeapp.generated.resources.kai_build_session_new_content_description
-import kai.composeapp.generated.resources.kai_build_session_shell
-import kotlinx.collections.immutable.ImmutableList
-import org.jetbrains.compose.resources.stringResource
 internal fun BuildSessionBar(
 package com.inspiredandroid.kai.ui.build
 private fun SessionTab(

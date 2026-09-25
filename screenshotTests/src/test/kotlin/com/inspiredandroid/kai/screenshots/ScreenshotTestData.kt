@@ -1,3 +1,25 @@
+import com.inspiredandroid.kai.TerminalLine
+import com.inspiredandroid.kai.data.MemoryEntry
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.getPlatformToolDefinitions
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.ui.chat.ChatActions
+import com.inspiredandroid.kai.ui.chat.ChatUiState
+import com.inspiredandroid.kai.ui.chat.History
+import com.inspiredandroid.kai.ui.settings.ConfiguredServiceEntry
+import com.inspiredandroid.kai.ui.settings.ConnectionStatus
+import com.inspiredandroid.kai.ui.settings.McpConnectionStatus
+import com.inspiredandroid.kai.ui.settings.McpServerUiState
+import com.inspiredandroid.kai.ui.settings.SandboxUiState
+import com.inspiredandroid.kai.ui.settings.SettingsModel
+import com.inspiredandroid.kai.ui.settings.SettingsTab
+import com.inspiredandroid.kai.ui.settings.SettingsUiState
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
                     content = chat["assistantMessage"]!!.jsonPrimitive.content,
                     content = chat["userMessage"]!!.jsonPrimitive.content,
@@ -186,28 +208,6 @@
     val settingsSandbox = SettingsUiState(
     val settingsTools = SettingsUiState(
     }
-import com.inspiredandroid.kai.TerminalLine
-import com.inspiredandroid.kai.data.MemoryEntry
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.getPlatformToolDefinitions
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.ui.chat.ChatActions
-import com.inspiredandroid.kai.ui.chat.ChatUiState
-import com.inspiredandroid.kai.ui.chat.History
-import com.inspiredandroid.kai.ui.settings.ConfiguredServiceEntry
-import com.inspiredandroid.kai.ui.settings.ConnectionStatus
-import com.inspiredandroid.kai.ui.settings.McpConnectionStatus
-import com.inspiredandroid.kai.ui.settings.McpServerUiState
-import com.inspiredandroid.kai.ui.settings.SandboxUiState
-import com.inspiredandroid.kai.ui.settings.SettingsModel
-import com.inspiredandroid.kai.ui.settings.SettingsTab
-import com.inspiredandroid.kai.ui.settings.SettingsUiState
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 object ScreenshotTestData {
 package com.inspiredandroid.kai.screenshots
 }

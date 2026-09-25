@@ -1,3 +1,7 @@
+import com.inspiredandroid.kai.data.EmailAccount
+import com.inspiredandroid.kai.data.EmailStore
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
                     .asSequence()
                     .filter { it > syncState.lastSeenUid && it !in pendingUidsForAccount }
@@ -53,9 +57,5 @@
 ) {
 @OptIn(ExperimentalTime::class)
 class EmailPoller(
-import com.inspiredandroid.kai.data.EmailAccount
-import com.inspiredandroid.kai.data.EmailStore
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
 package com.inspiredandroid.kai.email
 }

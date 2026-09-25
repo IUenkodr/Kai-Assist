@@ -1,3 +1,9 @@
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
                     -2.0
                     -5.0
@@ -1230,12 +1236,6 @@ fun parseLlmPick(responseText: String, idMap: Map<Int, String>): LlmPick? {
 fun parseRulesets(rulesetStr: String): Set<String> {
 fun pickTeam(
 fun validateTeam(
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.int
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 internal fun buildInactiveColors(inactiveStr: String): Set<String> {
 internal fun determineDragonAllyColor(summonerColor: String?, monsterUids: List<String>, monsterLookup: Map<String, CardEntry>): String? {
 package com.inspiredandroid.kai.splinterlands

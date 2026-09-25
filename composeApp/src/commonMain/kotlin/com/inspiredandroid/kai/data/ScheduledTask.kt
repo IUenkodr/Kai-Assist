@@ -1,3 +1,6 @@
+import androidx.compose.runtime.Immutable
+import kotlin.time.Instant
+import kotlinx.serialization.Serializable
 
      * Empty for HEARTBEAT-trigger tasks — those share the heartbeat-wide log instead.
      * How this task is dispatched. Defaulted to [TaskTrigger.TIME] for backward
@@ -42,8 +45,5 @@ data class ScheduledTask(
 data class TaskExecutionLogEntry(
 enum class TaskStatus { PENDING, COMPLETED }
 enum class TaskTrigger { TIME, CRON, HEARTBEAT }
-import androidx.compose.runtime.Immutable
-import kotlin.time.Instant
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.data
 }

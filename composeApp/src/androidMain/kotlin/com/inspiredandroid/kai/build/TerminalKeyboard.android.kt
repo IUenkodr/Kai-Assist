@@ -1,3 +1,13 @@
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.AndroidView
+import com.inspiredandroid.kai.build.terminal.TerminalKey
+import com.inspiredandroid.kai.build.terminal.TerminalModifiers
 
             input.onKey = onKey
             input.onText = onText
@@ -20,15 +30,5 @@
 @Composable
 actual fun PlatformTerminalKeyboard(
 actual val supportsRawTerminalInput: Boolean = true
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.viewinterop.AndroidView
-import com.inspiredandroid.kai.build.terminal.TerminalKey
-import com.inspiredandroid.kai.build.terminal.TerminalModifiers
 package com.inspiredandroid.kai.build
 }

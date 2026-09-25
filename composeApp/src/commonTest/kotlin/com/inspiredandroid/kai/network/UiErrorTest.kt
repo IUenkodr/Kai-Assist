@@ -1,3 +1,9 @@
+import com.inspiredandroid.kai.inference.InferenceTimeoutException
+import com.inspiredandroid.kai.inference.InsufficientMemoryException
+import com.inspiredandroid.kai.inference.NoModelDownloadedException
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertIs
 
         assertEquals("Connection timed out", error.message)
         assertEquals("Engine not initialized", error.message)
@@ -41,11 +47,5 @@
     fun `known API exceptions still map to their specific resources`() {
     }
 class UiErrorTest {
-import com.inspiredandroid.kai.inference.InferenceTimeoutException
-import com.inspiredandroid.kai.inference.InsufficientMemoryException
-import com.inspiredandroid.kai.inference.NoModelDownloadedException
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertIs
 package com.inspiredandroid.kai.network
 }

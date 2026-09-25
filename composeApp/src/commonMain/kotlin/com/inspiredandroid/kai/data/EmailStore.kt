@@ -1,3 +1,4 @@
+import kotlinx.serialization.serializer
 
             appSettings.removeEmailPassword(id)
             if (removed) current.filterNot { it.id == id } else current
@@ -48,6 +49,5 @@
     suspend fun updateSyncState(state: EmailSyncState) {
     }
 class EmailStore(private val appSettings: AppSettings) {
-import kotlinx.serialization.serializer
 package com.inspiredandroid.kai.data
 }

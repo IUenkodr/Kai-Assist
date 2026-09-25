@@ -1,3 +1,39 @@
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.draganddrop.DragAndDropEvent
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.EmailStore
+import com.inspiredandroid.kai.data.MemoryStore
+import com.inspiredandroid.kai.data.TaskStore
+import com.inspiredandroid.kai.mcp.McpServerManager
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.tools.CommonTools
+import com.inspiredandroid.kai.tools.buildAgentToolSet
+import com.inspiredandroid.kai.ui.icons.ArrowBackIos
+import com.russhwolf.settings.ExperimentalSettingsImplementation
+import com.russhwolf.settings.KeychainSettings
+import com.russhwolf.settings.NSUserDefaultsSettings
+import com.russhwolf.settings.Settings
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.PlatformFile
+import io.github.vinceglb.filekit.dialogs.openFileSaver
+import io.github.vinceglb.filekit.write
+import io.ktor.client.HttpClient
+import io.ktor.client.HttpClientConfig
+import io.ktor.client.engine.darwin.Darwin
+import kotlin.coroutines.CoroutineContext
+import kotlinx.cinterop.addressOf
+import kotlinx.cinterop.useContents
+import kotlinx.cinterop.usePinned
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import platform.Foundation.NSData
+import platform.Foundation.dataWithBytes
 
                     .triggerWithTimeInterval(timeInterval = 0.1, repeats = false)
                     content = content,
@@ -123,42 +159,6 @@ actual val isEmailSupported: Boolean = true
 actual val isNotificationsSupported: Boolean = false
 actual val isSmsSupported: Boolean = false
 actual val isSplinterlandsSupported: Boolean = false
-import androidx.compose.material.icons.Icons
-import androidx.compose.ui.draganddrop.DragAndDropEvent
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.toComposeImageBitmap
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.EmailStore
-import com.inspiredandroid.kai.data.MemoryStore
-import com.inspiredandroid.kai.data.TaskStore
-import com.inspiredandroid.kai.mcp.McpServerManager
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.tools.CommonTools
-import com.inspiredandroid.kai.tools.buildAgentToolSet
-import com.inspiredandroid.kai.ui.icons.ArrowBackIos
-import com.russhwolf.settings.ExperimentalSettingsImplementation
-import com.russhwolf.settings.KeychainSettings
-import com.russhwolf.settings.NSUserDefaultsSettings
-import com.russhwolf.settings.Settings
-import io.github.vinceglb.filekit.FileKit
-import io.github.vinceglb.filekit.PlatformFile
-import io.github.vinceglb.filekit.dialogs.openFileSaver
-import io.github.vinceglb.filekit.write
-import io.ktor.client.HttpClient
-import io.ktor.client.HttpClientConfig
-import io.ktor.client.engine.darwin.Darwin
-import kotlin.coroutines.CoroutineContext
-import kotlinx.cinterop.addressOf
-import kotlinx.cinterop.useContents
-import kotlinx.cinterop.usePinned
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-import platform.Foundation.NSData
-import platform.Foundation.dataWithBytes
 package com.inspiredandroid.kai
 private fun NSData.toByteArray(): ByteArray {
 private object IosKoinHelper : KoinComponent {

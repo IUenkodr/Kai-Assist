@@ -1,3 +1,8 @@
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
+import kotlinx.serialization.serializer
 
                     CronExpression(cron!!).nextAfter(now)?.toEpochMilliseconds() ?: now.toEpochMilliseconds()
                     now.toEpochMilliseconds()
@@ -80,10 +85,5 @@
 @OptIn(ExperimentalTime::class, ExperimentalUuidApi::class)
 class TaskStore(appSettings: AppSettings) {
 data class PendingTaskPartition(
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
-import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
-import kotlinx.serialization.serializer
 package com.inspiredandroid.kai.data
 }

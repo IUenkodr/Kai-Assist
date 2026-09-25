@@ -1,3 +1,18 @@
+import com.inspiredandroid.kai.inference.DownloadError
+import com.inspiredandroid.kai.inference.DownloadedModel
+import com.inspiredandroid.kai.inference.EngineState
+import com.inspiredandroid.kai.inference.LocalModel
+import com.inspiredandroid.kai.inference.ModelImportError
+import com.inspiredandroid.kai.inference.ModelImportResult
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.mcp.McpServerConfig
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.skills.RegistrySkillEntry
+import com.inspiredandroid.kai.skills.SkillManifest
+import com.inspiredandroid.kai.ui.chat.History
+import com.inspiredandroid.kai.ui.settings.SettingsModel
+import io.github.vinceglb.filekit.PlatformFile
+import kotlinx.coroutines.flow.StateFlow
 
         activeSkillId: String? = null,
         files: List<PlatformFile>,
@@ -218,21 +233,6 @@
     val pendingShareText: StateFlow<String?>
     val savedConversations: StateFlow<List<Conversation>>
     val smsDrafts: StateFlow<List<SmsDraft>>
-import com.inspiredandroid.kai.inference.DownloadError
-import com.inspiredandroid.kai.inference.DownloadedModel
-import com.inspiredandroid.kai.inference.EngineState
-import com.inspiredandroid.kai.inference.LocalModel
-import com.inspiredandroid.kai.inference.ModelImportError
-import com.inspiredandroid.kai.inference.ModelImportResult
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.mcp.McpServerConfig
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.skills.RegistrySkillEntry
-import com.inspiredandroid.kai.skills.SkillManifest
-import com.inspiredandroid.kai.ui.chat.History
-import com.inspiredandroid.kai.ui.settings.SettingsModel
-import io.github.vinceglb.filekit.PlatformFile
-import kotlinx.coroutines.flow.StateFlow
 interface DataRepository {
 package com.inspiredandroid.kai.data
 }

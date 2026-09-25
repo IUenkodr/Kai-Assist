@@ -1,3 +1,4 @@
+import com.inspiredandroid.kai.data.SmsMessage
 
      * Fetch a single inbox message by `_id`. Null if not found or not supported.
      * Full-text search across inbox address + body. Returns newest-first, capped
@@ -24,6 +25,5 @@
  */
 /**
 expect class SmsReader() {
-import com.inspiredandroid.kai.data.SmsMessage
 package com.inspiredandroid.kai.sms
 }

@@ -1,3 +1,29 @@
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.ui.draganddrop.DragAndDropEvent
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.MemoryStore
+import com.inspiredandroid.kai.data.TaskStore
+import com.inspiredandroid.kai.mcp.McpServerManager
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.tools.CommonTools
+import com.inspiredandroid.kai.tools.buildAgentToolSet
+import com.russhwolf.settings.Settings
+import com.russhwolf.settings.StorageSettings
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.PlatformFile
+import io.github.vinceglb.filekit.download
+import io.ktor.client.HttpClient
+import io.ktor.client.HttpClientConfig
+import io.ktor.client.engine.js.Js
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
     // No system back gesture on web
     // Web has no secure storage - using localStorage
@@ -43,32 +69,6 @@ actual val isEmailSupported: Boolean = false
 actual val isNotificationsSupported: Boolean = false
 actual val isSmsSupported: Boolean = false
 actual val isSplinterlandsSupported: Boolean = false
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.ui.draganddrop.DragAndDropEvent
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.toComposeImageBitmap
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.MemoryStore
-import com.inspiredandroid.kai.data.TaskStore
-import com.inspiredandroid.kai.mcp.McpServerManager
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.tools.CommonTools
-import com.inspiredandroid.kai.tools.buildAgentToolSet
-import com.russhwolf.settings.Settings
-import com.russhwolf.settings.StorageSettings
-import io.github.vinceglb.filekit.FileKit
-import io.github.vinceglb.filekit.PlatformFile
-import io.github.vinceglb.filekit.download
-import io.ktor.client.HttpClient
-import io.ktor.client.HttpClientConfig
-import io.ktor.client.engine.js.Js
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 package com.inspiredandroid.kai
 private object WebKoinHelper : KoinComponent {
 }

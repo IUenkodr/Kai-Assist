@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
               {"type":"button","label":"Gorgonzola","action":{"type":"callback","event":"pick","data":{"choice":"gor"}}}
               {"type":"button","label":"Mozzarella","action":{"type":"callback","event":"pick","data":{"choice":"moz"}}},
@@ -29,8 +32,5 @@
     fun `speaks text nodes and button labels inside a kai-ui fence`() {
     }
 class KaiUiTtsTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.ui.dynamicui
 }

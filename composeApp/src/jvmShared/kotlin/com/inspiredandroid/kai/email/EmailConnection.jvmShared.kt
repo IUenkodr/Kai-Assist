@@ -1,3 +1,12 @@
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+import java.io.PrintWriter
+import java.net.Socket
+import javax.net.ssl.SSLSocket
+import javax.net.ssl.SSLSocketFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
             host,
             socket,
@@ -39,15 +48,6 @@
 ) : EmailConnection {
 /**
 actual suspend fun createEmailConnection(host: String, port: Int, tls: Boolean): EmailConnection = withContext(Dispatchers.IO) {
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.io.PrintWriter
-import java.net.Socket
-import javax.net.ssl.SSLSocket
-import javax.net.ssl.SSLSocketFactory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 package com.inspiredandroid.kai.email
 private class JvmEmailConnection(
 }

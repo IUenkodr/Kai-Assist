@@ -1,3 +1,5 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
         assertEquals("\uD83C\uDF89 \uD83D\uDE80 \u2728 \uD83D\uDC4D", flat)
         assertEquals("look: \uD83D\uDD25 hot", flat)
@@ -14,7 +16,5 @@
     private fun inlines(text: String): List<InlineNode> = (parseMarkdown(text).blocks.single() as Paragraph).inlines
     }
 class EmojiShortcodeTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
 package com.inspiredandroid.kai.ui.markdown
 }

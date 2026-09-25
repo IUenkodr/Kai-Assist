@@ -1,3 +1,12 @@
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.UriHandler
+import com.inspiredandroid.kai.SandboxController
+import io.ktor.http.decodeURLPart
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
             delegate.openUri(uri)
             scope.launch { sandboxController.openFile(sandboxPath) }
@@ -39,15 +48,6 @@
 ) : UriHandler {
 /**
 @Composable
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.platform.UriHandler
-import com.inspiredandroid.kai.SandboxController
-import io.ktor.http.decodeURLPart
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 internal class SandboxAwareUriHandler(
 internal fun rememberSandboxAwareUriHandler(sandboxController: SandboxController): UriHandler {
 internal fun toSandboxPath(uri: String): String? {

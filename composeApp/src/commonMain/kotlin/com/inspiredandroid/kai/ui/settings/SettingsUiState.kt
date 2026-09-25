@@ -1,3 +1,27 @@
+import androidx.compose.runtime.Immutable
+import com.inspiredandroid.kai.data.EmailAccount
+import com.inspiredandroid.kai.data.EmailSyncState
+import com.inspiredandroid.kai.data.HeartbeatLogEntry
+import com.inspiredandroid.kai.data.MemoryEntry
+import com.inspiredandroid.kai.data.ScheduledTask
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.ServiceEntry
+import com.inspiredandroid.kai.data.SmsSyncState
+import com.inspiredandroid.kai.data.ThemeMode
+import com.inspiredandroid.kai.inference.DownloadError
+import com.inspiredandroid.kai.inference.LocalModel
+import com.inspiredandroid.kai.inference.ModelImportError
+import com.inspiredandroid.kai.network.dtos.SponsorsResponseDto
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.skills.RegistrySkillEntry
+import com.inspiredandroid.kai.skills.SkillManifest
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.ImmutableSet
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.persistentMapOf
+import kotlinx.collections.immutable.persistentSetOf
+import org.jetbrains.compose.resources.StringResource
 
      * (currently Ollama Cloud and OpenRouter only).
      * True when this entry was typed by the user and is not (yet) present in the
@@ -143,30 +167,6 @@ data class SettingsUiState(
 enum class ConnectionStatus {
 enum class McpConnectionStatus {
 enum class SettingsTab {
-import androidx.compose.runtime.Immutable
-import com.inspiredandroid.kai.data.EmailAccount
-import com.inspiredandroid.kai.data.EmailSyncState
-import com.inspiredandroid.kai.data.HeartbeatLogEntry
-import com.inspiredandroid.kai.data.MemoryEntry
-import com.inspiredandroid.kai.data.ScheduledTask
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.ServiceEntry
-import com.inspiredandroid.kai.data.SmsSyncState
-import com.inspiredandroid.kai.data.ThemeMode
-import com.inspiredandroid.kai.inference.DownloadError
-import com.inspiredandroid.kai.inference.LocalModel
-import com.inspiredandroid.kai.inference.ModelImportError
-import com.inspiredandroid.kai.network.dtos.SponsorsResponseDto
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.skills.RegistrySkillEntry
-import com.inspiredandroid.kai.skills.SkillManifest
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.ImmutableMap
-import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.persistentMapOf
-import kotlinx.collections.immutable.persistentSetOf
-import org.jetbrains.compose.resources.StringResource
 package com.inspiredandroid.kai.ui.settings
 sealed interface ImportResult {
 sealed interface PendingDeletion {

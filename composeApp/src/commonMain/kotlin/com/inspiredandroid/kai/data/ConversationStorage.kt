@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.TerminalLine
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
                     conversation
                     conversation.copy(shellTranscript = existing.shellTranscript)
@@ -84,11 +89,6 @@
 class ConversationStorage(
 expect fun deleteLegacyConversationFile()
 expect fun readLegacyConversationFile(): ByteArray?
-import com.inspiredandroid.kai.TerminalLine
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 package com.inspiredandroid.kai.data
 private const val MAX_SHELL_TRANSCRIPT_CHARS = 10_000
 }

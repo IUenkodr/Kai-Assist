@@ -1,3 +1,13 @@
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
+import com.inspiredandroid.kai.sandbox.SandboxState
+import com.inspiredandroid.kai.sandbox.SshConfigManager
+import java.io.File
+import org.koin.java.KoinJavaComponent.inject
 
                 "DNS name or IP of the remote machine.",
                 "Optional single line appended to ~/.ssh/known_hosts. Typically the output of `ssh-keyscan -t ed25519 <host>`. Deduplicated by exact-line match.",
@@ -77,16 +87,6 @@ Connection persistence ("held connections") is NOT available — openssh's Contr
 Password-only remotes: openssh inside this sandbox can't field interactive password prompts on its own (no PTY; ssh reads from /dev/tty, not stdin, so heredoc fallback does not work). Install sshpass once (`$installSshpass` via execute_shell_command) and invoke as `sshpass -p '<password>' ssh <alias> '<remote-cmd>'`, or `sshpass -f <file> ssh <alias>` to keep the password out of the command line. sshpass fakes a PTY internally, which is the only path that actually delivers a password.
 This tool does NOT create or upload private keys. To make a key usable, the user must place it under ~/.ssh in the sandbox separately. Be aware that any key text passed through chat (including via execute_shell_command's `cat > ~/.ssh/id_x <<EOF ...`) goes to the model provider in cleartext — ask the user before doing that.
 What this writes inside the sandbox:
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
-import com.inspiredandroid.kai.sandbox.SandboxState
-import com.inspiredandroid.kai.sandbox.SshConfigManager
-import java.io.File
-import org.koin.java.KoinJavaComponent.inject
 object SshConfigureHostTool : Tool {
 package com.inspiredandroid.kai.tools
 private fun toolDescription(distro: LinuxDistro): String {

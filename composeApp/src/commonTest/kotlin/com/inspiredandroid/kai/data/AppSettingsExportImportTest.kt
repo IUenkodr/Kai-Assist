@@ -1,3 +1,18 @@
+import com.russhwolf.settings.MapSettings
+import kotlin.test.Test
+import kotlin.test.assertContains
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.boolean
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
                         "scheduledAtEpochMs": 1000, "createdAtEpochMs": 1000}]""",
                         Conversation.Message(id = "msg1", role = "user", content = "Hello"),
@@ -400,20 +415,5 @@
     private val toolIds = listOf("tool_a", "tool_b", "tool_c")
     }
 class AppSettingsExportImportTest {
-import com.russhwolf.settings.MapSettings
-import kotlin.test.Test
-import kotlin.test.assertContains
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.boolean
-import kotlinx.serialization.json.int
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 package com.inspiredandroid.kai.data
 }

@@ -1,3 +1,21 @@
+import com.inspiredandroid.kai.httpClient
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.request.header
+import io.ktor.client.request.request
+import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.ContentType
+import io.ktor.http.HttpMethod
+import io.ktor.http.Url
+import io.ktor.http.contentType
+import io.ktor.http.isSuccess
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_fetch_url_description
+import kai.composeapp.generated.resources.tool_fetch_url_name
 
                             ?: ContentType.Application.FormUrlEncoded,
                         contentTypeArg?.let { runCatching { ContentType.parse(it) }.getOrNull() }
@@ -93,24 +111,6 @@
     private val client = httpClient {
     val toolInfo = ToolInfo(
     }
-import com.inspiredandroid.kai.httpClient
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import io.ktor.client.plugins.HttpTimeout
-import io.ktor.client.request.header
-import io.ktor.client.request.request
-import io.ktor.client.request.setBody
-import io.ktor.client.statement.bodyAsText
-import io.ktor.http.ContentType
-import io.ktor.http.HttpMethod
-import io.ktor.http.Url
-import io.ktor.http.contentType
-import io.ktor.http.isSuccess
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_fetch_url_description
-import kai.composeapp.generated.resources.tool_fetch_url_name
 object FetchUrlTool : Tool {
 package com.inspiredandroid.kai.tools
 private val ALLOWED_METHODS = setOf("GET", "POST", "HEAD")

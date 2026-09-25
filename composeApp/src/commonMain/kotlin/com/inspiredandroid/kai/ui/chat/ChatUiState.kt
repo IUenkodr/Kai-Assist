@@ -1,3 +1,28 @@
+import androidx.compose.runtime.Immutable
+import com.inspiredandroid.kai.data.Attachment
+import com.inspiredandroid.kai.data.FallbackStatus
+import com.inspiredandroid.kai.data.ReasoningRequestMode
+import com.inspiredandroid.kai.data.ServiceEntry
+import com.inspiredandroid.kai.data.SharedJson
+import com.inspiredandroid.kai.data.SmsDraft
+import com.inspiredandroid.kai.data.UiSubmission
+import com.inspiredandroid.kai.network.UiError
+import com.inspiredandroid.kai.network.dtos.gemini.GeminiChatRequestDto
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
+import io.github.vinceglb.filekit.PlatformFile
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
+import org.jetbrains.compose.resources.StringResource
 
                                             put("data", att.data)
                                             put("media_type", "application/pdf")
@@ -246,31 +271,6 @@ fun History.toAnthropicContentBlocks(): JsonElement = when (role) {
 fun History.toGeminiMessageDto(): GeminiChatRequestDto.Content {
 fun History.toGroqMessageDto(
 fun List<History>.lastRenderedAssistant(): History? = lastOrNull { it.role == History.Role.ASSISTANT && it.content.isNotEmpty() && !it.isThinking }
-import androidx.compose.runtime.Immutable
-import com.inspiredandroid.kai.data.Attachment
-import com.inspiredandroid.kai.data.FallbackStatus
-import com.inspiredandroid.kai.data.ReasoningRequestMode
-import com.inspiredandroid.kai.data.ServiceEntry
-import com.inspiredandroid.kai.data.SharedJson
-import com.inspiredandroid.kai.data.SmsDraft
-import com.inspiredandroid.kai.data.UiSubmission
-import com.inspiredandroid.kai.network.UiError
-import com.inspiredandroid.kai.network.dtos.gemini.GeminiChatRequestDto
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
-import io.github.vinceglb.filekit.PlatformFile
-import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
-import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
-import org.jetbrains.compose.resources.StringResource
 package com.inspiredandroid.kai.ui.chat
 private data class AttachmentSplit(
 private fun List<Attachment>.splitForMessage(): AttachmentSplit {

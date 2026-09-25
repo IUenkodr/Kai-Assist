@@ -1,3 +1,13 @@
+import java.io.InputStream
+import java.io.OutputStream
+import java.net.ServerSocket
+import kotlin.concurrent.thread
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.coroutines.runBlocking
 
                 clientBlock(imap)
                 imap.connect()
@@ -72,15 +82,5 @@
  */
 /**
 class ImapClientSentFolderTest {
-import java.io.InputStream
-import java.io.OutputStream
-import java.net.ServerSocket
-import kotlin.concurrent.thread
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.coroutines.runBlocking
 package com.inspiredandroid.kai.email
 }

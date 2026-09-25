@@ -1,3 +1,7 @@
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.materialIcon
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
 
             close()
             curveTo(10.74f, 7.13f, 11.35f, 7.0f, 12.0f, 7.0f)
@@ -87,10 +91,6 @@
     materialIcon(name = "Filled.VisibilityOff") {
     materialIcon(name = "Rounded.DragIndicator") {
     }
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.materialIcon
-import androidx.compose.material.icons.materialPath
-import androidx.compose.ui.graphics.vector.ImageVector
 package com.inspiredandroid.kai.ui.icons
 val Icons.AutoMirrored.Filled.ArrowBackIos: ImageVector by lazy {
 val Icons.Filled.Replay: ImageVector by lazy {

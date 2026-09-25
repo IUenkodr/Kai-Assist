@@ -1,3 +1,8 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertSame
+import kotlin.test.assertTrue
 
             McpServerConfig(id = "ctx", name = "Context7", url = "https://mcp.context7.com/mcp"),
             McpServerConfig(id = "jina_ai", name = "Jina AI", url = "https://mcp.jina.ai/v1"),
@@ -43,10 +48,5 @@
     fun `mergeMissingHeaders keeps existing Authorization`() {
     }
 class PopularMcpServersTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertSame
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.mcp
 }

@@ -1,3 +1,8 @@
+import androidx.compose.runtime.Immutable
+import com.inspiredandroid.kai.TerminalLine
+import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.Serializable
 
         // Legacy single-file fields — retained for reading old persisted conversations.
         // Most messages have no reasoning trace; skip the null to keep the persisted blob lean.
@@ -53,10 +58,5 @@ data class Attachment(
 data class Conversation(
 data class ConversationsData(
 data class UiSubmission(
-import androidx.compose.runtime.Immutable
-import com.inspiredandroid.kai.TerminalLine
-import kotlinx.serialization.EncodeDefault
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.data
 }

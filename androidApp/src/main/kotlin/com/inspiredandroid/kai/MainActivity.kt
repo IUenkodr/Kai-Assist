@@ -1,3 +1,36 @@
+import android.content.Intent
+import android.os.Build
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.rememberNavController
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.DataRepository
+import com.inspiredandroid.kai.data.ThemeMode
+import com.inspiredandroid.kai.ui.DarkColorScheme
+import com.inspiredandroid.kai.ui.LightColorScheme
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.dialogs.init
+import nl.marc_apps.tts.TextToSpeechEngine
+import nl.marc_apps.tts.TextToSpeechFactory
+import nl.marc_apps.tts.TextToSpeechInstance
+import org.koin.android.ext.android.get
 
                             android.graphics.Color.TRANSPARENT,
                         )
@@ -110,39 +143,6 @@
 @Preview
 class MainActivity : ComponentActivity() {
 fun AppAndroidPreview() {
-import android.content.Intent
-import android.os.Build
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.compose.rememberNavController
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.DataRepository
-import com.inspiredandroid.kai.data.ThemeMode
-import com.inspiredandroid.kai.ui.DarkColorScheme
-import com.inspiredandroid.kai.ui.LightColorScheme
-import io.github.vinceglb.filekit.FileKit
-import io.github.vinceglb.filekit.dialogs.init
-import nl.marc_apps.tts.TextToSpeechEngine
-import nl.marc_apps.tts.TextToSpeechFactory
-import nl.marc_apps.tts.TextToSpeechInstance
-import org.koin.android.ext.android.get
 package com.inspiredandroid.kai
 private fun rememberSystemTextToSpeechOrNull(): TextToSpeechInstance? {
 }

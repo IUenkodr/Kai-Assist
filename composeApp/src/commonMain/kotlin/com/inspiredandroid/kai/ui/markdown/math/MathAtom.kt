@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.collections.immutable.ImmutableList
 
     /** All cells horizontally centered — default for pmatrix / bmatrix / matrix / vmatrix. */
     /** All cells left-aligned — used by `cases`. */
@@ -96,8 +98,6 @@ enum class MathStyle {
 enum class MatrixAlign {
 enum class MatrixDelim(val left: String, val right: String) {
 enum class SymKind {
-import androidx.compose.runtime.Immutable
-import kotlinx.collections.immutable.ImmutableList
 package com.inspiredandroid.kai.ui.markdown.math
 sealed interface MathAtom
 }

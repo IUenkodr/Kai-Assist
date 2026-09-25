@@ -1,3 +1,13 @@
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.window.ComposeUIViewController
+import androidx.navigation.compose.rememberNavController
+import nl.marc_apps.tts.TextToSpeechEngine
+import nl.marc_apps.tts.TextToSpeechInstance
+import nl.marc_apps.tts.rememberTextToSpeechOrNull
 
         navController = navController,
         null
@@ -13,15 +23,5 @@
     }
     } else {
 fun MainViewController() = ComposeUIViewController {
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.window.ComposeUIViewController
-import androidx.navigation.compose.rememberNavController
-import nl.marc_apps.tts.TextToSpeechEngine
-import nl.marc_apps.tts.TextToSpeechInstance
-import nl.marc_apps.tts.rememberTextToSpeechOrNull
 package com.inspiredandroid.kai
 }

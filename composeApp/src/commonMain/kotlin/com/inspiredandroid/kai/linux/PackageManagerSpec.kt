@@ -1,3 +1,4 @@
+import androidx.compose.runtime.Immutable
 
      * Installs [names] in one call, each a separate shell argument. apt resolves
      * a whole set at once, which is both faster and the only way its dependency
@@ -40,7 +41,6 @@
 /** Single-quotes [s] for `sh -c`, escaping any embedded quote. */
 @Immutable
 data class PackageEntry(
-import androidx.compose.runtime.Immutable
 interface PackageManagerSpec {
 internal fun shellQuote(s: String): String = "'" + s.replace("'", "'\\''") + "'"
 internal fun shellQuoteAll(names: List<String>): String = names.joinToString(" ") { shellQuote(it) }

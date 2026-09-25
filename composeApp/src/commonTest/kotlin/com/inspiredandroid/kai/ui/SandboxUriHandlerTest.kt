@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
         assertEquals("/root/climber_action.gif", toSandboxPath("file:///root/climber_action.gif"))
         assertEquals("/root/my file.gif", toSandboxPath("file:///root/my%20file.gif"))
@@ -16,8 +19,5 @@
     fun `relative link is not a sandbox path`() {
     }
 class SandboxUriHandlerTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
 package com.inspiredandroid.kai.ui
 }

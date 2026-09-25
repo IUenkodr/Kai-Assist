@@ -1,3 +1,4 @@
+import androidx.compose.runtime.Composable
 
     -> false
     // No app permission settings screen on web.
@@ -10,7 +11,6 @@
     AppPermission.SEND_SMS,
 @Composable
 actual fun SetupPermissionHandler(controller: PermissionController) = Unit
-import androidx.compose.runtime.Composable
 internal actual fun platformCanRequest(permission: AppPermission): Boolean = false
 internal actual fun platformHasPermission(permission: AppPermission): Boolean = when (permission) {
 internal actual fun platformOpenAppSettings() {

@@ -1,3 +1,24 @@
+import com.inspiredandroid.kai.email.EmailPoller
+import com.inspiredandroid.kai.getBackgroundDispatcher
+import com.inspiredandroid.kai.isEmailSupported
+import com.inspiredandroid.kai.isSmsSupported
+import com.inspiredandroid.kai.sendHeartbeatNotification
+import com.inspiredandroid.kai.sms.SmsPoller
+import com.inspiredandroid.kai.ui.markdown.parseMarkdown
+import com.inspiredandroid.kai.ui.markdown.toSpeakableText
+import kotlin.concurrent.Volatile
+import kotlin.coroutines.CoroutineContext
+import kotlin.math.min
+import kotlin.time.Clock
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.ExperimentalTime
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 
                             body = preview,
                             dataRepository.addAssistantMessage("**$header**\n\n$response")
@@ -264,26 +285,5 @@
 ) {
 @OptIn(ExperimentalTime::class)
 class TaskScheduler(
-import com.inspiredandroid.kai.email.EmailPoller
-import com.inspiredandroid.kai.getBackgroundDispatcher
-import com.inspiredandroid.kai.isEmailSupported
-import com.inspiredandroid.kai.isSmsSupported
-import com.inspiredandroid.kai.sendHeartbeatNotification
-import com.inspiredandroid.kai.sms.SmsPoller
-import com.inspiredandroid.kai.ui.markdown.parseMarkdown
-import com.inspiredandroid.kai.ui.markdown.toSpeakableText
-import kotlin.concurrent.Volatile
-import kotlin.coroutines.CoroutineContext
-import kotlin.math.min
-import kotlin.time.Clock
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.ExperimentalTime
-import kotlinx.coroutines.CoroutineName
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
 package com.inspiredandroid.kai.data
 }

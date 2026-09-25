@@ -1,3 +1,13 @@
+import java.io.File
+import java.nio.file.Files
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertContains
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
             mgr.appendKnownHostLine("a.example AAAA\nb.example AAAA")
             mgr.upsertHost(alias = " ", hostname = "1.2.3.4")
@@ -102,15 +112,5 @@
     private lateinit var mgr: SshConfigManager
     }
 class SshConfigManagerTest {
-import java.io.File
-import java.nio.file.Files
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertContains
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.sandbox
 }

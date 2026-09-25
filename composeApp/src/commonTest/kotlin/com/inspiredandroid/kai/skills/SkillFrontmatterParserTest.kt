@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertIs
+import kotlin.test.assertTrue
 
             ---
             Use the bundled script to extract text.
@@ -37,9 +41,5 @@
     fun `tolerates CRLF and quoted values`() {
     }
 class SkillFrontmatterParserTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertIs
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.skills
 }

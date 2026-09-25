@@ -1,3 +1,13 @@
+import com.inspiredandroid.kai.ui.markdown.KaiUiBlock
+import com.inspiredandroid.kai.ui.markdown.KaiUiError
+import com.inspiredandroid.kai.ui.markdown.Paragraph
+import com.inspiredandroid.kai.ui.markdown.parseMarkdown
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertIs
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
                 """{"type":"button","label":"Submit","action":{"type":"callback","event":"submit",
                 """{"type":"chip_group","id":"tags","chips":[
@@ -504,15 +514,5 @@
     private fun parseUi(json: String): KaiUiNode {
     }
 class KaiUiParserTest {
-import com.inspiredandroid.kai.ui.markdown.KaiUiBlock
-import com.inspiredandroid.kai.ui.markdown.KaiUiError
-import com.inspiredandroid.kai.ui.markdown.Paragraph
-import com.inspiredandroid.kai.ui.markdown.parseMarkdown
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertIs
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.ui.dynamicui
 }

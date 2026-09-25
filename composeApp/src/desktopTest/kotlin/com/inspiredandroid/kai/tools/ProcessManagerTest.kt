@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
         // After removal, list should be empty
         Thread.sleep(200)
@@ -56,8 +59,5 @@
     fun unknownSessionReturnsError() {
     }
 class ProcessManagerTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.tools
 }

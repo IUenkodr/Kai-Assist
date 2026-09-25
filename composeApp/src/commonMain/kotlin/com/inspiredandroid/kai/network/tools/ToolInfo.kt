@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import org.jetbrains.compose.resources.StringResource
 
      *
      * False for tools whose availability is decided somewhere else — a master toggle in
@@ -22,6 +24,4 @@
 /**
 @Immutable
 data class ToolInfo(
-import androidx.compose.runtime.Immutable
-import org.jetbrains.compose.resources.StringResource
 package com.inspiredandroid.kai.network.tools

@@ -1,3 +1,12 @@
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
+import android.telephony.SmsManager
+import androidx.core.content.ContextCompat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.koin.java.KoinJavaComponent.inject
 
                     @Suppress("DEPRECATION")
                     SmsManager.getDefault()
@@ -28,14 +37,5 @@
     private val context: Context by inject(Context::class.java)
     }
 actual class SmsSender actual constructor() {
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
-import android.os.Build
-import android.telephony.SmsManager
-import androidx.core.content.ContextCompat
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import org.koin.java.KoinJavaComponent.inject
 package com.inspiredandroid.kai.sms
 }

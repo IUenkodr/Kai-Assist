@@ -1,3 +1,10 @@
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
+import kotlin.math.abs
+import kotlin.time.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.offsetAt
+import kotlinx.datetime.toLocalDateTime
 
                 appendLine("In-Reply-To: $inReplyTo")
                 appendLine("References: $inReplyTo")
@@ -117,12 +124,5 @@
 ) {
 /**
 class SmtpClient(
-import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
-import kotlin.math.abs
-import kotlin.time.Clock
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.offsetAt
-import kotlinx.datetime.toLocalDateTime
 package com.inspiredandroid.kai.email
 }

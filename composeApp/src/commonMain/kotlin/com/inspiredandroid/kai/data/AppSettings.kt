@@ -1,3 +1,12 @@
+import com.inspiredandroid.kai.defaultUiScale
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.russhwolf.settings.Settings
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
                 "All your stored memories are listed in the system prompt grouped by category.\n\n" +
                 "Do not store trivial or transient information."
@@ -383,14 +392,5 @@ enum class ImportSection {
 enum class ThemeMode {
 fun detectExportableSections(json: JsonObject): Map<ImportSection, String?> {
 fun detectImportSections(json: JsonObject): Map<ImportSection, String?> {
-import com.inspiredandroid.kai.defaultUiScale
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.russhwolf.settings.Settings
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 package com.inspiredandroid.kai.data
 }

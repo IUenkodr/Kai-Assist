@@ -1,3 +1,5 @@
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
         MarkdownDocument(BlockScanner.scan(text).toImmutableList())
         MarkdownDocument(persistentListOf(Paragraph(persistentListOf(Text(text)))))
@@ -15,7 +17,5 @@
  */
 /**
 fun parseMarkdown(text: String): MarkdownDocument {
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
 package com.inspiredandroid.kai.ui.markdown
 }

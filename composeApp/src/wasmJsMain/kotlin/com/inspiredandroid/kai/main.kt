@@ -1,3 +1,17 @@
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.window.ComposeViewport
+import androidx.navigation.ExperimentalBrowserHistoryApi
+import androidx.navigation.bindToBrowserNavigation
+import androidx.navigation.compose.rememberNavController
+import kotlinx.browser.document
+import kotlinx.browser.window
+import nl.marc_apps.tts.TextToSpeechEngine
+import nl.marc_apps.tts.rememberTextToSpeechOrNull
 
                         "#settings"
                     else -> ""
@@ -36,19 +50,5 @@
 @file:OptIn(ExperimentalBrowserHistoryApi::class)
 @file:Suppress("ktlint:standard:filename")
 fun main() {
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.window.ComposeViewport
-import androidx.navigation.ExperimentalBrowserHistoryApi
-import androidx.navigation.bindToBrowserNavigation
-import androidx.navigation.compose.rememberNavController
-import kotlinx.browser.document
-import kotlinx.browser.window
-import nl.marc_apps.tts.TextToSpeechEngine
-import nl.marc_apps.tts.rememberTextToSpeechOrNull
 package com.inspiredandroid.kai
 }

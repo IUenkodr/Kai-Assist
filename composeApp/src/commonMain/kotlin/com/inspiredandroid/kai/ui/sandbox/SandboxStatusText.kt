@@ -1,3 +1,23 @@
+import androidx.compose.runtime.Composable
+import com.inspiredandroid.kai.SandboxStatusLabel
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.sandbox_status_base_packages
+import kai.composeapp.generated.resources.sandbox_status_configuring
+import kai.composeapp.generated.resources.sandbox_status_copy_failed
+import kai.composeapp.generated.resources.sandbox_status_copying_files
+import kai.composeapp.generated.resources.sandbox_status_copying_files_progress
+import kai.composeapp.generated.resources.sandbox_status_downloading
+import kai.composeapp.generated.resources.sandbox_status_error
+import kai.composeapp.generated.resources.sandbox_status_extracting
+import kai.composeapp.generated.resources.sandbox_status_install_failed
+import kai.composeapp.generated.resources.sandbox_status_installing
+import kai.composeapp.generated.resources.sandbox_status_installing_package
+import kai.composeapp.generated.resources.sandbox_status_not_installed
+import kai.composeapp.generated.resources.sandbox_status_package_failed
+import kai.composeapp.generated.resources.sandbox_status_ready
+import kai.composeapp.generated.resources.sandbox_status_setup_failed
+import kai.composeapp.generated.resources.sandbox_status_unknown_error
+import org.jetbrains.compose.resources.stringResource
 
                 stringResource(Res.string.sandbox_status_package_failed, label.packageName, detail)
             is SandboxStatusLabel.Failure.Copy -> stringResource(Res.string.sandbox_status_copy_failed, detail)
@@ -31,26 +51,6 @@
  */
 /**
 @Composable
-import androidx.compose.runtime.Composable
-import com.inspiredandroid.kai.SandboxStatusLabel
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.sandbox_status_base_packages
-import kai.composeapp.generated.resources.sandbox_status_configuring
-import kai.composeapp.generated.resources.sandbox_status_copy_failed
-import kai.composeapp.generated.resources.sandbox_status_copying_files
-import kai.composeapp.generated.resources.sandbox_status_copying_files_progress
-import kai.composeapp.generated.resources.sandbox_status_downloading
-import kai.composeapp.generated.resources.sandbox_status_error
-import kai.composeapp.generated.resources.sandbox_status_extracting
-import kai.composeapp.generated.resources.sandbox_status_install_failed
-import kai.composeapp.generated.resources.sandbox_status_installing
-import kai.composeapp.generated.resources.sandbox_status_installing_package
-import kai.composeapp.generated.resources.sandbox_status_not_installed
-import kai.composeapp.generated.resources.sandbox_status_package_failed
-import kai.composeapp.generated.resources.sandbox_status_ready
-import kai.composeapp.generated.resources.sandbox_status_setup_failed
-import kai.composeapp.generated.resources.sandbox_status_unknown_error
-import org.jetbrains.compose.resources.stringResource
 internal fun sandboxStatusText(label: SandboxStatusLabel?): String = when (label) {
 package com.inspiredandroid.kai.ui.sandbox
 }

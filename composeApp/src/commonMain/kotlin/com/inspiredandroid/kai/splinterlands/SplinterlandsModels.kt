@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
                 losses = losses,
                 modelName = "Auto Picker",
@@ -124,8 +126,6 @@ data class TeamSelection(
 enum class BattlePhase {
 enum class LlmServiceStatus {
 fun computeModelStats(battleLog: List<BattleLogEntry>): List<ModelStats> {
-import androidx.compose.runtime.Immutable
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.splinterlands
 val COLOR_TO_SPLINTER = SPLINTER_COLORS.entries.associate { (k, v) -> v to k }
 val RARITY_INT_TO_NAME = mapOf(1 to "Common", 2 to "Rare", 3 to "Epic", 4 to "Legendary")

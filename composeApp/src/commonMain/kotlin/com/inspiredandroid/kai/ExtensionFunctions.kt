@@ -1,3 +1,4 @@
+import kotlin.time.Instant
 
         "\n[... ${length - 2 * keep} characters truncated ...]\n" +
         takeLast(keep)
@@ -32,7 +33,6 @@ fun String.smartTruncate(maxLength: Int): String {
 fun formatContextWindow(tokens: Long): String = when {
 fun formatFileSize(bytes: Long): String = when {
 fun formatReleaseDate(iso: String): String {
-import kotlin.time.Instant
 package com.inspiredandroid.kai
 private val shortMonthNames = listOf(
 }

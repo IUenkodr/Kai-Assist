@@ -1,3 +1,38 @@
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.MemoryCategory
+import com.inspiredandroid.kai.data.MemoryStore
+import com.inspiredandroid.kai.httpClient
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import com.inspiredandroid.kai.openUrl
+import io.ktor.client.call.body
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.request.get
+import io.ktor.serialization.kotlinx.json.json
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_get_local_time_description
+import kai.composeapp.generated.resources.tool_get_local_time_name
+import kai.composeapp.generated.resources.tool_get_location_description
+import kai.composeapp.generated.resources.tool_get_location_name
+import kai.composeapp.generated.resources.tool_memory_forget_description
+import kai.composeapp.generated.resources.tool_memory_forget_name
+import kai.composeapp.generated.resources.tool_memory_learn_description
+import kai.composeapp.generated.resources.tool_memory_learn_name
+import kai.composeapp.generated.resources.tool_memory_reinforce_description
+import kai.composeapp.generated.resources.tool_memory_reinforce_name
+import kai.composeapp.generated.resources.tool_memory_store_description
+import kai.composeapp.generated.resources.tool_memory_store_name
+import kai.composeapp.generated.resources.tool_open_url_description
+import kai.composeapp.generated.resources.tool_open_url_name
+import kotlin.time.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
                     "city" to response.city,
                     "country" to response.country,
@@ -217,41 +252,6 @@
 )
 /**
 @Serializable
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.MemoryCategory
-import com.inspiredandroid.kai.data.MemoryStore
-import com.inspiredandroid.kai.httpClient
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import com.inspiredandroid.kai.openUrl
-import io.ktor.client.call.body
-import io.ktor.client.plugins.HttpTimeout
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.request.get
-import io.ktor.serialization.kotlinx.json.json
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_get_local_time_description
-import kai.composeapp.generated.resources.tool_get_local_time_name
-import kai.composeapp.generated.resources.tool_get_location_description
-import kai.composeapp.generated.resources.tool_get_location_name
-import kai.composeapp.generated.resources.tool_memory_forget_description
-import kai.composeapp.generated.resources.tool_memory_forget_name
-import kai.composeapp.generated.resources.tool_memory_learn_description
-import kai.composeapp.generated.resources.tool_memory_learn_name
-import kai.composeapp.generated.resources.tool_memory_reinforce_description
-import kai.composeapp.generated.resources.tool_memory_reinforce_name
-import kai.composeapp.generated.resources.tool_memory_store_description
-import kai.composeapp.generated.resources.tool_memory_store_name
-import kai.composeapp.generated.resources.tool_open_url_description
-import kai.composeapp.generated.resources.tool_open_url_name
-import kotlin.time.Clock
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 object CommonTools {
 package com.inspiredandroid.kai.tools
 private data class IpConnectionInfo(

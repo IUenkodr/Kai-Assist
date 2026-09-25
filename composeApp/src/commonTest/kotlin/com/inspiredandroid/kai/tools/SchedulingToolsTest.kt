@@ -1,3 +1,15 @@
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.TaskStore
+import com.russhwolf.settings.MapSettings
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlin.time.Clock
+import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.minutes
+import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
             "description" to "t",
             "execute_at" to executeAt,
@@ -59,17 +71,5 @@
 /**
 @file:OptIn(kotlin.time.ExperimentalTime::class)
 class SchedulingToolsTest {
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.TaskStore
-import com.russhwolf.settings.MapSettings
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlin.time.Clock
-import kotlin.time.Duration.Companion.hours
-import kotlin.time.Duration.Companion.minutes
-import kotlinx.coroutines.test.runTest
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 package com.inspiredandroid.kai.tools
 }

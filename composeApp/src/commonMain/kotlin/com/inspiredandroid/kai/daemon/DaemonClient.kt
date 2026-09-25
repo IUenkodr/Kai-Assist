@@ -1,3 +1,6 @@
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
         // 1. Open socket to /tmp/kai_daemon.sock
         // 2. Send encoded JSON
@@ -19,8 +22,5 @@
  */
 /**
 class DaemonClient {
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 package com.inspiredandroid.kai.daemon
 }

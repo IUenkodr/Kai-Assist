@@ -1,3 +1,8 @@
+import java.io.File
+import java.nio.file.CopyOption
+import java.nio.file.Files
+import java.nio.file.LinkOption
+import java.nio.file.StandardCopyOption
 
                 // COPY_ATTRIBUTES carries the mode on a Unix filesystem, but this
                 // Whatever is already there wins — including a destination that is
@@ -109,11 +114,6 @@
 /**
 /** What moving one install's `/root` into another's would actually carry over. */
 data class HomeSurvey(val fileCount: Int, val bytes: Long) {
-import java.io.File
-import java.nio.file.CopyOption
-import java.nio.file.Files
-import java.nio.file.LinkOption
-import java.nio.file.StandardCopyOption
 object HomeMigration {
 package com.inspiredandroid.kai.linux
 }

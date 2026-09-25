@@ -1,3 +1,4 @@
+import java.io.File
 
                 append("    IdentitiesOnly yes")
                 appendLine("    IdentityFile ${resolveIdentity(identityFile)}")
@@ -133,6 +134,5 @@
  */
 /**
 class SshConfigManager(private val homeDir: File) {
-import java.io.File
 package com.inspiredandroid.kai.sandbox
 }

@@ -1,3 +1,11 @@
+import com.inspiredandroid.kai.linux.ProotHandle
+import com.inspiredandroid.kai.linux.ProotLauncher
+import com.inspiredandroid.kai.linux.ProotResult
+import java.io.File
+import java.io.IOException
+import java.util.Base64
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.atomic.AtomicBoolean
 
                     if (cancelled.get()) break
                     stream.read(buf)
@@ -163,14 +171,6 @@
 /**
 /** Install logs are worth keeping in full; the shell tool's 15k cap is not enough. */
 class BuildProotExecutor(
-import com.inspiredandroid.kai.linux.ProotHandle
-import com.inspiredandroid.kai.linux.ProotLauncher
-import com.inspiredandroid.kai.linux.ProotResult
-import java.io.File
-import java.io.IOException
-import java.util.Base64
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.atomic.AtomicBoolean
 package com.inspiredandroid.kai.build.runtime
 private const val MAX_OUTPUT_CHARS = 200_000
 }

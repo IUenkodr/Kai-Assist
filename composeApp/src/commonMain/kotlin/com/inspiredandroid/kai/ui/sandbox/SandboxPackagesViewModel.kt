@@ -1,3 +1,33 @@
+import androidx.compose.runtime.Immutable
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.inspiredandroid.kai.SandboxController
+import com.inspiredandroid.kai.SandboxSessions
+import com.inspiredandroid.kai.linux.PackageEntry
+import com.inspiredandroid.kai.linux.PackageManagerSpec
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.sandbox_packages_install_failed
+import kai.composeapp.generated.resources.sandbox_packages_install_success
+import kai.composeapp.generated.resources.sandbox_packages_uninstall_failed
+import kai.composeapp.generated.resources.sandbox_packages_uninstall_success
+import kai.composeapp.generated.resources.sandbox_packages_up_to_date
+import kai.composeapp.generated.resources.sandbox_packages_upgrade_count
+import kai.composeapp.generated.resources.sandbox_packages_upgrade_failed
+import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableSet
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.persistentSetOf
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.collections.immutable.toImmutableSet
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.StringResource
 
                             Res.string.sandbox_packages_upgrade_failed,
                             updateResult.errorSummary(),
@@ -216,36 +246,6 @@
 class SandboxPackagesViewModel(
 data class PackagesUiState(
 data class SnackbarMessage(val resource: StringResource, val arg: String? = null)
-import androidx.compose.runtime.Immutable
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.inspiredandroid.kai.SandboxController
-import com.inspiredandroid.kai.SandboxSessions
-import com.inspiredandroid.kai.linux.PackageEntry
-import com.inspiredandroid.kai.linux.PackageManagerSpec
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.sandbox_packages_install_failed
-import kai.composeapp.generated.resources.sandbox_packages_install_success
-import kai.composeapp.generated.resources.sandbox_packages_uninstall_failed
-import kai.composeapp.generated.resources.sandbox_packages_uninstall_success
-import kai.composeapp.generated.resources.sandbox_packages_up_to_date
-import kai.composeapp.generated.resources.sandbox_packages_upgrade_count
-import kai.composeapp.generated.resources.sandbox_packages_upgrade_failed
-import kotlin.time.Duration.Companion.milliseconds
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.persistentSetOf
-import kotlinx.collections.immutable.toImmutableList
-import kotlinx.collections.immutable.toImmutableSet
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.StringResource
 internal fun rankSearchResults(results: List<PackageEntry>, query: String): List<PackageEntry> {
 package com.inspiredandroid.kai.ui.sandbox
 private const val ERROR_SUMMARY_MAX_CHARS = 200

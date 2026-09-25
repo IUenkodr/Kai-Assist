@@ -1,3 +1,4 @@
+import io.github.vinceglb.filekit.PlatformFile
 
         force: Boolean = false,
         maxBytes: Int = MAX_BROWSER_TEXT_BYTES,
@@ -50,7 +51,6 @@
 /** Largest file the built-in editor will pull into memory. */
 /** Used by platforms that have no Linux environment at all. */
 const val MAX_BROWSER_TEXT_BYTES: Int = 512_000
-import io.github.vinceglb.filekit.PlatformFile
 interface FileBrowserSource {
 object NoOpFileBrowserSource : FileBrowserSource {
 package com.inspiredandroid.kai

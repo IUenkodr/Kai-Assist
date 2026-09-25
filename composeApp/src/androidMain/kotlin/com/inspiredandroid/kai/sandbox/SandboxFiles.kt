@@ -1,3 +1,28 @@
+import android.Manifest
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import androidx.core.content.FileProvider
+import com.inspiredandroid.kai.SandboxFileEntry
+import com.inspiredandroid.kai.TextFileResult
+import com.inspiredandroid.kai.data.FileCategory
+import com.inspiredandroid.kai.data.classifyFile
+import com.inspiredandroid.kai.linux.safeChild
+import io.github.vinceglb.filekit.PlatformFile
+import io.github.vinceglb.filekit.name
+import io.github.vinceglb.filekit.source
+import io.github.vinceglb.filekit.withScopedAccess
+import java.io.File
+import java.io.IOException
+import java.nio.ByteBuffer
+import java.nio.charset.CharacterCodingException
+import java.nio.charset.CodingErrorAction
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
+import kotlinx.io.Buffer
+import kotlinx.io.asSink
+import kotlinx.io.buffered
 
                     currentCoroutineContext().ensureActive()
                     if (read == -1L) break
@@ -111,31 +136,6 @@
 // it. Without it the installer opens and then refuses, so report that up front instead.
 // transport stream. Without `apk` in particular the intent goes out as a wildcard type
 // wrong for a Linux sandbox — `.ts` is TypeScript here far more often than an MPEG
-import android.Manifest
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import androidx.core.content.FileProvider
-import com.inspiredandroid.kai.SandboxFileEntry
-import com.inspiredandroid.kai.TextFileResult
-import com.inspiredandroid.kai.data.FileCategory
-import com.inspiredandroid.kai.data.classifyFile
-import com.inspiredandroid.kai.linux.safeChild
-import io.github.vinceglb.filekit.PlatformFile
-import io.github.vinceglb.filekit.name
-import io.github.vinceglb.filekit.source
-import io.github.vinceglb.filekit.withScopedAccess
-import java.io.File
-import java.io.IOException
-import java.nio.ByteBuffer
-import java.nio.charset.CharacterCodingException
-import java.nio.charset.CodingErrorAction
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.ensureActive
-import kotlinx.io.Buffer
-import kotlinx.io.asSink
-import kotlinx.io.buffered
 internal data class FileOpenResult(
 internal fun File.toFileEntry(parent: String): SandboxFileEntry = SandboxFileEntry(
 internal fun guessMimeType(filename: String): String {

@@ -1,3 +1,4 @@
+import kotlin.time.Instant
 
                 append(" (last sync: ")
                 append(" [cron: ")
@@ -133,7 +134,6 @@
 // The heartbeat prompt is a single shape — always sent as a user message.
 // every input is explicit so tests can call it directly with hand-crafted inputs.
 @file:OptIn(kotlin.time.ExperimentalTime::class)
-import kotlin.time.Instant
 internal data class HeartbeatPendingEmail(
 internal data class HeartbeatPendingNotification(
 internal data class HeartbeatPendingSms(

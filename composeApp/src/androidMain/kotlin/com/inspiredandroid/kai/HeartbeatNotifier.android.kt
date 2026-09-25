@@ -1,3 +1,16 @@
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import androidx.core.app.NotificationCompat
+import com.inspiredandroid.kai.shared.R
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.notification_channel_description
+import kai.composeapp.generated.resources.notification_channel_name
+import kotlinx.coroutines.runBlocking
+import org.jetbrains.compose.resources.getString
+import org.koin.java.KoinJavaComponent.inject
 
             this.description = description
         .build()
@@ -39,19 +52,6 @@
 /** Shared with the AI `send_notification` tool — ensures the channel is created once. */
 actual fun sendHeartbeatNotification(title: String, body: String) {
 const val EXTRA_OPEN_HEARTBEAT = "com.inspiredandroid.kai.OPEN_HEARTBEAT"
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
-import androidx.core.app.NotificationCompat
-import com.inspiredandroid.kai.shared.R
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.notification_channel_description
-import kai.composeapp.generated.resources.notification_channel_name
-import kotlinx.coroutines.runBlocking
-import org.jetbrains.compose.resources.getString
-import org.koin.java.KoinJavaComponent.inject
 package com.inspiredandroid.kai
 private const val CHANNEL_ID = "kai_ai_notifications"
 private const val HEARTBEAT_NOTIFICATION_ID = 9002

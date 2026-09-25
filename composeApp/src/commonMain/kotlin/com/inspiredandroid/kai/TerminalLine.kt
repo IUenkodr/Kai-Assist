@@ -1,3 +1,6 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
         is Command -> Command(newText)
         is Error -> Error(newText)
@@ -14,9 +17,6 @@
     }
 @Immutable
 @Serializable
-import androidx.compose.runtime.Immutable
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai
 sealed interface TerminalLine {
 }

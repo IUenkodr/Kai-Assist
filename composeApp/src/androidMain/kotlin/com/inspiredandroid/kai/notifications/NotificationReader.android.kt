@@ -1,3 +1,9 @@
+import android.app.NotificationManager
+import android.content.Context
+import android.content.pm.PackageManager
+import com.inspiredandroid.kai.data.NotificationRecord
+import com.inspiredandroid.kai.data.NotificationStore
+import org.koin.java.KoinJavaComponent.inject
 
                     it.text.lowercase().contains(needle)
                     it.title.lowercase().contains(needle) ||
@@ -42,12 +48,6 @@
 // declares it, `playStore` does not — so this is a compile-time property per flavor,
 // safe to cache for the process lifetime. Shared with Platform.android.kt's
 actual class NotificationReader actual constructor() {
-import android.app.NotificationManager
-import android.content.Context
-import android.content.pm.PackageManager
-import com.inspiredandroid.kai.data.NotificationRecord
-import com.inspiredandroid.kai.data.NotificationStore
-import org.koin.java.KoinJavaComponent.inject
 internal fun Context.declaresNotificationListener(): Boolean = try {
 package com.inspiredandroid.kai.notifications
 private const val NOTIFICATION_LISTENER_FQN =

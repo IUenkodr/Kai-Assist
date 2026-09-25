@@ -1,3 +1,8 @@
+import com.russhwolf.settings.MapSettings
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
             listOf(ServiceInstance("compat1", "openai-compatible")),
             listOf(ServiceInstance("openai", "openai")),
@@ -89,10 +94,5 @@
     fun `removeInstanceSettings clears custom model keys`() {
     }
 class AppSettingsTest {
-import com.russhwolf.settings.MapSettings
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.data
 }

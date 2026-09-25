@@ -1,3 +1,9 @@
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
                 ParameterSchema(type = type, description = "", required = false)
             "command" to "string",
@@ -65,11 +71,5 @@
     private val execShell = stubTool(
     }
 class InlineToolCallParserTest {
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.network.dtos.openaicompatible
 }

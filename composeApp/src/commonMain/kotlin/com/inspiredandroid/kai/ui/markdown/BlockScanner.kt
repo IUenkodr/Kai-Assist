@@ -1,3 +1,7 @@
+import com.inspiredandroid.kai.ui.dynamicui.KaiUiParser
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
                     blocks += Heading(1, InlineTokenizer.tokenize(line.trim()))
                     blocks += Heading(2, InlineTokenizer.tokenize(line.trim()))
@@ -317,10 +321,6 @@
  * Scope (LLM-output subset — not full CommonMark):
  */
 /**
-import com.inspiredandroid.kai.ui.dynamicui.KaiUiParser
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
 internal object BlockScanner {
 package com.inspiredandroid.kai.ui.markdown
 }

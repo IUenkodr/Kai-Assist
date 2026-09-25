@@ -1,3 +1,10 @@
+import java.math.BigInteger
+import java.security.MessageDigest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import org.bouncycastle.crypto.params.ECDomainParameters
+import org.bouncycastle.jce.ECNamedCurveTable
 
             "$label: recovered public key doesn't match expected (recId=$recId, r=${r.toString(16).take(16)}...)",
             assertRecoveryMatchesPubKey(sigHex, data, "hash-$i")
@@ -56,12 +63,5 @@
  */
 /**
 class HiveCryptoTest {
-import java.math.BigInteger
-import java.security.MessageDigest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import org.bouncycastle.crypto.params.ECDomainParameters
-import org.bouncycastle.jce.ECNamedCurveTable
 package com.inspiredandroid.kai.splinterlands
 }

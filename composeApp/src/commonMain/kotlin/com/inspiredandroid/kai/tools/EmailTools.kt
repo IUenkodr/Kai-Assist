@@ -1,3 +1,27 @@
+import com.inspiredandroid.kai.data.EmailAccount
+import com.inspiredandroid.kai.data.EmailStore
+import com.inspiredandroid.kai.email.ImapClient
+import com.inspiredandroid.kai.email.ServerAutoDetect
+import com.inspiredandroid.kai.email.SmtpClient
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_check_email_description
+import kai.composeapp.generated.resources.tool_check_email_name
+import kai.composeapp.generated.resources.tool_compose_email_description
+import kai.composeapp.generated.resources.tool_compose_email_name
+import kai.composeapp.generated.resources.tool_read_email_description
+import kai.composeapp.generated.resources.tool_read_email_name
+import kai.composeapp.generated.resources.tool_reply_email_description
+import kai.composeapp.generated.resources.tool_reply_email_name
+import kai.composeapp.generated.resources.tool_search_email_description
+import kai.composeapp.generated.resources.tool_search_email_name
+import kai.composeapp.generated.resources.tool_setup_email_description
+import kai.composeapp.generated.resources.tool_setup_email_name
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
                                     "account_email" to account.email,
                                     "account_id" to account.id,
@@ -379,30 +403,6 @@
     val searchEmailToolInfo = ToolInfo(
     val setupEmailToolInfo = ToolInfo(
     }
-import com.inspiredandroid.kai.data.EmailAccount
-import com.inspiredandroid.kai.data.EmailStore
-import com.inspiredandroid.kai.email.ImapClient
-import com.inspiredandroid.kai.email.ServerAutoDetect
-import com.inspiredandroid.kai.email.SmtpClient
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_check_email_description
-import kai.composeapp.generated.resources.tool_check_email_name
-import kai.composeapp.generated.resources.tool_compose_email_description
-import kai.composeapp.generated.resources.tool_compose_email_name
-import kai.composeapp.generated.resources.tool_read_email_description
-import kai.composeapp.generated.resources.tool_read_email_name
-import kai.composeapp.generated.resources.tool_reply_email_description
-import kai.composeapp.generated.resources.tool_reply_email_name
-import kai.composeapp.generated.resources.tool_search_email_description
-import kai.composeapp.generated.resources.tool_search_email_name
-import kai.composeapp.generated.resources.tool_setup_email_description
-import kai.composeapp.generated.resources.tool_setup_email_name
-import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
 object EmailTools {
 package com.inspiredandroid.kai.tools
 }

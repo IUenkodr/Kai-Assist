@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
         const val PREVIEW_CHARS = 200
     companion object {
@@ -21,7 +23,5 @@
 @Serializable
 data class NotificationRecord(
 data class NotificationSyncState(
-import androidx.compose.runtime.Immutable
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.data
 }

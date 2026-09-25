@@ -1,3 +1,9 @@
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.okhttp.OkHttp
+import java.io.File
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.sync.Mutex
 
                     manager.installCommand(pkg),
                     timeoutSeconds = PACKAGE_TIMEOUT_SECONDS,
@@ -117,12 +123,6 @@
 /**
 /** Where an install has got to, in terms both feature UIs can render. */
 class LinuxInstaller(private val paths: LinuxPaths) {
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.okhttp.OkHttp
-import java.io.File
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.ensureActive
-import kotlinx.coroutines.sync.Mutex
 package com.inspiredandroid.kai.linux
 private const val PACKAGE_TIMEOUT_SECONDS = 900L
 private const val UPDATE_TIMEOUT_SECONDS = 300L

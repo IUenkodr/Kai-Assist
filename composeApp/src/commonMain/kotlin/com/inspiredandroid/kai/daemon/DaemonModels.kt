@@ -1,3 +1,4 @@
+import kotlinx.serialization.Serializable
 
     val command: String,
     val cpu_ticks: Long
@@ -22,5 +23,4 @@ data class DaemonResponse(
 data class KaiTask(
 data class SkillManifest(
 data class TaskMetrics(
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.daemon

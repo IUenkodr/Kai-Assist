@@ -1,3 +1,11 @@
+import java.io.File
+import java.nio.file.Files
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
             Files.getPosixFilePermissions(File(target, ".ssh/id_rsa").toPath()),
             setOf(java.nio.file.attribute.PosixFilePermission.OWNER_READ),
@@ -81,13 +89,5 @@
     private lateinit var target: File
     }
 class HomeMigrationTest {
-import java.io.File
-import java.nio.file.Files
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.linux
 }

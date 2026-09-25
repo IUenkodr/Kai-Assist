@@ -1,3 +1,40 @@
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.inspiredandroid.kai.build.BuildAgents
+import com.inspiredandroid.kai.build.BuildEnvironmentState
+import com.inspiredandroid.kai.build.BuildStep
+import com.inspiredandroid.kai.build.KaiBuildState
+import com.inspiredandroid.kai.ui.handCursor
+import com.inspiredandroid.kai.ui.sandbox.SandboxProgressRow
+import com.inspiredandroid.kai.ui.settings.SettingsCard
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.kai_build_setup_agents_description
+import kai.composeapp.generated.resources.kai_build_setup_agents_title
+import kai.composeapp.generated.resources.kai_build_setup_description
+import kai.composeapp.generated.resources.kai_build_setup_install
+import kai.composeapp.generated.resources.kai_build_setup_title
+import kai.composeapp.generated.resources.kai_build_step_base_packages
+import kai.composeapp.generated.resources.kai_build_step_configure
+import kai.composeapp.generated.resources.kai_build_step_download
+import kai.composeapp.generated.resources.kai_build_step_extract
+import kai.composeapp.generated.resources.kai_build_step_install_agent
+import kotlinx.collections.immutable.ImmutableSet
+import org.jetbrains.compose.resources.stringResource
 
                         .clickable(enabled = installing == null) { onToggleAgent(agent.id) }
                         .fillMaxWidth()
@@ -79,43 +116,6 @@
 ) {
 /**
 @Composable
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.inspiredandroid.kai.build.BuildAgents
-import com.inspiredandroid.kai.build.BuildEnvironmentState
-import com.inspiredandroid.kai.build.BuildStep
-import com.inspiredandroid.kai.build.KaiBuildState
-import com.inspiredandroid.kai.ui.handCursor
-import com.inspiredandroid.kai.ui.sandbox.SandboxProgressRow
-import com.inspiredandroid.kai.ui.settings.SettingsCard
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.kai_build_setup_agents_description
-import kai.composeapp.generated.resources.kai_build_setup_agents_title
-import kai.composeapp.generated.resources.kai_build_setup_description
-import kai.composeapp.generated.resources.kai_build_setup_install
-import kai.composeapp.generated.resources.kai_build_setup_title
-import kai.composeapp.generated.resources.kai_build_step_base_packages
-import kai.composeapp.generated.resources.kai_build_step_configure
-import kai.composeapp.generated.resources.kai_build_step_download
-import kai.composeapp.generated.resources.kai_build_step_extract
-import kai.composeapp.generated.resources.kai_build_step_install_agent
-import kotlinx.collections.immutable.ImmutableSet
-import org.jetbrains.compose.resources.stringResource
 internal fun BuildSetupContent(
 package com.inspiredandroid.kai.ui.build
 private fun stepLabel(state: BuildEnvironmentState.Installing): String = when (state.step) {

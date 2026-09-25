@@ -1,3 +1,12 @@
+import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import com.inspiredandroid.kai.TerminalLine
+import com.inspiredandroid.kai.db.KaiDatabase
+import com.russhwolf.settings.MapSettings
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.serialization.encodeToString
 
                 Conversation.Message(id = "huge", role = "user", content = "x".repeat(3_000_000)),
                 attachments = if (index == 0) listOf(Attachment(data = "aGk=", mimeType = "text/plain", fileName = "a.txt")) else emptyList(),
@@ -105,14 +114,5 @@
     private fun storedMessageBytes(database: KaiDatabase): List<Int> = database.conversationQueries.selectAllMessages(Long.MAX_VALUE).executeAsList()
     }
 class SqlConversationPersistenceTest {
-import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
-import com.inspiredandroid.kai.TerminalLine
-import com.inspiredandroid.kai.db.KaiDatabase
-import com.russhwolf.settings.MapSettings
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.serialization.encodeToString
 package com.inspiredandroid.kai.data
 }

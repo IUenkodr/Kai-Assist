@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
     val accountId: String,
     val body: String = "",
@@ -33,6 +35,4 @@
 data class EmailAccount(
 data class EmailMessage(
 data class EmailSyncState(
-import androidx.compose.runtime.Immutable
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.data

@@ -1,3 +1,5 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
             breadcrumbs(currentPath = "/etc", rootPath = "/root/projects/demo"),
             breadcrumbs(currentPath = "/root/notes", rootPath = "/"),
@@ -17,7 +19,5 @@
     fun `sitting on the root offers nothing above it`() {
     }
 class BreadcrumbsTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
 package com.inspiredandroid.kai.ui.sandbox
 }

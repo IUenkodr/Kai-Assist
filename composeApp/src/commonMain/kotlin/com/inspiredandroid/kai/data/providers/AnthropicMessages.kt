@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicChatRequestDto
+import com.inspiredandroid.kai.ui.chat.History
+import com.inspiredandroid.kai.ui.chat.toAnthropicContentBlocks
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
 
                             content = JsonArray(pendingToolResults),
                             role = "user",
@@ -35,11 +40,6 @@
     var pendingToolResults = mutableListOf<JsonElement>()
     }
 ): List<AnthropicChatRequestDto.Message> = buildList {
-import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicChatRequestDto
-import com.inspiredandroid.kai.ui.chat.History
-import com.inspiredandroid.kai.ui.chat.toAnthropicContentBlocks
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonElement
 internal fun buildAnthropicMessages(
 package com.inspiredandroid.kai.data.providers
 }

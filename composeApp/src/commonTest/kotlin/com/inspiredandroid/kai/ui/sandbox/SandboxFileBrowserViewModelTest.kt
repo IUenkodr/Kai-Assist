@@ -1,3 +1,34 @@
+import app.cash.turbine.test
+import com.inspiredandroid.kai.CommandHandle
+import com.inspiredandroid.kai.NoOpCommandHandle
+import com.inspiredandroid.kai.SandboxController
+import com.inspiredandroid.kai.SandboxFileEntry
+import com.inspiredandroid.kai.SandboxStatus
+import com.inspiredandroid.kai.TextFileResult
+import io.github.vinceglb.filekit.PlatformFile
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.sandbox_files_delete_failed
+import kai.composeapp.generated.resources.sandbox_files_delete_success
+import kai.composeapp.generated.resources.sandbox_files_editor_closed_after_delete
+import kai.composeapp.generated.resources.sandbox_files_rename_error_collision
+import kai.composeapp.generated.resources.sandbox_files_rename_error_invalid
+import kai.composeapp.generated.resources.sandbox_files_rename_success
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
                     if (entry.path == path) entry.copy(name = newName, path = newPath) else entry
                 entriesByPath.values.forEach { it.removeAll { entry -> entry.path == path } }
@@ -211,36 +242,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class SandboxFileBrowserViewModelTest {
-import app.cash.turbine.test
-import com.inspiredandroid.kai.CommandHandle
-import com.inspiredandroid.kai.NoOpCommandHandle
-import com.inspiredandroid.kai.SandboxController
-import com.inspiredandroid.kai.SandboxFileEntry
-import com.inspiredandroid.kai.SandboxStatus
-import com.inspiredandroid.kai.TextFileResult
-import io.github.vinceglb.filekit.PlatformFile
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.sandbox_files_delete_failed
-import kai.composeapp.generated.resources.sandbox_files_delete_success
-import kai.composeapp.generated.resources.sandbox_files_editor_closed_after_delete
-import kai.composeapp.generated.resources.sandbox_files_rename_error_collision
-import kai.composeapp.generated.resources.sandbox_files_rename_error_invalid
-import kai.composeapp.generated.resources.sandbox_files_rename_success
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.sandbox
 }

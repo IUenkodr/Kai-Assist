@@ -1,3 +1,21 @@
+import com.inspiredandroid.kai.httpClient
+import io.ktor.client.request.header
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
+import java.io.ByteArrayOutputStream
+import java.math.BigInteger
+import java.security.MessageDigest
+import java.time.Instant
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
+import org.bouncycastle.crypto.digests.SHA256Digest
+import org.bouncycastle.crypto.params.ECDomainParameters
+import org.bouncycastle.crypto.signers.HMacDSAKCalculator
+import org.bouncycastle.jce.ECNamedCurveTable
+import org.bouncycastle.math.ec.ECAlgorithms
+import org.bouncycastle.math.ec.ECPoint
 
             ((refBlockPrefixBytes[1].toInt() and 0xFF) shl 8) or
             ((refBlockPrefixBytes[2].toInt() and 0xFF) shl 16) or
@@ -155,24 +173,6 @@
 /*
 actual fun signMessage(message: String, postingKeyWif: String): String {
 actual suspend fun buildSignedCustomJson(
-import com.inspiredandroid.kai.httpClient
-import io.ktor.client.request.header
-import io.ktor.client.request.post
-import io.ktor.client.request.setBody
-import io.ktor.client.statement.bodyAsText
-import java.io.ByteArrayOutputStream
-import java.math.BigInteger
-import java.security.MessageDigest
-import java.time.Instant
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
-import org.bouncycastle.crypto.digests.SHA256Digest
-import org.bouncycastle.crypto.params.ECDomainParameters
-import org.bouncycastle.crypto.signers.HMacDSAKCalculator
-import org.bouncycastle.jce.ECNamedCurveTable
-import org.bouncycastle.math.ec.ECAlgorithms
-import org.bouncycastle.math.ec.ECPoint
 internal fun ByteArray.toHexString(): String = joinToString("") { "%02x".format(it) }
 internal fun bigIntTo32Bytes(n: BigInteger): ByteArray {
 internal fun decodeWif(wif: String): ByteArray {

@@ -1,3 +1,5 @@
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
             .flatMap { it.content.orEmpty() }
             .flatMap { it.summary.orEmpty() }
@@ -52,7 +54,5 @@
 /**
 @Serializable
 data class OpenAIResponsesResponseDto(
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.network.dtos.openairesponses
 }

@@ -1,3 +1,29 @@
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.unit.dp
+import app.cash.paparazzi.DeviceConfig
+import app.cash.paparazzi.Paparazzi
+import com.android.ide.common.rendering.api.SessionParams
+import com.inspiredandroid.kai.ui.DarkColorScheme
+import com.inspiredandroid.kai.ui.LightColorScheme
+import com.inspiredandroid.kai.ui.Theme
+import com.inspiredandroid.kai.ui.markdown.MarkdownContent
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.setResourceReaderAndroidContext
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 
                             content = markdown,
                             modifier = Modifier.fillMaxWidth().padding(16.dp),
@@ -111,32 +137,6 @@
 @Composable
 @OptIn(ExperimentalResourceApi::class)
 class MathScreenshotTest {
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.unit.dp
-import app.cash.paparazzi.DeviceConfig
-import app.cash.paparazzi.Paparazzi
-import com.android.ide.common.rendering.api.SessionParams
-import com.inspiredandroid.kai.ui.DarkColorScheme
-import com.inspiredandroid.kai.ui.LightColorScheme
-import com.inspiredandroid.kai.ui.Theme
-import com.inspiredandroid.kai.ui.markdown.MarkdownContent
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.setResourceReaderAndroidContext
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 package com.inspiredandroid.kai.screenshots
 private fun MessageCanvas(content: @Composable () -> Unit) {
 private val DeviceWidth = 411.dp

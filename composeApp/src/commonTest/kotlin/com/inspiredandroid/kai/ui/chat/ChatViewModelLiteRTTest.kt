@@ -1,3 +1,21 @@
+import app.cash.turbine.test
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.ServiceEntry
+import com.inspiredandroid.kai.data.TaskScheduler
+import com.inspiredandroid.kai.inference.DownloadedModel
+import com.inspiredandroid.kai.testutil.FakeDataRepository
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
                 displayName = "Gemma 4 E2B IT",
                 filePath = "/fake/path/model.litertlm",
@@ -61,23 +79,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class ChatViewModelLiteRTTest {
-import app.cash.turbine.test
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.ServiceEntry
-import com.inspiredandroid.kai.data.TaskScheduler
-import com.inspiredandroid.kai.inference.DownloadedModel
-import com.inspiredandroid.kai.testutil.FakeDataRepository
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.chat
 }

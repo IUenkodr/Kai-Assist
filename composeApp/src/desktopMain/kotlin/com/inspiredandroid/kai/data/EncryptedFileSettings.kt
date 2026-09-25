@@ -1,3 +1,13 @@
+import com.inspiredandroid.kai.getAppFilesDirectory
+import com.russhwolf.settings.Settings
+import java.io.File
+import java.security.SecureRandom
+import javax.crypto.Cipher
+import javax.crypto.SecretKey
+import javax.crypto.spec.GCMParameterSpec
+import javax.crypto.spec.SecretKeySpec
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
                 map[key] = prefs.get(key, "")
                 persist()
@@ -82,16 +92,6 @@
  */
 /**
 class EncryptedFileSettings : Settings {
-import com.inspiredandroid.kai.getAppFilesDirectory
-import com.russhwolf.settings.Settings
-import java.io.File
-import java.security.SecureRandom
-import javax.crypto.Cipher
-import javax.crypto.SecretKey
-import javax.crypto.spec.GCMParameterSpec
-import javax.crypto.spec.SecretKeySpec
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 package com.inspiredandroid.kai.data
 private const val GCM_IV_LENGTH = 12
 private const val GCM_TAG_LENGTH = 128

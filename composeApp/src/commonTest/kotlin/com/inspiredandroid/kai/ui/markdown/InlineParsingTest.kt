@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlinx.collections.immutable.persistentListOf
 
             listOf(Text("a "), InlineCode("b"), Text(" c "), InlineCode("d"), Text(" e")),
             listOf(Text("x "), InlineCode("*not*"), Text(" y")),
@@ -83,9 +87,5 @@
     private fun inlines(text: String): List<InlineNode> {
     }
 class InlineParsingTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.ui.markdown
 }

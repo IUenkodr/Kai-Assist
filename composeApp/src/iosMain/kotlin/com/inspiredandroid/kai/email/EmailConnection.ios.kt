@@ -1,3 +1,14 @@
+import io.ktor.network.selector.SelectorManager
+import io.ktor.network.sockets.aSocket
+import io.ktor.network.sockets.openReadChannel
+import io.ktor.network.sockets.openWriteChannel
+import io.ktor.network.tls.tls
+import io.ktor.utils.io.ByteReadChannel
+import io.ktor.utils.io.ByteWriteChannel
+import io.ktor.utils.io.readUTF8Line
+import io.ktor.utils.io.writeStringUtf8
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 
             closeable.close()
             selectorManager.close()
@@ -38,17 +49,6 @@
 ) : EmailConnection {
 @file:Suppress("DEPRECATION")
 actual suspend fun createEmailConnection(host: String, port: Int, tls: Boolean): EmailConnection {
-import io.ktor.network.selector.SelectorManager
-import io.ktor.network.sockets.aSocket
-import io.ktor.network.sockets.openReadChannel
-import io.ktor.network.sockets.openWriteChannel
-import io.ktor.network.tls.tls
-import io.ktor.utils.io.ByteReadChannel
-import io.ktor.utils.io.ByteWriteChannel
-import io.ktor.utils.io.readUTF8Line
-import io.ktor.utils.io.writeStringUtf8
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 package com.inspiredandroid.kai.email
 private class KtorEmailConnection(
 }

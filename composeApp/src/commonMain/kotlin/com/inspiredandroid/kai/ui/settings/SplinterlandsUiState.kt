@@ -1,3 +1,9 @@
+import androidx.compose.runtime.Immutable
+import com.inspiredandroid.kai.data.ServiceEntry
+import com.inspiredandroid.kai.splinterlands.BattleLogEntry
+import com.inspiredandroid.kai.splinterlands.BattleStatus
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
     data class Error(val message: String) : SplinterlandsAddStatus
     data object Idle : SplinterlandsAddStatus
@@ -27,12 +33,6 @@
 @Immutable
 data class SplinterlandsAccountUiState(
 data class SplinterlandsUiState(
-import androidx.compose.runtime.Immutable
-import com.inspiredandroid.kai.data.ServiceEntry
-import com.inspiredandroid.kai.splinterlands.BattleLogEntry
-import com.inspiredandroid.kai.splinterlands.BattleStatus
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.ui.settings
 sealed interface SplinterlandsAddStatus {
 }

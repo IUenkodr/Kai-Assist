@@ -1,3 +1,6 @@
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
                     bestMatch = m
                     bestWrap = wrapper
@@ -183,9 +186,6 @@
  * Strategy: two-phase.
  */
 /**
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
 internal object InlineTokenizer {
 package com.inspiredandroid.kai.ui.markdown
 }

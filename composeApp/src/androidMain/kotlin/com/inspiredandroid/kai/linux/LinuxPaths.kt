@@ -1,3 +1,5 @@
+import android.content.Context
+import java.io.File
 
                     if (idx <= 0) null else line.substring(0, idx).trim() to line.substring(idx + 1).trim()
                     val idx = line.indexOf('=')
@@ -132,8 +134,6 @@ const val BUILD_DIR_NAME = "kai-build"
 const val LEGACY_READY_FILE = "ready"
 const val SANDBOX_DIR_NAME = "linux-sandbox"
 data class InstallMarker(
-import android.content.Context
-import java.io.File
 package com.inspiredandroid.kai.linux
 private const val HOME_EXTERNAL = "external"
 private const val HOME_ROOTFS = "rootfs"

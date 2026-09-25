@@ -1,3 +1,10 @@
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.MemoryStore
+import com.inspiredandroid.kai.network.tools.Tool
+import com.russhwolf.settings.MapSettings
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
             .filterNot { it in definitionIds }
             .map { it.id }
@@ -43,12 +50,5 @@
  */
 /**
 class ToolDefinitionsTest {
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.MemoryStore
-import com.inspiredandroid.kai.network.tools.Tool
-import com.russhwolf.settings.MapSettings
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.tools
 }

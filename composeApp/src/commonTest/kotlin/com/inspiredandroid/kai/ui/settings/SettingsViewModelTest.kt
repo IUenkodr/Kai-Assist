@@ -1,3 +1,22 @@
+import app.cash.turbine.test
+import com.inspiredandroid.kai.DaemonController
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.TaskScheduler
+import com.inspiredandroid.kai.testutil.FakeDataRepository
+import com.inspiredandroid.kai.tools.AppPermission
+import com.inspiredandroid.kai.tools.PermissionController
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
                 "https://custom.example.com/v1/",
                 .filterIsInstance<app.cash.turbine.Event.Item<SettingsUiState>>()
@@ -218,24 +237,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class SettingsViewModelTest {
-import app.cash.turbine.test
-import com.inspiredandroid.kai.DaemonController
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.TaskScheduler
-import com.inspiredandroid.kai.testutil.FakeDataRepository
-import com.inspiredandroid.kai.tools.AppPermission
-import com.inspiredandroid.kai.tools.PermissionController
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.settings
 }

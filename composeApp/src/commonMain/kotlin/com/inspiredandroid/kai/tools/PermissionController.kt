@@ -1,3 +1,9 @@
+import androidx.compose.runtime.Composable
+import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withTimeoutOrNull
 
             permissionResultFlow.first { it != null }
         // Platforms without a launcher would otherwise sit out the full timeout below waiting for
@@ -56,12 +62,6 @@
 class PermissionController(internal val permission: AppPermission) {
 enum class AppPermission {
 expect fun SetupPermissionHandler(controller: PermissionController)
-import androidx.compose.runtime.Composable
-import kotlin.time.Duration.Companion.seconds
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.withTimeoutOrNull
 internal expect fun platformCanRequest(permission: AppPermission): Boolean
 internal expect fun platformHasPermission(permission: AppPermission): Boolean
 internal expect fun platformOpenAppSettings()

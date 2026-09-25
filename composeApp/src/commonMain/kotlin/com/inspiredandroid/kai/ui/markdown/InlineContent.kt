@@ -1,3 +1,16 @@
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
+import com.inspiredandroid.kai.ui.markdown.math.MathFormula
+import kotlinx.collections.immutable.ImmutableList
 
                     style = style,
                     text = seg.nodes.toAnnotatedString().flattenNewlines(),
@@ -66,19 +79,6 @@
 /** `\n` inside a FlowRow TextRun forces a hard break that breaks flow around math; flatten to spaces. */
 @Composable
 @OptIn(ExperimentalLayoutApi::class)
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
-import com.inspiredandroid.kai.ui.markdown.math.MathFormula
-import kotlinx.collections.immutable.ImmutableList
 internal fun InlineContent(
 package com.inspiredandroid.kai.ui.markdown
 private fun AnnotatedString.flattenNewlines(): AnnotatedString = if ('\n' !in text) {

@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
         // Here we ensure the no-space-after-opener KaTeX rule keeps "$5 and $3" out of math.
         // Unclosed `$$` should not crash and should not swallow the rest of the document.
@@ -66,8 +69,5 @@
     }
 /** Markdown-level integration: how `$`/`$$`/`\(…\)`/`\[…\]` become [InlineMath]/[DisplayMath]. */
 class MathParsingTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.ui.markdown
 }

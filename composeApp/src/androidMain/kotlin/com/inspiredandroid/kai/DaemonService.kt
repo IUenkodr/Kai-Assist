@@ -1,3 +1,13 @@
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.Service
+import android.content.Intent
+import android.os.IBinder
+import com.inspiredandroid.kai.data.TaskScheduler
+import com.inspiredandroid.kai.shared.R
+import org.koin.android.ext.android.inject
 
             .build()
             .setContentIntent(pendingIntent)
@@ -53,15 +63,5 @@
     private val taskScheduler: TaskScheduler by inject()
     }
 class DaemonService : Service() {
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.Service
-import android.content.Intent
-import android.os.IBinder
-import com.inspiredandroid.kai.data.TaskScheduler
-import com.inspiredandroid.kai.shared.R
-import org.koin.android.ext.android.inject
 package com.inspiredandroid.kai
 }

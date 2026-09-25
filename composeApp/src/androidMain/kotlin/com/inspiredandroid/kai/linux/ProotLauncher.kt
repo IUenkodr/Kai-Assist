@@ -1,3 +1,11 @@
+import com.inspiredandroid.kai.smartTruncate
+import java.io.BufferedReader
+import java.io.File
+import java.io.IOException
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
 
                     process.outputStream.flush()
                     process.outputStream.write(data)
@@ -176,14 +184,6 @@ class ProotHandle internal constructor(
 class ProotLauncher(
 const val DEFAULT_GUEST_PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 data class ProotResult(
-import com.inspiredandroid.kai.smartTruncate
-import java.io.BufferedReader
-import java.io.File
-import java.io.IOException
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.AtomicBoolean
 package com.inspiredandroid.kai.linux
 private const val DEFAULT_MAX_OUTPUT_CHARS = 15_000
 }

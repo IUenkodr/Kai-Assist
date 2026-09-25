@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.SettingsJsonList
+import com.inspiredandroid.kai.data.SharedJson
+import com.inspiredandroid.kai.data.getInstanceEffectiveModelId
+import kotlinx.serialization.serializer
 
                 current + account
                 current.map { if (it.id == account.id) account else it }
@@ -74,10 +79,5 @@
     suspend fun setPostingKey(accountId: String, key: String) {
     }
 class SplinterlandsStore(private val appSettings: AppSettings) {
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.SettingsJsonList
-import com.inspiredandroid.kai.data.SharedJson
-import com.inspiredandroid.kai.data.getInstanceEffectiveModelId
-import kotlinx.serialization.serializer
 package com.inspiredandroid.kai.splinterlands
 }

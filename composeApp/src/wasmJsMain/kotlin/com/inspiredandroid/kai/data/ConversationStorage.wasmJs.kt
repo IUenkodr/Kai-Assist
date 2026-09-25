@@ -1,3 +1,6 @@
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
+import kotlinx.browser.localStorage
 
         Base64.decode(stored)
         null
@@ -10,9 +13,6 @@
 @OptIn(ExperimentalEncodingApi::class)
 actual fun deleteLegacyConversationFile() {
 actual fun readLegacyConversationFile(): ByteArray? {
-import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
-import kotlinx.browser.localStorage
 package com.inspiredandroid.kai.data
 private const val LEGACY_STORAGE_KEY = "kaimutableConversations"
 }

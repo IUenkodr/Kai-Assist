@@ -1,3 +1,28 @@
+import app.cash.turbine.test
+import com.inspiredandroid.kai.CommandHandle
+import com.inspiredandroid.kai.NoOpCommandHandle
+import com.inspiredandroid.kai.SandboxController
+import com.inspiredandroid.kai.SandboxFileEntry
+import com.inspiredandroid.kai.SandboxMigration
+import com.inspiredandroid.kai.SandboxStatus
+import com.inspiredandroid.kai.SandboxStatusLabel
+import com.inspiredandroid.kai.TextFileResult
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.testutil.FakeDataRepository
+import io.github.vinceglb.filekit.PlatformFile
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
                 SandboxStatus(error = true, label = SandboxStatusLabel.Failure.Setup("boom"))
                 diskUsageMB = 250L,
@@ -136,30 +161,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class SandboxViewModelTest {
-import app.cash.turbine.test
-import com.inspiredandroid.kai.CommandHandle
-import com.inspiredandroid.kai.NoOpCommandHandle
-import com.inspiredandroid.kai.SandboxController
-import com.inspiredandroid.kai.SandboxFileEntry
-import com.inspiredandroid.kai.SandboxMigration
-import com.inspiredandroid.kai.SandboxStatus
-import com.inspiredandroid.kai.SandboxStatusLabel
-import com.inspiredandroid.kai.TextFileResult
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.testutil.FakeDataRepository
-import io.github.vinceglb.filekit.PlatformFile
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.settings
 }

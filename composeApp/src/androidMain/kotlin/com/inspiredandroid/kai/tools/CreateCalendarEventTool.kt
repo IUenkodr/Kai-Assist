@@ -1,3 +1,10 @@
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_create_calendar_event_description
+import kai.composeapp.generated.resources.tool_create_calendar_event_name
 
                     "error" to result.message,
                     "event_id" to result.eventId,
@@ -54,13 +61,6 @@
     fun create(calendarRepository: CalendarRepository): Tool = object : Tool {
     val toolInfo = ToolInfo(
     }
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_create_calendar_event_description
-import kai.composeapp.generated.resources.tool_create_calendar_event_name
 object CreateCalendarEventTool {
 package com.inspiredandroid.kai.tools
 }

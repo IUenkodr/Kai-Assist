@@ -1,3 +1,8 @@
+import app.cash.sqldelight.db.SqlDriver
+import com.inspiredandroid.kai.TerminalLine
+import com.inspiredandroid.kai.db.KaiDatabase
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
                 conversationId = conversation.id,
                 createdAt = row.createdAt,
@@ -135,11 +140,6 @@ class SettingsConversationPersistence(private val appSettings: AppSettings) : Co
 class SqlConversationPersistence(
 expect fun createConversationSqlDriver(): SqlDriver?
 fun createConversationPersistence(appSettings: AppSettings): ConversationPersistence {
-import app.cash.sqldelight.db.SqlDriver
-import com.inspiredandroid.kai.TerminalLine
-import com.inspiredandroid.kai.db.KaiDatabase
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 interface ConversationPersistence {
 internal val ConversationJson = Json {
 package com.inspiredandroid.kai.data

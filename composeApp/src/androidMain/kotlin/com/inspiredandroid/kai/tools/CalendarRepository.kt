@@ -1,3 +1,17 @@
+import android.Manifest
+import android.content.ContentValues
+import android.content.Context
+import android.content.pm.PackageManager
+import android.provider.CalendarContract
+import android.util.Log
+import androidx.core.content.ContextCompat
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.OffsetDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
+import java.util.TimeZone
 
                     addReminder(eventId, reminderMinutes)
                     return cursor.getLong(idIndex)
@@ -124,20 +138,6 @@
     }
 ) {
 class CalendarRepository(
-import android.Manifest
-import android.content.ContentValues
-import android.content.Context
-import android.content.pm.PackageManager
-import android.provider.CalendarContract
-import android.util.Log
-import androidx.core.content.ContextCompat
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
-import java.util.TimeZone
 package com.inspiredandroid.kai.tools
 private const val TAG = "CalendarRepository"
 sealed class CalendarResult {

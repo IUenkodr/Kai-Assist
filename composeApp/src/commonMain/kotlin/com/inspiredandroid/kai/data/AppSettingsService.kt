@@ -1,3 +1,10 @@
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CONFIGURED_SERVICES
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonPrimitive
 
                     "instanceId" to JsonPrimitive(instance.instanceId),
                     "serviceId" to JsonPrimitive(instance.serviceId),
@@ -90,13 +97,6 @@ fun AppSettings.setInstanceBaseUrl(instanceId: String, baseUrl: String) {
 fun AppSettings.setInstanceCustomModelId(instanceId: String, modelId: String) {
 fun AppSettings.setInstanceModelId(instanceId: String, modelId: String) {
 fun AppSettings.setInstanceUseCustomModel(instanceId: String, useCustom: Boolean) {
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CONFIGURED_SERVICES
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonPrimitive
 package com.inspiredandroid.kai.data
 }
 } else {

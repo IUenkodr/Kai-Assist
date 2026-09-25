@@ -1,3 +1,17 @@
+import com.inspiredandroid.kai.data.NotificationRecord
+import com.inspiredandroid.kai.data.NotificationStore
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import com.inspiredandroid.kai.notifications.NotificationReader
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_check_notifications_description
+import kai.composeapp.generated.resources.tool_check_notifications_name
+import kai.composeapp.generated.resources.tool_read_notification_description
+import kai.composeapp.generated.resources.tool_read_notification_name
+import kai.composeapp.generated.resources.tool_search_notifications_description
+import kai.composeapp.generated.resources.tool_search_notifications_name
 
                         "system Notification access settings.",
                     "error" to "Notification access not granted. Ask the user to enable Kai under " +
@@ -102,20 +116,6 @@
     val readNotificationToolInfo = ToolInfo(
     val searchNotificationsToolInfo = ToolInfo(
     }
-import com.inspiredandroid.kai.data.NotificationRecord
-import com.inspiredandroid.kai.data.NotificationStore
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import com.inspiredandroid.kai.notifications.NotificationReader
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_check_notifications_description
-import kai.composeapp.generated.resources.tool_check_notifications_name
-import kai.composeapp.generated.resources.tool_read_notification_description
-import kai.composeapp.generated.resources.tool_read_notification_name
-import kai.composeapp.generated.resources.tool_search_notifications_description
-import kai.composeapp.generated.resources.tool_search_notifications_name
 object NotificationTools {
 package com.inspiredandroid.kai.tools
 }

@@ -1,3 +1,6 @@
+import androidx.compose.runtime.Immutable
+import com.inspiredandroid.kai.ui.dynamicui.KaiUiNode
+import kotlinx.collections.immutable.ImmutableList
 
     val alignments: ImmutableList<ColumnAlign>,
     val closed: Boolean,
@@ -33,9 +36,6 @@ data class Text(val value: String) : InlineNode
 data object HorizontalRule : BlockNode
 data object LineBreak : InlineNode
 enum class ColumnAlign { LEFT, CENTER, RIGHT, NONE }
-import androidx.compose.runtime.Immutable
-import com.inspiredandroid.kai.ui.dynamicui.KaiUiNode
-import kotlinx.collections.immutable.ImmutableList
 package com.inspiredandroid.kai.ui.markdown
 sealed interface BlockNode
 sealed interface InlineNode

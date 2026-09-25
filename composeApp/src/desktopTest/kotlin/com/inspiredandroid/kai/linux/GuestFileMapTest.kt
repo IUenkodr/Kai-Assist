@@ -1,3 +1,12 @@
+import java.io.File
+import java.nio.file.Files
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
         // /root/projects is a mount point inside the rootfs; resolving it there
         // would list an empty directory instead of the user's project folders.
@@ -65,14 +74,5 @@
     private lateinit var tmp: File
     }
 class GuestFileMapTest {
-import java.io.File
-import java.nio.file.Files
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.linux
 }

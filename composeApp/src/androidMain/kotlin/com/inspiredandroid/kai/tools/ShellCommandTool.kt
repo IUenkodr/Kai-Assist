@@ -1,3 +1,16 @@
+import com.inspiredandroid.kai.SandboxSessions
+import com.inspiredandroid.kai.data.currentConversationIdOrNull
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
+import com.inspiredandroid.kai.sandbox.SandboxState
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_execute_shell_command_description
+import kai.composeapp.generated.resources.tool_execute_shell_command_name
+import org.koin.java.KoinJavaComponent.inject
 
                 append("cd ").append(shellSingleQuote(workingDir)).append(" && ")
                 append(shellSingleQuote(k)).append('=').append(shellSingleQuote(v)).append(' ')
@@ -93,19 +106,6 @@ Password-only servers (no key auth): this shell can't answer interactive passwor
 Pre-installed: ${distro.basePackages.joinToString(", ")}. Optional bundle (installed from Settings): ${distro.optionalPackages.joinToString(", ")} — that covers remote-server tools ssh, scp, sftp, lftp (FTP/FTPS) and rsync. Use them directly, e.g. "ssh user@host 'remote command'", "sftp user@host", "lftp -c 'open ftp://...; put file'". Authentication state (~/.ssh keys, known_hosts) persists.
 Shell session is PERSISTENT across calls within THIS conversation: cwd, exported environment variables, and any in-shell state carry from one call to the next, just like a normal terminal. So "cd /tmp" in one call, then "pwd" in the next, returns "/tmp". You do NOT need to chain "cd dir && command" unless you want directory changes to be one-shot. Other conversations and the in-app Terminal tab each have their own isolated shells; the rootfs and /root are still shared on disk, so files persist across all of them.
 To show a file you produced in /root to the user, call open_file with the path relative to /root (e.g. open_file path="page.html"). File needs to be self-contained."""
-import com.inspiredandroid.kai.SandboxSessions
-import com.inspiredandroid.kai.data.currentConversationIdOrNull
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
-import com.inspiredandroid.kai.sandbox.SandboxState
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_execute_shell_command_description
-import kai.composeapp.generated.resources.tool_execute_shell_command_name
-import org.koin.java.KoinJavaComponent.inject
 object ShellCommandTool : Tool {
 package com.inspiredandroid.kai.tools
 private fun toolDescription(distro: LinuxDistro): String {

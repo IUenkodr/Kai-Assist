@@ -1,3 +1,46 @@
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.inspiredandroid.kai.KAI_BUILD_FILES
+import com.inspiredandroid.kai.PlatformBackHandler
+import com.inspiredandroid.kai.build.BuildAgents
+import com.inspiredandroid.kai.build.terminal.TerminalKey
+import com.inspiredandroid.kai.build.terminal.TerminalModifiers
+import com.inspiredandroid.kai.ui.handCursor
+import com.inspiredandroid.kai.ui.sandbox.SandboxFilesContent
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.kai_build_exit_content_description
+import kai.composeapp.generated.resources.kai_build_new_project_content_description
+import kai.composeapp.generated.resources.kai_build_title
+import kotlinx.collections.immutable.toImmutableList
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
                                         Res.string.kai_build_new_project_content_description,
                                     ),
@@ -196,49 +239,6 @@
 @Immutable
 data class KaiBuildActions(
 fun KaiBuildScreen(
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.inspiredandroid.kai.KAI_BUILD_FILES
-import com.inspiredandroid.kai.PlatformBackHandler
-import com.inspiredandroid.kai.build.BuildAgents
-import com.inspiredandroid.kai.build.terminal.TerminalKey
-import com.inspiredandroid.kai.build.terminal.TerminalModifiers
-import com.inspiredandroid.kai.ui.handCursor
-import com.inspiredandroid.kai.ui.sandbox.SandboxFilesContent
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.kai_build_exit_content_description
-import kai.composeapp.generated.resources.kai_build_new_project_content_description
-import kai.composeapp.generated.resources.kai_build_title
-import kotlinx.collections.immutable.toImmutableList
-import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
 internal fun KaiBuildScreenContent(
 package com.inspiredandroid.kai.ui.build
 private const val KAI_BUILD_FILES_KEY = "kaiBuildFiles"

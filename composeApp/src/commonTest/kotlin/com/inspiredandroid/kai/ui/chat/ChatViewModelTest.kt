@@ -1,3 +1,31 @@
+import app.cash.turbine.test
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.TaskScheduler
+import com.inspiredandroid.kai.network.AnthropicInsufficientCreditsException
+import com.inspiredandroid.kai.network.AnthropicInvalidApiKeyException
+import com.inspiredandroid.kai.network.AnthropicOverloadedException
+import com.inspiredandroid.kai.network.AnthropicRateLimitExceededException
+import com.inspiredandroid.kai.network.GeminiInvalidApiKeyException
+import com.inspiredandroid.kai.network.GeminiRateLimitExceededException
+import com.inspiredandroid.kai.network.GenericNetworkException
+import com.inspiredandroid.kai.network.OpenAICompatibleInvalidApiKeyException
+import com.inspiredandroid.kai.network.OpenAICompatibleRateLimitExceededException
+import com.inspiredandroid.kai.testutil.FakeDataRepository
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
                 cleared = awaitItem()
                 clearedState = awaitItem()
@@ -165,33 +193,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class ChatViewModelTest {
-import app.cash.turbine.test
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.TaskScheduler
-import com.inspiredandroid.kai.network.AnthropicInsufficientCreditsException
-import com.inspiredandroid.kai.network.AnthropicInvalidApiKeyException
-import com.inspiredandroid.kai.network.AnthropicOverloadedException
-import com.inspiredandroid.kai.network.AnthropicRateLimitExceededException
-import com.inspiredandroid.kai.network.GeminiInvalidApiKeyException
-import com.inspiredandroid.kai.network.GeminiRateLimitExceededException
-import com.inspiredandroid.kai.network.GenericNetworkException
-import com.inspiredandroid.kai.network.OpenAICompatibleInvalidApiKeyException
-import com.inspiredandroid.kai.network.OpenAICompatibleRateLimitExceededException
-import com.inspiredandroid.kai.testutil.FakeDataRepository
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.chat
 }

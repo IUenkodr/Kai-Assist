@@ -1,3 +1,40 @@
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SuggestionChip
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
+import com.inspiredandroid.kai.data.Attachment
+import com.inspiredandroid.kai.decodeToImageBitmap
+import com.inspiredandroid.kai.ui.components.LocalShowFullScreenImage
+import com.inspiredandroid.kai.ui.handCursor
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.ic_file
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import org.jetbrains.compose.resources.painterResource
 
                                         contentDescription = null,
                                         modifier = Modifier.size(16.dp),
@@ -66,43 +103,6 @@
 ) {
 @Composable
 @OptIn(ExperimentalEncodingApi::class, ExperimentalLayoutApi::class)
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SuggestionChip
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.unit.dp
-import com.inspiredandroid.kai.data.Attachment
-import com.inspiredandroid.kai.decodeToImageBitmap
-import com.inspiredandroid.kai.ui.components.LocalShowFullScreenImage
-import com.inspiredandroid.kai.ui.handCursor
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.ic_file
-import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import org.jetbrains.compose.resources.painterResource
 internal fun UserMessage(
 package com.inspiredandroid.kai.ui.chat.composables
 }

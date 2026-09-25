@@ -1,3 +1,31 @@
+import android.graphics.BitmapFactory
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.unit.dp
+import app.cash.paparazzi.DeviceConfig
+import app.cash.paparazzi.Paparazzi
+import com.inspiredandroid.kai.ui.DarkColorScheme
+import com.inspiredandroid.kai.ui.LightColorScheme
+import com.inspiredandroid.kai.ui.Theme
+import com.inspiredandroid.kai.ui.chat.ChatScreenContent
+import com.inspiredandroid.kai.ui.chat.ChatUiState
+import com.inspiredandroid.kai.ui.chat.History
+import com.inspiredandroid.kai.ui.dynamicui.KaiUiParser
+import com.inspiredandroid.kai.ui.dynamicui.KaiUiParser.UiBlockResult
+import com.inspiredandroid.kai.ui.dynamicui.KaiUiRenderer
+import com.inspiredandroid.kai.ui.dynamicui.LocalPreviewImages
+import kotlinx.collections.immutable.persistentListOf
+import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.setResourceReaderAndroidContext
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 
                             "**Actionable Tips**: Receive personalized recommendations to reduce your footprint.",
                             "**Automated Insights**: Integrate with smart devices and apps for seamless data collection.",
@@ -434,33 +462,5 @@
 @OptIn(ExperimentalResourceApi::class)
 @file:OptIn(ExperimentalVoiceApi::class)
 class KaiUiScreenshotTest {
-import android.graphics.BitmapFactory
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ColorScheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.unit.dp
-import app.cash.paparazzi.DeviceConfig
-import app.cash.paparazzi.Paparazzi
-import com.inspiredandroid.kai.ui.DarkColorScheme
-import com.inspiredandroid.kai.ui.LightColorScheme
-import com.inspiredandroid.kai.ui.Theme
-import com.inspiredandroid.kai.ui.chat.ChatScreenContent
-import com.inspiredandroid.kai.ui.chat.ChatUiState
-import com.inspiredandroid.kai.ui.chat.History
-import com.inspiredandroid.kai.ui.dynamicui.KaiUiParser
-import com.inspiredandroid.kai.ui.dynamicui.KaiUiParser.UiBlockResult
-import com.inspiredandroid.kai.ui.dynamicui.KaiUiRenderer
-import com.inspiredandroid.kai.ui.dynamicui.LocalPreviewImages
-import kotlinx.collections.immutable.persistentListOf
-import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.setResourceReaderAndroidContext
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 package com.inspiredandroid.kai.screenshots
 }

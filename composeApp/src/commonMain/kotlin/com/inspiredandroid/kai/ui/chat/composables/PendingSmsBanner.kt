@@ -1,3 +1,45 @@
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import com.inspiredandroid.kai.data.SmsDraft
+import com.inspiredandroid.kai.data.SmsDraftStatus
+import com.inspiredandroid.kai.ui.handCursor
+import com.inspiredandroid.kai.ui.kaiAdaptiveCardBorder
+import com.inspiredandroid.kai.ui.kaiAdaptiveCardColors
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.ic_close
+import kai.composeapp.generated.resources.sms_draft_banner_discard
+import kai.composeapp.generated.resources.sms_draft_banner_dismiss
+import kai.composeapp.generated.resources.sms_draft_banner_failed
+import kai.composeapp.generated.resources.sms_draft_banner_send
+import kai.composeapp.generated.resources.sms_draft_banner_sending
+import kai.composeapp.generated.resources.sms_draft_banner_sent
+import kai.composeapp.generated.resources.sms_draft_banner_to
+import kotlinx.collections.immutable.ImmutableList
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.resources.vectorResource
 
                             Text(stringResource(Res.string.sms_draft_banner_send))
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -105,48 +147,6 @@
 ) {
 /**
 @Composable
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.key
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import com.inspiredandroid.kai.data.SmsDraft
-import com.inspiredandroid.kai.data.SmsDraftStatus
-import com.inspiredandroid.kai.ui.handCursor
-import com.inspiredandroid.kai.ui.kaiAdaptiveCardBorder
-import com.inspiredandroid.kai.ui.kaiAdaptiveCardColors
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.ic_close
-import kai.composeapp.generated.resources.sms_draft_banner_discard
-import kai.composeapp.generated.resources.sms_draft_banner_dismiss
-import kai.composeapp.generated.resources.sms_draft_banner_failed
-import kai.composeapp.generated.resources.sms_draft_banner_send
-import kai.composeapp.generated.resources.sms_draft_banner_sending
-import kai.composeapp.generated.resources.sms_draft_banner_sent
-import kai.composeapp.generated.resources.sms_draft_banner_to
-import kotlinx.collections.immutable.ImmutableList
-import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.resources.vectorResource
 internal fun PendingSmsBanners(
 package com.inspiredandroid.kai.ui.chat.composables
 private fun PendingSmsBanner(

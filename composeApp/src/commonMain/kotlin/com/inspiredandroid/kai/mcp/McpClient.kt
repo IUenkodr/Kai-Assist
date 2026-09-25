@@ -1,3 +1,17 @@
+import com.inspiredandroid.kai.httpClient
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.request.header
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.decodeFromJsonElement
 
                     put("name", JsonPrimitive("Kai 9000"))
                     put("version", JsonPrimitive("1.0"))
@@ -94,19 +108,5 @@
 ) {
 class McpClient(
 class McpException(message: String) : Exception(message)
-import com.inspiredandroid.kai.httpClient
-import io.ktor.client.HttpClient
-import io.ktor.client.plugins.HttpTimeout
-import io.ktor.client.request.header
-import io.ktor.client.request.post
-import io.ktor.client.request.setBody
-import io.ktor.client.statement.bodyAsText
-import io.ktor.http.ContentType
-import io.ktor.http.contentType
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.decodeFromJsonElement
 package com.inspiredandroid.kai.mcp
 }

@@ -1,3 +1,12 @@
+import com.inspiredandroid.kai.CommandHandle
+import com.inspiredandroid.kai.NoOpCommandHandle
+import com.inspiredandroid.kai.SandboxController
+import com.inspiredandroid.kai.SandboxFileEntry
+import com.inspiredandroid.kai.SandboxStatus
+import com.inspiredandroid.kai.TextFileResult
+import io.github.vinceglb.filekit.PlatformFile
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
                 children[rest] = false // direct file
                 if (children[dir] != false) children[dir] = true
@@ -49,14 +58,5 @@
  */
 /**
 class FakeSandboxController(installed: Boolean = true) : SandboxController {
-import com.inspiredandroid.kai.CommandHandle
-import com.inspiredandroid.kai.NoOpCommandHandle
-import com.inspiredandroid.kai.SandboxController
-import com.inspiredandroid.kai.SandboxFileEntry
-import com.inspiredandroid.kai.SandboxStatus
-import com.inspiredandroid.kai.TextFileResult
-import io.github.vinceglb.filekit.PlatformFile
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 package com.inspiredandroid.kai.testutil
 }

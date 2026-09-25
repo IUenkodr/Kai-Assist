@@ -1,3 +1,11 @@
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.Service
+import android.content.Intent
+import android.os.IBinder
+import com.inspiredandroid.kai.shared.R
 
             .build()
             .setContentIntent(pendingIntent)
@@ -46,13 +54,5 @@
     private fun createNotificationChannel() {
     }
 class ModelDownloadService : Service() {
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.Service
-import android.content.Intent
-import android.os.IBinder
-import com.inspiredandroid.kai.shared.R
 package com.inspiredandroid.kai.inference
 }

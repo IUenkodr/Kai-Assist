@@ -1,3 +1,13 @@
+import android.content.Context
+import android.content.Intent
+import android.provider.AlarmClock
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_set_alarm_description
+import kai.composeapp.generated.resources.tool_set_alarm_name
 
                         "duration_seconds" to durationSeconds,
                         "hour" to hour!!,
@@ -59,16 +69,6 @@
     fun create(context: Context): Tool = object : Tool {
     val toolInfo = ToolInfo(
     }
-import android.content.Context
-import android.content.Intent
-import android.provider.AlarmClock
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_set_alarm_description
-import kai.composeapp.generated.resources.tool_set_alarm_name
 object SetAlarmTool {
 package com.inspiredandroid.kai.tools
 }

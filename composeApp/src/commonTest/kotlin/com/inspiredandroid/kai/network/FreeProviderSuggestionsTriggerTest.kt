@@ -1,3 +1,11 @@
+import com.inspiredandroid.kai.data.FreeProviderSuggestion
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.freeProviderSuggestions
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
                 .isFreeCapacityError(),
                 Service.Cerebras.id,
@@ -42,13 +50,5 @@
     fun `unrelated provider error does not show suggestions`() {
     }
 class FreeProviderSuggestionsTriggerTest {
-import com.inspiredandroid.kai.data.FreeProviderSuggestion
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.freeProviderSuggestions
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.network
 }

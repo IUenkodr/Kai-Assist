@@ -1,3 +1,30 @@
+import com.inspiredandroid.kai.inference.InferenceTimeoutException
+import com.inspiredandroid.kai.inference.InsufficientMemoryException
+import com.inspiredandroid.kai.inference.ModelIntegrityException
+import com.inspiredandroid.kai.inference.NoModelDownloadedException
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.error_all_services_failed
+import kai.composeapp.generated.resources.error_bad_request
+import kai.composeapp.generated.resources.error_content_moderation
+import kai.composeapp.generated.resources.error_context_window_exceeded
+import kai.composeapp.generated.resources.error_empty_response
+import kai.composeapp.generated.resources.error_file_too_large
+import kai.composeapp.generated.resources.error_image_too_large
+import kai.composeapp.generated.resources.error_insufficient_credits
+import kai.composeapp.generated.resources.error_invalid_api_key
+import kai.composeapp.generated.resources.error_openai_compatible_connection
+import kai.composeapp.generated.resources.error_openai_compatible_model_not_found
+import kai.composeapp.generated.resources.error_provider_error
+import kai.composeapp.generated.resources.error_quota_exhausted
+import kai.composeapp.generated.resources.error_rate_limit_exceeded
+import kai.composeapp.generated.resources.error_service_unavailable
+import kai.composeapp.generated.resources.error_unknown
+import kai.composeapp.generated.resources.error_unsupported_file_type
+import kai.composeapp.generated.resources.litert_error_inference_timeout
+import kai.composeapp.generated.resources.litert_error_insufficient_memory
+import kai.composeapp.generated.resources.litert_error_model_integrity
+import kai.composeapp.generated.resources.litert_error_no_model
+import org.jetbrains.compose.resources.StringResource
 
         ?.let { UiError.ResourceWithDetail(Res.string.error_bad_request, it) }
         ?.let { UiError.ResourceWithDetail(Res.string.error_content_moderation, it) }
@@ -98,33 +125,6 @@ class UnsupportedFileTypeException : ApiException(null)
 fun Exception.isFreeCapacityError(): Boolean = when (this) {
 fun Exception.toUiError(): UiError = when (this) {
 fun shouldShowFreeProviderSuggestions(
-import com.inspiredandroid.kai.inference.InferenceTimeoutException
-import com.inspiredandroid.kai.inference.InsufficientMemoryException
-import com.inspiredandroid.kai.inference.ModelIntegrityException
-import com.inspiredandroid.kai.inference.NoModelDownloadedException
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.error_all_services_failed
-import kai.composeapp.generated.resources.error_bad_request
-import kai.composeapp.generated.resources.error_content_moderation
-import kai.composeapp.generated.resources.error_context_window_exceeded
-import kai.composeapp.generated.resources.error_empty_response
-import kai.composeapp.generated.resources.error_file_too_large
-import kai.composeapp.generated.resources.error_image_too_large
-import kai.composeapp.generated.resources.error_insufficient_credits
-import kai.composeapp.generated.resources.error_invalid_api_key
-import kai.composeapp.generated.resources.error_openai_compatible_connection
-import kai.composeapp.generated.resources.error_openai_compatible_model_not_found
-import kai.composeapp.generated.resources.error_provider_error
-import kai.composeapp.generated.resources.error_quota_exhausted
-import kai.composeapp.generated.resources.error_rate_limit_exceeded
-import kai.composeapp.generated.resources.error_service_unavailable
-import kai.composeapp.generated.resources.error_unknown
-import kai.composeapp.generated.resources.error_unsupported_file_type
-import kai.composeapp.generated.resources.litert_error_inference_timeout
-import kai.composeapp.generated.resources.litert_error_insufficient_memory
-import kai.composeapp.generated.resources.litert_error_model_integrity
-import kai.composeapp.generated.resources.litert_error_no_model
-import org.jetbrains.compose.resources.StringResource
 internal fun messageLooksLikeFreeCapacity(message: String?): Boolean {
 package com.inspiredandroid.kai.network
 sealed class AnthropicApiException(message: String? = null, cause: Throwable? = null) : ApiException(message, cause)

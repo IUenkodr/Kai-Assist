@@ -1,3 +1,9 @@
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.EmailStore
+import com.inspiredandroid.kai.data.MemoryStore
+import com.inspiredandroid.kai.data.TaskStore
+import com.inspiredandroid.kai.mcp.McpServerManager
+import com.inspiredandroid.kai.network.tools.Tool
 
         addAll(CommonTools.getMemoryTools(memoryStore))
         addAll(EmailTools.getEmailTools(emailStore))
@@ -28,11 +34,5 @@
 ): List<Tool> = buildList {
 /**
 fun buildAgentToolSet(
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.EmailStore
-import com.inspiredandroid.kai.data.MemoryStore
-import com.inspiredandroid.kai.data.TaskStore
-import com.inspiredandroid.kai.mcp.McpServerManager
-import com.inspiredandroid.kai.network.tools.Tool
 package com.inspiredandroid.kai.tools
 }

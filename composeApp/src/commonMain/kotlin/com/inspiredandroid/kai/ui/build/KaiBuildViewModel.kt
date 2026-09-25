@@ -1,3 +1,22 @@
+import androidx.compose.runtime.Immutable
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.inspiredandroid.kai.KaiBuildController
+import com.inspiredandroid.kai.build.KaiBuildState
+import com.inspiredandroid.kai.build.terminal.TerminalKey
+import com.inspiredandroid.kai.build.terminal.TerminalKeyEncoder
+import com.inspiredandroid.kai.build.terminal.TerminalModifiers
+import com.inspiredandroid.kai.data.DataRepository
+import kotlinx.collections.immutable.ImmutableSet
+import kotlinx.collections.immutable.persistentSetOf
+import kotlinx.collections.immutable.toImmutableSet
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.stateIn
 
             (current + id).toImmutableSet()
             (current - id).toImmutableSet()
@@ -112,24 +131,5 @@
 @Immutable
 class KaiBuildViewModel(
 data class KaiBuildUiState(
-import androidx.compose.runtime.Immutable
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.inspiredandroid.kai.KaiBuildController
-import com.inspiredandroid.kai.build.KaiBuildState
-import com.inspiredandroid.kai.build.terminal.TerminalKey
-import com.inspiredandroid.kai.build.terminal.TerminalKeyEncoder
-import com.inspiredandroid.kai.build.terminal.TerminalModifiers
-import com.inspiredandroid.kai.data.DataRepository
-import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.collections.immutable.persistentSetOf
-import kotlinx.collections.immutable.toImmutableSet
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.stateIn
 package com.inspiredandroid.kai.ui.build
 }

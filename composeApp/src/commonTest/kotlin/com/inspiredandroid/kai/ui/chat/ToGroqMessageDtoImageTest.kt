@@ -1,3 +1,10 @@
+import com.inspiredandroid.kai.data.Attachment
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 
             Attachment(data = "BASE64IMAGEDATA", mimeType = "image/png", fileName = "cat.png"),
         ),
@@ -30,12 +37,5 @@
  */
 /**
 class ToGroqMessageDtoImageTest {
-import com.inspiredandroid.kai.data.Attachment
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
 package com.inspiredandroid.kai.ui.chat
 }

@@ -1,3 +1,8 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.serialization.json.Json
 
                  "content": [{"type": "output_text", "text": "42", "annotations": []}]}
                  "content": [{"type": "output_text", "text": "a"}, {"type": "output_text", "text": "b"}]},
@@ -44,10 +49,5 @@
     }
 /** Parsing guard for the `/v1/responses` output array (issue #469). */
 class OpenAIResponsesResponseDtoTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.serialization.json.Json
 package com.inspiredandroid.kai.network.dtos.openairesponses
 }

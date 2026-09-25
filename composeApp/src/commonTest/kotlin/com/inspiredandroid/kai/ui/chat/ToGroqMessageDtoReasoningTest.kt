@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.data.ReasoningRequestMode
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlinx.collections.immutable.persistentListOf
 
             ToolCallInfo(id = "call_1", name = "search", arguments = """{"q":"hi"}"""),
             content = "hello",
@@ -37,10 +42,5 @@
  */
 /**
 class ToGroqMessageDtoReasoningTest {
-import com.inspiredandroid.kai.data.ReasoningRequestMode
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.ui.chat
 }

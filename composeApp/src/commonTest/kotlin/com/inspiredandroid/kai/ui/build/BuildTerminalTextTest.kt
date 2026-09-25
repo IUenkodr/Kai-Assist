@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.build.terminal.TerminalScreen
+import com.inspiredandroid.kai.build.terminal.TerminalSnapshot
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
                 append(if (c == Char.MIN_VALUE) ' ' else c)
                 val c = snap.cellAt(col, row).char
@@ -39,10 +44,5 @@
     private fun flattenPerCell(snap: TerminalSnapshot): String = buildString {
     }
 class BuildTerminalTextTest {
-import com.inspiredandroid.kai.build.terminal.TerminalScreen
-import com.inspiredandroid.kai.build.terminal.TerminalSnapshot
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.ui.build
 }

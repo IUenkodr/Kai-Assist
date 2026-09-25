@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
                 PackageEntry("bash", "5.2.37-r0"),
                 PackageEntry("busybox", "1.37.0-r12"),
@@ -46,9 +50,5 @@
     fun `search output splits description off the name-version`() {
     }
 class ApkPackageManagerTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.linux
 }

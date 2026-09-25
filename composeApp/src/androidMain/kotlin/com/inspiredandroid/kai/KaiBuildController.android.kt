@@ -1,3 +1,13 @@
+import android.content.Context
+import com.inspiredandroid.kai.build.KaiBuildState
+import com.inspiredandroid.kai.build.runtime.BuildEnvironmentManager
+import com.inspiredandroid.kai.build.runtime.BuildFileBrowser
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.linux.LinuxInstalls
+import com.inspiredandroid.kai.linux.LinuxPaths
+import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
+import kotlinx.coroutines.flow.StateFlow
+import org.koin.java.KoinJavaComponent.inject
 
                 // A sandbox reset deletes the rootfs; sessions holding file
                 // descriptors into it have to go first.
@@ -44,15 +54,5 @@
     }
 actual fun createKaiBuildController(): KaiBuildController = AndroidKaiBuildController()
 class AndroidKaiBuildController : KaiBuildController {
-import android.content.Context
-import com.inspiredandroid.kai.build.KaiBuildState
-import com.inspiredandroid.kai.build.runtime.BuildEnvironmentManager
-import com.inspiredandroid.kai.build.runtime.BuildFileBrowser
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.linux.LinuxInstalls
-import com.inspiredandroid.kai.linux.LinuxPaths
-import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
-import kotlinx.coroutines.flow.StateFlow
-import org.koin.java.KoinJavaComponent.inject
 package com.inspiredandroid.kai
 }

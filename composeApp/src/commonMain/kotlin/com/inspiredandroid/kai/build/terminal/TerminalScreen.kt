@@ -1,3 +1,4 @@
+import kotlinx.collections.immutable.toImmutableList
 
                         currentBg = map256(params[i + 2])
                         currentBg = rgbTo16(params[i + 2], params[i + 3], params[i + 4])
@@ -346,6 +347,5 @@
 ) {
 /**
 class TerminalScreen(
-import kotlinx.collections.immutable.toImmutableList
 package com.inspiredandroid.kai.build.terminal
 }

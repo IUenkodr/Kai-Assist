@@ -1,3 +1,10 @@
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.ui.chat.History
+import com.inspiredandroid.kai.ui.chat.ToolCallInfo
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlinx.collections.immutable.persistentListOf
 
                     .mapNotNull { it.tool_call_id }
                     .takeWhile { it.role == "tool" }
@@ -58,12 +65,5 @@
  */
 /**
 class BuildOpenAIMessagesPairingTest {
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.ui.chat.History
-import com.inspiredandroid.kai.ui.chat.ToolCallInfo
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.data.providers
 }

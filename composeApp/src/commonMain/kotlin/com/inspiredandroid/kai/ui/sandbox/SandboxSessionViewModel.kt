@@ -1,3 +1,19 @@
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.inspiredandroid.kai.CommandHandle
+import com.inspiredandroid.kai.SandboxController
+import com.inspiredandroid.kai.SandboxSessions
+import com.inspiredandroid.kai.TerminalLine
+import com.inspiredandroid.kai.data.DataRepository
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.terminal_command_failed
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.getString
 
                         selectSession(currentChatId)
                     // Terminal follows the active chat. Users who want the
@@ -133,21 +149,5 @@
 ) : ViewModel() {
 class SandboxSessionViewModel(
 data class SessionTab(
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.inspiredandroid.kai.CommandHandle
-import com.inspiredandroid.kai.SandboxController
-import com.inspiredandroid.kai.SandboxSessions
-import com.inspiredandroid.kai.TerminalLine
-import com.inspiredandroid.kai.data.DataRepository
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.terminal_command_failed
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.getString
 package com.inspiredandroid.kai.ui.sandbox
 }

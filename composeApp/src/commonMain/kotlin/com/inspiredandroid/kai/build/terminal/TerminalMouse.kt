@@ -1,3 +1,4 @@
+import androidx.compose.runtime.Immutable
 
                 press + release
                 sgr(BUTTON_LEFT, col, row, press = true) + sgr(BUTTON_LEFT, col, row, press = false)
@@ -64,7 +65,6 @@
 data class TerminalMouseState(
 enum class TerminalMouseEncoding {
 enum class TerminalMouseTracking {
-import androidx.compose.runtime.Immutable
 object TerminalMouseEncoder {
 package com.inspiredandroid.kai.build.terminal
 }

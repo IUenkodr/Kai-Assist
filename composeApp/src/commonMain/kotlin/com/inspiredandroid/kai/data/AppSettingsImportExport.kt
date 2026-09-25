@@ -1,3 +1,17 @@
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CONFIGURED_SERVICES
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_FREE_FALLBACK_ENABLED
+import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_TOOL_PREFIX
+import kotlin.time.Clock
+import kotlin.uuid.Uuid
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
                                 put("custom_model_id", JsonPrimitive(customModelId))
                                 put("use_custom_model", JsonPrimitive(true))
@@ -246,20 +260,6 @@
 @file:OptIn(kotlin.uuid.ExperimentalUuidApi::class, kotlin.time.ExperimentalTime::class)
 fun AppSettings.exportToJson(
 fun AppSettings.importFromJson(
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CONFIGURED_SERVICES
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_CURRENT_SERVICE_ID
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_FREE_FALLBACK_ENABLED
-import com.inspiredandroid.kai.data.AppSettings.Companion.KEY_TOOL_PREFIX
-import kotlin.time.Clock
-import kotlin.uuid.Uuid
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 package com.inspiredandroid.kai.data
 private fun sanitizeConversations(element: JsonElement): List<Conversation> {
 private fun sanitizeMemories(element: JsonElement): String {

@@ -1,3 +1,4 @@
+import com.inspiredandroid.kai.network.UiError
 
     val errorReason: UiError,
     val nextServiceName: String? = null,
@@ -9,5 +10,4 @@
 )
 /**
 data class FallbackStatus(
-import com.inspiredandroid.kai.network.UiError
 package com.inspiredandroid.kai.data

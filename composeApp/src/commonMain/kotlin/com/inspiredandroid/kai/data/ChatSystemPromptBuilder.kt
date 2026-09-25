@@ -1,3 +1,5 @@
+import com.inspiredandroid.kai.skills.SkillManifest
+import kotlin.time.Instant
 
                 append(" (last sync: ")
                 append(')')
@@ -340,8 +342,6 @@
 // truth for where a section belongs. No post-hoc regex stripping.
 @file:OptIn(kotlin.time.ExperimentalTime::class)
 enum class SystemPromptVariant {
-import com.inspiredandroid.kai.skills.SkillManifest
-import kotlin.time.Instant
 internal const val DEFAULT_ACTING_SECTION =
 internal const val DEFAULT_AUTOMATION_SECTION =
 internal const val DEFAULT_HONESTY_RULE =

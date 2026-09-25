@@ -1,3 +1,5 @@
+import io.github.vinceglb.filekit.PlatformFile
+import kotlinx.coroutines.flow.StateFlow
 
         else -> DevicePerformance.POOR
         messages: List<InferenceMessage>,
@@ -133,8 +135,6 @@ enum class EngineState {
 fun calculateDevicePerformance(totalMemoryBytes: Long, estimatedGpuMemoryMb: Int): DevicePerformance {
 fun estimateGpuMemoryMb(model: LocalModel, contextTokens: Int): Int {
 fun localSamplerDefaultsOrNull(temperature: Float, topK: Int, topP: Float): LocalSamplerDefaults? = if (topK > 0 && temperature > 0f) LocalSamplerDefaults(temperature, topK, topP) else null
-import io.github.vinceglb.filekit.PlatformFile
-import kotlinx.coroutines.flow.StateFlow
 interface LocalInferenceEngine {
 package com.inspiredandroid.kai.inference
 }

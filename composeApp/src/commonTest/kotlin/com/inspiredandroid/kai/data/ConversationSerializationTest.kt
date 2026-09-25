@@ -1,3 +1,10 @@
+import com.inspiredandroid.kai.TerminalLine
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
                         "content": "Hello there"
                         "content": "Hello 世界 🌍"
@@ -180,12 +187,5 @@
     private val json = Json {
     }
 class ConversationSerializationTest {
-import com.inspiredandroid.kai.TerminalLine
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 package com.inspiredandroid.kai.data
 }

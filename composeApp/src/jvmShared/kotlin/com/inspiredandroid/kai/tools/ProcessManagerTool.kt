@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kotlin.time.Duration.Companion.seconds
 
                     ?: return mapOf("success" to false, "error" to "session_id is required for kill")
                     ?: return mapOf("success" to false, "error" to "session_id is required for log")
@@ -53,11 +58,6 @@
 - remove: Remove a finished process from the list (params: session_id)""",
 /**
 Actions:
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kotlin.time.Duration.Companion.seconds
 object ProcessManagerTool : Tool {
 package com.inspiredandroid.kai.tools
 }

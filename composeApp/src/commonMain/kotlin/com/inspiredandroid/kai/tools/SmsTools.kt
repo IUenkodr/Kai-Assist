@@ -1,3 +1,28 @@
+import com.inspiredandroid.kai.data.SmsDraft
+import com.inspiredandroid.kai.data.SmsDraftStore
+import com.inspiredandroid.kai.data.SmsMessage
+import com.inspiredandroid.kai.data.SmsStore
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import com.inspiredandroid.kai.sms.SmsReader
+import com.inspiredandroid.kai.sms.SmsSender
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_check_sms_description
+import kai.composeapp.generated.resources.tool_check_sms_name
+import kai.composeapp.generated.resources.tool_read_sms_description
+import kai.composeapp.generated.resources.tool_read_sms_name
+import kai.composeapp.generated.resources.tool_reply_sms_description
+import kai.composeapp.generated.resources.tool_reply_sms_name
+import kai.composeapp.generated.resources.tool_search_sms_description
+import kai.composeapp.generated.resources.tool_search_sms_name
+import kai.composeapp.generated.resources.tool_send_sms_description
+import kai.composeapp.generated.resources.tool_send_sms_name
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
                     "error" to "SMS permission not granted. Ask the user to enable SMS in Settings.",
                     "error" to "SMS send permission not granted. Ask the user to enable 'Send SMS' in Settings.",
@@ -144,31 +169,6 @@
     val smsSendToolDefinitions = listOf(sendSmsToolInfo, replySmsToolInfo)
     val smsToolDefinitions = smsReadToolDefinitions + smsSendToolDefinitions
     }
-import com.inspiredandroid.kai.data.SmsDraft
-import com.inspiredandroid.kai.data.SmsDraftStore
-import com.inspiredandroid.kai.data.SmsMessage
-import com.inspiredandroid.kai.data.SmsStore
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import com.inspiredandroid.kai.sms.SmsReader
-import com.inspiredandroid.kai.sms.SmsSender
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_check_sms_description
-import kai.composeapp.generated.resources.tool_check_sms_name
-import kai.composeapp.generated.resources.tool_read_sms_description
-import kai.composeapp.generated.resources.tool_read_sms_name
-import kai.composeapp.generated.resources.tool_reply_sms_description
-import kai.composeapp.generated.resources.tool_reply_sms_name
-import kai.composeapp.generated.resources.tool_search_sms_description
-import kai.composeapp.generated.resources.tool_search_sms_name
-import kai.composeapp.generated.resources.tool_send_sms_description
-import kai.composeapp.generated.resources.tool_send_sms_name
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
-import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
 object SmsTools {
 package com.inspiredandroid.kai.tools
 }

@@ -1,3 +1,43 @@
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Terminal
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.inspiredandroid.kai.build.terminal.TerminalKey
+import com.inspiredandroid.kai.build.terminal.TerminalModifiers
+import com.inspiredandroid.kai.ui.handCursor
+import com.inspiredandroid.kai.ui.settings.monoStyle
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.kai_build_terminal_input_mode_content_description
+import kai.composeapp.generated.resources.kai_build_terminal_key_down_content_description
+import kai.composeapp.generated.resources.kai_build_terminal_key_enter_content_description
+import kai.composeapp.generated.resources.kai_build_terminal_key_left_content_description
+import kai.composeapp.generated.resources.kai_build_terminal_key_right_content_description
+import kai.composeapp.generated.resources.kai_build_terminal_key_up_content_description
+import org.jetbrains.compose.resources.stringResource
 
                     Res.string.kai_build_terminal_input_mode_content_description,
                     contentDescription = stringResource(description),
@@ -144,46 +184,6 @@
 /** Navigation caps, in the order a keyboard lays them out. */
 /** The cap itself: colors for the three states, and the tint its content draws with. */
 @Composable
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Terminal
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.inspiredandroid.kai.build.terminal.TerminalKey
-import com.inspiredandroid.kai.build.terminal.TerminalModifiers
-import com.inspiredandroid.kai.ui.handCursor
-import com.inspiredandroid.kai.ui.settings.monoStyle
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.kai_build_terminal_input_mode_content_description
-import kai.composeapp.generated.resources.kai_build_terminal_key_down_content_description
-import kai.composeapp.generated.resources.kai_build_terminal_key_enter_content_description
-import kai.composeapp.generated.resources.kai_build_terminal_key_left_content_description
-import kai.composeapp.generated.resources.kai_build_terminal_key_right_content_description
-import kai.composeapp.generated.resources.kai_build_terminal_key_up_content_description
-import org.jetbrains.compose.resources.stringResource
 internal fun TerminalKeyRow(
 package com.inspiredandroid.kai.ui.build
 private fun IconKeyCap(

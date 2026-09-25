@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
                 { "name": "document-skills", "source": "./", "skills": ["./skills/xlsx", "./skills/pdf"] },
                 { "name": "example-skills", "source": "./", "skills": ["./skills/canvas-design"] }
@@ -55,8 +58,5 @@
     private val tree = setOf(
     }
 class SkillMarketplaceManifestTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.skills
 }

@@ -1,3 +1,4 @@
+import androidx.compose.runtime.Immutable
 
             // pacman -Qq only gives names. We'll leave version empty 
             // pacman search format: "pkgname version"
@@ -31,7 +32,6 @@
  * Arch Linux's `pacman`.
  */
 /**
-import androidx.compose.runtime.Immutable
 object PacmanPackageManager : PackageManagerSpec {
 package com.inspiredandroid.kai.linux
 }

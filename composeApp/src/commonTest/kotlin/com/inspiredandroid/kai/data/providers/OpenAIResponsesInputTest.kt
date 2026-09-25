@@ -1,3 +1,17 @@
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.requiresResponsesApi
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.put
 
                             function = OpenAICompatibleChatRequestDto.FunctionCall(name = "get_local_time", arguments = """{"tz":"UTC"}"""),
                             function = OpenAICompatibleChatRequestDto.FunctionCall(name = "get_local_time", arguments = "{}"),
@@ -85,19 +99,5 @@
  */
 /**
 class OpenAIResponsesInputTest {
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.requiresResponsesApi
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.jsonPrimitive
-import kotlinx.serialization.json.put
 package com.inspiredandroid.kai.data.providers
 }

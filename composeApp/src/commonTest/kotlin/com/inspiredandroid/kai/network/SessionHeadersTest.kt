@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.data.Service
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
             assertEquals(emptyMap(), sessionHeadersFor(service, "conv-42"), "unexpected header for ${service.id}")
             mapOf(header to "conv-42"),
@@ -23,10 +28,5 @@
  */
 /**
 class SessionHeadersTest {
-import com.inspiredandroid.kai.data.Service
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.network
 }

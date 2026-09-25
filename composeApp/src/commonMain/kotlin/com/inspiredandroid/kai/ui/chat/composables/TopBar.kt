@@ -1,3 +1,40 @@
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Dns
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.IconToggleButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.inspiredandroid.kai.ui.chat.ChatActions
+import com.inspiredandroid.kai.ui.handCursor
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.chat_history_content_description
+import kai.composeapp.generated.resources.ic_add
+import kai.composeapp.generated.resources.ic_history
+import kai.composeapp.generated.resources.ic_settings
+import kai.composeapp.generated.resources.ic_volume_off
+import kai.composeapp.generated.resources.ic_volume_up
+import kai.composeapp.generated.resources.new_chat_content_description
+import kai.composeapp.generated.resources.sandbox_content_description
+import kai.composeapp.generated.resources.settings_content_description
+import kai.composeapp.generated.resources.toggle_speech_output_content_description
+import nl.marc_apps.tts.TextToSpeechInstance
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.resources.vectorResource
 
                     MaterialTheme.colorScheme.onBackground
                     MaterialTheme.colorScheme.primary
@@ -107,43 +144,6 @@
     } else {
 ) {
 @Composable
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Dns
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.IconToggleButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.inspiredandroid.kai.ui.chat.ChatActions
-import com.inspiredandroid.kai.ui.handCursor
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.chat_history_content_description
-import kai.composeapp.generated.resources.ic_add
-import kai.composeapp.generated.resources.ic_history
-import kai.composeapp.generated.resources.ic_settings
-import kai.composeapp.generated.resources.ic_volume_off
-import kai.composeapp.generated.resources.ic_volume_up
-import kai.composeapp.generated.resources.new_chat_content_description
-import kai.composeapp.generated.resources.sandbox_content_description
-import kai.composeapp.generated.resources.settings_content_description
-import kai.composeapp.generated.resources.toggle_speech_output_content_description
-import nl.marc_apps.tts.TextToSpeechInstance
-import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.resources.vectorResource
 internal fun TopBar(
 package com.inspiredandroid.kai.ui.chat.composables
 private fun LeadingButtons(

@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 
             assertEquals(displayName, info.displayName, "displayName for $modelId")
         assertContext("claude-3-5-sonnet", 200_000L)
@@ -142,8 +145,5 @@
  */
 /**
 class ModelCatalogTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 package com.inspiredandroid.kai.data
 }

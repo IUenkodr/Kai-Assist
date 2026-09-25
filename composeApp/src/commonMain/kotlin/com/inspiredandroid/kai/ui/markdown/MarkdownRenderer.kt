@@ -1,3 +1,33 @@
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
+import com.inspiredandroid.kai.ui.dynamicui.FrozenSubmission
+import com.inspiredandroid.kai.ui.dynamicui.KaiUiRenderer
+import com.inspiredandroid.kai.ui.markdown.math.MathFormula
+import kotlinx.collections.immutable.persistentListOf
 
                         inlines = cell,
                         modifier = Modifier.weight(1f).padding(4.dp),
@@ -138,36 +168,6 @@
 /**
 @Composable
 fun MarkdownContent(
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.VerticalDivider
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
-import com.inspiredandroid.kai.ui.dynamicui.FrozenSubmission
-import com.inspiredandroid.kai.ui.dynamicui.KaiUiRenderer
-import com.inspiredandroid.kai.ui.markdown.math.MathFormula
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.ui.markdown
 private fun BlockRenderer(
 private fun BlockquoteBlock(

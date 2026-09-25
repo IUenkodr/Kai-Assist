@@ -1,3 +1,5 @@
+import com.inspiredandroid.kai.getAppFilesDirectory
+import java.io.File
 
         dir = dir.parentFile ?: return 0L
     // No foreground service needed on desktop
@@ -14,7 +16,5 @@ actual fun getTotalMemoryBytes(): Long = Long.MAX_VALUE
 actual fun startDownloadNotificationService() {
 actual fun stopDownloadNotificationService() {
 actual fun updateDownloadNotificationProgress(percent: Int) {
-import com.inspiredandroid.kai.getAppFilesDirectory
-import java.io.File
 package com.inspiredandroid.kai.inference
 }

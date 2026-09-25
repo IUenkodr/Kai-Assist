@@ -1,3 +1,6 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
             applicationCursorKeys = false,
             cells = List(columns * rows) { TerminalCell() },
@@ -52,8 +55,5 @@ const val MIN_COLUMNS = 20
 const val MIN_ROWS = 8
 data class TerminalCell(
 data class TerminalSnapshot(
-import androidx.compose.runtime.Immutable
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.build.terminal
 }

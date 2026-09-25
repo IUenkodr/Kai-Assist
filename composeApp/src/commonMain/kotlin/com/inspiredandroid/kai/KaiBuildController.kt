@@ -1,3 +1,6 @@
+import com.inspiredandroid.kai.build.KaiBuildState
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
      * (rows/cols). Call when the terminal viewport is measured or resized.
      * (terminated with `\r`), or an encoded key sequence.
@@ -65,9 +68,6 @@
 /** Kai Build is Android-only; every other target gets this. */
 class NoOpKaiBuildController : KaiBuildController {
 expect fun createKaiBuildController(): KaiBuildController
-import com.inspiredandroid.kai.build.KaiBuildState
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 interface KaiBuildController {
 package com.inspiredandroid.kai
 }

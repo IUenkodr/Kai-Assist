@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.TerminalLine
+import com.russhwolf.settings.MapSettings
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
                 TerminalLine.Output("tail"),
                 TerminalLine.Output(longLine),
@@ -65,10 +70,5 @@
     private fun createStorage(settings: MapSettings = MapSettings()): ConversationStorage {
     }
 class ConversationStorageTest {
-import com.inspiredandroid.kai.TerminalLine
-import com.russhwolf.settings.MapSettings
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.data
 }

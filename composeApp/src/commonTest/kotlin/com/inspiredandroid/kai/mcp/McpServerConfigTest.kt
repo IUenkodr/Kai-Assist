@@ -1,3 +1,9 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.Json
 
                     "Authorization": "Bearer token123",
                     "X-API-Version": "2"
@@ -68,11 +74,5 @@
     private val json = Json {
     }
 class McpServerConfigTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
-import kotlin.test.assertTrue
-import kotlinx.serialization.SerializationException
-import kotlinx.serialization.json.Json
 package com.inspiredandroid.kai.mcp
 }

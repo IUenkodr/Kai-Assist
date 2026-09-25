@@ -1,3 +1,12 @@
+import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicModelsResponseDto
+import com.inspiredandroid.kai.network.dtos.gemini.GeminiModelsResponseDto
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleModelResponseDto
+import com.inspiredandroid.kai.ui.settings.SettingsModel
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
                 context_length = 200_000,
                 created_at = "2025-03-14T10:00:00Z",
@@ -247,14 +256,5 @@
     fun `newestFirstComparator sorts by release date then context window`() {
     }
 class ModelTransformationsTest {
-import com.inspiredandroid.kai.network.dtos.anthropic.AnthropicModelsResponseDto
-import com.inspiredandroid.kai.network.dtos.gemini.GeminiModelsResponseDto
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleModelResponseDto
-import com.inspiredandroid.kai.ui.settings.SettingsModel
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.data
 }

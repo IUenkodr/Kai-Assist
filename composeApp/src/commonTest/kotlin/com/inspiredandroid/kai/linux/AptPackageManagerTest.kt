@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
                 PackageEntry("bash", "5.2.15-2+b7"),
                 PackageEntry("coreutils", "9.1-1"),
@@ -62,9 +66,5 @@
     fun `skips packages that are removed but keep their config`() {
     }
 class AptPackageManagerTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.linux
 }

@@ -1,3 +1,18 @@
+import androidx.compose.runtime.Immutable
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.inspiredandroid.kai.Platform
+import com.inspiredandroid.kai.SandboxController
+import com.inspiredandroid.kai.SandboxMigration
+import com.inspiredandroid.kai.SandboxStatus
+import com.inspiredandroid.kai.SandboxStatusLabel
+import com.inspiredandroid.kai.currentPlatform
+import com.inspiredandroid.kai.data.DataRepository
+import com.inspiredandroid.kai.linux.LinuxDistro
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
                 _state.update { applyStatus(sandboxStatus, it) }
                 isSandboxEnabled = dataRepository.isSandboxEnabled(),
@@ -90,20 +105,5 @@
 @Immutable
 class SandboxViewModel(
 data class SandboxUiState(
-import androidx.compose.runtime.Immutable
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.inspiredandroid.kai.Platform
-import com.inspiredandroid.kai.SandboxController
-import com.inspiredandroid.kai.SandboxMigration
-import com.inspiredandroid.kai.SandboxStatus
-import com.inspiredandroid.kai.SandboxStatusLabel
-import com.inspiredandroid.kai.currentPlatform
-import com.inspiredandroid.kai.data.DataRepository
-import com.inspiredandroid.kai.linux.LinuxDistro
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 package com.inspiredandroid.kai.ui.settings
 }

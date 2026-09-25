@@ -1,3 +1,6 @@
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
                                 depth++
                                 depth--
@@ -342,9 +345,6 @@
  * The grammar covered, roughly:
  */
 /**
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
 internal object MathParser {
 package com.inspiredandroid.kai.ui.markdown.math
 }

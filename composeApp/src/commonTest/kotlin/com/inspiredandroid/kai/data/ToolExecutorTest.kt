@@ -1,3 +1,17 @@
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kotlin.test.Test
+import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.minutes
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.awaitCancellation
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.runCurrent
+import kotlinx.coroutines.test.runTest
 
             FakeTool(timeout = 100.milliseconds) { delay(10.minutes) },
             completed = true
@@ -38,19 +52,5 @@
  */
 /**
 class ToolExecutorTest {
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kotlin.test.Test
-import kotlin.test.assertFailsWith
-import kotlin.test.assertTrue
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.minutes
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.awaitCancellation
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runCurrent
-import kotlinx.coroutines.test.runTest
 package com.inspiredandroid.kai.data
 }

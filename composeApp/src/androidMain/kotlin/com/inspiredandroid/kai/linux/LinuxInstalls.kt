@@ -1,3 +1,5 @@
+import android.content.Context
+import java.io.File
 
             listOf(buildDir, sandboxDir)
             listOf(sandboxDir, buildDir)
@@ -45,7 +47,5 @@
  */
 /**
 class LinuxInstalls(context: Context) {
-import android.content.Context
-import java.io.File
 package com.inspiredandroid.kai.linux
 }

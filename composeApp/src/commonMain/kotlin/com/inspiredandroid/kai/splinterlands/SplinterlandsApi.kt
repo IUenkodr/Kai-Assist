@@ -1,3 +1,22 @@
+import com.inspiredandroid.kai.data.SharedJson
+import com.inspiredandroid.kai.httpClient
+import io.ktor.client.request.forms.submitForm
+import io.ktor.client.request.get
+import io.ktor.client.request.header
+import io.ktor.client.request.parameter
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.parameters
+import kotlin.time.Clock
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.ExperimentalTime
+import kotlinx.coroutines.delay
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
                             return (balance + elapsedSec / 3600.0).toInt().coerceAtMost(50)
                             val elapsedSec = (nowMs - lastMs) / 1000.0
@@ -104,24 +123,5 @@
     suspend fun postBattleTx(signedTx: String, jwt: String): JsonObject {
     }
 class SplinterlandsApi {
-import com.inspiredandroid.kai.data.SharedJson
-import com.inspiredandroid.kai.httpClient
-import io.ktor.client.request.forms.submitForm
-import io.ktor.client.request.get
-import io.ktor.client.request.header
-import io.ktor.client.request.parameter
-import io.ktor.client.statement.bodyAsText
-import io.ktor.http.parameters
-import kotlin.time.Clock
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.ExperimentalTime
-import kotlinx.coroutines.delay
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.int
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 package com.inspiredandroid.kai.splinterlands
 }

@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
             "\u001b]8;;https://example.com/login?x=1\u0007click here\u001b]8;;\u0007",
             "https://claude.com/cai/oauth/authorize?code=true&redirect_uri=http://localhost:1234",
@@ -108,8 +111,5 @@
     fun writesPlainText() {
     }
 class TerminalScreenTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.build.terminal
 }

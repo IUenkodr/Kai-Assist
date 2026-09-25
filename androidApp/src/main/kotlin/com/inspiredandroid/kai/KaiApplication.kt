@@ -1,3 +1,12 @@
+import android.app.Application
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ProcessLifecycleOwner
+import com.inspiredandroid.kai.data.TaskScheduler
+import com.inspiredandroid.kai.sandbox.sandboxModule
+import org.koin.android.ext.android.inject
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
                 taskScheduler.appInForeground = false
                 taskScheduler.appInForeground = true
@@ -18,14 +27,5 @@
     private val taskScheduler: TaskScheduler by inject()
     }
 class KaiApplication : Application() {
-import android.app.Application
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ProcessLifecycleOwner
-import com.inspiredandroid.kai.data.TaskScheduler
-import com.inspiredandroid.kai.sandbox.sandboxModule
-import org.koin.android.ext.android.inject
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
 package com.inspiredandroid.kai
 }

@@ -1,3 +1,23 @@
+import app.cash.turbine.test
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.ServiceEntry
+import com.inspiredandroid.kai.data.TaskScheduler
+import com.inspiredandroid.kai.testutil.FakeDataRepository
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 
                 cancelledState = awaitItem()
                 clearedState = awaitItem()
@@ -153,25 +173,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class ChatViewModelExtendedTest {
-import app.cash.turbine.test
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.ServiceEntry
-import com.inspiredandroid.kai.data.TaskScheduler
-import com.inspiredandroid.kai.testutil.FakeDataRepository
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 package com.inspiredandroid.kai.ui.chat
 }

@@ -1,3 +1,5 @@
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
         val args: Map<String, JsonElement>? = null,
         val functionCall: FunctionCall? = null,
@@ -22,7 +24,5 @@
 @Serializable
 data class GeminiChatResponseDto(
 fun GeminiChatResponseDto.extractText(): String = candidates.firstOrNull()?.content?.parts
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonElement
 package com.inspiredandroid.kai.network.dtos.gemini
 }

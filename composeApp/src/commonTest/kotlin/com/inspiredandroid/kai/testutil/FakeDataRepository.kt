@@ -1,3 +1,39 @@
+import com.inspiredandroid.kai.data.Conversation
+import com.inspiredandroid.kai.data.DataRepository
+import com.inspiredandroid.kai.data.EmailAccount
+import com.inspiredandroid.kai.data.EmailSyncState
+import com.inspiredandroid.kai.data.FallbackStatus
+import com.inspiredandroid.kai.data.FreeMode
+import com.inspiredandroid.kai.data.HeartbeatConfig
+import com.inspiredandroid.kai.data.HeartbeatLogEntry
+import com.inspiredandroid.kai.data.ImportSection
+import com.inspiredandroid.kai.data.MemoryEntry
+import com.inspiredandroid.kai.data.ScheduledTask
+import com.inspiredandroid.kai.data.Service
+import com.inspiredandroid.kai.data.ServiceEntry
+import com.inspiredandroid.kai.data.ServiceInstance
+import com.inspiredandroid.kai.data.SmsDraft
+import com.inspiredandroid.kai.data.SmsSyncState
+import com.inspiredandroid.kai.data.SystemPromptVariant
+import com.inspiredandroid.kai.data.ThemeMode
+import com.inspiredandroid.kai.data.ensureSelectedModelPresent
+import com.inspiredandroid.kai.inference.DownloadError
+import com.inspiredandroid.kai.inference.DownloadedModel
+import com.inspiredandroid.kai.inference.EngineState
+import com.inspiredandroid.kai.inference.LocalModel
+import com.inspiredandroid.kai.inference.ModelImportError
+import com.inspiredandroid.kai.inference.ModelImportResult
+import com.inspiredandroid.kai.linux.LinuxDistro
+import com.inspiredandroid.kai.mcp.McpServerConfig
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.tools.CommonTools
+import com.inspiredandroid.kai.ui.chat.History
+import com.inspiredandroid.kai.ui.settings.SettingsModel
+import io.github.vinceglb.filekit.PlatformFile
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 
                     "tool" -> History.Role.TOOL
                     "user" -> History.Role.USER
@@ -382,41 +418,5 @@
     var storedSandboxDistro: LinuxDistro = LinuxDistro.DEFAULT
     }
 class FakeDataRepository : DataRepository {
-import com.inspiredandroid.kai.data.Conversation
-import com.inspiredandroid.kai.data.DataRepository
-import com.inspiredandroid.kai.data.EmailAccount
-import com.inspiredandroid.kai.data.EmailSyncState
-import com.inspiredandroid.kai.data.FallbackStatus
-import com.inspiredandroid.kai.data.FreeMode
-import com.inspiredandroid.kai.data.HeartbeatConfig
-import com.inspiredandroid.kai.data.HeartbeatLogEntry
-import com.inspiredandroid.kai.data.ImportSection
-import com.inspiredandroid.kai.data.MemoryEntry
-import com.inspiredandroid.kai.data.ScheduledTask
-import com.inspiredandroid.kai.data.Service
-import com.inspiredandroid.kai.data.ServiceEntry
-import com.inspiredandroid.kai.data.ServiceInstance
-import com.inspiredandroid.kai.data.SmsDraft
-import com.inspiredandroid.kai.data.SmsSyncState
-import com.inspiredandroid.kai.data.SystemPromptVariant
-import com.inspiredandroid.kai.data.ThemeMode
-import com.inspiredandroid.kai.data.ensureSelectedModelPresent
-import com.inspiredandroid.kai.inference.DownloadError
-import com.inspiredandroid.kai.inference.DownloadedModel
-import com.inspiredandroid.kai.inference.EngineState
-import com.inspiredandroid.kai.inference.LocalModel
-import com.inspiredandroid.kai.inference.ModelImportError
-import com.inspiredandroid.kai.inference.ModelImportResult
-import com.inspiredandroid.kai.linux.LinuxDistro
-import com.inspiredandroid.kai.mcp.McpServerConfig
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.tools.CommonTools
-import com.inspiredandroid.kai.ui.chat.History
-import com.inspiredandroid.kai.ui.settings.SettingsModel
-import io.github.vinceglb.filekit.PlatformFile
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
 package com.inspiredandroid.kai.testutil
 }

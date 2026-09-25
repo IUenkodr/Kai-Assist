@@ -1,3 +1,10 @@
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_send_notification_description
+import kai.composeapp.generated.resources.tool_send_notification_name
 
                     "error" to result.message,
                     "message" to "Notification sent successfully",
@@ -32,13 +39,6 @@
     fun create(notificationHelper: NotificationHelper): Tool = object : Tool {
     val toolInfo = ToolInfo(
     }
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_send_notification_description
-import kai.composeapp.generated.resources.tool_send_notification_name
 object SendNotificationTool {
 package com.inspiredandroid.kai.tools
 }

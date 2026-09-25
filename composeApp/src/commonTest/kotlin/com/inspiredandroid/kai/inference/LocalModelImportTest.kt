@@ -1,3 +1,9 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
         assertEquals("${CUSTOM_MODEL_ID_PREFIX}MyCoolModel", target.modelId)
         assertEquals("${CUSTOM_MODEL_ID_PREFIX}MyCoolModel_3", target.modelId)
@@ -56,11 +62,5 @@
     fun sanitizeImportFileName_stripsPathAndUnsafeChars() {
     }
 class LocalModelImportTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.inference
 }

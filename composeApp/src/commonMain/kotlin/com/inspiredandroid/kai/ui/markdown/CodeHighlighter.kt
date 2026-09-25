@@ -1,3 +1,9 @@
+import androidx.compose.material3.ColorScheme
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 
                 append(code.substring(s.range.first, s.range.last + 1))
             if (s.range.first > pos) append(code.substring(pos, s.range.first))
@@ -117,12 +123,6 @@
  */
 )
 /**
-import androidx.compose.material3.ColorScheme
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
 internal data class HighlightColors(
 internal fun codeHighlightColors(scheme: ColorScheme): HighlightColors = HighlightColors(
 internal fun highlightCode(code: String, language: String?, colors: HighlightColors): AnnotatedString {

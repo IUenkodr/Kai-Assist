@@ -1,3 +1,7 @@
+import android.os.Build
+import java.io.File
+import java.io.IOException
+import java.net.URL
 
             "$base/$ALPINE_BRANCH/releases/$arch/alpine-minirootfs-$ALPINE_VERSION-$arch.tar.gz"
             "$mirrorBase/$ALPINE_BRANCH/main\n$mirrorBase/$ALPINE_BRANCH/community\n",
@@ -103,10 +107,6 @@
 // Cap at 3.22: Alpine 3.23+ ships apk-tools 3, which uses execveat() in a way
 // See termux/proot-distro#532 / #595.
 // proot does not support, so `apk update` fails under the sandbox runtime.
-import android.os.Build
-import java.io.File
-import java.io.IOException
-import java.net.URL
 object AlpineSpec : DistroSpec {
 object DebianSpec : DistroSpec {
 package com.inspiredandroid.kai.linux

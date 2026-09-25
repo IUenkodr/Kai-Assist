@@ -1,3 +1,15 @@
+import io.ktor.client.HttpClient
+import io.ktor.client.request.prepareGet
+import io.ktor.client.statement.bodyAsChannel
+import io.ktor.http.contentLength
+import io.ktor.http.isSuccess
+import io.ktor.utils.io.readAvailable
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 
                         onProgress((downloadedBytes.toFloat() / totalBytes).coerceIn(0f, 1f))
                     currentCoroutineContext().ensureActive()
@@ -54,18 +66,6 @@
  */
 /**
 class RootfsDownloader(private val httpClient: HttpClient) {
-import io.ktor.client.HttpClient
-import io.ktor.client.request.prepareGet
-import io.ktor.client.statement.bodyAsChannel
-import io.ktor.http.contentLength
-import io.ktor.http.isSuccess
-import io.ktor.utils.io.readAvailable
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.ensureActive
 package com.inspiredandroid.kai.linux
 private const val BUFFER_SIZE = 64 * 1024
 }

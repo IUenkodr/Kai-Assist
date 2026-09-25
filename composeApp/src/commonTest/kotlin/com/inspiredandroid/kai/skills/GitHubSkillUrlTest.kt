@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
         assertEquals(SkillSource.GitHub("anthropics", "skills", "main", ""), source)
         assertEquals(SkillSource.GitHub("anthropics", "skills", "main", "skills/pdf"), source)
@@ -20,8 +23,5 @@
     fun `strips trailing slash`() {
     }
 class GitHubSkillUrlTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
 package com.inspiredandroid.kai.skills
 }

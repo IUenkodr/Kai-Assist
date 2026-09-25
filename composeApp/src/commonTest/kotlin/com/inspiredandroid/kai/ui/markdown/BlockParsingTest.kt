@@ -1,3 +1,8 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
+import kotlinx.collections.immutable.persistentListOf
 
             assertEquals(level, heading.level)
             assertEquals(persistentListOf(Text("Title")), heading.inlines)
@@ -95,10 +100,5 @@
     fun `unclosed fenced code is rendered with closed=false`() {
     }
 class BlockParsingTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.ui.markdown
 }

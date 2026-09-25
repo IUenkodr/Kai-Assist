@@ -1,3 +1,4 @@
+import com.inspiredandroid.kai.ui.dynamicui.collectSpeakableText
 
         LineBreak -> sb.append(' ')
         is Emphasis -> node.children.forEach { appendInline(sb, it) }
@@ -43,7 +44,6 @@
  */
 /**
 fun MarkdownDocument.toSpeakableText(): String {
-import com.inspiredandroid.kai.ui.dynamicui.collectSpeakableText
 package com.inspiredandroid.kai.ui.markdown
 private fun appendInline(sb: StringBuilder, node: InlineNode) {
 private fun blockToSpeakable(block: BlockNode): String = when (block) {

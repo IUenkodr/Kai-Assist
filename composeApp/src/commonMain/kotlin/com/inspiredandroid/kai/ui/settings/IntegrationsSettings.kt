@@ -1,3 +1,25 @@
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.inspiredandroid.kai.ui.handCursor
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.settings_open_github_issue
+import kai.composeapp.generated.resources.settings_request_integration_description
+import kai.composeapp.generated.resources.settings_request_integration_title
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
                     Text(stringResource(Res.string.settings_open_github_issue))
                     accounts = splinterlandsState.splinterlandsAccounts,
@@ -45,28 +67,6 @@
     }
 ) {
 @Composable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.inspiredandroid.kai.ui.handCursor
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.settings_open_github_issue
-import kai.composeapp.generated.resources.settings_request_integration_description
-import kai.composeapp.generated.resources.settings_request_integration_title
-import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
 internal fun IntegrationsContent(
 package com.inspiredandroid.kai.ui.settings
 }

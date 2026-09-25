@@ -1,3 +1,10 @@
+import java.io.BufferedInputStream
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.util.zip.GZIPInputStream
+import org.tukaani.xz.XZInputStream
 
                             java.nio.file.Paths.get(linkName),
                             outFile.toPath(),
@@ -134,13 +141,6 @@
  */
 /**
 /** ustar marks a regular file with '0'; pre-ustar archives leave the flag NUL. */
-import java.io.BufferedInputStream
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.util.zip.GZIPInputStream
-import org.tukaani.xz.XZInputStream
 object TarExtractor {
 package com.inspiredandroid.kai.linux
 private const val BUFFER_SIZE = 8192

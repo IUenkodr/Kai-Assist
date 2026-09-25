@@ -1,3 +1,6 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
             binary = "claude",
             binary = "grok",
@@ -36,9 +39,6 @@
 /**
 @Immutable
 data class BuildAgent(
-import androidx.compose.runtime.Immutable
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 object BuildAgents {
 package com.inspiredandroid.kai.build
 }

@@ -1,3 +1,8 @@
+import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicInteger
+import org.koin.java.KoinJavaComponent.inject
 
             "exit_code" to (session.exitCode ?: -1),
             "finished" to finished,
@@ -82,11 +87,6 @@
  */
 /**
 class ProcessManager(private val sandboxManager: LinuxSandboxManager) {
-import com.inspiredandroid.kai.sandbox.LinuxSandboxManager
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.atomic.AtomicInteger
-import org.koin.java.KoinJavaComponent.inject
 internal fun createProcessManager(): ProcessManager {
 package com.inspiredandroid.kai.tools
 }

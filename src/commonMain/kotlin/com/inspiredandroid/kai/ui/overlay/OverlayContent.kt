@@ -1,10 +1,11 @@
 package com.inspiredandroid.kai.ui.overlay
-
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
-import androidx.compose.foundation.layout.*
+package com.inspiredandroid.kai.ui.overlay
+
 
 @Composable
 fun OverlayContent(viewModel: OverlayViewModel) {

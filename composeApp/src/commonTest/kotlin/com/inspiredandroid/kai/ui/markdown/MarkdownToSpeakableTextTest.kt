@@ -1,3 +1,5 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
         assertEquals("", speak("***"))
         assertEquals("", speak("---"))
@@ -51,7 +53,5 @@
     private fun speak(md: String) = parseMarkdown(md).toSpeakableText()
     }
 class MarkdownToSpeakableTextTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
 package com.inspiredandroid.kai.ui.markdown
 }

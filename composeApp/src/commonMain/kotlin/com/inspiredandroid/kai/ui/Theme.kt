@@ -1,3 +1,37 @@
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.input.pointer.PointerIcon
+import androidx.compose.ui.input.pointer.pointerHoverIcon
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
     
                     .alpha(if (focused && value.isNotEmpty()) 1f else 0f),
@@ -111,40 +145,6 @@ fun Modifier.kaiAdaptiveCardSurface(shape: Shape = RoundedCornerShape(16.dp)): M
 fun Theme(
 fun kaiAdaptiveCardColors(): CardColors = CardDefaults.cardColors(
 fun outlineTextFieldColors() = OutlinedTextFieldDefaults.colors(
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material3.CardColors
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.input.pointer.PointerIcon
-import androidx.compose.ui.input.pointer.pointerHoverIcon
-import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.unit.dp
-import org.jetbrains.compose.ui.tooling.preview.Preview
 package com.inspiredandroid.kai.ui
 val AI_Gradient = Brush.linearGradient(listOf(ElectricIndigo, DeepViolet, CyanAccent))
 val ColorScheme.isOledFlavor: Boolean get() = background == Color.Black

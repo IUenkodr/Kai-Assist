@@ -1,3 +1,15 @@
+import com.inspiredandroid.kai.network.tools.ParameterSchema
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.network.tools.ToolSchema
+import com.inspiredandroid.kai.smartTruncate
+import java.io.BufferedReader
+import java.io.File
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.TimeUnit
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.tool_execute_shell_command_description
+import kai.composeapp.generated.resources.tool_execute_shell_command_name
 
                     "exit_code" to -1,
                     "stderr" to stderrFuture.get(1, TimeUnit.SECONDS).smartTruncate(MAX_OUTPUT_LENGTH),
@@ -120,18 +132,6 @@ Each command runs in a fresh shell — use "cd dir && command" for directory cha
 Output is limited to ${MAX_OUTPUT_LENGTH} characters per stream; for large output, pipe through head/tail.
 Set background=true to run long-lived processes (servers, builds). Use the manage_process tool to check on them."""
 Use for file operations, system info, running scripts, installing packages, etc.
-import com.inspiredandroid.kai.network.tools.ParameterSchema
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.network.tools.ToolSchema
-import com.inspiredandroid.kai.smartTruncate
-import java.io.BufferedReader
-import java.io.File
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.TimeUnit
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.tool_execute_shell_command_description
-import kai.composeapp.generated.resources.tool_execute_shell_command_name
 object ShellCommandTool : Tool {
 package com.inspiredandroid.kai.tools
 private const val DEFAULT_TIMEOUT_SECONDS = 30L

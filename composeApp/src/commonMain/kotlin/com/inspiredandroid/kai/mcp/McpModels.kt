@@ -1,3 +1,7 @@
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
 
     @SerialName("isError")
     val code: Int,
@@ -31,8 +35,4 @@ data class McpContent(
 data class McpToolDefinition(
 data class McpToolMetadata(
 data class McpToolsResult(
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
 package com.inspiredandroid.kai.mcp

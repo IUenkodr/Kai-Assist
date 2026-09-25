@@ -1,3 +1,4 @@
+import java.io.File
 
                 .any { it.split(Regex("\\s+")).contains("avx2") }
                 .filter { it.startsWith("flags", ignoreCase = true) }
@@ -17,7 +18,6 @@
  */
 /**
 actual fun createLocalInferenceEngine(): LocalInferenceEngine? = if (isLiteRtSupported()) LiteRTInferenceEngine() else null
-import java.io.File
 package com.inspiredandroid.kai.inference
 private fun isLiteRtSupported(): Boolean {
 }

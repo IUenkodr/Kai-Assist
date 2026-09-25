@@ -1,3 +1,10 @@
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import com.inspiredandroid.kai.linux.LinuxDistro
+import io.github.vinceglb.filekit.PlatformFile
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
         command: String,
         data class Copy(override val detail: String = "") : Failure
@@ -137,13 +144,6 @@ data class SandboxFileEntry(
 data class SandboxMigration(
 data class SandboxStatus(
 expect fun createSandboxController(): SandboxController
-import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import com.inspiredandroid.kai.linux.LinuxDistro
-import io.github.vinceglb.filekit.PlatformFile
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 interface CommandHandle {
 interface SandboxController : FileBrowserSource {
 internal object NoOpCommandHandle : CommandHandle {

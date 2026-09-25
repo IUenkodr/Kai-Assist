@@ -1,3 +1,19 @@
+import android.Manifest
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
+import android.provider.Settings
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.core.content.ContextCompat
+import org.koin.java.KoinJavaComponent.inject
 
             launcher.launch(permissions)
         // No settings app to handle the intent — nothing we can do.
@@ -43,22 +59,6 @@
 /** Android 17 (API 37), where local network protection became enforced for apps targeting 37+. */
 @Composable
 actual fun SetupPermissionHandler(controller: PermissionController) {
-import android.Manifest
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
-import android.provider.Settings
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.core.content.ContextCompat
-import org.koin.java.KoinJavaComponent.inject
 internal actual fun platformCanRequest(permission: AppPermission): Boolean = permissionsFor(permission).isNotEmpty()
 internal actual fun platformHasPermission(permission: AppPermission): Boolean = permissionsFor(permission).all {
 internal actual fun platformOpenAppSettings() {

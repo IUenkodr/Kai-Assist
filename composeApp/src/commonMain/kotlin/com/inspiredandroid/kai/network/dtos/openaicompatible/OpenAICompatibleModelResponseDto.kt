@@ -1,3 +1,4 @@
+import kotlinx.serialization.Serializable
 
         /** Groq-style. */
         /** OpenRouter-style. */
@@ -19,6 +20,5 @@
 ) {
 @Serializable
 data class OpenAICompatibleModelResponseDto(
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.network.dtos.openaicompatible
 }

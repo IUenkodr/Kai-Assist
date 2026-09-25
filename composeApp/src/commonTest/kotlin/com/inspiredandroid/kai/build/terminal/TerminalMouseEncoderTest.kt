@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
             "\u001b[<0;12;5M\u001b[<0;12;5m",
             "\u001b[<0;201;101M\u001b[<0;201;101m",
@@ -34,9 +38,5 @@
     private val x10 = TerminalMouseState(
     }
 class TerminalMouseEncoderTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
 package com.inspiredandroid.kai.build.terminal
 }

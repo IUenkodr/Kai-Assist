@@ -1,3 +1,11 @@
+import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.put
 
                             put("arguments", call.function.arguments)
                             put("call_id", call.id)
@@ -74,14 +82,6 @@
  * |---|---|
  */
 /**
-import com.inspiredandroid.kai.network.dtos.openaicompatible.OpenAICompatibleChatRequestDto
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.put
 internal fun toResponsesInput(messages: List<OpenAICompatibleChatRequestDto.Message>): List<JsonObject> = buildList {
 package com.inspiredandroid.kai.data.providers
 private fun JsonElement.toResponsesContentPart(): JsonObject {

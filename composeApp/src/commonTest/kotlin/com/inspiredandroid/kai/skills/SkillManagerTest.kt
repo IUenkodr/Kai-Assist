@@ -1,3 +1,11 @@
+import com.inspiredandroid.kai.testutil.FakeSandboxController
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 
                 description = "desc",
                 files = mapOf("a.txt" to "x", "core/b.py" to "y"),
@@ -45,13 +53,5 @@
     }
 @OptIn(ExperimentalCoroutinesApi::class)
 class SkillManagerTest {
-import com.inspiredandroid.kai.testutil.FakeSandboxController
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.runTest
 package com.inspiredandroid.kai.skills
 }

@@ -1,3 +1,24 @@
+import android.graphics.BitmapFactory
+import androidx.compose.material3.ColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalInspectionMode
+import app.cash.paparazzi.DeviceConfig
+import app.cash.paparazzi.Paparazzi
+import com.inspiredandroid.kai.ui.DarkColorScheme
+import com.inspiredandroid.kai.ui.LightColorScheme
+import com.inspiredandroid.kai.ui.Theme
+import com.inspiredandroid.kai.ui.chat.ChatScreenContent
+import com.inspiredandroid.kai.ui.dynamicui.LocalPreviewImages
+import com.inspiredandroid.kai.ui.settings.SettingsScreenContent
+import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.setResourceReaderAndroidContext
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 
                     content()
                 FakeTextToSpeechInstance(),
@@ -62,26 +83,5 @@
 @OptIn(ExperimentalResourceApi::class)
 @file:OptIn(ExperimentalVoiceApi::class)
 class ScreenshotTest {
-import android.graphics.BitmapFactory
-import androidx.compose.material3.ColorScheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.platform.LocalInspectionMode
-import app.cash.paparazzi.DeviceConfig
-import app.cash.paparazzi.Paparazzi
-import com.inspiredandroid.kai.ui.DarkColorScheme
-import com.inspiredandroid.kai.ui.LightColorScheme
-import com.inspiredandroid.kai.ui.Theme
-import com.inspiredandroid.kai.ui.chat.ChatScreenContent
-import com.inspiredandroid.kai.ui.dynamicui.LocalPreviewImages
-import com.inspiredandroid.kai.ui.settings.SettingsScreenContent
-import nl.marc_apps.tts.experimental.ExperimentalVoiceApi
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.setResourceReaderAndroidContext
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 package com.inspiredandroid.kai.screenshots
 }

@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
         assertFalse(isLocalNetworkUrl(""))
         assertFalse(isLocalNetworkUrl("http://127.0.0.1:11434"))
@@ -27,8 +30,5 @@
     fun `public hosts are not local`() {
     }
 class LocalNetworkUrlTest {
-import kotlin.test.Test
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 package com.inspiredandroid.kai.tools
 }

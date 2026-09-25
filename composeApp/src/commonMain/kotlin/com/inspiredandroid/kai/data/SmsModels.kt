@@ -1,3 +1,5 @@
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
     FAILED,
     PENDING,
@@ -31,7 +33,5 @@ data class SmsDraft(
 data class SmsMessage(
 data class SmsSyncState(
 enum class SmsDraftStatus {
-import androidx.compose.runtime.Immutable
-import kotlinx.serialization.Serializable
 package com.inspiredandroid.kai.data
 }

@@ -1,3 +1,38 @@
+import kai.composeapp.generated.resources.Res
+import kai.composeapp.generated.resources.ic_service_aihorde
+import kai.composeapp.generated.resources.ic_service_aihubmix
+import kai.composeapp.generated.resources.ic_service_anthropic
+import kai.composeapp.generated.resources.ic_service_atlascloud
+import kai.composeapp.generated.resources.ic_service_cerebras
+import kai.composeapp.generated.resources.ic_service_deepinfra
+import kai.composeapp.generated.resources.ic_service_deepseek
+import kai.composeapp.generated.resources.ic_service_fireworksai
+import kai.composeapp.generated.resources.ic_service_free_expert
+import kai.composeapp.generated.resources.ic_service_free_fast
+import kai.composeapp.generated.resources.ic_service_gemini
+import kai.composeapp.generated.resources.ic_service_groqcloud
+import kai.composeapp.generated.resources.ic_service_huggingface
+import kai.composeapp.generated.resources.ic_service_litert
+import kai.composeapp.generated.resources.ic_service_longcat
+import kai.composeapp.generated.resources.ic_service_minimax
+import kai.composeapp.generated.resources.ic_service_mistral
+import kai.composeapp.generated.resources.ic_service_moonshot
+import kai.composeapp.generated.resources.ic_service_nvidia
+import kai.composeapp.generated.resources.ic_service_ollamacloud
+import kai.composeapp.generated.resources.ic_service_openai
+import kai.composeapp.generated.resources.ic_service_openai_compatible
+import kai.composeapp.generated.resources.ic_service_opencode
+import kai.composeapp.generated.resources.ic_service_openrouter
+import kai.composeapp.generated.resources.ic_service_perplexity
+import kai.composeapp.generated.resources.ic_service_publicai
+import kai.composeapp.generated.resources.ic_service_together
+import kai.composeapp.generated.resources.ic_service_venice
+import kai.composeapp.generated.resources.ic_service_xai
+import kai.composeapp.generated.resources.ic_service_zai
+import kai.composeapp.generated.resources.service_free_expert
+import kai.composeapp.generated.resources.service_free_fast
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
             ModelDefinition(id = "LongCat-Flash-Chat", subtitle = "LongCat"),
             ModelDefinition(id = "LongCat-Flash-Lite", subtitle = "LongCat"),
@@ -357,41 +392,6 @@
 data class ModelDefinition(
 enum class FreeMode(val modelId: String, val nameRes: StringResource, val icon: DrawableResource) {
 enum class ReasoningRequestMode {
-import kai.composeapp.generated.resources.Res
-import kai.composeapp.generated.resources.ic_service_aihorde
-import kai.composeapp.generated.resources.ic_service_aihubmix
-import kai.composeapp.generated.resources.ic_service_anthropic
-import kai.composeapp.generated.resources.ic_service_atlascloud
-import kai.composeapp.generated.resources.ic_service_cerebras
-import kai.composeapp.generated.resources.ic_service_deepinfra
-import kai.composeapp.generated.resources.ic_service_deepseek
-import kai.composeapp.generated.resources.ic_service_fireworksai
-import kai.composeapp.generated.resources.ic_service_free_expert
-import kai.composeapp.generated.resources.ic_service_free_fast
-import kai.composeapp.generated.resources.ic_service_gemini
-import kai.composeapp.generated.resources.ic_service_groqcloud
-import kai.composeapp.generated.resources.ic_service_huggingface
-import kai.composeapp.generated.resources.ic_service_litert
-import kai.composeapp.generated.resources.ic_service_longcat
-import kai.composeapp.generated.resources.ic_service_minimax
-import kai.composeapp.generated.resources.ic_service_mistral
-import kai.composeapp.generated.resources.ic_service_moonshot
-import kai.composeapp.generated.resources.ic_service_nvidia
-import kai.composeapp.generated.resources.ic_service_ollamacloud
-import kai.composeapp.generated.resources.ic_service_openai
-import kai.composeapp.generated.resources.ic_service_openai_compatible
-import kai.composeapp.generated.resources.ic_service_opencode
-import kai.composeapp.generated.resources.ic_service_openrouter
-import kai.composeapp.generated.resources.ic_service_perplexity
-import kai.composeapp.generated.resources.ic_service_publicai
-import kai.composeapp.generated.resources.ic_service_together
-import kai.composeapp.generated.resources.ic_service_venice
-import kai.composeapp.generated.resources.ic_service_xai
-import kai.composeapp.generated.resources.ic_service_zai
-import kai.composeapp.generated.resources.service_free_expert
-import kai.composeapp.generated.resources.service_free_fast
-import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.StringResource
 package com.inspiredandroid.kai.data
 sealed class Service(
 }

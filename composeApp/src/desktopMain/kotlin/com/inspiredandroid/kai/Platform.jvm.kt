@@ -1,3 +1,37 @@
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.draganddrop.DragAndDropEvent
+import androidx.compose.ui.draganddrop.DragData
+import androidx.compose.ui.draganddrop.dragData
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.inspiredandroid.kai.data.AppSettings
+import com.inspiredandroid.kai.data.EmailStore
+import com.inspiredandroid.kai.data.EncryptedFileSettings
+import com.inspiredandroid.kai.data.MemoryStore
+import com.inspiredandroid.kai.data.TaskStore
+import com.inspiredandroid.kai.mcp.McpServerManager
+import com.inspiredandroid.kai.network.tools.Tool
+import com.inspiredandroid.kai.network.tools.ToolInfo
+import com.inspiredandroid.kai.tools.CommonTools
+import com.inspiredandroid.kai.tools.ProcessManagerTool
+import com.inspiredandroid.kai.tools.ShellCommandTool
+import com.inspiredandroid.kai.tools.buildAgentToolSet
+import com.russhwolf.settings.Settings
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.PlatformFile
+import io.github.vinceglb.filekit.dialogs.openFileSaver
+import io.github.vinceglb.filekit.write
+import io.ktor.client.HttpClient
+import io.ktor.client.HttpClientConfig
+import io.ktor.client.engine.cio.CIO
+import java.io.File
+import java.net.URI
+import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.Dispatchers
+import org.koin.java.KoinJavaComponent.inject
 
                         override fun run() = tray.remove(trayIcon)
                     .start()
@@ -142,40 +176,6 @@ actual val isEmailSupported: Boolean = true
 actual val isNotificationsSupported: Boolean = false
 actual val isSmsSupported: Boolean = false
 actual val isSplinterlandsSupported: Boolean = true
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.draganddrop.DragAndDropEvent
-import androidx.compose.ui.draganddrop.DragData
-import androidx.compose.ui.draganddrop.dragData
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.toComposeImageBitmap
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.inspiredandroid.kai.data.AppSettings
-import com.inspiredandroid.kai.data.EmailStore
-import com.inspiredandroid.kai.data.EncryptedFileSettings
-import com.inspiredandroid.kai.data.MemoryStore
-import com.inspiredandroid.kai.data.TaskStore
-import com.inspiredandroid.kai.mcp.McpServerManager
-import com.inspiredandroid.kai.network.tools.Tool
-import com.inspiredandroid.kai.network.tools.ToolInfo
-import com.inspiredandroid.kai.tools.CommonTools
-import com.inspiredandroid.kai.tools.ProcessManagerTool
-import com.inspiredandroid.kai.tools.ShellCommandTool
-import com.inspiredandroid.kai.tools.buildAgentToolSet
-import com.russhwolf.settings.Settings
-import io.github.vinceglb.filekit.FileKit
-import io.github.vinceglb.filekit.PlatformFile
-import io.github.vinceglb.filekit.dialogs.openFileSaver
-import io.github.vinceglb.filekit.write
-import io.ktor.client.HttpClient
-import io.ktor.client.HttpClientConfig
-import io.ktor.client.engine.cio.CIO
-import java.io.File
-import java.net.URI
-import kotlin.coroutines.CoroutineContext
-import kotlinx.coroutines.Dispatchers
-import org.koin.java.KoinJavaComponent.inject
 package com.inspiredandroid.kai
 }
 } catch (_: Exception) {

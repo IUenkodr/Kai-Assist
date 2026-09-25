@@ -1,3 +1,7 @@
+import com.inspiredandroid.kai.data.EmailMessage
+import com.inspiredandroid.kai.tools.decodeHtmlEntities
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
                     .dropWhile { it.contains(":") || it.startsWith(" ") || it.startsWith("\t") }
                     .dropWhile { it.isBlank() }
@@ -293,10 +297,6 @@
 /**
 @file:OptIn(ExperimentalEncodingApi::class)
 class ImapClient(
-import com.inspiredandroid.kai.data.EmailMessage
-import com.inspiredandroid.kai.tools.decodeHtmlEntities
-import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
 package com.inspiredandroid.kai.email
 private val htmlTagRegex = Regex("<[^>]+>")
 private val imapExistsRegex = Regex("\\* (\\d+) EXISTS")

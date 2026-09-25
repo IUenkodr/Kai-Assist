@@ -1,3 +1,6 @@
+import com.inspiredandroid.kai.data.SmsStore
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
                         lastAttemptEpochMs = attemptAt,
                         lastError = "Permission not granted",
@@ -46,8 +49,5 @@
 ) {
 @OptIn(ExperimentalTime::class)
 class SmsPoller(
-import com.inspiredandroid.kai.data.SmsStore
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
 package com.inspiredandroid.kai.sms
 }

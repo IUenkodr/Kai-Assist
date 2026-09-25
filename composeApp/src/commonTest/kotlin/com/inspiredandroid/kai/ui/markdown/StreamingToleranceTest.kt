@@ -1,3 +1,7 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlinx.collections.immutable.persistentListOf
 
                 append(" ".repeat(i * 2))
                 append("- item\n")
@@ -52,9 +56,5 @@
     fun `unclosed emphasis yields literal text`() {
     }
 class StreamingToleranceTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlinx.collections.immutable.persistentListOf
 package com.inspiredandroid.kai.ui.markdown
 }

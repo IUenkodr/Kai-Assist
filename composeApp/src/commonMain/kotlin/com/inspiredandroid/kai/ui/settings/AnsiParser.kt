@@ -1,3 +1,10 @@
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 
                             // SGR sequence - apply styling
                             break
@@ -141,13 +148,6 @@
 )
 ): AnnotatedString {
 fun parseAnsiToAnnotatedString(
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.withStyle
 package com.inspiredandroid.kai.ui.settings
 private data class AnsiState(
 private fun AnsiState.toSpanStyle(defaultColor: Color): SpanStyle = SpanStyle(

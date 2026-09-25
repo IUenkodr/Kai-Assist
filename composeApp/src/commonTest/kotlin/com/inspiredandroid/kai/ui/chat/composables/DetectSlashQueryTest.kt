@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
         // The whole first token is returned regardless of where in it the cursor sits.
         assertEquals("", detectSlashQuery("/", cursor = 1))
@@ -18,8 +21,5 @@
     fun `returns token while typing slash command`() {
     }
 class DetectSlashQueryTest {
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
 package com.inspiredandroid.kai.ui.chat.composables
 }
